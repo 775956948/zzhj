@@ -119,13 +119,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		function submitUser(){
 			var name=$("input[name='name']").val();
 			var id=$("select[name='roleId.id']").val();
-			$.post('users/updateRole.action',{'name':name,'roleId.id':id});
-				$('#userDd').dialog({
+			var parentId=0;
+			if(!$("#manager").is(":hidden")){
+				parentId=$("select[name='manager']").val();
+			}else if(!$("#dManager").is(":hidden")){
+				parentId=$("select[name='dManager']").val();
+			}else if(!$("#zhuGuan").is(":hidden")){
+				parentId=$("select[name='zhuGuan']").val();
+			}
+	 		$.post('users/updateRole.action',{'name':name,'roleId.id':id,'parentId':parentId},function(data){
+	 			$('#userDg').datagrid('reload');
+	 			$('#userDd').dialog({
 						closed : true
-				}); 
-				$('#userDg').datagrid('reload');
-				$.messager.alert("提示", "修改成功", "info"); 
+				});
+				$.messager.alert("提示", "修改成功", "info");  
+	 		});
+
 		}
+		//
 		function change(){
 			var row = $('#userDg').datagrid('getSelected');
 			var name= $("select[name='roleId.id']").find("option:selected").text();
@@ -135,7 +146,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				$.post('users/queryUser.action',{'departmentName':row.departmentId.name,'roleName':'主管'},function(data){
 					$("select[name='zhuGuan']").empty();
 					for(var i=0;i<data.length;i++){
-						$("select[name='zhuGuan']").append("<option>"+data[i].name+"</option>");
+						$("select[name='zhuGuan']").append("<option value="+data[i].id+">"+data[i].name+"</option>");
 					}
 					$("#zhuGuan").show();
 				});
@@ -145,25 +156,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				$.post('users/queryUser.action',{'departmentName':row.departmentId.name,'roleName':'副总'},function(data){
 					$("select[name='manager']").empty();
 					for(var i=0;i<data.length;i++){
-						$("select[name='manager']").append("<option>"+data[i].name+"</option>");
+						$("select[name='manager']").append("<option value="+data[i].id+" >"+data[i].name+"</option>");
 					}
 					$("#manager").show();
 				});
-			}else if(name="主管"){
+			}else if(name=="主管"){
 				$("#zhuGuan").hide();
 				$("#manager").hide();		
 				$.post('users/queryUser.action',{'departmentName':row.departmentId.name,'roleName':'部门经理'},function(data){
 					$("select[name='dManager']").empty();
 					for(var i=0;i<data.length;i++){
-						$("select[name='dManager']").append("<option>"+data[i].name+"</option>");
+						$("select[name='dManager']").append("<option value="+data[i].id+" >"+data[i].name+"</option>");
 					}
 					$("#dManager").show();
 				});
 			}else{
-				$("#zhuGuan").hide();
-				$("#manager").hide();
 				$("#dManager").hide();
-			}  
+				$("#zhuGuan").hide();
+				$("#manager").hide();		
+			}
 		} 
     </script>
   </body>

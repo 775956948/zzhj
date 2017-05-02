@@ -85,8 +85,9 @@ public class UsersAction {
 	}
 	
 	@RequestMapping("/updateRole.action")
-	public void updateRole(Users user){
-		us.updateRole(user);
+	@ResponseBody
+	public int updateRole(Users user){
+		return us.updateRole(user);
 	}
 	
 	@RequestMapping("/updateUser.action")

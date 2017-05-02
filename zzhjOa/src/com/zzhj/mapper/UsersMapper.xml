@@ -47,12 +47,12 @@
   		select count(id) from users where name=#{value}
   	</select>
   	<update id="updateRole" parameterType="users">
-  		update users set role_id=#{roleId.id} where name=#{name}
+  		update users set role_id=#{roleId.id},parent_id=#{parentId} where name=#{name}
   	</update>
   	<update id="updateUser" parameterType="users">
   		update users set password=#{password} where name=#{name}
   	</update>
   	<select id="queryUser" parameterType="string" resultType="users">
-  		SELECT s.name FROM users s INNER JOIN department d ON d.id=s.departmentId INNER JOIN roles r ON s.role_id = r.id WHERE d.name=#{departmentName}  AND r.name=#{roleName}
+  		SELECT s.id,s.name FROM users s INNER JOIN department d ON d.id=s.departmentId INNER JOIN roles r ON s.role_id = r.id WHERE d.name=#{departmentName}  AND r.name=#{roleName}
   	</select>
 </mapper>

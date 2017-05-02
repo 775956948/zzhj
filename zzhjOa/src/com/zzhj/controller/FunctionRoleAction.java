@@ -26,7 +26,8 @@ public class FunctionRoleAction {
 	}
 	
 	@RequestMapping("/updateFunctionRole.action")
-	public void updateFunctionRole(String str,Integer roleId){
-		frs.updateFunctionRole(str, roleId);
+	@ResponseBody
+	public int updateFunctionRole(String str,Integer roleId){
+		return frs.updateFunctionRole(str, roleId);
 	}
 }

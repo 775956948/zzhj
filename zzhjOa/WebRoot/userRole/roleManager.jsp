@@ -129,11 +129,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				str+=node[i].id;
 			}
  			 var row = $('#roleDg').datagrid('getSelected');
-			$.post('functionRole/updateFunctionRole.action',{'str':str,'roleId':row.id});
-			$.messager.alert("信息","修改成功","info");
-			$("roleDd").dialog({
-				closed : true
-			});
+			$.post('functionRole/updateFunctionRole.action',{'str':str,'roleId':row.id},function(data){
+				if(data>0){
+					$.messager.alert("信息","修改成功","info");
+						$('#roleDd').dialog({
+							closed : true,
+						});
+				}		
+			});		
 
 		}
 		function addRole(){

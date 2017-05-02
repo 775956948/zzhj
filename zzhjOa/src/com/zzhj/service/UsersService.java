@@ -71,8 +71,8 @@ public class UsersService {
 		return "";
 	}
 	
-	public void updateRole(Users user){
-		um.updateRole(user);
+	public int updateRole(Users user){
+		return um.updateRole(user);
 	}
 	
 	public int updateUser(Users user){

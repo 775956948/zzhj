@@ -22,9 +22,10 @@ public class FunctionRoleService {
 		return frm.queryAll(roleId);
 	}
 	
-	public void updateFunctionRole(String str,int roleId){
+	public int updateFunctionRole(String str,int roleId){
 		String[] functionId = str.split(",");
 		List<FunctionRole> list = new ArrayList<FunctionRole>();
+		int result=0;
 		int count=0;
 		for (int i = 0; i < functionId.length; i++) {
 			if(!functionId[i].equals("")){
@@ -40,11 +41,11 @@ public class FunctionRoleService {
 			}	
 		}
 		
-		frm.deleteFunctionRole(roleId);
+		result=frm.deleteFunctionRole(roleId);
 		if(count>0){
-			frm.saveFunctionRole(list);
+			result=frm.saveFunctionRole(list);
 		}
-		
+		return result;
 		
 	}
 	

@@ -10,6 +10,6 @@ import com.zzhj.po.FunctionRole;
 
 public interface FunctionRoleMapper {
 	List<FunctionRole> queryAll(int roleId);
-	void deleteFunctionRole(int roleId);
-	void saveFunctionRole(List<FunctionRole> list);
+	int deleteFunctionRole(int roleId);
+	int saveFunctionRole(List<FunctionRole> list);
 }
