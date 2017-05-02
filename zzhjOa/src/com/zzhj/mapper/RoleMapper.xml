@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "http://mybatis.org/dtd/mybatis-3-mapper.dtd" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzhj.mapper.RoleMapper">
+  <select id="queryAll" resultType="roles">
+  	select * from roles
+  </select>
+  <insert id="saveRole" useGeneratedKeys="true" keyProperty="id" parameterType="roles">
+  	insert into roles (name) values(#{name})
+  </insert>
+  <delete id="deleteRole" parameterType="int">
+  	delete from roles where id=#{value}
+  </delete>
+</mapper>

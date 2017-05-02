@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "http://mybatis.org/dtd/mybatis-3-mapper.dtd" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzhj.mapper.FunctionRoleMapper">		
+	
+	<resultMap type="functionRole" id="fr">
+		<id property="id" column="id"/>
+		<association property="functionId" javaType="function">
+			<id property="id" column="function_id" />
+		</association>
+		<association property="roleId" javaType="roles">
+			<id property="id" column="role_id"/>
+		</association>
+	</resultMap>	
+	<select id="queryAll" parameterType="int" resultMap="fr">
+  		select * from function_roles where role_id=#{value}
+  	</select>
+  	
+  	<delete id="deleteFunctionRole" parameterType="int">
+  		delete from function_roles where role_Id=#{value}
+  	</delete>
+  	<insert id="saveFunctionRole" parameterType="list">
+  		insert into function_roles (role_id,function_Id) 
+  		values
+  		<foreach collection="list" item="current" separator=",">
+  			(#{current.roleId.id},#{current.functionId.id})
+  		</foreach>
+  		
+  	</insert>
+</mapper>

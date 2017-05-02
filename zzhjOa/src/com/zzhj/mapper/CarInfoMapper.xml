@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper SYSTEM "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzhj.mapper.CarInfoMapper">
+	<resultMap type="com.zzhj.po.CarInfo" id="ci">
+		<id column="ci_id" property="id"/>
+		<result column="requestName" property="requestName"/>
+		<result column="departmentName" property="departmentName"/>
+		<result column="requestText" property="requestText"/>
+		<result column="startDate" property="startDate"/>
+		<result column="startNumber" property="startNumber"/>
+		<result column="overDate" property="overDate"/>
+		<result column="driver" property="driver"/>
+		<result column="overNumber" property="overNumber"/>
+		<association property="carId" javaType="com.zzhj.po.Car">
+			<id column="c_id" property="id"/>
+			<result column="carNo" property="carNo"/>
+			<result column="carName" property="carName"/>
+		</association>
+	</resultMap>
+	<select id="getCarInfo" resultMap="ci">
+		select ci.id as ci_id ,ci.requestName,ci.driver,ci.departmentName,ci.requestText,ci.startDate,ci.startNumber,ci.overDate,ci.overNumber,c.id as c_id,c.carNo,c.carName from car_Info ci inner join car c on c.id=ci.carId limit #{start},#{rows}
+	</select>
+	<select id="totalCount" resultType="int">
+		select count(id) from car_info
+	</select>
+	<insert id="saveCarInfo" parameterType="carInfo">
+		INSERT INTO car_Info (carId,requestName,driver,departmentName,requestText,startDate,startNumber,overDate,overNumber) VALUES(#{carId.id},#{requestName},#{driver},#{departmentName},#{requestText},#{startDate},#{startNumber},#{overDate},#{overNumber})
+	</insert>
+	<delete id="delCarInfo" parameterType="carInfo">
+		delete from car_info where id=#{id}
+	</delete>
+	<update id="updateCarInfo" parameterType="carInfo">
+		update car_info set requestName=#{requestName},driver=#{driver},departmentName=#{departmentName},requestText=#{requestText},startDate=#{startDate},startNumber=#{startNumber},overDate=#{overDate},overNumber=#{overNumber} where id=#{id}
+	</update>
+	<select id="carInfoId" parameterType="int" resultMap="ci">
+		select ci.id as ci_id ,ci.requestName,ci.driver,ci.departmentName,ci.requestText,ci.startDate,ci.startNumber,ci.overDate,ci.overNumber,c.id as c_id,c.carNo,c.carName from car_Info ci inner join car c on c.id=ci.carId where ci.id=#{value}
+	</select>
+</mapper>
