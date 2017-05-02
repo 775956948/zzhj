@@ -21,8 +21,7 @@ public class Users implements Serializable{
 	private String graduated;/*毕业学校*/
 	private String education;/*文化程度*/
 	private String professional;/*专业*/
-	private String zhuGuan;		/*所属主管*/
-	private String manager;     /*所属副总*/
+	private int parentId;
 	public int getId() {
 		return id;
 	}
@@ -133,19 +132,12 @@ public class Users implements Serializable{
 	public void setProfessional(String professional) {
 		this.professional = professional;
 	}
-	public String getZhuGuan() {
-		return zhuGuan;
+	public int getParentId() {
+		return parentId;
 	}
-	public void setZhuGuan(String zhuGuan) {
-		this.zhuGuan = zhuGuan;
+	public void setParentId(int parentId) {
+		this.parentId = parentId;
 	}
-	public String getManager() {
-		return manager;
-	}
-	public void setManager(String manager) {
-		this.manager = manager;
-	}
-
 	
-	
+		
 }
