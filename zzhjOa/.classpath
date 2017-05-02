@@ -20,5 +20,40 @@
 			<attribute name="owner.project.facets" value="jst.web.jstl"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="WebRoot/META-INF/lib/aopalliance-1.0.jar"/>
+	<classpathentry kind="lib" path="WebRoot/META-INF/lib/aspectjweaver-1.6.11.jar"/>
+	<classpathentry kind="lib" path="WebRoot/META-INF/lib/bean-validator.jar"/>
+	<classpathentry kind="lib" path="WebRoot/META-INF/lib/commons-dbcp.jar"/>
+	<classpathentry kind="lib" path="WebRoot/META-INF/lib/commons-fileupload.jar"/>
+	<classpathentry kind="lib" path="WebRoot/META-INF/lib/commons-io.jar"/>
+	<classpathentry kind="lib" path="WebRoot/META-INF/lib/commons-logging.jar"/>
+	<classpathentry kind="lib" path="WebRoot/META-INF/lib/commons-pool.jar"/>
+	<classpathentry kind="lib" path="WebRoot/META-INF/lib/jackson-core-asl-1.9.13.jar"/>
+	<classpathentry kind="lib" path="WebRoot/META-INF/lib/jackson-mapper-asl-1.9.13.jar"/>
+	<classpathentry kind="lib" path="WebRoot/META-INF/lib/jstl.jar"/>
+	<classpathentry kind="lib" path="WebRoot/META-INF/lib/mybatis-3.2.2.jar"/>
+	<classpathentry kind="lib" path="WebRoot/META-INF/lib/mybatis-spring-1.2.0.jar"/>
+	<classpathentry kind="lib" path="WebRoot/META-INF/lib/mysql5.jar"/>
+	<classpathentry kind="lib" path="WebRoot/META-INF/lib/oracle11g.jar"/>
+	<classpathentry kind="lib" path="WebRoot/META-INF/lib/spring-aop-3.2.0.M2.jar"/>
+	<classpathentry kind="lib" path="WebRoot/META-INF/lib/spring-aspects-3.2.0.M2.jar"/>
+	<classpathentry kind="lib" path="WebRoot/META-INF/lib/spring-beans-3.2.0.M2.jar"/>
+	<classpathentry kind="lib" path="WebRoot/META-INF/lib/spring-context-3.2.0.M2.jar"/>
+	<classpathentry kind="lib" path="WebRoot/META-INF/lib/spring-context-support-3.2.0.M2.jar"/>
+	<classpathentry kind="lib" path="WebRoot/META-INF/lib/spring-core-3.2.0.M2.jar"/>
+	<classpathentry kind="lib" path="WebRoot/META-INF/lib/spring-expression-3.2.0.M2.jar"/>
+	<classpathentry kind="lib" path="WebRoot/META-INF/lib/spring-instrument-3.2.0.M2.jar"/>
+	<classpathentry kind="lib" path="WebRoot/META-INF/lib/spring-instrument-tomcat-3.2.0.M2.jar"/>
+	<classpathentry kind="lib" path="WebRoot/META-INF/lib/spring-jdbc-3.2.0.M2.jar"/>
+	<classpathentry kind="lib" path="WebRoot/META-INF/lib/spring-jms-3.2.0.M2.jar"/>
+	<classpathentry kind="lib" path="WebRoot/META-INF/lib/spring-orm-3.2.0.M2.jar"/>
+	<classpathentry kind="lib" path="WebRoot/META-INF/lib/spring-oxm-3.2.0.M2.jar"/>
+	<classpathentry kind="lib" path="WebRoot/META-INF/lib/spring-struts-3.2.0.M2.jar"/>
+	<classpathentry kind="lib" path="WebRoot/META-INF/lib/spring-test-3.2.0.M2.jar"/>
+	<classpathentry kind="lib" path="WebRoot/META-INF/lib/spring-tx-3.2.0.M2.jar"/>
+	<classpathentry kind="lib" path="WebRoot/META-INF/lib/spring-web-3.2.0.M2.jar"/>
+	<classpathentry kind="lib" path="WebRoot/META-INF/lib/spring-webmvc-3.2.0.M2.jar"/>
+	<classpathentry kind="lib" path="WebRoot/META-INF/lib/spring-webmvc-portlet-3.2.0.M2.jar"/>
+	<classpathentry kind="lib" path="WebRoot/META-INF/lib/standard.jar"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>
