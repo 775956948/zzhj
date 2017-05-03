@@ -6,5 +6,6 @@
 	</settings>
 	<typeAliases>
 		<package name="com.zzhj.po"/>
+		<package name="com.zzhj.entityCustom"/>
 	</typeAliases>
 </configuration>

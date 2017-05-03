@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Set;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -72,6 +73,10 @@ public class UsersService {
 	}
 	
 	public int updateRole(Users user){
+		if(user.getParentId()==0){
+			int id=um.queryId("×Ü¾­Àí");
+			user.setParentId(id);
+		}
 		return um.updateRole(user);
 	}
 	
@@ -98,5 +103,9 @@ public class UsersService {
 	 */
 	public List<Users> queryUser(String departmentName,String roleName){
 		return  um.queryUser(departmentName, roleName);
+	}
+	
+	public List<Users> roleUser(Integer id){
+		return um.roleUser(id);
 	}
 }

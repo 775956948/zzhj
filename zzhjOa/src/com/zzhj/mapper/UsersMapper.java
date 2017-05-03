@@ -13,9 +13,21 @@ public interface UsersMapper {
 	int totalCount();
 	int deleteUser(int id);
 	Users query(int id);
+	int queryId(String roleName);
 	int exist(String name);
 	List<Users> roleQueryAll(@Param("startPage") int startPage,@Param("rows") int rows);
 	int updateRole(Users user);
 	int updateUser(Users user);
 	List<Users> queryUser(@Param("departmentName") String departmentName,@Param("roleName") String roleName);
+	/**
+	 * 
+	 * @Description: 返回子用户（自己的下属）
+	 * @param @param id
+	 * @param @return   
+	 * @return List<Users>  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年5月3日
+	 */
+	List<Users> roleUser(Integer id);
 }

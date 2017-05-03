@@ -22,6 +22,7 @@ public class Users implements Serializable{
 	private String education;/*文化程度*/
 	private String professional;/*专业*/
 	private int parentId;
+	private String state;
 	public int getId() {
 		return id;
 	}
@@ -137,6 +138,12 @@ public class Users implements Serializable{
 	}
 	public void setParentId(int parentId) {
 		this.parentId = parentId;
+	}
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
 	}
 	
 		

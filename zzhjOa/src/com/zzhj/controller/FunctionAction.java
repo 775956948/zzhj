@@ -22,7 +22,7 @@ public class FunctionAction {
 	@Resource(name="functionService")
 	private FunctionService fs ;
 	
-	@RequestMapping("/getNode.action")
+	@RequestMapping("getNode.action")
 	@ResponseBody
 	public List<Function> getNode(Integer id,HttpSession session){
 		Users user = (Users) session.getAttribute("users");

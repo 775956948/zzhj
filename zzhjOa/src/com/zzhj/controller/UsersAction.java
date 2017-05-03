@@ -118,4 +118,14 @@ public class UsersAction {
 	public List<Users> queryUser(String departmentName,String roleName){
 		return us.queryUser(departmentName, roleName);
 	}
+	
+	@RequestMapping("/roleUser.action")
+	@ResponseBody
+	public List<Users> roleUser(Integer id,HttpSession session){
+		if(id==null||id==0){
+			Users u = (Users) session.getAttribute("users");
+			id=u.getId();
+		}
+		return us.roleUser(id);
+	}
 }
