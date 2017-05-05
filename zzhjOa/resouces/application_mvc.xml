@@ -35,6 +35,6 @@
 			</mvc:interceptor>
 		</mvc:interceptors> 
 		<!-- 静态资源解析-->
-	 	<mvc:resources location="/js/" mapping="/js/**"/>
-		 <mvc:resources location="/image/" mapping="/image/**"/>
+	 	<!-- <mvc:resources location="/js/" mapping="/js/**"/>
+		<mvc:resources location="/image/" mapping="/image/**"/> -->
 </beans>

@@ -27,20 +27,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
     <div id="jobLogDd"  class="easyui-dialog" closed=true >
     	 <div id="jobLogTb">
-    	 	<input id="jobLogDd" type="text" class="easyui-datebox" ></input>
-    	 	<div style="margin-left:100px; display: inline;">
+    	 	<input name="jobLogDate" type="date" />
+    	 	<div style="margin-left:80px; display: inline;">
     	 		选择类型：  
 				<select id="type">
 					<option>工作日报</option>
 					<option>工作周报</option>
 				</select>
 			</div>
-			<button style="margin-left:100px;">搜索</button>
+			<button style="margin-left:50px;" onclick="deleteJobLog()">删除</button>
+			<button style="margin-left:50px;" onclick="searchJobLog()">搜索</button>
 		</div>
 		<table id="jobLogDg"></table>  
 	</div>
     <script type="text/javascript">
-    	var id;
+    		var id;
 			$('#jobLogtt').treegrid({    
    				url:'users/roleUser.action',    
    				idField:'id',    
@@ -64,9 +65,64 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     				closed: false,     
     				modal: true ,
     				onOpen:function(){
-    					
+    						$('#jobLogDg').datagrid({    
+   			 				url:'jobLog/query.action',
+   			 				queryParams: {
+								id:id
+							},
+   							fitColumns:true,
+   			 				pagination:true,
+   			 				singleSelect:true,
+   			 				columns:[[
+   			   					{field:'id',title:'编号',checkbox:true,width:200},    
+        						{field:'theme',title:'主题'}, 
+        						{field:'date',title:'时间'}, 
+        						{field:'null',title:'查看',width:200,formatter:function(){
+       		 						return "<a href='#'>查看 </a>";
+       		 					}}        
+    						]]    
+						}); 
     				} 
 			});  
+		}
+		//
+			function searchJobLog(){
+				 var date=$("input[name='jobLogDate']").val();
+				var type=$("#type").find("option:selected").text();
+				$('#jobLogDg').datagrid({    
+   			 				url:'jobLog/searchJobLog.action',
+   			 				queryParams: {
+								date:date,
+								type:type,
+								'user.id':id
+							},
+   							fitColumns:true,
+   			 				pagination:true,
+   			 				singleSelect:true,
+   			 				columns:[[
+   			   					{field:'id',title:'编号',checkbox:true,width:200},    
+        						{field:'theme',title:'主题'}, 
+        						{field:'date',title:'时间'}, 
+        						{field:'null',title:'查看',width:200,formatter:function(){
+       		 						return "<a href='#'>查看 </a>";
+       		 					}}        
+    						]]    
+						}); 
+			}
+			//
+			
+		function deleteJobLog(){
+			var row = $('#jobLogDg').datagrid('getSelected');
+			 if (row){
+				$.post('jobLog/deleteJobLog.action',{'id':row.id},function(data){
+					if(data>0){
+						$('#jobLogDg').datagrid('reload');
+						 $.messager.alert("提示", "删除成功", "info"); 
+					}
+				}); 	
+			}else{
+				 $.messager.alert("提示", "请选中一行记录", "info");  
+			} 
 		}
     </script>
   </body>

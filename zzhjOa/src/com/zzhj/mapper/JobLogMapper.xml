@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "http://mybatis.org/dtd/mybatis-3-mapper.dtd" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzhj.mapper.JobLogMapper">
+ 	<insert id="saveJobLog" parameterType="jobLog">
+ 		insert into jobLog (theme,text,date,user_id,type) values(#{theme},#{text},#{date},#{user.id},#{type})
+ 	</insert>
+ 	<select id="query" parameterType="int" resultType="jobLog">
+ 		select id,theme,date from jobLog  where user_id=#{id} limit #{startPage},${rows}
+ 	</select>
+ 	<select id="totalCount" resultType="int">
+ 		select count(id) from jobLog
+ 	</select>
+ 	<select id="search" resultType="jobLog" parameterType="map">
+ 		select id,theme,date from jobLog  where user_id=#{jobLog.user.id} 
+ 		<if test="#{type!=null}">
+ 			and type=#{jobLog.type}
+ 		</if>
+ 		<if test="#{date!=null}">
+ 			and date=#{jobLog.date}
+ 		</if>
+ 		 limit #{startPage},#{rows}
+ 	</select>
+ 	<delete id="deleteJobLog" parameterType="int">
+ 		delete from jobLog where id=#{value}
+ 	</delete>
+</mapper>

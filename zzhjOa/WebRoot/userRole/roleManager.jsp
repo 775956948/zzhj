@@ -89,6 +89,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			  			 		animate:true,
 			   					lines:true,
 			   					checkbox:true,
+			   					cascadeCheck:false,
 								loadFilter:function(nodes){
 									for(var i = 0; i < nodes.length;i++){
 		  								nodes[i].attributes = {'url':nodes[i].url};
@@ -99,6 +100,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  								}
 		  							} 
 		  								return nodes;
+								},
+								onExpand:function(nodes){
+									for(var i = 0; i < nodes.children.length;i++){
+		  							 for(var j=0;j<data.length;j++){
+		  									if(nodes.children[i].id==data[j].functionId.id){
+		  										$(nodes.children[i]).attr('checked',true);
+		  									}
+		  								}
+		  							} 
 								}
 							});
 							
