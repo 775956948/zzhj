@@ -122,10 +122,12 @@ public class UsersAction {
 	@RequestMapping("/roleUser.action")
 	@ResponseBody
 	public List<Users> roleUser(Integer id,HttpSession session){
-		if(id==null||id==0){
-			Users u = (Users) session.getAttribute("users");
-			id=u.getId();
+		Users u =(Users) session.getAttribute("users");
+		if(id!=null&&id!=0){
+			u.setParentId(id);
+		}else{
+			u.setParentId(null);
 		}
-		return us.roleUser(id);
+		return us.roleUser(u);
 	}
 }

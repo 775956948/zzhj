@@ -41,23 +41,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<table id="jobLogDg"></table>  
 	</div>
     <script type="text/javascript">
-    		var id;
+    		var userId;
 			$('#jobLogtt').treegrid({    
    				url:'users/roleUser.action',    
    				idField:'id',    
     			treeField:'text',    
    				columns:[[    
-        		{field:'id',title:'编号',formatter:function(value){ id=value;},hidden:true},    
+        		{field:'id',title:'编号',formatter:function(value){ userId=value;},hidden:true},    
         		{field:'text',title:'名称',width:300}, 
         		{field:'departmentName',title:'部门',width:200}, 
         		{field:'roleName',title:'职位',width:200},    
        		 	{field:'null',title:'查看',width:200,formatter:function(){
-       		 		return "<a href='javascript:selectLog("+id+")'>查看 </a>";
+       		 		return "<a href='javascript:selectLog("+userId+")'>查看 </a>";
        		 	}}    
     			]]    
 			}); 
 			
-			function selectLog(id){
+			
+			var jobLogId;
+			function selectLog(userId){
 				$('#jobLogDd').dialog({    
    					 title: '查看日志',    
    					 width: 600,    
@@ -68,17 +70,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     						$('#jobLogDg').datagrid({    
    			 				url:'jobLog/query.action',
    			 				queryParams: {
-								id:id
+								id:userId
 							},
    							fitColumns:true,
    			 				pagination:true,
    			 				singleSelect:true,
    			 				columns:[[
-   			   					{field:'id',title:'编号',checkbox:true,width:200},    
+   			   					{field:'id',title:'编号',formatter:function(value){
+   			   						jobLogId=value;
+   			   						return value;
+   			   					}},      
         						{field:'theme',title:'主题'}, 
         						{field:'date',title:'时间'}, 
         						{field:'null',title:'查看',width:200,formatter:function(){
-       		 						return "<a href='#'>查看 </a>";
+       		 						return "<a href='javascript:showLog("+jobLogId+")'>查看 </a>";
        		 					}}        
     						]]    
 						}); 
@@ -94,17 +99,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    			 				queryParams: {
 								date:date,
 								type:type,
-								'user.id':id
+								'user.id':userId
 							},
    							fitColumns:true,
    			 				pagination:true,
    			 				singleSelect:true,
    			 				columns:[[
-   			   					{field:'id',title:'编号',checkbox:true,width:200},    
+   			   					{field:'id',title:'编号',formatter:function(value){
+   			   						jobLogId=value;
+   			   						return value;
+   			   					}},    
         						{field:'theme',title:'主题'}, 
         						{field:'date',title:'时间'}, 
         						{field:'null',title:'查看',width:200,formatter:function(){
-       		 						return "<a href='#'>查看 </a>";
+       		 						return "<a href='javascript:showLog("+jobLogId+")'>查看 </a>";
        		 					}}        
     						]]    
 						}); 
@@ -123,6 +131,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			}else{
 				 $.messager.alert("提示", "请选中一行记录", "info");  
 			} 
+		}
+		//
+		function showLog(jobLogId){
+			$.post('jobLog/queryId.action',{'id':jobLogId},function(data){
+				window.open(data);   
+			});
 		}
     </script>
   </body>

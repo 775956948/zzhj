@@ -105,7 +105,7 @@ public class UsersService {
 		return  um.queryUser(departmentName, roleName);
 	}
 	
-	public List<Users> roleUser(Integer id){
-		return um.roleUser(id);
+	public List<Users> roleUser(Users user){
+		return um.roleUser(user);
 	}
 }

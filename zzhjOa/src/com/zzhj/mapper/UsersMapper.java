@@ -29,5 +29,5 @@ public interface UsersMapper {
 	 * @author 小白
 	 * @date 2017年5月3日
 	 */
-	List<Users> roleUser(Integer id);
+	List<Users> roleUser(Users user);
 }

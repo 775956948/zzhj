@@ -44,7 +44,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<tr>
 						<td>内容:</td>
 						<td>
-							<iframe src="ueditor.html" frameborder="0" id="editor" style="width:800px; height:400px;"></iframe>
+							<iframe src="ueditor.html" frameborder="0" id="editor" style="width:800px; height:450px;"></iframe>
 						</td>
 					</tr>
 				</table>

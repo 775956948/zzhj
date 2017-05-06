@@ -13,4 +13,5 @@ public interface JobLogMapper {
 	int totalCount();
 	List<JobLog> search(Map map);
 	int deleteJobLog(int id);
+	JobLog queryId(int id);
 }

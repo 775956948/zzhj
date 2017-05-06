@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "http://mybatis.org/dtd/mybatis-3-mapper.dtd" "mybatis-3-mapper.dtd" >
 <mapper namespace="com.zzhj.mapper.JobLogMapper">
+
+	<resultMap type="jobLog" id="ju">
+		<id column="id" property="id"/>
+		<result column="type" property="type"/>
+		<result column="theme" property="theme"/>
+		<result column="date" property="date"/>
+		<result column="text" property="text"/>
+		<association property="user" javaType="users">
+			<result column="name" property="name"/>
+		</association>
+	</resultMap>
+
  	<insert id="saveJobLog" parameterType="jobLog">
  		insert into jobLog (theme,text,date,user_id,type) values(#{theme},#{text},#{date},#{user.id},#{type})
  	</insert>
@@ -12,10 +24,10 @@
  	</select>
  	<select id="search" resultType="jobLog" parameterType="map">
  		select id,theme,date from jobLog  where user_id=#{jobLog.user.id} 
- 		<if test="#{type!=null}">
+ 		<if test="jobLog.type!=null and jobLog.type!=''">
  			and type=#{jobLog.type}
  		</if>
- 		<if test="#{date!=null}">
+ 		<if test="jobLog.date!=null and jobLog.date!=''">
  			and date=#{jobLog.date}
  		</if>
  		 limit #{startPage},#{rows}
@@ -23,4 +35,8 @@
  	<delete id="deleteJobLog" parameterType="int">
  		delete from jobLog where id=#{value}
  	</delete>
+ 	
+ 	<select id="queryId" parameterType="int" resultMap="ju">
+ 		select j.*,u.name from joblog j inner join users u on j.user_id=u.id where j.id=#{value}
+ 	</select>
 </mapper>

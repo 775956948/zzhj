@@ -40,4 +40,8 @@ public class JobLogService {
 		
 		return jlm.deleteJobLog(id);
 	}
+	
+	public JobLog queryId(int id){
+		return jlm.queryId(id);
+	}
 }
