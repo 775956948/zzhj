@@ -43,6 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script type="text/javascript">
     		var userId;
 			$('#jobLogtt').treegrid({    
+				
    				url:'users/roleUser.action',    
    				idField:'id',    
     			treeField:'text',    
