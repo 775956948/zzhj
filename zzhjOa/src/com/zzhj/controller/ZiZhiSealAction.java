@@ -29,7 +29,10 @@ public class ZiZhiSealAction {
 	}
 	
 	@RequestMapping("/save.action")
+	@ResponseBody
 	public int save(ZiZhiSeal z){
+	/*	Users user = (Users) session.getAttribute("users");*/
+		/*z.setUserName(user);*/
 		return zs.save(z);
 	}
 }

@@ -33,7 +33,7 @@ public class ZiZhiSealService {
 	}
 	
 	public int save(ZiZhiSeal z){
-		Users user =um.userId(z.getUserName().getDepartmentId().getName());
+		Users user =um.userId(z.getUserId().getDepartmentId().getName());
 		Date today=new Date();
 		SimpleDateFormat f=new SimpleDateFormat("yyyy-MM-dd");
 		String time=f.format(today);

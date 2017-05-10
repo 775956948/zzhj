@@ -8,10 +8,10 @@ public class ZiZhiSeal implements Serializable{
 	private int number;
 	private String projectName;
 	private int pageNumber;
-	private int copoesNumber;
+	private int copiesNumber;
 	private String text;
 	private String why;
-	private Users userName;
+	private Users userId;
 	private String requestDate;
 	private String approver;
 	private String agent;
@@ -41,11 +41,12 @@ public class ZiZhiSeal implements Serializable{
 	public void setPageNumber(int pageNumber) {
 		this.pageNumber = pageNumber;
 	}
-	public int getCopoesNumber() {
-		return copoesNumber;
+	
+	public int getCopiesNumber() {
+		return copiesNumber;
 	}
-	public void setCopoesNumber(int copoesNumber) {
-		this.copoesNumber = copoesNumber;
+	public void setCopiesNumber(int copiesNumber) {
+		this.copiesNumber = copiesNumber;
 	}
 	public String getText() {
 		return text;
@@ -59,13 +60,13 @@ public class ZiZhiSeal implements Serializable{
 	public void setWhy(String why) {
 		this.why = why;
 	}
-	public Users getUserName() {
-		return userName;
-	}
-	public void setUserName(Users userName) {
-		this.userName = userName;
-	}
 	
+	public Users getUserId() {
+		return userId;
+	}
+	public void setUserId(Users userId) {
+		this.userId = userId;
+	}
 	public String getRequestDate() {
 		return requestDate;
 	}
