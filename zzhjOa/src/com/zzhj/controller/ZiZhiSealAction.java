@@ -43,7 +43,14 @@ public class ZiZhiSealAction {
 	
 	@RequestMapping("/queryOneself.action")
 	@ResponseBody
-	public Map<String,Object> queryOneself(int userId,int page,int rows){
-		return zs.queryOneself(userId, page, rows);
+	public Map<String,Object> queryOneself(int page,int rows,HttpSession session){
+		Users user = (Users) session.getAttribute("users");
+		return zs.queryOneself(user.getId(), page, rows);
+	}
+	
+	@RequestMapping("/queryOneOneself.action")
+	@ResponseBody
+	public ZiZhiSeal queryOneOneself(int id){
+		return zs.queryOneOneself(id);
 	}
 }

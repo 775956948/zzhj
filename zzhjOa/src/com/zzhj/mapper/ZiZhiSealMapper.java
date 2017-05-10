@@ -26,5 +26,15 @@ public interface ZiZhiSealMapper {
 	 * @date 2017年5月10日
 	 */
 	List<ZiZhiSeal> queryOneself(@Param("userId")int userId,@Param("startPage")int startPage,@Param("rows")int rows);
-	
+	/**
+	 * 
+	 * @Description: 根据Id返回相对的数据
+	 * @param @param id
+	 * @param @return   
+	 * @return ZiZhiSeal  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年5月10日
+	 */
+	ZiZhiSeal queryOneOneself(int id);
 }	

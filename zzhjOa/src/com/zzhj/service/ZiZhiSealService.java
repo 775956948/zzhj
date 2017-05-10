@@ -54,4 +54,7 @@ public class ZiZhiSealService {
 		map.put("total",totalCount);
 		return map;
 	}
+	public ZiZhiSeal queryOneOneself(int id){
+		return zs.queryOneOneself(id);
+	}
 }

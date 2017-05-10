@@ -38,4 +38,7 @@
   <select id="totalCountOneself" parameterType="int" resultType="int">
   	SELECT COUNT(id) FROM zi_zhi_seal where user_id=#{value}
   </select>
+  <select id="queryOneOneself" parameterType="int" resultMap="zs">
+  	SELECT z.id,z.number,z.projectName,z.requestDate,z.approver,z.overDate,z.state,z.copiesNumber,z.text,z.why,z.pageNumber,u.name FROM zi_zhi_seal z INNER JOIN users u ON u.id=z.user_id where id=#{value}
+  </select>
 </mapper>
