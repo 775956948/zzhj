@@ -45,4 +45,13 @@ public class ZiZhiSealService {
 	public int delete(int id){
 		return zs.delete(id);
 	}
+	public Map<String,Object> queryOneself(int userId,int page,int rows){
+		int startPage =(page-1)*rows;
+		Map<String,Object> map = new HashMap<String,Object>();
+		List<ZiZhiSeal> list = zs.queryOneself(userId,startPage,rows);
+		int totalCount =zs.totalCountOneself(userId);
+		map.put("rows", list);
+		map.put("total",totalCount);
+		return map;
+	}
 }

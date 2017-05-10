@@ -40,4 +40,10 @@ public class ZiZhiSealAction {
 	public int delete(int id){
 		return zs.delete(id);
 	}
+	
+	@RequestMapping("/queryOneself.action")
+	@ResponseBody
+	public Map<String,Object> queryOneself(int userId,int page,int rows){
+		return zs.queryOneself(userId, page, rows);
+	}
 }

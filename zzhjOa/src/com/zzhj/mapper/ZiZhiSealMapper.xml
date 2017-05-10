@@ -26,10 +26,16 @@
   	values(#{number},#{projectName},#{pageNumber},#{copiesNumber},#{text},#{why},#{userId.id},#{requestDate},#{approver},#{state})
   </insert>											
   <select id="totalCount" resultType="int">
-  		select count(*) zi_zhi_seal
+  		SELECT COUNT(id) FROM zi_zhi_seal
   </select>
   
   <delete id="delete" parameterType="int">
   	delete from zi_zhi_seal where id=#{value}
   </delete>
+  <select id="queryOneself" parameterType="int" resultMap="zs">
+  	SELECT z.id,z.number,z.projectName,z.requestDate,z.approver,z.overDate,z.state,z.copiesNumber,z.text,z.why,z.pageNumber,u.name FROM zi_zhi_seal z INNER JOIN users u ON u.id=z.user_id where user_id=#{userId} limit #{startPage},#{rows}
+  </select>
+  <select id="totalCountOneself" parameterType="int" resultType="int">
+  	SELECT COUNT(id) FROM zi_zhi_seal where user_id=#{value}
+  </select>
 </mapper>

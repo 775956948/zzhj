@@ -28,7 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   			   		</tr>
   			   		<tr>
   			   			<td>编号</td>
-  			   			<td><input type="text" name="id"  value="" class="apply-val" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();"/></td>
+  			   			<td><input type="text" name="number"  value="" class="apply-val" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();"/></td>
   			   		</tr>
   			   		<tr>
   			   			<td>项目名称</td>
@@ -38,8 +38,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   			   		<tr>
   			   			<td>盖章内容</td>
   			   			<td>
-  			   		
-  			   				<textarea name=" text" rows="" cols="" class="apply-val"></textarea>
+  			   				<textarea name="text" rows="" cols="" class="apply-val"></textarea>
   			   			</td>
   			   		</tr>
   			   		<tr>
@@ -79,6 +78,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							$('#apply-tanc').dialog({
 								closed : true,
 							});
+							$('#applyDg').datagrid('reload');
 							alert("提交成功");
 						}else{
 							
@@ -118,7 +118,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	        		{field:'approver',title:'审批人',},
 	        		{field:'agent',title:'经办人',},   	        		
 	        		{field:'overDate',title:'结束时间',},
-	        		{field:'overDate',title:'状态',},
+	        		{field:'state',title:'状态',},
     		]]    
 		}); 
 		////
