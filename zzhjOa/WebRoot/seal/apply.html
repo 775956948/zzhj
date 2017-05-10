@@ -3,12 +3,12 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>资质章盖章申请单</title>
-		<link rel="stylesheet" type="text/css" href="easyui/themes/icon.css">
-		<link rel="stylesheet" type="text/css" href="easyui/themes/default/easyui.css">
-		<link rel="stylesheet" type="text/css" href="easyui/demo/demo.css">
-		<script type="text/javascript" src="easyui/jquery.min.js"></script>
-		<script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
-		<script type="text/javascript" src="easyui/locale/easyui-lang-zh_CN.js"></script>
+		<link rel="stylesheet" type="text/css" href="../easyui/themes/icon.css">
+		<link rel="stylesheet" type="text/css" href="../easyui/themes/default/easyui.css">
+		<link rel="stylesheet" type="text/css" href="../easyui/demo/demo.css">
+		<script type="text/javascript" src="../easyui/jquery.min.js"></script>
+		<script type="text/javascript" src="../easyui/jquery.easyui.min.js"></script>
+		<script type="text/javascript" src="../easyui/locale/easyui-lang-zh_CN.js"></script>
 	</head>
 	<style type="text/css">
 		td>div{
@@ -32,6 +32,14 @@
   			   			<td><input type="text" name="projectName"  value="" class="apply-val"/></td>
   			   		</tr>
   			   		<tr>
+  			   			<td>申请人</td>
+  			   			<td><input type="text" name="user_name" class="apply-val"/></td>
+  			   		</tr>
+  			   		<tr>
+  			   			<td>申请日期</td>
+  			   			<td><input type="date" name="requestDate" class="apply-val"/></td>
+  			   		</tr>
+  			   		<tr>
   			   			<td>页数</td>
   			   			<td><input type="text" name="pageNumber"  value="" class="apply-val easyui-numberbox"/></td>
   			   		</tr>
@@ -49,26 +57,7 @@
   			   			<td>盖章事由</td>
   			   			<td><input type="text" name="why" class="apply-val"/></td>
   			   		</tr>
-  			   		<tr>
-  			   			<td>申请人</td>
-  			   			<td><input type="text" name="user_name" class="apply-val"/></td>
-  			   		</tr>
-  			   		<tr>
-  			   			<td>申请日期</td>
-  			   			<td><input type="date" name="requestDate" class="apply-val"/></td>
-  			   		</tr>
-					<tr>
-  			   			<td>审批人</td>
-  			   			<td><input type="text" name="user_name" class="apply-val"/></td>
-  			   		</tr>
-  			   		<tr>
-  			   			<td>经办人</td>
-  			   			<td><input type="text" name="user_name" class="apply-val"/></td>
-  			   		</tr>
-  			   		<tr>
-  			   			<td>结束日期</td>
-  			   			<td><input type="date" name="requestDate" class="apply-val"/></td>
-  			   		</tr>
+
   			   		 <tr align="center">
   			   			<td colspan="2"><input type="button" value="申请" onclick="applySubmit()"/></td>
   			   		</tr>
