@@ -11,5 +11,7 @@ public interface ZiZhiSealMapper {
 	int approval(ZiZhiSeal s);
 	int save(ZiZhiSeal s);
 	int totalCount();
+	int delete(int id);
+	List<ZiZhiSeal> queryOneself();
 	
 }	

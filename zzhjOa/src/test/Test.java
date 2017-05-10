@@ -19,25 +19,8 @@ public class Test {
 		// TODO Auto-generated method stub
 		  ApplicationContext ap =new ClassPathXmlApplicationContext("application_*.xml");
 		 ZiZhiSealAction z = (ZiZhiSealAction) ap.getBean("ziZhiSealAction");
-		 Map map=z.queryAll(1, 10);
-		 List<ZiZhiSeal> list = (List<ZiZhiSeal>) map.get("rows");
-		 System.out.println(list.get(1).getApprover());
-/*		 ZiZhiSeal a = new ZiZhiSeal();
-		 a.setNumber(121);
-		 a.setProjectName("拯救世界");
-		 a.setCopiesNumber(100);
-		 a.setPageNumber(100);
-		 a.setRequestDate("2017-05-10");
-		 a.setText("内容太多不宜展示");
-		 Users user = new Users();
-		 user.setName("张三");
-		 Department d = new Department();
-		 d.setName("测绘部");
-		 user.setDepartmentId(d);
-		 user.setId(14);
-		 a.setUserId(user);
-		 int number =z.save(a);
-		 System.out.println(number);*/
+		 System.out.println(z.delete(1));
+
 	}
 
 }

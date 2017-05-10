@@ -42,4 +42,7 @@ public class ZiZhiSealService {
 		z.setApprover(user.getName());
 		return zs.save(z);
 	}
+	public int delete(int id){
+		return zs.delete(id);
+	}
 }

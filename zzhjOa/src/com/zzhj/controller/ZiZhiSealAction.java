@@ -30,9 +30,14 @@ public class ZiZhiSealAction {
 	
 	@RequestMapping("/save.action")
 	@ResponseBody
-	public int save(ZiZhiSeal z){
-	/*	Users user = (Users) session.getAttribute("users");*/
-		/*z.setUserName(user);*/
+	public int save(ZiZhiSeal z,HttpSession session){
+		Users user = (Users) session.getAttribute("users");
+		z.setUserId(user);
 		return zs.save(z);
+	}
+	@RequestMapping("/delete.action")
+	@ResponseBody
+	public int delete(int id){
+		return zs.delete(id);
 	}
 }

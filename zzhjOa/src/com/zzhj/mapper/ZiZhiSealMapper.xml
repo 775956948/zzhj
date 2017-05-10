@@ -9,13 +9,17 @@
 		<result column="approver" property="approver"/>
 		<result column="overDate" property="overDate"/>
 		<result column="state" property="state"/>
+		<result column="copiesNumber" property="copiesNumber"/>
+		<result column="text" property="text"/>
+		<result column="why" property="why"/>
+		<result column="pageNumber" property="pageNumber"/>
 		<association property="userId" javaType="users">
 			<result column="name" property="name"/>
 		</association>
 	</resultMap>
 
   <select id="queryAll" resultMap="zs" parameterType="int">
-  	SELECT z.id,z.number,z.projectName,z.requestDate,z.approver,z.overDate,z.state,u.name FROM zi_zhi_seal z INNER JOIN users u ON u.id=z.user_id limit #{startPage},#{rows}
+  	SELECT z.id,z.number,z.projectName,z.requestDate,z.approver,z.overDate,z.state,z.copiesNumber,z.text,z.why,z.pageNumber,u.name FROM zi_zhi_seal z INNER JOIN users u ON u.id=z.user_id limit #{startPage},#{rows}
   </select>
   <insert id="save" parameterType="ziZhiSeal">			 
   	insert into zi_zhi_seal(number,projectName,pageNumber,copiesNumber,text,why,user_id,requestDate,approver,state)
@@ -24,4 +28,8 @@
   <select id="totalCount" resultType="int">
   		select count(*) zi_zhi_seal
   </select>
+  
+  <delete id="delete" parameterType="int">
+  	delete from zi_zhi_seal where id=#{value}
+  </delete>
 </mapper>
