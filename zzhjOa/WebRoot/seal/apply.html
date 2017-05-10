@@ -28,47 +28,45 @@
   			   			<td colspan="2"><h2>资质章盖章申请单</h2></td>
   			   		</tr>
   			   		<tr>
+  			   			<td>编号</td>
+  			   			<td><input type="text" name="id"  value="" class="apply-val" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();"/></td>
+  			   		</tr>
+  			   		<tr>
   			   			<td>项目名称</td>
   			   			<td><input type="text" name="projectName"  value="" class="apply-val"/></td>
   			   		</tr>
-  			   		<tr>
-  			   			<td>申请人</td>
-  			   			<td><input type="text" name="user_name" class="apply-val"/></td>
-  			   		</tr>
-  			   		<tr>
-  			   			<td>申请日期</td>
-  			   			<td><input type="date" name="requestDate" class="apply-val"/></td>
-  			   		</tr>
-  			   		<tr>
-  			   			<td>页数</td>
-  			   			<td><input type="text" name="pageNumber"  value="" class="apply-val easyui-numberbox"/></td>
-  			   		</tr>
-  			   		<tr>
-  			   			<td>份数</td>
-  			   			<td><input type="numberbox" name="copiesNumber"  value="" class="apply-val"/></td>
-  			   		</tr>
+  			   		
   			   		<tr>
   			   			<td>盖章内容</td>
   			   			<td>
-  			   				<input type="text" name="text" class="apply-val"/>
+  			   		
+  			   				<textarea name=" text" rows="" cols="" class="apply-val"></textarea>
   			   			</td>
   			   		</tr>
   			   		<tr>
   			   			<td>盖章事由</td>
-  			   			<td><input type="text" name="why" class="apply-val"/></td>
+  			   			<td>
+  			   				<textarea name="why" rows="" cols="" class="apply-val"></textarea>
+  			   			</td>
   			   		</tr>
-
-  			   		 <tr align="center">
+  			   		 
+  			   		<tr>
+  			   			<td>页数</td>
+  			   			<td><input type="text" name="pageNumber"  value="" class="apply-val " onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();"/></td>
+  			   		</tr>
+  			   		<tr>
+  			   			<td>份数</td>
+  			   			<td><input type="numberbox" name="copiesNumber"  value="" class="apply-val" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();"/></td>
+  			   		</tr>
+  			   		<tr align="center">
   			   			<td colspan="2"><input type="button" value="申请" onclick="applySubmit()"/></td>
   			   		</tr>
+  			   
   			   </table>
   		</form>
   		</div>
   		
-  		 <table id="restDg">
-  		 	
-  		 	
-  		 </table> 
+  		 <table id="restDg"></table> 
   		 <script type="text/javascript">
 
   		 	function applySubmit(){
@@ -105,39 +103,20 @@
    			 pagination:true,
    			 singleSelect:true,
    			 columns:[[
-   			   	{field:'id',title:'编号',checkbox:true,formmater:function(){
-	        			return value.name;
-	        		}},    
-	        		{field:'projectName',title:'项目名称',formmater:function(){
-	        			return value.name;
-	        		}},
-	        		{field:'pageNumber',title:'页数',formmater:function(){
-	        			return value.name;
-	        		}},   
-	        		{field:'copiesNumber',title:'份数',formmater:function(){
-	        			return value.name;
-	        		}},   
-	        		{field:'TEXT',title:'盖章内容',formmater:function(){
-	        			return value.name;
-	        		}},  
-	        		{field:'why',title:'盖章事由',formmater:function(){
+   			   	{field:'id',title:'编号',checkbox:true,},    
+	        		{field:'projectName',title:'项目名称',},
+	        		{field:'userName',title:'申请人',formmater:function(value){
 	        			return value.name;
 	        		}},
-	        		{field:'userName',title:'申请人',formmater:function(){
-	        			return value.name;
-	        		}},
-	        		{field:'requestDate',title:'申请时间',formmater:function(){
-	        			return value.name;
-	        		}},
-	        		{field:'approver',title:'审批人',formmater:function(){
-	        			return value.name;
-	        		}},
-	        		{field:'agent',title:'经办人',formmater:function(){
-	        			return value.name;
-	        		}},   	        		
-	        		{field:'overDate',title:'结束时间',formmater:function(){
-	        			return value.name;
-	        		}},
+	        		{field:'requestDate',title:'申请时间',},
+	        		{field:'TEXT',title:'盖章内容',},  
+	        		{field:'why',title:'盖章事由',},
+	        		{field:'pageNumber',title:'页数',},   
+	        		{field:'copiesNumber',title:'份数',},        		
+	        		{field:'approver',title:'审批人',},
+	        		{field:'agent',title:'经办人',},   	        		
+	        		{field:'overDate',title:'结束时间',},
+	        		{field:'overDate',title:'状态',},
     		]]    
 		}); 
 		////
