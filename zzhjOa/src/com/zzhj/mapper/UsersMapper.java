@@ -30,4 +30,6 @@ public interface UsersMapper {
 	 * @date 2017Äê5ÔÂ3ÈÕ
 	 */
 	List<Users> roleUser(Users user);
+	
+	Users userId(String departmentName);
 }

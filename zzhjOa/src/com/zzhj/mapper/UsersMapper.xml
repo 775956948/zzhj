@@ -21,10 +21,13 @@
 		<association property="roleId" javaType="com.zzhj.po.Roles">
 			<id column="r_id" property="id"/>
 		</association>
+		<association property="departmentId" javaType="department">
+			<result column="d_name" property="name"/>
+		</association>
 	</resultMap>
 	
   	<select id="login" parameterType="users" resultMap="ur">
-  		SELECT u.id,u.name,u.password,r.id as r_id FROM users u INNER JOIN roles r ON r.id =u.role_id WHERE u.name=#{name} AND u.password=#{password}
+  		SELECT u.id,u.name,d.name as d_name,u.password,r.id as r_id FROM users u INNER JOIN roles r ON r.id =u.role_id inner join department d on d.id=u.departmentId  WHERE u.name=#{name} AND u.password=#{password}
   	</select>
   	<insert id="save" parameterType="users" keyProperty="id" useGeneratedKeys="true">
   		insert into users(name,password,sex,birthday,phone,departmentId)values(#{name},#{password},#{sex},#{birthday},#{phone},#{departmentId.id})
@@ -72,5 +75,8 @@
   		<if test="parentId==null or parentId==0">
   			u.id=#{id}
   		</if>
+  	</select>
+  	<select id="userId" parameterType="String" resultType="users">
+  		select u.name from users u inner join department d on d.id=u.departmentId INNER JOIN roles r ON r.id =u.role_id where d.name=#{value} and r.name="副总"
   	</select>
 </mapper>
