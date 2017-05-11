@@ -30,6 +30,26 @@ public interface UsersMapper {
 	 * @date 2017年5月3日
 	 */
 	List<Users> roleUser(Users user);
-	
+	/**
+	 * 
+	 * @Description: 根据部门返回部门的副总
+	 * @param @param departmentName
+	 * @param @return   
+	 * @return Users  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年5月11日
+	 */
 	Users userId(String departmentName);
+	/**
+	 * 
+	 * @Description: 根据用户id返回parentName
+	 * @param @param userId
+	 * @param @return   
+	 * @return Users  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年5月11日
+	 */
+	Users parentId(int userId);
 }

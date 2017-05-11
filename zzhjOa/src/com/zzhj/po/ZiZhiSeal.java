@@ -4,19 +4,19 @@ import java.io.Serializable;
 
 public class ZiZhiSeal implements Serializable{
 
-	private int id;
-	private int number;
-	private String projectName;
-	private int pageNumber;
-	private int copiesNumber;
-	private String text;
-	private String why;
-	private Users userId;
-	private String requestDate;
-	private String approver;
-	private String agent;
-	private String overDate;
-	private String state;
+	private int id;   			//id唯一标识
+	private int number;			//编号
+	private String projectName;	//项目名称
+	private int pageNumber;		//页数
+	private int copiesNumber;	//份数
+	private String text;		//内容
+	private String why;			//原由
+	private Users userId;		//申请人
+	private String requestDate;	//申请时间
+	private String approver;	//审批人
+	private String agent;		//经办人
+	private String overDate;	//盖章时间
+	private String state;		//状态
 	public int getId() {
 		return id;
 	}
@@ -33,7 +33,7 @@ public class ZiZhiSeal implements Serializable{
 		return projectName;
 	}
 	public void setProjectName(String projectName) {
-		this.projectName = projectName;
+		this.projectName = projectName;	
 	}
 	public int getPageNumber() {
 		return pageNumber;

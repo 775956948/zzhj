@@ -32,13 +32,23 @@
   <delete id="delete" parameterType="int">
   	delete from zi_zhi_seal where id=#{value}
   </delete>
-  <select id="queryOneself" parameterType="int" resultMap="zs">
-  	SELECT z.id,z.number,z.projectName,z.requestDate,z.approver,z.overDate,z.state,z.copiesNumber,z.text,z.why,z.pageNumber,u.name FROM zi_zhi_seal z INNER JOIN users u ON u.id=z.user_id where user_id=#{userId} limit #{startPage},#{rows}
+  <select id="queryOneself" parameterType="object" resultMap="zs">
+  	SELECT z.id,z.number,z.projectName,z.requestDate,z.approver,z.overDate,z.state,z.copiesNumber,z.text,z.why,z.pageNumber,u.name FROM zi_zhi_seal z INNER JOIN users u ON u.id=z.user_id where approver=#{userName} limit #{startPage},#{rows}
   </select>
-  <select id="totalCountOneself" parameterType="int" resultType="int">
-  	SELECT COUNT(id) FROM zi_zhi_seal where user_id=#{value}
+  <select id="totalCountOneself" parameterType="string" resultType="int">
+  	SELECT COUNT(id) FROM zi_zhi_seal where approver=#{value}
   </select>
   <select id="queryOneOneself" parameterType="int" resultMap="zs">
   	SELECT z.id,z.number,z.projectName,z.requestDate,z.approver,z.overDate,z.state,z.copiesNumber,z.text,z.why,z.pageNumber,u.name FROM zi_zhi_seal z INNER JOIN users u ON u.id=z.user_id where id=#{value}
   </select>
+  <update id="approver" parameterType="object">
+  	update zi_zhi_seal set 
+  	<if test="userName!=''">
+  		approver=#{userName}
+  	</if> 
+  	<if test="userName==''">
+  		state="已审批"
+  	</if>
+  	 where id=#{sealId}
+  </update>
 </mapper>

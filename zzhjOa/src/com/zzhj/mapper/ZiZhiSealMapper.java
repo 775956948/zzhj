@@ -8,10 +8,10 @@ import com.zzhj.po.*;;
 
 public interface ZiZhiSealMapper {
 	List<ZiZhiSeal> queryAll(@Param("startPage")int startPage,@Param("rows")int rows);
-	int approval(ZiZhiSeal s);
+	int approver(@Param("sealId")int sealId,@Param("userName")String userName);
 	int save(ZiZhiSeal s);
 	int totalCount();
-	int totalCountOneself(int userId);
+	int totalCountOneself(String userName);
 	int delete(int id);
 	/**
 	 * 
@@ -25,7 +25,7 @@ public interface ZiZhiSealMapper {
 	 * @author 小白
 	 * @date 2017年5月10日
 	 */
-	List<ZiZhiSeal> queryOneself(@Param("userId")int userId,@Param("startPage")int startPage,@Param("rows")int rows);
+	List<ZiZhiSeal> queryOneself(@Param("userName")String userName,@Param("startPage")int startPage,@Param("rows")int rows);
 	/**
 	 * 
 	 * @Description: 根据Id返回相对的数据

@@ -19,7 +19,7 @@ public class Test {
 		// TODO Auto-generated method stub
 		  ApplicationContext ap =new ClassPathXmlApplicationContext("application_*.xml");
 		 ZiZhiSealAction z = (ZiZhiSealAction) ap.getBean("ziZhiSealAction");
-		 System.out.println(z.delete(1));
+	
 
 	}
 
