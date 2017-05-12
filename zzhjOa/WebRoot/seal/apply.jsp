@@ -80,6 +80,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							});
 							$('#applyDg').datagrid('reload');
 							alert("提交成功");
+							$(".apply-val").val(" ");
 						}else{
 							
 							$(".apply-val").val(" ");
@@ -113,12 +114,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	        		{field:'approver',title:'审批人',},
 	        		{field:'agent',title:'经办人',},   	        		
 	        		{field:'overDate',title:'结束时间',},
-<<<<<<< Updated upstream
+
 	        		{field:'state',title:'状态',},
-=======
+
 	        		{field:'overDate',title:'状态',},
 	        		
->>>>>>> Stashed changes
+
     		]]    
 		}); 
 		////

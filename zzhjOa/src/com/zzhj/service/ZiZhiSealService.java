@@ -42,12 +42,12 @@ public class ZiZhiSealService {
 		z.setState("待审批");
 		z.setApprover(user.getName());
 		List<HttpSession> list =SessionListener.list;
-		for (HttpSession session : list) {
+/*		for (HttpSession session : list) {
 			Users u = (Users) session.getAttribute("users");
 			if(u.getName().equals(user.getName())){
 				session.setAttribute("ziZhiSeal", "您有未审批的资质章消息");
 			}
-		}
+		}*/
 		return zs.save(z);
 	}
 	public int delete(int id){
