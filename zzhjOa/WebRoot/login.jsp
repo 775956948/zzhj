@@ -15,9 +15,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+
+	<link rel="stylesheet" href="css/basic.css" />
+	<link rel="stylesheet" href="css/login.css" />
 	<script type="text/javascript" src="easyui/jquery.min.js"></script>
 	<script type="text/javascript">
 		function registered(){
@@ -36,70 +36,44 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		}
 		});
 	</script>
-	<style type="text/css">
-		#table{
-			width: 90%;
-			height: 50%;
-			margin: 0 auto;
-			text-align: center;
-		}
-		#table input{
-			height: 30px;
-		}
-		.button{
-			width: 100px;
-			height: 40px;
-			margin-left: 60%;
-			margin-top: 15%;
-		}
-		#max{
-			width: 35%;
-			border-radius:50px;
-			height: 50%;
-			margin: 0 auto;
-			margin-top:14%;
-			background-color:DAD4D1;
-			
-		}
-		body{
-			background-image: url(image/login.png);
-			background-size:cover;
-			margin: 0px;
-		}
-		.color{
-			color: FFFFFF;
-			margin-left: 30%;
-		}
-	</style>
   </head>
   <body>
-  	<div id="max">
-  		<img alt="" src="image/logo_02.png" style="width: 50%">
-  		<form action="" method="post" id="form">
-    <table id="table">
-    	<tr>
-    		<td colspan="2">
-    			<h2 class="color">Oa办公系统登陆</h2>
-    		</td>
-    	</tr>
-    	<tr>
-    		<td>用户名</td>
-    		<td colspan="2"><input type="text" name="name"/></td>
-    	</tr>
-    	<tr>
-    		<td>密码  </td>
-    		<td colspan="2"><input type="password" name="password"/></td>
-    		<td><a href="back.jsp">忘记密码？</a></td>
-    	</tr>
-    	<tr>
-    		<td><input type="button" value="登陆" onclick="login()" class="button" /></td>
-    		<td><input type="button" value="注册" onclick="registered()" class="button" /></td>
-    	</tr>
-    	<tr>
-    		<td colspan="2">${message }</td>
-    	</tr>
-    </table>
-    </form>
+  	<div class="login_header">
+  		<div class="header_container"> 
+  			<a href="#" class="logo_btn"><img src="image/logo_02.png"/></a>
+  			<!--<span>Oa办公系统登陆</span>-->
+  		</div>
+  	</div>
+  	<div class="login_main">
+  		<div id="max" class="login_table">
+	  		<form action="" method="post" id="form">
+				    <table id="table">
+					    <tr>			    	
+					    		<h5>登录</h5>
+					    </tr>
+					    	<tr>
+					    		<td colspan="2" class="login_input-icon1"><input type="text" name="name" class="login_input " placeholder="请输入用户名"/></td>
+					    	</tr>
+					    	<tr>
+					    		<td colspan="2" class="login_input-icon2"><input type="password" name="password" class="login_input" placeholder="请输入密码"/></td>
+					    		
+					    	</tr>
+					    	<tr>
+					    		<td><input type="button" value="立 即 登 录" onclick="login()" class="button" /></td>
+					    		
+					    	</tr>
+					    	 <tr>
+					    		<td>
+					    			<a href="back.jsp" class="forget_btn">忘记密码？</a><a href="javascript:;" class="register_btn" onclick="registered()">没账号？点击注册</a>
+					    		</td>
+					    		
+					    	</tr>
+					   		 <tr>
+					    		<td colspan="2">${message }</td>
+					    	</tr>
+				    	</table>  
+		    </form>
+	    	</div>
   	</div>
   </body>
 </html>
