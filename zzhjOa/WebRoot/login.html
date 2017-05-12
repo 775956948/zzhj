@@ -44,36 +44,36 @@
   			<!--<span>Oa办公系统登陆</span>-->
   		</div>
   	</div>
-  	<div id="max" class="login_table">
-  		<form action="" method="post" id="form">
-    <table id="table">
-    <tr>
-    	
-    		<h5>登录</h5>
-    </tr>
-    	<tr>
-    		<td colspan="2"><input type="text" name="name" class="login_input login_input-icon1" placeholder="请输入用户名"/></td>
-    	</tr>
-    	<tr>
-    		<td colspan="2"><input type="password" name="password" class="login_input login_input-icon2" placeholder="请输入密码"/></td>
-    		
-    	</tr>
-    	<tr> 
-    	<td><a href="back.jsp" class="forget_btn">忘记密码？</a></td>	
-    	
-    	</tr>
-    	<tr>
-    		<td><input type="button" value="立 即 登 录" onclick="login()" class="button" /></td>
-    		
-    	</tr>
-    	<!--<tr> 
-    		<td><input type="button" value="注册" onclick="registered()" class="button" /></td>
-    	</tr>-->
-    	<!--<tr>
-    		<td colspan="2">${message }</td>
-    	</tr>-->
-    </table>
-    </form>
+  	<div class="login_main">
+  		<div id="max" class="login_table">
+	  		<form action="" method="post" id="form">
+				    <table id="table">
+					    <tr>			    	
+					    		<h5>登录</h5>
+					    </tr>
+					    	<tr>
+					    		<td colspan="2"><input type="text" name="name" class="login_input login_input-icon1" placeholder="请输入用户名"/></td>
+					    	</tr>
+					    	<tr>
+					    		<td colspan="2"><input type="password" name="password" class="login_input login_input-icon2" placeholder="请输入密码"/></td>
+					    		
+					    	</tr>
+					    	<tr>
+					    		<td><input type="button" value="立 即 登 录" onclick="login()" class="button" /></td>
+					    		
+					    	</tr>
+					    	 <tr>
+					    		<td>
+					    			<a href="back.jsp" class="forget_btn">忘记密码？</a><a href="javascript:;" class="register_btn" onclick="registered()">没账号？点击注册</a>
+					    		</td>
+					    		
+					    	</tr>
+					    	<!--<tr>
+					    		<td colspan="2">${message }</td>
+					    	</tr>-->
+				    	</table>  
+		    </form>
+	    	</div>
   	</div>
   </body>
 </html>
