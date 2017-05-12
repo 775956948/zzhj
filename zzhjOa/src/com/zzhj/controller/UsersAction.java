@@ -29,15 +29,22 @@ public class UsersAction {
 	
 	@RequestMapping("/login.action")
 	public ModelAndView login(Users users,HttpSession session){
-		Users user=us.login(users);
+		Users existingUser = (Users) session.getAttribute("users");
 		ModelAndView mv = new ModelAndView();
-		if(user!=null&&!user.getName().equals("")){
-			session.setAttribute("users", user);
-			mv.setViewName("redirect: ../main.jsp");
+		if(existingUser==null){
+			Users user=us.login(users);
+			if(user!=null&&!user.getName().equals("")){
+				session.setAttribute("users", user);
+				mv.setViewName("redirect: ../main.jsp");
+			}else{
+				mv.addObject("message", "ÕË»§»òÃÜÂë´íÎó");
+				mv.setViewName("redirect: ../login.jsp");
+			}
 		}else{
-			mv.addObject("message", "ÕË»§»òÃÜÂë´íÎó");
-			mv.setViewName("/login.jsp");
+			mv.setViewName("redirect: ../main.jsp");
 		}
+		
+
 		return mv;
 		
 	}

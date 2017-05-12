@@ -32,12 +32,18 @@ public class LoginFilter implements Filter{
 		Users user = (Users) session.getAttribute("users");
 		String url=hRequest.getServletPath();
 		if(url.equals("/login.jsp")||url.equals("/registered.jsp")||url.equals("/back.jsp")||url.equals("/MyJsp.jsp")){
+			if(url.equals("/login.jsp")){
+				if(user!=null){
+					HttpServletResponse r =(HttpServletResponse) response;
+					r.sendRedirect("main.jsp");
+				}
+			}
 			chain.doFilter(request, response);
 		}else if(user!=null){
 			chain.doFilter(request, response);
 		}else{
-			PrintWriter out =response.getWriter();
-			out.print("<script>   top.window.location.href = '/zzhjOa/login.jsp';</script>");  
+			HttpServletResponse r =(HttpServletResponse) response;
+			r.sendRedirect("login.jsp");
 		}
 	}
 

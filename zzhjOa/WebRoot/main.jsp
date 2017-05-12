@@ -126,7 +126,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div id="user">
 				<ul>
 					<li><h2>当前用户:${users.name }</h2></li>
-					<li><h2><%= %></h2></li>
+					<li><h2>${message }</h2></li>
 					<li><h2 onclick="exit()" style="cursor:pointer">退出登陆</h2></li>
 				</ul>
 			</div>
