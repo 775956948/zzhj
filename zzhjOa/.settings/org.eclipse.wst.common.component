@@ -4,6 +4,6 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/resouces"/>
         <property name="context-root" value="zzhjOa"/>
-        <property name="java-output-path" value="/zzhjOa/WebRoot/WEB-INF/classes"/>
+        <property name="java-output-path" value="/zzhjOa/bin"/>
     </wb-module>
 </project-modules>
