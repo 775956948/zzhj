@@ -99,8 +99,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    			 pagination:true,
    			 singleSelect:true,
    			 columns:[[
-   			   		{field:'id',title:'编号',checkbox:true,}, 
-   			   		{field:'number',title:'编号'},       
+		   		{field:'id',title:'编号',checkbox:true,}, 
+		   		{field:'number',title:'编号'},       
 	        		{field:'projectName',title:'项目名称',},
 	        		{field:'userName',title:'申请人',formmater:function(value){
 	        			return value.name;
@@ -113,7 +113,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	        		{field:'approver',title:'审批人',},
 	        		{field:'agent',title:'经办人',},   	        		
 	        		{field:'overDate',title:'结束时间',},
+<<<<<<< Updated upstream
 	        		{field:'state',title:'状态',},
+=======
+	        		{field:'overDate',title:'状态',},
+	        		
+>>>>>>> Stashed changes
     		]]    
 		}); 
 		////
@@ -127,6 +132,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				modal : true
 			});
 		};
+		function deleteApply(){	
+			var row = $("#applyDg").datagrid('getSelected');
+			if(row){
+				$.post('abnormal/applyDg.action',{'id':row.id},function(data){
+					if(data!=null&&data>0){
+						$("#applyDg").datagrid('reload');
+						 $.messager.alert("提示", "删除成功", "info"); 
+					}
+				})
+			}else{
+				 $.messager.alert("提示", "请选中一行信息", "info");  
+			}
+		}
 		
 		
   		 	
