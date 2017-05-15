@@ -1,70 +1,39 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<!--<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+%>-->
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
 		<title>审批</title>
+		
+		
 	</head>
-
 	<body>
 		<!--审批表格-->
 		 <div id="spproveTb">
 			<a  class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="addSpproveTb()" >查看</a>
-			<!--  <a  class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="deleteSpprove()">删除</a>-->	
-			
+			<!--  <a  class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="deleteSpprove()">删除</a>-->				
 		</div>
 		<div id="spprove-tanc"> 
 			<form action="" method="post" id="approve-form" class="approve-form">
-  			   <table>
-  			   		<tr>
-  			   			<td colspan="2"><h2>资质章盖章申请单</h2></td>
-  			   		</tr>
-  			   		<tr>
-  			   			<td  style="text-align: center !important;">编号</td>
-  			   			<td>
-  			   				<input name="sealId" id="dis_none" style="display:none !important;"/>	
-  			   				<input type="text" name="id2"  value="" readonly="readonly" class="apply-val" /></td>
-  			   		</tr>			   		
-  			   		<tr>
-  			   			<td>项目名称</td>
-  			   			<td>
-  			   			
-  			   			<input type="text" name="projectName2" readonly="readonly" value="" class="apply-val"/></td>
-  			   		</tr>
-  			   		
-  			   		<tr>
-  			   			<td>盖章内容</td>
-  			   			<td>
-  			   				
-  			   				<textarea name="text2"  rows="" cols="" readonly="readonly" class="apply-val"></textarea>
-  			   			</td>
-  			   		</tr>
-  			   		<tr>
-  			   			<td>盖章事由</td>
-  			   			<td>	
-  			   				<textarea name="why2" rows="" cols="" readonly="readonly" class="apply-val"></textarea>
-  			   			</td>
-  			   		</tr>
-  			   		 
-  			   		<tr>
-  			   			<td>页数</td>
-  			   			<td><input type="text" name="pageNumber2" readonly="readonly" value="" class="apply-val "/></td>
-  			   		</tr>
-  			   		<tr>
-  			   			<td>份数</td>
-  			   			<td><input type="tel" name="copiesNumber2" readonly="readonly" value="" class="apply-val" /></td>
-  			   			<!--onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();"-->
-  			   		</tr>
-  			   		<tr align="center">
-  			   			<td colspan="2"><input type="button" value="审批" onclick="applySubmit()" class="applySubmit"/></td>
-  			   			<!-- <td colspan="2"><input type="button" value="退回" onclick="applyReturn()"/></td> -->
-  			   		</tr>
+				<input name="sealId" id="dis_none" style="display:none !important;"/>
+				<h2 class="cmn_tit">资质章盖章申请单</h2>
+				<ul class="cmn_list">
+					<li><span>编号</span><input type="text" name="id2"  value="" readonly="readonly" class="apply-val" /></li>
+					<li><span>项目名称</span><input type="text" name="projectName2" readonly="readonly" value="" class="apply-val"/></li>
+					<li><span>页数</span><input type="text" name="pageNumber2" readonly="readonly" value="" class="apply-val "/></li>
+					<li><span>份数</span><input type="text" name="copiesNumber2" readonly="readonly" value="" class="apply-val" /></li>
+					<li><span>盖章内容</span><textarea name="text2"  rows="" cols="" readonly="readonly" class="apply-val"></textarea></li>
+					<li><span>盖章事由</span><textarea name="why2" rows="" cols="" readonly="readonly" class="apply-val"></textarea></li>
+					<li class="txt_ctr">
+					<input type="button" value="审批" onclick="applySubmit()"/>
+				
+					</li>
+				</ul>
   			   
-  			   </table>
   			</form>
 
 		</div>
@@ -114,6 +83,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			cache : false,
 			modal : true
 		});	
+		
+		
 		//查看
 		function addSpproveTb(){		
 			//var row = $('#approveDg').datagrid('getChecked');  你这个是选择所以行

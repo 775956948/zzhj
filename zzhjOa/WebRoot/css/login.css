@@ -2,15 +2,15 @@
 
 
 
-body{
-	background: url('../image/login.jpg') no-repeat center;
+
+
+.login_main{
+	max-width: 1920px;
+	height: 600px;
+		background: url('../image/login.jpg') no-repeat center;
 	background-size:cover;
-
+	margin: 0 auto;
 }
-
-
-
-
 /*头部*/
 .login_header{
 	width: 100%;
@@ -41,7 +41,7 @@ body{
 }
 
 .login_table{
-		box-shadow: 0px 02px 3px #333;
+		box-shadow: 0px 02px 3px #ccc;
 	padding: 25px 20px 25px;
 	box-sizing: border-box;
     position: absolute;
@@ -77,8 +77,6 @@ body{
 }
 .login_table .login_input-icon1{background: url(../image/login-icon1.png) no-repeat 12px;background-size:18px ;}
 .login_table .login_input-icon2{background: url(../image/login-icon2.png) no-repeat 12px;background-size:18px ;}
-
-
 .button{
 	display: block;
 	margin: 4px auto;

@@ -1,9 +1,11 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<!--<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+-->
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -19,6 +21,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+		<link rel="stylesheet" href="css/basic.css" />
+	<link rel="stylesheet" href="css/login.css" />
 	<script type="text/javascript" src="easyui/jquery.min.js"></script>
 	<style type="text/css">
 		#table{

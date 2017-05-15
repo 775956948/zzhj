@@ -1,8 +1,9 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<!--<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+-->
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -52,10 +53,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					    		<h5>登录</h5>
 					    </tr>
 					    	<tr>
-					    		<td colspan="2" class="login_input-icon1"><input type="text" name="name" class="login_input " placeholder="请输入用户名"/></td>
+					    		<td colspan="2" class="">
+
+					    			<input type="text" name="name" class="login_input login_input-icon1" placeholder="请输入用户名"/>
+					    		</td>
 					    	</tr>
 					    	<tr>
-					    		<td colspan="2" class="login_input-icon2"><input type="password" name="password" class="login_input" placeholder="请输入密码"/></td>
+					    
+					    		<td colspan="2" class="">
+
+					    			<input type="password" name="password" class="login_input login_input-icon2" placeholder="请输入密码"/>
+					    		</td>
 					    		
 					    	</tr>
 					    	<tr>
