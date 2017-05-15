@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "http://mybatis.org/dtd/mybatis-3-mapper.dtd" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzhj.mapper.RequestSealMapper">
+	<resultMap type="requestSeal" id="zs">
+		<id column="id" property="id"/>
+		<result column="number" property="number"/>
+		<result column="project_name" property="projectName"/>
+		<result column="request_date" property="requestDate"/>
+		<result column="approver" property="approver"/>
+		<result column="over_date" property="overDate"/>
+		<result column="state" property="state"/>
+		<result column="copiesNumber" property="copiesNumber"/>
+		<result column="text" property="text"/>
+		<result column="why" property="why"/>
+		<result column="pageNumber" property="pageNumber"/>
+		<association property="userId" javaType="users">
+			<result column="name" property="name"/>
+		</association>
+		<association property="sealId" javaType="seal">
+			<result column="seal_id" property="typeName"/>
+		</association>
+	</resultMap>
+
+   <select id="queryAll" resultMap="zs" parameterType="int">
+  		 SELECT r.id,r.number,r.project_name,r.request_date,r.approver,r.over_date,r.state,r.copiesNumber,r.text,r.why,r.pageNumber,u.name FROM request_seal r INNER JOIN users u ON u.id=r.user_id INNER JOIN seal s ON s.id=r.seal_id  limit #{startPage},#{rows}
+  </select>
+  <select id="totalCount" resultType="int">
+  		select count(id) from request_seal
+  </select>
+</mapper>

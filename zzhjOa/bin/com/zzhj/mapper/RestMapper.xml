@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "http://mybatis.org/dtd/mybatis-3-mapper.dtd" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzhj.mapper.RestMapper">
+	<resultMap type="rest" id="ru">
+		<id column="id" property="id"/>
+		<result column="rest_text" property="restText"/>
+		<result column="rest_date" property="restDate"/>
+		<result column="date" property="date"/>
+		<result column="approver" property="approver"/>
+		<result column="advice" property="advice"/>
+		<result column="state" property="state"/>
+		<result column="currents_date" property="currentDate"/>
+		<association property="userId" javaType="users">
+
+			<result column="u_name" property="name"/>
+		</association>
+		<association property="restTypeId" javaType="restType">
+
+			<result column="rt_name" property="name"/>
+		</association>
+	</resultMap>
+
+  <insert id="save" parameterType="rest">
+  	INSERT INTO rest (user_id,rest_text,rest_date,DATE,approver,state,rest_type_id,currents_date) VALUES(#{userId.id},#{restText},#{restDate},#{date},#{approver},#{state},#{restTypeId.id},#{currentDate})
+  </insert>	  
+  <select id="totalCount" resultType="int">
+  	select count(id) from rest
+  </select>
+  <select id="queryAll" parameterType="int" resultMap="ru">
+  	select r.*,u.name as u_name,rt.name as rt_name from rest r inner join users u on u.id=r.user_id inner join rest_type rt on rt.id=r.rest_type_id limit #{startPage},${rows}
+  </select>
+  
+  <delete id="deleteRest" parameterType="int">
+  	delete from rest where id=#{value}
+  </delete>
+</mapper>

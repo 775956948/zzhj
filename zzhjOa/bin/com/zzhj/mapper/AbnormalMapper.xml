@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "http://mybatis.org/dtd/mybatis-3-mapper.dtd" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzhj.mapper.AbnormalMapper">
+	<resultMap type="abnormal" id="au">
+		<id column="id" property="id"/>
+		<result column="abnormal_type" property="abnormalType" />
+		<result column="abnormal_date" property="abnormalDate" />
+		<result column="abnormal_text" property="abnormalText" />
+		<result column="date" property="date"/>
+		<result column="approver" property="approver"/>
+		<result column="state" property="state"/>
+		<association property="userId" javaType="users">
+			<result column="u_name" property="name"/>
+		</association>
+	</resultMap>
+	
+  	<select id="queryAll" parameterType="int" resultMap="au">
+		select a.*, u.name as u_name from abnormal a inner join users u on u.id=a.user_id limit ${startPage},#{rows}  		
+  	</select>
+  	
+  	<select id="totalCount" resultType="int">
+  		select count(id) from abnormal
+  	</select>
+  	
+  	<insert id="save" parameterType="abnormal">		
+		INSERT INTO abnormal (user_id,abnormal_type,abnormal_date,abnormal_text,date,approver,state) values(#{userId.id},#{abnormalType},#{abnormalDate},#{abnormalText},#{date},#{approver},#{state})
+  	</insert>
+  	
+  	<delete id="deleteAbnormal" parameterType="int">
+  		delete from abnormal where id=#{value}
+  	</delete>
+</mapper>

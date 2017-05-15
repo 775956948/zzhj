@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "http://mybatis.org/dtd/mybatis-3-mapper.dtd" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzhj.mapper.ZiZhiSealMapper">
+	<resultMap type="ziZhiSeal" id="zs">
+		<id column="id" property="id"/>
+		<result column="number" property="number"/>
+		<result column="projectName" property="projectName"/>
+		<result column="requestDate" property="requestDate"/>
+		<result column="approver" property="approver"/>
+		<result column="overDate" property="overDate"/>
+		<result column="state" property="state"/>
+		<result column="copiesNumber" property="copiesNumber"/>
+		<result column="text" property="text"/>
+		<result column="why" property="why"/>
+		<result column="pageNumber" property="pageNumber"/>
+		<association property="userId" javaType="users">
+			<result column="name" property="name"/>
+		</association>
+	</resultMap>
+
+  <select id="queryAll" resultMap="zs" parameterType="int">
+  	SELECT z.id,z.number,z.projectName,z.requestDate,z.approver,z.overDate,z.state,z.copiesNumber,z.text,z.why,z.pageNumber,u.name FROM zi_zhi_seal z INNER JOIN users u ON u.id=z.user_id limit #{startPage},#{rows}
+  </select>
+  <insert id="save" parameterType="ziZhiSeal">			 
+  	insert into zi_zhi_seal(number,projectName,pageNumber,copiesNumber,text,why,user_id,requestDate,approver,state)
+  	values(#{number},#{projectName},#{pageNumber},#{copiesNumber},#{text},#{why},#{userId.id},#{requestDate},#{approver},#{state})
+  </insert>											
+  <select id="totalCount" resultType="int">
+  		SELECT COUNT(id) FROM zi_zhi_seal
+  </select>
+  
+  <delete id="delete" parameterType="int">
+  	delete from zi_zhi_seal where id=#{value}
+  </delete>
+  <select id="queryOneself" parameterType="object" resultMap="zs">
+  	SELECT z.id,z.number,z.projectName,z.requestDate,z.approver,z.overDate,z.state,z.copiesNumber,z.text,z.why,z.pageNumber,u.name FROM zi_zhi_seal z INNER JOIN users u ON u.id=z.user_id where approver=#{userName} limit #{startPage},#{rows}
+  </select>
+  <select id="totalCountOneself" parameterType="string" resultType="int">
+  	SELECT COUNT(id) FROM zi_zhi_seal where approver=#{value}
+  </select>
+  <select id="queryOneOneself" parameterType="int" resultMap="zs">
+  	SELECT z.id,z.number,z.projectName,z.requestDate,z.approver,z.overDate,z.state,z.copiesNumber,z.text,z.why,z.pageNumber,u.name FROM zi_zhi_seal z INNER JOIN users u ON u.id=z.user_id where id=#{value}
+  </select>
+  <update id="approver" parameterType="object">
+  	update zi_zhi_seal set 
+  	<if test="userName!=''">
+  		approver=#{userName}
+  	</if> 
+  	<if test="userName==''">
+  		state="已审批"
+  	</if>
+  	 where id=#{sealId}
+  </update>
+</mapper>
