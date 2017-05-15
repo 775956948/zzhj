@@ -19,8 +19,8 @@ public class Test {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		  ApplicationContext ap =new ClassPathXmlApplicationContext("application_*.xml");
-		 RequestSealAction r = (RequestSealAction) ap.getBean("requestSealAction");
+		  ApplicationContext ap =new ClassPathXmlApplicationContext("classpath:application_*.xml");
+		 RequestSealAction r = (RequestSealAction)ap.getBean("requestSealAction");
 		 Map map =r.queryAll(1, 10);
 		 List<RequestSeal> list =(List) map.get("rows");
 		 System.out.println(list.get(0).getProjectName());

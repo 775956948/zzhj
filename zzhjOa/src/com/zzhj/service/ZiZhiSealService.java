@@ -41,8 +41,8 @@ public class ZiZhiSealService {
 		z.setRequestDate(time);
 		z.setState("待审批");
 		z.setApprover(user.getName());
-		List<HttpSession> list =SessionListener.list;
-/*		for (HttpSession session : list) {
+		/*		List<HttpSession> list =SessionListener.list;
+		for (HttpSession session : list) {
 			Users u = (Users) session.getAttribute("users");
 			if(u.getName().equals(user.getName())){
 				session.setAttribute("ziZhiSeal", "您有未审批的资质章消息");

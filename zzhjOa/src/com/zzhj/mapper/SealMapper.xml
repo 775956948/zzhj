@@ -2,6 +2,6 @@
 <!DOCTYPE mapper PUBLIC "http://mybatis.org/dtd/mybatis-3-mapper.dtd" "mybatis-3-mapper.dtd" >
 <mapper namespace="com.zzhj.mapper.SealMapper">
   <select id="queryAll" resultType="seal">
-  	select type_name from seal
+  	select id,type_name as typeName from seal
   </select>
 </mapper>

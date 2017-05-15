@@ -27,4 +27,32 @@
   <select id="totalCount" resultType="int">
   		select count(id) from request_seal
   </select>
+  
+  <insert id="save" parameterType="requestSeal">			 
+  	insert into request_Seal(number,project_name,pageNumber,copiesNumber,text,why,user_id,request_date,approver,state)
+  	values(#{number},#{projectName},#{pageNumber},#{copiesNumber},#{text},#{why},#{userId.id},#{requestDate},#{approver},#{state})
+  </insert>	
+  
+    <update id="approver" parameterType="object">
+  	update requestSeal set 
+  	<if test="userName!=''">
+  		approver=#{userName}
+  	</if> 
+  	<if test="userName==''">
+  		state="已审批"
+  	</if>
+  	 where id=#{sealId}
+  </update>
+  
+    <select id="totalCountOneself" parameterType="string" resultType="int">
+  	SELECT COUNT(id) FROM request_Seal where approver=#{value}
+  </select>
+  
+    <select id="queryOneOneself" parameterType="int" resultMap="zs">
+  	SELECT r.id,r.number,r.project_name,r.request_date,r.approver,r.over_date,r.state,r.copiesNumber,r.text,r.why,r.pageNumber,u.name FROM request_seal r INNER JOIN users u ON u.id=r.user_id where id=#{value}
+  </select>
+  
+    <select id="queryOneself" parameterType="object" resultMap="zs">
+  	SELECT r.id,r.number,r.project_name,r.request_date,r.approver,r.over_date,r.state,r.copiesNumber,r.text,r.why,r.pageNumber,u.name FROM request_seal r INNER JOIN users u ON u.id=r.user_id where approver=#{userName} limit #{startPage},#{rows}
+  </select>
 </mapper>
