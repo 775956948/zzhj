@@ -86,44 +86,44 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			}); 
 		}
 	</script>
-	<style type="text/css">
-		.title li{
-			float:left;
-			list-style: none;
-			padding-left: 100px;
-
+	
+	<style type="text/css"> 
+		.logo_btn{
+		    float: left;
+		    display: block;
+			width: 163px;
 		}
-		.title{
-			width:1100px;
-			height:auto;
-			margin: 0 auto;
+		.logo_btn img{
+			width: 100%;
 		}
-		.theme{
-			padding-top:4%;
-			font-family: "楷体","楷体_GB2312"; 
-			/* color: white; */
+		.main_span{
+			line-height: 62px;
+		    font-size: 14px;
+		    display: inline-block;
 		}
 		#user{
-			width:18%;
-			float: right;
-			padding-top: 4%;
-			margin: 0px;
+			float:right;width:300px;
 		}
-		#user ul{
-			list-style: none;
+		#user li{
+			float:left;
+			width:100px;
+			line-height: 62px;
 		}
 	</style>
 
   </head>
 	<body>    
-    	<div id="cc" class="easyui-layout" fit=true ">   
-    	<div data-options="region:'north'" style="height:170px;background-color: E0ECFF;">
-    	
-			<ul class="title">
-				<li class="theme"><h1>中兆恒基Oa办公系统</h1></li>
-				<li><img src="image/logo_02.png" width="400px;"></li>
-			</ul>
-			<div id="user">
+    	<div id="cc" class="easyui-layout" fit=true "style="height:70px;">   
+    	<div data-options="region:'north'" style="height:70px;background-color: E0ECFF;">
+    		<a href="#" class="logo_btn"><img src="image/logo_02.png"/></a>
+    		<span class="main_span">中兆恒基Oa办公系统</span>
+    		<div class="fr"> 
+    			<span>
+    			
+    			</span>
+    		</div>	
+	
+			<div id="user" style="">
 				<ul>
 					<li><h2>当前用户:${users.name }</h2></li>
 					<li><h2>${message }</h2></li>

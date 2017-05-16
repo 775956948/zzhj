@@ -61,9 +61,34 @@ input[type="button"]{
     text-align: center;
     padding: 6px 19px;
     border-radius: 2px;
+    cursor: pointer;
 }
-
+input[type="radio"]{
+    padding: 0 4px;
+    position: relative;
+    top: 2px;
+    margin: 0 7px;
+}
+#apply_offcial_select{
+		float: left;
+	 width: 200px;
+    border: 1px solid #ccc;
+    padding: 5px 0;
+    text-indent: 5px;
+    border-radius: 4px;
+	
+}
 
 .textbox-addon{
 	padding-right: 0 !important;
+}
+
+
+.pd10{
+	padding:0 10px;
+	line-height: 27px;
+}
+
+#_easyui_textbox_input1{
+	border:0 !important;
 }

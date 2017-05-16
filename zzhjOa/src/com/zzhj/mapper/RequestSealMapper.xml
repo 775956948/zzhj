@@ -29,8 +29,8 @@
   </select>
   
   <insert id="save" parameterType="requestSeal">			 
-  	insert into request_Seal(number,project_name,pageNumber,copiesNumber,text,why,user_id,request_date,approver,state)
-  	values(#{number},#{projectName},#{pageNumber},#{copiesNumber},#{text},#{why},#{userId.id},#{requestDate},#{approver},#{state})
+  	insert into request_Seal(number,project_name,pageNumber,copiesNumber,text,why,user_id,request_date,approver,state,seal_id)
+  	values(#{number},#{projectName},#{pageNumber},#{copiesNumber},#{text},#{why},#{userId.id},#{requestDate},#{approver},#{state},#{sealId.id})
   </insert>	
   
     <update id="approver" parameterType="object">
