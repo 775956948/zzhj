@@ -35,9 +35,9 @@ public class RequestSealAction {
 	
 	@RequestMapping("/approver.action")
 	@ResponseBody
-	public int approver(int id,HttpSession session){
+	public int approver(int requestSealtId,HttpSession session){
 		Users user = (Users) session.getAttribute("users");
-		return rss.approver(id, user.getId());
+		return rss.approver(requestSealtId, user.getId());
 	}
 	
 	@RequestMapping("/queryOneself.action")
