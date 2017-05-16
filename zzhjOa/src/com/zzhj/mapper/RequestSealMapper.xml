@@ -17,7 +17,7 @@
 			<result column="name" property="name"/>
 		</association>
 		<association property="sealId" javaType="seal">
-			<result column="seal_id" property="typeName"/>
+			<result column="type_name" property="typeName"/>
 		</association>
 	</resultMap>
 
@@ -34,7 +34,7 @@
   </insert>	
   
     <update id="approver" parameterType="object">
-  	update requestSeal set 
+  	update request_seal set 
   	<if test="userName!=''">
   		approver=#{userName}
   	</if> 
@@ -53,6 +53,6 @@
   </select>
   
     <select id="queryOneself" parameterType="object" resultMap="zs">
-  	SELECT r.id,r.number,r.project_name,r.request_date,r.approver,r.over_date,r.state,r.copiesNumber,r.text,r.why,r.pageNumber,u.name FROM request_seal r INNER JOIN users u ON u.id=r.user_id where approver=#{userName} limit #{startPage},#{rows}
+  	SELECT r.id,r.number,r.project_name,r.request_date,r.approver,r.over_date,r.state,r.copiesNumber,r.text,r.why,r.pageNumber,s.type_name,u.name FROM request_seal r INNER JOIN users u ON u.id=r.user_id inner join seal s on s.id=r.seal_id where approver=#{userName} limit #{startPage},#{rows}
   </select>
 </mapper>

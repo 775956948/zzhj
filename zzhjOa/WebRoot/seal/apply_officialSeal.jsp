@@ -38,8 +38,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</li> 
 					<li>
 						<span>是否骑缝</span>
-						<b class="pd10" style="padding:0 5px;">是<input type="radio" name="why" id="" value="" id="true"/></b>
-						<b class="pd10" style="padding:0 5px;">否<input type="radio" name="why" id="" value="" id="true"/></b>
+						<b class="pd10" style="padding:0 5px;">是<input type="radio" name="why" id="" value="是" /></b>
+						<b class="pd10" style="padding:0 5px;">否<input type="radio" name="why" id="" value="否" /></b>
 					</li> 	
 					<li>
 						<span>页数</span>
@@ -105,7 +105,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				 function check(obj){
 					  if(obj.id == 'checkbox1' && obj.checked == true){
 					   document.getElementById('checkbox2').checked = false;
-					  }
+					  } 
 					  else if(obj.id == 'checkbox2' && obj.checked == true){
 					   document.getElementById('checkbox1').checked = false;
 					  }

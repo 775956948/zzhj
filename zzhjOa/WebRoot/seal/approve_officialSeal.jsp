@@ -17,7 +17,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		<div id="approve_official_tanc"> 
 			<form action="" method="post" id="approve_official_form" class="approve_official_form">
-				<input name="id" id="dis_none" /> 
+				<input name="requestSealtId" id="dis_none" /> 
 				<h2 class="cmn_tit">资质章盖章申请单</h2>
 				<ul class="cmn_list">
 					<li>
@@ -28,8 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<input type="text" name="projectName" readonly="readonly" value="" class="approve_official_val"/></li>
 					<li>
 						<span>章类型</span>
-						<select id="type">
-							
+						<select id="type" disabled="disabled">
 						</select>
 					<li>
 					<li>
@@ -40,10 +39,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<span>份数</span>
 						<input type="text" name="copiesNumber" readonly="readonly" value="" class="approve_official_val" /></li>
 					<li>
-						<span>盖章内容</span>
+						<span>收文主题</span>
 						<textarea name="text"  rows="" cols="" readonly="readonly" class="approve_official_val"></textarea></li>
 					<li>
-						<span>盖章事由</span>
+						<span>是否骑缝</span>
 						<textarea name="why" rows="" cols="" readonly="readonly" class="approve_official_val"></textarea></li>
 					<li class="txt_ctr">
 						<input type="button" value="审批" onclick="approve_official_Submit()"/>
@@ -81,13 +80,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	        {field:'id',title:'id',checkbox:true,}, 
 			{field:'number',title:'编号',width:100,},       
 			{field:'projectName',title:'项目名称',width:100,},
-			{field:'sealId',title:'章类型',width:80,},
+			{field:'sealId',title:'章类型',width:80,formatter:function(value){return value.typeName}},
 			{field:'userId',title:'申请人',width:100,formatter:function(value){
     			return value.name;
     		}},
 			{field:'requestDate',title:'申请时间',width:100,},
-			{field:'text',title:'盖章内容',width:100,},  
-			{field:'why',title:'盖章事由',width:100,},
+			{field:'text',title:'收文主题',width:100,},  
+			{field:'why',title:'是否骑缝',width:100,},
 			{field:'pageNumber',title:'页数',width:100,},   
 			{field:'copiesNumber',title:'份数',width:100,},        		
 			{field:'approver',title:'审批人',width:100,},
@@ -112,10 +111,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			if(row == null){
 			   alert("请选择一条数据");
 			}else{
-				$("input[name = id]").val(row.id);
+				$("input[name = requestSealtId]").val(row.id);
 				/* $("input[name = sealId]").val(row.sealId); */
 				
-				/* $("#type").append("<option value=''>"+row.sealId.typeName+"</option>"); */
+				$("#type").append("<option value=''>"+row.sealId.typeName+"</option>"); 
 				$("input[name = number]").val(row.number);
 				$("input[name = projectName]").val(row.projectName);
 				$("input[name = pageNumber]").val(row.pageNumber);
