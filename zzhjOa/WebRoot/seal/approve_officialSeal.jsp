@@ -8,6 +8,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<head>
 		<meta charset="UTF-8">
 		<title>审批</title>	
+			<link rel="stylesheet" type="text/css" href="easyui/themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="easyui/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="easyui/demo/demo.css">
+ 	<link rel="stylesheet" type="text/css" href="css/basic.css">	
+	<link rel="stylesheet" type="text/css" href="css/style.css" > 
+	<script type="text/javascript" src="easyui/jquery.min.js"></script>
+	<script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="easyui/locale/easyui-lang-zh_CN.js"></script>
+
+	
+
 	</head>
 	<body>
 		<!--审批表格-->
@@ -37,27 +48,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<span>页数</span>
 						<input type="text" name="pageNumber" readonly="readonly" value="" class="approve_official_val "/>
 					</li>
-					<li>
-						
+					<li>					
 						<span>份数</span>
 						<input type="text" name="copiesNumber" readonly="readonly" value="" class="approve_official_val" />
 					</li>
 					<li>
 						<span>收文主题</span>
-<<<<<<< Updated upstream
-						<textarea name="text"  rows="" cols="" readonly="readonly" class="approve_official_val"></textarea></li>
-					<li>
-						<span>是否骑缝</span>
-						<textarea name="why" rows="" cols="" readonly="readonly" class="approve_official_val"></textarea></li>
-=======
-						<textarea name="text"  rows="" cols="" readonly="readonly" class="approve_official_val"></textarea>
-					</li>
+						<textarea name="text"  rows="" cols="" readonly="readonly" class="approve_official_val"></textarea></li
 					<li>
 						<span>是否骑缝</span>
 						<b class="pd10" style="padding:0 5px;">是<input type="radio" name="why" id="" value="" id="true"/></b>
 						<b class="pd10" style="padding:0 5px;">否<input type="radio" name="why" id="" value="" id="true"/></b>
 					</li> 	
->>>>>>> Stashed changes
+
 					<li class="txt_ctr">
 						<input type="button" value="审批" onclick="approve_official_Submit()"/>				
 					</li>
@@ -145,8 +148,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			   alert("请选择一条数据");
 			}else{
 				$("input[name = requestSealtId]").val(row.id);
-				/* $("input[name = sealId]").val(row.sealId); */
-				
+				/* $("input[name = sealId]").val(row.sealId); */				
 				$("#type").append("<option value=''>"+row.sealId.typeName+"</option>"); 
 				$("input[name = number]").val(row.number);
 				$("input[name = projectName]").val(row.projectName);

@@ -41,6 +41,8 @@
     width: 200px;
     padding: 0;
     height: 50px;
+    padding: 4px;
+    box-sizing: border-box;
 }
 .cmn_list select{
     float: left;

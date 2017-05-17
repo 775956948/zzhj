@@ -30,7 +30,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<input type="text" name="number"  value=""  class="apply_official_val" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();"/></li>
 					<li>
 						<span>项目名称</span>
-						<input type="text" name="projectName"  value="" class="apply_official_val"/></li>
+						<textarea name="projectName" rows="" cols="" class="apply_official_val"></textarea>
+					</li>
  					<li>
 						<span>章类型</span>
 						<input  name="sealId.id" id="apply_offcial_select" class="apply_offcial_select" value="" style="border:0 !important;" />
@@ -56,9 +57,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 		</div>
 		<script type="text/javascript">
+			var ddd = {                                                     
+			    "total":12,                                                     
+			    "rows":[                                                         
+			        {"number":"001","state":"Name 1","projectName":"Name1","userId":"Name 1","requestDate":"2052","text":"20522052205220522052205220522052","why":"2052","pageNumber":"2052","copiesNumber":"2052","approver":"2052","agent":"2052","overDate":"2052","ztai":"2052",},        
+			        {"number":"001","state":"Name 1","projectName":"Name1","userId":"Name 1","requestDate":"2052","text":"205220522052205220522052","why":"2052","pageNumber":"2052","copiesNumber":"2052","approver":"2052","agent":"2052","overDate":"2052","ztai":"2052",},        
+			        {"number":"001","state":"Name 1","projectName":"Name1","userId":"Name 1","requestDate":"2052","text":"205220522052","why":"2052","pageNumber":"2052","copiesNumber":"2052","approver":"2052","agent":"2052","overDate":"2052","ztai":"2052",},        
+			        {"number":"001","state":"Name 1","projectName":"Name1","userId":"Name 1","requestDate":"2052","text":"2052","why":"2052","pageNumber":"2052","copiesNumber":"2052","approver":"2052","agent":"2052","overDate":"2052","ztai":"2052",},        
+			        {"number":"001","state":"Name 1","projectName":"Name1","userId":"Name 1","requestDate":"2052","text":"2052","why":"2052","pageNumber":"2052","copiesNumber":"2052","approver":"2052","agent":"2052","overDate":"2052","ztai":"2052",},        
+			        {"number":"001","state":"Name 1","projectName":"Name1","userId":"Name 1","requestDate":"2052","text":"2052","why":"2052","pageNumber":"2052","copiesNumber":"2052","approver":"2052","agent":"2052","overDate":"2052","ztai":"2052",},        
+			        {"number":"001","state":"Name 1","projectName":"Name1","userId":"Name 1","requestDate":"2052","text":"2052","why":"2052","pageNumber":"2052","copiesNumber":"2052","approver":"2052","agent":"2052","overDate":"2052","ztai":"2052",},        
+			    ]                                                         
+			}
 				$('#apply_official_Dg').datagrid({
-				url:'requestSeal/queryAll.action',
+				//url:'requestSeal/queryAll.action',
 			    fitColumns:true,
+			    data:ddd,
    			    toolbar:'#sealTb', 
    			    pagination:true,
    			    singleSelect:true,
