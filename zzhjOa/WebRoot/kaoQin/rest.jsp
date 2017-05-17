@@ -29,36 +29,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		<div id="restDd"  class="easyui-dialog" closed=true >
   		<form action="" method="post">
-  			   <table>
-  			   		<tr>
-  			   			<td colspan="2"><h2>请假/休假信息表</h2></td>
-  			   		</tr>
-  			   		<tr>
-  			   			<td>请假人</td>
-  			   			<td><input type="text" name="userId" disabled="disabled"  value="${users.name}"/></td>
-  			   		</tr>
-  			   		<tr>
-  			   			<td>请假类型</td>
-  			   			<td>
-  			   				<select name="restTypeId"></select>
-  			   			</td>
-  			   		</tr>
-  			   		<tr>
-  			   			<td>请假天数</td>
-  			   			<td><input type="text" name="restDate"/></td>
-  			   		</tr>
-  			   		<tr>
-  			   			<td>请假起始时间</td>
-  			   			<td><input type="date" name="currentDate"/></td>
-  			   		</tr>
-  			   		<tr>
-  			   			<td>请假原由</td>
-  			   			<td><textarea name="restText" rows="10" cols="30"></textarea></td>
-  			   		</tr>
-  			   		 <tr align="center">
-  			   			<td colspan="2"><input type="button" value="申请" onclick="restSubmit()"/></td>
-  			   		</tr>
-  			   </table>
+  				<h2 class="cmn_tit">请假/休假信息表</h2>
+				<ul class="cmn_list">
+					<li>
+						<span>请假人</span>
+						<input type="text" name="userId" disabled="disabled"  value="${users.name}"/>
+					</li>
+					<li>
+						<span>请假类型</span>
+						<select name="restTypeId"></select>
+					<li >
+						<span>请假天数</span>
+						<input type="text" name="restDate"/>
+					</li>
+					<li class="data_ipt">
+						<span>请假起始时间</span>
+						<input type="date" name="currentDate"/>
+					</li>
+					<li>
+						<span>请假原由</span>
+						<textarea name="restText" rows="10" cols="30"></textarea>
+					</li>
+					<li class="txt_ctr">
+						<input type="button" value="申请" onclick="abnormalSubmit()"/>
+					</li>
+				
+				</ul>
+  		
+  			
+  		
   		</form>
   		</div>
   		

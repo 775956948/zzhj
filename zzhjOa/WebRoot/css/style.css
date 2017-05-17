@@ -69,6 +69,11 @@ input[type="radio"]{
     top: 2px;
     margin: 0 7px;
 }
+.data_ipt input{
+	border: 1px solid #ccc;
+    padding: 3px;
+    width: 200px;
+}
 #apply_offcial_select{
 		float: left;
 	 width: 200px;

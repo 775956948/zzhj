@@ -1,8 +1,8 @@
-<!--<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>-->
+%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -54,9 +54,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   			</form>
 
 		</div>
-		
-		
-		
 		<table id="approve_official_Dg"></table>
 		
 
@@ -96,7 +93,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    ]],
 		})
 	
-		spprove_tanc = $('#approve_official_tanc').dialog({
+		spprove_tanc2 = $('#approve_official_tanc').dialog({
 			title : '审批',
 			width : 400,
 			height : 400,
@@ -107,25 +104,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		//查看
 		function approve_official_Tb(){		
 			//var row = $('#approveDg').datagrid('getChecked');  你这个是选择所以行
-			var row = $('#approve_official_Dg').datagrid('getSelected');
-			if(row == null){
+			var requestSealRow = $('#approve_official_Dg').datagrid('getSelected');
+			if(requestSealRow == null){
 			   alert("请选择一条数据");
 			}else{
-				$("input[name = requestSealtId]").val(row.id);
+				$("input[name = requestSealtId]").val(requestSealRow.id);
 				/* $("input[name = sealId]").val(row.sealId); */
 				
-				$("#type").append("<option value=''>"+row.sealId.typeName+"</option>"); 
-				$("input[name = number]").val(row.number);
-				$("input[name = projectName]").val(row.projectName);
-				$("input[name = pageNumber]").val(row.pageNumber);
-				$("input[name = copiesNumber]").val(row.copiesNumber);
-				$("textarea[name = text]").val(row.text);
-				$("textarea[name = why]").val(row.why);
-				spprove_tanc.dialog('open') // 打开dialog
-//				spprove_tanc.dialog('close') // 关闭dialog
+				$("#type").append("<option value=''>"+requestSealRow.sealId.typeName+"</option>"); 
+				$("input[name = number]").val(requestSealRow.number);
+				$("input[name = projectName]").val(requestSealRow.projectName);
+				$("input[name = pageNumber]").val(requestSealRow.pageNumber);
+				$("input[name = copiesNumber]").val(requestSealRow.copiesNumber);
+				$("textarea[name = text]").val(requestSealRow.text);
+				$("textarea[name = why]").val(requestSealRow.why);
+				spprove_tanc2.dialog('open') // 打开dialog
 			}
-			//console.log(row)
-			
 			
 		};
 		

@@ -1,8 +1,8 @@
-<!--<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>-->
+%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -18,7 +18,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<!--  <a  class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="deleteSpprove()">删除</a>-->				
 		</div>
 		<div id="spprove-tanc"> 
-			<form action="" method="post" id="approve-form" class="approve-form">
+ 			<form action="" method="post" id="approve-form" class="approve-form">
 				<input name="sealId" id="dis_none" style="display:none !important;"/>
 				<h2 class="cmn_tit">资质章盖章申请单</h2>
 				<ul class="cmn_list">
@@ -33,6 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				
 					</li>
 				</ul>
+				<!--<input name="aaa" type="text"/> -->
   			   
   			</form>
 
@@ -87,22 +88,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		//查看
 		function addSpproveTb(){		
-			//var row = $('#approveDg').datagrid('getChecked');  你这个是选择所以行
-			var row = $('#approveDg').datagrid('getSelected');
-			if(row == null){
+			var ziZhiSealRow = $('#approveDg').datagrid('getSelected');
+			if(ziZhiSealRow == null){
 			   alert("请选择一条数据");
 			}else{
-				$("input[name = sealId]").val(row.id);
-				$("input[name = id2]").val(row.number);
-				$("input[name = projectName2]").val(row.projectName);
-				$("input[name = pageNumber2]").val(row.pageNumber);
-				$("input[name = copiesNumber2]").val(row.copiesNumber);
-				$("textarea[name = text2]").val(row.text);
-				$("textarea[name = why2]").val(row.why);
+				console.log(ziZhiSealRow.projectName);
+				$("input[name = sealId]").val(ziZhiSealRow.id);
+				$("input[name = id2]").val(ziZhiSealRow.number);
+				$("input[name = projectName2]").val(ziZhiSealRow.projectName);
+				$("input[name = pageNumber2]").val(ziZhiSealRow.pageNumber);
+				$("input[name = copiesNumber2]").val(ziZhiSealRow.copiesNumber);
+				$("textarea[name = text2]").val(ziZhiSealRow.text);
+				$("textarea[name = why2]").val(ziZhiSealRow.why);
 				spprove_tanc.dialog('open') // 打开dialog
-//				spprove_tanc.dialog('close') // 关闭dialog
 			}
-			//console.log(row)
 			
 			
 		};
