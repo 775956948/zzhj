@@ -22,10 +22,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<ul class="cmn_list">
 					<li>
 						<span>编号</span>
-						<input type="text" name="number"  value="" readonly="readonly" class="approve_official_val" /></li>
+						<input type="text" name="number"  value="" readonly="readonly" class="approve_official_val" />
+					</li>
 					<li>
 						<span>项目名称</span>
-						<input type="text" name="projectName" readonly="readonly" value="" class="approve_official_val"/></li>
+						<input type="text" name="projectName" readonly="readonly" value="" class="approve_official_val"/>
+					</li>
 					<li>
 						<span>章类型</span>
 						<select id="type" disabled="disabled">
@@ -33,22 +35,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<li>
 					<li>
 						<span>页数</span>
-						<input type="text" name="pageNumber" readonly="readonly" value="" class="approve_official_val "/></li>
+						<input type="text" name="pageNumber" readonly="readonly" value="" class="approve_official_val "/>
+					</li>
 					<li>
 						
 						<span>份数</span>
-						<input type="text" name="copiesNumber" readonly="readonly" value="" class="approve_official_val" /></li>
+						<input type="text" name="copiesNumber" readonly="readonly" value="" class="approve_official_val" />
+					</li>
 					<li>
 						<span>收文主题</span>
+<<<<<<< Updated upstream
 						<textarea name="text"  rows="" cols="" readonly="readonly" class="approve_official_val"></textarea></li>
 					<li>
 						<span>是否骑缝</span>
 						<textarea name="why" rows="" cols="" readonly="readonly" class="approve_official_val"></textarea></li>
-					<li class="txt_ctr">
-						<input type="button" value="审批" onclick="approve_official_Submit()"/>
-				
+=======
+						<textarea name="text"  rows="" cols="" readonly="readonly" class="approve_official_val"></textarea>
 					</li>
-						
+					<li>
+						<span>是否骑缝</span>
+						<b class="pd10" style="padding:0 5px;">是<input type="radio" name="why" id="" value="" id="true"/></b>
+						<b class="pd10" style="padding:0 5px;">否<input type="radio" name="why" id="" value="" id="true"/></b>
+					</li> 	
+>>>>>>> Stashed changes
+					<li class="txt_ctr">
+						<input type="button" value="审批" onclick="approve_official_Submit()"/>				
+					</li>
 				</ul>
   			   
   			</form>
@@ -77,6 +89,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 		singleSelect:true,
 		    toolbar:'#approve_official_Tb', 
 		   	columns:[[    
+<<<<<<< Updated upstream
 	        {field:'id',title:'id',checkbox:true,}, 
 			{field:'number',title:'编号',width:100,},       
 			{field:'projectName',title:'项目名称',width:100,},
@@ -95,6 +108,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        		{field:'state',title:'状态',width:50,},
 		    ]],
 		})
+=======
+		        {field:'id',title:'id',checkbox:true,}, 
+				{field:'number',title:'编号',width:50,},   
+				{field:'projectName',title:'项目名称',width:140,},
+				{field:'text',title:'收文主题',width:200,},  
+				{field:'why',title:'是否骑缝',width:200,},
+				{field:'requestDate',title:'申请日期',width:100,},
+	       		{field:'overDate',title:'盖章日期',width:100,},
+	       		{field:'pageNumber',title:'页数',width:50,},   
+				{field:'copiesNumber',title:'份数',width:50,},
+				{field:'sealId',title:'章类型',width:50,},
+				{field:'userId',title:'申请人',width:50,formatter:function(value){
+	    			return value.name;
+	    		}},
+	       		{field:'approver',title:'审批人',width:50,},
+				{field:'agent',title:'经办人',width:50,},
+	       		{field:'state',title:'审批状态',width:50,},
+			    ]],
+			})
+>>>>>>> Stashed changes
 	
 		spprove_tanc = $('#approve_official_tanc').dialog({
 			title : '审批',

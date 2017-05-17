@@ -64,6 +64,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    			    singleSelect:true,
 			    fitColumns:true,
 			    border:false, 
+			    
 			   	columns:[[    
 			        {field:'id',checkbox:true,}, 
 			   		{field:'number',title:'编号',width:50,},       
