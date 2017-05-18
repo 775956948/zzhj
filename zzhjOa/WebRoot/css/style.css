@@ -34,7 +34,14 @@
     text-indent: 5px;
     border-radius: 4px;
 }
-
+.cmn_list input[type="text"]{
+	float: left;
+	 width: 200px;
+    border: 1px solid #ccc;
+    padding: 5px 0;
+    text-indent: 5px;
+    border-radius: 4px;
+}
 .cmn_list textarea{
     border: 1px solid #ccc;
     border-radius: 4px;

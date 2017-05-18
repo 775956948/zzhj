@@ -95,7 +95,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		 	 		 	
   		 	$('#applyDg').datagrid({    
    			 url:'ziZhiSeal/queryAll.action',
-   			 fitColumns:true,
+   			 fitColumns:false,
    			 toolbar:'#sealTb', 
    			 pagination:true,
    			 singleSelect:true,

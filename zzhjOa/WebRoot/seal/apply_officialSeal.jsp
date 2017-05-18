@@ -4,26 +4,25 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>盖章审批</title>
-		<link rel="stylesheet" type="text/css" href="../css/basic.css" >
-		<link rel="stylesheet" type="text/css" href="../css/style.css" >
+		<title>公章提交</title>
+		
 	</head>
 	<body>
 		<div id="sealTb">
 			<a  class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="addapply_official_Tb()" >创建申请</a>
 		</div>
-		
-		
+
 		<table id="apply_official_Dg"></table> 
 		
 		<div id="apply_official_tanc"  class="easyui-dialog" closed=true >
 			<form action="" method="post" id="apply_official_form">
   	<!-- 		  	<input name="id" id="dis_none" style="display:none !important;"/> -->
-				<h2 class="cmn_tit">盖章审批</h2>
+				<h2 class="cmn_tit">公章盖章提交单</h2>
 				<ul class="cmn_list">
 					<li>
 						<span>编号</span>
@@ -31,6 +30,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<li>
 						<span>项目名称</span>
 						<textarea name="projectName" rows="" cols="" class="apply_official_val"></textarea>
+					</li>
+					<li>
+						<span>收文主题</span>
+						<textarea name="text" rows="" cols="" class="apply_official_val"></textarea>
 					</li>
  					<li>
 						<span>章类型</span>
@@ -57,43 +60,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 		</div>
 		<script type="text/javascript">
-			var ddd = {                                                     
-			    "total":12,                                                     
-			    "rows":[                                                         
-			        {"number":"001","state":"Name 1","projectName":"Name1","userId":"Name 1","requestDate":"2052","text":"20522052205220522052205220522052","why":"2052","pageNumber":"2052","copiesNumber":"2052","approver":"2052","agent":"2052","overDate":"2052","ztai":"2052",},        
-			        {"number":"001","state":"Name 1","projectName":"Name1","userId":"Name 1","requestDate":"2052","text":"205220522052205220522052","why":"2052","pageNumber":"2052","copiesNumber":"2052","approver":"2052","agent":"2052","overDate":"2052","ztai":"2052",},        
-			        {"number":"001","state":"Name 1","projectName":"Name1","userId":"Name 1","requestDate":"2052","text":"205220522052","why":"2052","pageNumber":"2052","copiesNumber":"2052","approver":"2052","agent":"2052","overDate":"2052","ztai":"2052",},        
-			        {"number":"001","state":"Name 1","projectName":"Name1","userId":"Name 1","requestDate":"2052","text":"2052","why":"2052","pageNumber":"2052","copiesNumber":"2052","approver":"2052","agent":"2052","overDate":"2052","ztai":"2052",},        
-			        {"number":"001","state":"Name 1","projectName":"Name1","userId":"Name 1","requestDate":"2052","text":"2052","why":"2052","pageNumber":"2052","copiesNumber":"2052","approver":"2052","agent":"2052","overDate":"2052","ztai":"2052",},        
-			        {"number":"001","state":"Name 1","projectName":"Name1","userId":"Name 1","requestDate":"2052","text":"2052","why":"2052","pageNumber":"2052","copiesNumber":"2052","approver":"2052","agent":"2052","overDate":"2052","ztai":"2052",},        
-			        {"number":"001","state":"Name 1","projectName":"Name1","userId":"Name 1","requestDate":"2052","text":"2052","why":"2052","pageNumber":"2052","copiesNumber":"2052","approver":"2052","agent":"2052","overDate":"2052","ztai":"2052",},        
-			    ]                                                         
-			}
-				$('#apply_official_Dg').datagrid({
-				//url:'requestSeal/queryAll.action',
-			    fitColumns:true,
-			    data:ddd,
-   			    toolbar:'#sealTb', 
-   			    pagination:true,
-   			    singleSelect:true,
-			    fitColumns:true,
-			    border:false, 
-			    
+			
+			$('#apply_official_Dg').datagrid({				
+				url:'requestSeal/queryAll.action',
+   			    rownumbers:false,
+			    singleSelect:true, 
+				nowarp:false,
+			    fit:true, 
+			    fitColumns:false,
+			    border:false,
+				pagination:true,
+		 		singleSelect:true,
 			   	columns:[[    
 			        {field:'id',checkbox:true,}, 
 			   		{field:'number',title:'编号',width:50,},       
-		        		{field:'projectName',title:'项目名称',width:100,},
- 		        		{field:'userId',title:'申请人',width:50,formatter:function(value){return value.name}},
-/* 		        		{field:'sealId',title:'章类型',width:50,formatter:function(value){return value.typeName}},  */
-		        		{field:'pageNumber',title:'页数',width:50,},
-		        		{field:'copiesNumber',title:'份数',width:50,},
-		        		{field:'text',title:'收文主题',width:50,},
-		        		{field:'approver',title:'审批人',width:50,},
-		        		{field:'requestDate',title:'申请日期',width:50,},
-		        		{field:'agent',title:'经办人',width:50,},
-		        		{field:'overDate',title:'盖章日期',width:50,},
-		        		{field:'state',title:'审批状态',width:50,},
-		        		{field:'why',title:'是否骑缝',width:50},
+		        		{field:'projectName',title:'项目名称',width:140,},
+		        		{field:'text',title:'收文主题',width:200,},
+		        		{field:'userId',title:'申请人',width:70,formatter:function(value){return value.name}},
+		        		{field:'requestDate',title:'申请日期',width:100,},
+		        		{field:'overDate',title:'盖章日期',width:100,},		        		
+		        		{field:'pageNumber',title:'页数',width:70,},
+		        		{field:'copiesNumber',title:'份数',width:70,},
+		        		{field:'approver',title:'审批人',width:70},		        		
+		        		{field:'agent',title:'经办人',width:70,},		        		
+		        		{field:'state',title:'审批状态',width:70,},
+		        		{field:'why',title:'是否骑缝',width:70},
 	
 			    ]],
 			})
@@ -101,14 +92,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 			function addapply_official_Tb(){
 				$('#apply_official_tanc').dialog({
-					title : '盖章审批',
+					title : '公章审批提交单',
 					width : 400,
 					height : 400,
 					closed : false,
 					cache : false,
 					modal : true
 				});	
-				//  seal/queryAll.action
 				$('#apply_offcial_select').combobox({
 				    url:'seal/queryAll.action',
 				    valueField:'id',
@@ -117,14 +107,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				
 			}
 				
-				 function check(obj){
-					  if(obj.id == 'checkbox1' && obj.checked == true){
-					   document.getElementById('checkbox2').checked = false;
-					  } 
-					  else if(obj.id == 'checkbox2' && obj.checked == true){
-					   document.getElementById('checkbox1').checked = false;
-					  }
-				 }
+			 function check(obj){
+				  if(obj.id == 'checkbox1' && obj.checked == true){
+				   document.getElementById('checkbox2').checked = false;
+				  } 
+				  else if(obj.id == 'checkbox2' && obj.checked == true){
+				   document.getElementById('checkbox1').checked = false;
+				  }
+			 }
 				 
 				 
 				 
