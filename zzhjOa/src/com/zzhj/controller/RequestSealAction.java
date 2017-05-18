@@ -46,4 +46,18 @@ public class RequestSealAction {
 		Users user = (Users) session.getAttribute("users");
 		return rss.queryOneself(user.getName(), page, rows);
 	}
+	
+	@RequestMapping("/approverRequestSeal.action")
+	@ResponseBody
+	public Map<String,Object> approverRequestSeal(int page,int rows){
+		return rss.approverRequestSeal(page, rows);
+	}
+	
+	@RequestMapping("/handLing.action")
+	@ResponseBody
+	public int handLing(RequestSeal r,HttpSession session){
+		Users user = (Users) session.getAttribute("users");
+		r.setAgent(user.getName());
+		return rss.handLing(r);
+	}
 }

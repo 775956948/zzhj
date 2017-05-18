@@ -76,5 +76,23 @@ public class RequestSealService {
 		return map;
 	}
 	
+	public Map<String,Object> approverRequestSeal(int page,int rows){
+		int startPage =(page-1)*rows;
+		Map<String,Object> map = new HashMap<String,Object>();
+		List<RequestSeal> list =rsm.approverRequestSeal(startPage, rows);
+		int totalCount =rsm.approverTotal();
+		map.put("rows", list);
+		map.put("total",totalCount);
+		return map;
+	}
+	
+	public int handLing(RequestSeal r){
+		Date today=new Date();
+		SimpleDateFormat f=new SimpleDateFormat("yyyy-MM-dd");
+		String time=f.format(today);
+		r.setOverDate(time);
+		return rsm.handling(r);
+	}
+	
 }
 

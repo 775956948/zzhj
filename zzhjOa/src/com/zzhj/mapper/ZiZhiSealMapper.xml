@@ -51,4 +51,15 @@
   	</if>
   	 where id=#{sealId}
   </update>
+  <select id="approverZiZhiSeal" resultMap="zs" parameterType="int">
+  		SELECT z.id,z.number,z.projectName,z.requestDate,z.approver,z.overDate,z.state,z.copiesNumber,z.text,z.why,z.pageNumber,u.name FROM zi_zhi_seal z INNER JOIN users u ON u.id=z.user_id where z.state='已审批' limit #{startPage},#{rows}
+  </select>
+  
+  <select id="approverTotal" resultType="int">
+  	select count(id) from zi_zhi_seal where state='已审批'
+  </select>
+  
+  <update id="handling" parameterType="ziZhiSeal">
+  	update zi_zhi_seal set agent=#{agent},overDate=#{overDate} where id=#{id}
+  </update>
 </mapper>

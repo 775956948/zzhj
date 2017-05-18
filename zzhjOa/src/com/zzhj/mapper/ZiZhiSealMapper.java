@@ -37,4 +37,27 @@ public interface ZiZhiSealMapper {
 	 * @date 2017年5月10日
 	 */
 	ZiZhiSeal queryOneOneself(int id);
+	/**
+	 * 
+	 * @Description: 返回所有已审批的资质章
+	 * @param @return   
+	 * @return List<ZiZhiSeal>  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年5月18日
+	 */
+	List<ZiZhiSeal> approverZiZhiSeal(@Param("startPage")int startPage,@Param("rows")int rows);
+	
+	/**
+	 * 
+	 * @Description: 获取已审批的条数
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年5月18日
+	 */
+	int approverTotal();
+	
+	int handling(ZiZhiSeal z);
 }	

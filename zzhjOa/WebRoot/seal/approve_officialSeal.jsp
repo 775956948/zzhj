@@ -54,7 +54,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</li>
 					<li>
 						<span>收文主题</span>
-						<textarea name="text"  rows="" cols="" readonly="readonly" class="approve_official_val"></textarea></li
+						<textarea name="text"  rows="" cols="" readonly="readonly" class="approve_official_val"></textarea></li>
 					<li>
 						<span>是否骑缝</span>
 						<b class="pd10" style="padding:0 5px;">是<input type="radio" name="why" id="" value="" id="true"/></b>
@@ -89,26 +89,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 		singleSelect:true,
 		    toolbar:'#approve_official_Tb', 
 		   	columns:[[    
-<<<<<<< Updated upstream
-	        {field:'id',title:'id',checkbox:true,}, 
-			{field:'number',title:'编号',width:100,},       
-			{field:'projectName',title:'项目名称',width:100,},
-			{field:'sealId',title:'章类型',width:80,formatter:function(value){return value.typeName}},
-			{field:'userId',title:'申请人',width:100,formatter:function(value){
-    			return value.name;
-    		}},
-			{field:'requestDate',title:'申请时间',width:100,},
-			{field:'text',title:'收文主题',width:100,},  
-			{field:'why',title:'是否骑缝',width:100,},
-			{field:'pageNumber',title:'页数',width:100,},   
-			{field:'copiesNumber',title:'份数',width:100,},        		
-			{field:'approver',title:'审批人',width:100,},
-			{field:'agent',title:'经办人',width:100,},   	        		
-       		{field:'overDate',title:'盖章时间',width:100,},
-       		{field:'state',title:'状态',width:50,},
-		    ]],
-		})
-=======
+
 		        {field:'id',title:'id',checkbox:true,}, 
 				{field:'number',title:'编号',width:50,},   
 				{field:'projectName',title:'项目名称',width:140,},
@@ -127,7 +108,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	       		{field:'state',title:'审批状态',width:50,},
 			    ]],
 			})
->>>>>>> Stashed changes
+
 	
 		spprove_tanc2 = $('#approve_official_tanc').dialog({
 			title : '审批',
@@ -144,7 +125,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			if(requestSealRow == null){
 			   alert("请选择一条数据");
 			}else{
-<<<<<<< HEAD
+
 				$("input[name = requestSealtId]").val(row.id);
 				/* $("input[name = sealId]").val(row.sealId); */				
 				$("#type").append("<option value=''>"+row.sealId.typeName+"</option>"); 
@@ -155,20 +136,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				$("textarea[name = text]").val(row.text);
 				$("textarea[name = why]").val(row.why);
 				spprove_tanc.dialog('open') // 打开dialog
-//				spprove_tanc.dialog('close') // 关闭dialog
-=======
-				$("input[name = requestSealtId]").val(requestSealRow.id);
-				/* $("input[name = sealId]").val(row.sealId); */
-				
-				$("#type").append("<option value=''>"+requestSealRow.sealId.typeName+"</option>"); 
-				$("input[name = number]").val(requestSealRow.number);
-				$("input[name = projectName]").val(requestSealRow.projectName);
-				$("input[name = pageNumber]").val(requestSealRow.pageNumber);
-				$("input[name = copiesNumber]").val(requestSealRow.copiesNumber);
-				$("textarea[name = text]").val(requestSealRow.text);
-				$("textarea[name = why]").val(requestSealRow.why);
-				spprove_tanc2.dialog('open') // 打开dialog
->>>>>>> origin/master
+
 			}
 			
 		};

@@ -96,4 +96,35 @@ public interface RequestSealMapper {
 	 * @date 2017年5月15日
 	 */
 	RequestSeal queryOneOneself(int id);
+	/**
+	 * 
+	 * @Description: 返回所有已经审批的数据
+	 * @param @return   
+	 * @return List<RequestSeal>  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年5月18日
+	 */
+	 List<RequestSeal> approverRequestSeal(@Param("startPage")int startPage,@Param("rows")int rows);
+	 /**
+	  * 
+	  * @Description: 获取已审批的条数
+	  * @param @return   
+	  * @return int  
+	  * @throws
+	  * @author 小白
+	  * @date 2017年5月18日
+	  */
+	 int approverTotal();
+	 /**
+	  * 
+	  * @Description: 最终的公章办理
+	  * @param @param r
+	  * @param @return   
+	  * @return int  
+	  * @throws
+	  * @author 小白
+	  * @date 2017年5月18日
+	  */
+	 int handling(RequestSeal r);
 }

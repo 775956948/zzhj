@@ -78,4 +78,22 @@ public class ZiZhiSealService {
 		
 		return zs.approver(sealId,parentUser.getName());
 	}
+	
+	public Map<String,Object> approverZiZhiSeal(int page,int rows){
+		int startPage =(page-1)*rows;
+		List<ZiZhiSeal> list = zs.approverZiZhiSeal(startPage, rows);
+		int total =zs.approverTotal();
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("rows", list);
+		map.put("total",total);
+		return map;
+	}
+	
+	public int handLing(ZiZhiSeal z){
+		Date today=new Date();
+		SimpleDateFormat f=new SimpleDateFormat("yyyy-MM-dd");
+		String time=f.format(today);
+		z.setOverDate(time);
+		return zs.handling(z);
+	}
 }

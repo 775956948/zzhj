@@ -14,13 +14,14 @@ import com.zzhj.po.Department;
 import com.zzhj.po.RequestSeal;
 import com.zzhj.po.Users;
 import com.zzhj.po.ZiZhiSeal;
+import com.zzhj.service.RequestSealService;
 
 public class Test {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		  ApplicationContext ap =new ClassPathXmlApplicationContext("classpath:application_*.xml");
-		 RequestSealAction r = (RequestSealAction)ap.getBean("requestSealAction");
+		  ApplicationContext ap =new ClassPathXmlApplicationContext(new String[]{"application_context.xml","application_dao.xml","application_mvc.xml"});
+		 RequestSealService r = (RequestSealService)ap.getBean("requestSealService");
 		 Map map =r.queryAll(1, 10);
 		 List<RequestSeal> list =(List) map.get("rows");
 		 System.out.println(list.get(0).getProjectName());

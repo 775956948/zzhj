@@ -59,4 +59,19 @@ public class ZiZhiSealAction {
 		Users user = (Users) session.getAttribute("users");
 		return zs.approver(sealId, user.getId());
 	}
+	
+	@RequestMapping("/approverZiZhiSeal.action")
+	@ResponseBody
+	public Map<String,Object> approverZiZhiSeal(int page,int rows){
+		return zs.approverZiZhiSeal(page, rows);
+	}
+	
+	@RequestMapping("/handLing.action")
+	@ResponseBody
+	public int handLing(ZiZhiSeal z,HttpSession session){
+		Users user = (Users) session.getAttribute("users");
+		z.setAgent(user.getName());
+		return zs.handLing(z);
+	}
+	
 }
