@@ -8,8 +8,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<head>
 		<meta charset="UTF-8">
 		<title>审批</title>
-		
-		
 	</head>
 	<body>
 		<!--审批表格-->
@@ -52,27 +50,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    singleSelect:true, 
 			nowarp:false,
 		    fit:true, 
-		    fitColumns:true,
+		    fitColumns:false,
 		    border:false,
 			pagination:true,
 	 		singleSelect:true,
 		    toolbar:'#spproveTb', 
 		   	columns:[[    
 	        {field:'id',title:'id',checkbox:true,}, 
-			{field:'number',title:'编号',width:100,},       
-			{field:'projectName',title:'项目名称',width:100,},
-			{field:'userId',title:'申请人',width:100,formatter:function(value){
+			{field:'number',title:'编号',width:50,},       
+			{field:'projectName',title:'项目名称',width:140,},		
+    			{field:'text',title:'盖章内容',width:140,},  
+			{field:'why',title:'盖章事由',width:140,},
+			{field:'requestDate',title:'申请时间',width:140,},
+			{field:'overDate',title:'盖章时间',width:140,},			
+			{field:'pageNumber',title:'页数',width:70,},   
+			{field:'copiesNumber',title:'份数',width:70,},  
+			{field:'userId',title:'申请人',width:70,formatter:function(value){
     			return value.name;
     		}},
-			{field:'requestDate',title:'申请时间',width:100,},
-			{field:'text',title:'盖章内容',width:100,},  
-			{field:'why',title:'盖章事由',width:100,},
-			{field:'pageNumber',title:'页数',width:100,},   
-			{field:'copiesNumber',title:'份数',width:100,},        		
-			{field:'approver',title:'审批人',width:100,},
-			{field:'agent',title:'经办人',width:100,},   	        		
-       		{field:'overDate',title:'盖章时间',width:100,},
-       		{field:'state',title:'状态',width:50,},
+			{field:'approver',title:'审批人',width:70,},
+			{field:'agent',title:'经办人',width:70,},   	        		
+       		
+       		{field:'state',title:'状态',width:70,},
 		    ]],
 		})
 	

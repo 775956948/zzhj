@@ -1,21 +1,14 @@
-<!--<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>-->
+%>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
 		<title>公章经办</title>	
-		<link rel="stylesheet" type="text/css" href="../easyui/themes/icon.css">
-		<link rel="stylesheet" type="text/css" href="../easyui/themes/default/easyui.css">
-		<link rel="stylesheet" type="text/css" href="../easyui/demo/demo.css">
-	 	<link rel="stylesheet" type="text/css" href="../css/basic.css">	
-		<link rel="stylesheet" type="text/css" href="../css/style.css" > 
-		<script type="text/javascript" src="../easyui/jquery.min.js"></script> 
-		<script type="text/javascript" src="../easyui/jquery.easyui.min.js"></script>
-		<script type="text/javascript" src="../easyui/locale/easyui-lang-zh_CN.js"></script>
+
 	</head>
 	<style> 
 		td{
@@ -25,13 +18,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<body>
 		<!--经办表格-->
 		 <div id="hanhling_official_Tb">
-			<a  class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="hanhling_official_Tb()" >查看</a>
-			<!--  <a  class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="deleteSpprove()">删除</a>-->				
+			<a  class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="hanhling_official_Tb()" >查看</a>				
 		</div>
 		<div id="hanhling_official_tanc" style="display: none;">
 			<form action="" method="post" id="approve_official_form" class="approve_official_form">
-				<input name="id" id="dis_none" /> 
-				<h2 class="cmn_tit">资质章盖章经办单</h2>
+				<input name="id" id="dis_none" />
+				<h2 class="cmn_tit">公章盖章经办单</h2>
 				<ul class="cmn_list">
 					<li>
 						<span>编号</span>
@@ -47,11 +39,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</li>
 					<li>
 						<span>章类型</span>
-						<select id="type" name="sealId" class="approve_official_val"></select>
-					<li>
-						<li>
+						<select id="type" name="sealId" class="approve_official_val">
+							<option value=""></option>
+						</select>
+					
+					<li style="position: relative;">
+						<!--遮罩层-->
+						<div style="width: 100%; height: 40px; position: absolute;z-index: 10;">
+							
+						</div>
 						<span>是否骑缝</span>
-						<input type="text" name="why" readonly="readonly" value="" class="approve_official_val "/>
+						
+						<b class="pd10" style="padding:0 5px;">是<input type="radio" name="why" id="" value="是"/></b>
+						<b class="pd10" style="padding:0 5px;">否<input type="radio" name="why" id="" value="否"/></b>
 					<li>
 					<li>
 						<span>页数</span>
@@ -81,29 +81,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <input type="checkbox" name="" id="" value="" />
 
 		<script type="text/javascript">	
-			var ddd = {                                                     
-			    "total":12,                                                     
-			    "rows":[                                                         
-			        {"number":"001","state":"Name 1","projectName":"Name1","userId":"Name 1","requestDate":"2052","text":"20522052205220522052205220522052","why":"2052","pageNumber":"2052","copiesNumber":"2052","approver":"2052","agent":"2052","overDate":"2052","ztai":"2052",},        
-			        {"number":"001","state":"Name 1","projectName":"Name1","userId":"Name 1","requestDate":"2052","text":"205220522052205220522052","why":"2052","pageNumber":"2052","copiesNumber":"2052","approver":"2052","agent":"2052","overDate":"2052","ztai":"2052",},        
-			        {"number":"001","state":"Name 1","projectName":"Name1","userId":"Name 1","requestDate":"2052","text":"205220522052","why":"2052","pageNumber":"2052","copiesNumber":"2052","approver":"2052","agent":"2052","overDate":"2052","ztai":"2052",},        
-			        {"number":"001","state":"Name 1","projectName":"Name1","userId":"Name 1","requestDate":"2052","text":"2052","why":"2052","pageNumber":"2052","copiesNumber":"2052","approver":"2052","agent":"2052","overDate":"2052","ztai":"2052",},        
-			        {"number":"001","state":"Name 1","projectName":"Name1","userId":"Name 1","requestDate":"2052","text":"2052","why":"2052","pageNumber":"2052","copiesNumber":"2052","approver":"2052","agent":"2052","overDate":"2052","ztai":"2052",},        
-			        {"number":"001","state":"Name 1","projectName":"Name1","userId":"Name 1","requestDate":"2052","text":"2052","why":"2052","pageNumber":"2052","copiesNumber":"2052","approver":"2052","agent":"2052","overDate":"2052","ztai":"2052",},        
-			        {"number":"001","state":"Name 1","projectName":"Name1","userId":"Name 1","requestDate":"2052","text":"2052","why":"2052","pageNumber":"2052","copiesNumber":"2052","approver":"2052","agent":"2052","overDate":"2052","ztai":"2052",},        
-			    ]                                                         
-			}
-			
-			
-			
 		$('#hanhling_official_Dg').datagrid({
-			 //url:'requestSeal/queryOneself.action',
+			 url:'requestSeal/approverRequestSeal.action',
 			rownumbers:false,
-			data:ddd,
+			
 		    singleSelect:true, 
 			nowarp:false,
 		    fit:true, 
-		    fitColumns:true,
 		    border:false,
 			pagination:true,
 	 		singleSelect:true,
@@ -121,8 +105,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				{field:'why',title:'是否骑缝',width:70,},
 				{field:'sealId',title:'章类型',width:70,},
 				{field:'userId',title:'申请人',width:70,formatter:function(value){
-	    			return value.name;
-	    		}},
+		    			return value.name;
+		    		}},
 	       		{field:'approver',title:'审批人',width:70,},
 				{field:'agent',title:'经办人',width:70,},
 	       		{field:'state',title:'审批状态',width:70,},
@@ -139,30 +123,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 		//查看
 		function hanhling_official_Tb(){		
-			//var row = $('#approveDg').datagrid('getChecked');  你这个是选择所以行
 			var row = $('#hanhling_official_Dg').datagrid('getSelected');
 			if(row == null){
 			   alert("请选择一条数据");
 			}else{
-				$("input[name = id]").val(row.id);
-				/* $("input[name = sealId]").val(row.sealId); */
+				var  aa = row.why;
 				
-				/* $("#type").append("<option value=''>"+row.sealId.typeName+"</option>"); */
+				if(aa == "是"){
+					$(".cmn_list li input[type = radio]").eq(0).click()
+				}else if(aa == "否"){
+					$(".cmn_list li input[type = radio]").eq(1).click()
+				}
+				
+				$("input[name = id]").val(row.id);				
+				$("#type option").val(row.sealId).text(row.sealId);
+				$("input[name = sealId]").val(row.sealId); 
 				$("input[name = number]").val(row.number);
 				$("textarea[name = projectName]").val(row.projectName);
 				$("input[name = pageNumber]").val(row.pageNumber);
 				$("input[name = copiesNumber]").val(row.copiesNumber);
 				$("textarea[name = text]").val(row.text);
-				$("input[name = why]").val(row.why);
+				
 				handling_official_tanc.dialog('open')
 			}
 		};
 		
 		
 
-		 function hanhling_official__Submit(){		
+		 function hanhling_official_Submit(){		
 			$.ajax({
-				   url:"requestSeal/approver.action",
+				   url:"requestSeal/handLing.action",
 				   type:"post",
 				   data:$("#approve_official_form").serialize(),				   
 				   success:function(data){
@@ -170,7 +160,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					   		$('#hanhling_official_tanc').dialog({
 								closed : true,
 							});
-					   	alert("经办成功");
+					   	alert("提交成功");
 					   	spprove_tanc.dialog('close');
 					   	$('#hanhling_official_Dg').datagrid('reload');
 					   	
