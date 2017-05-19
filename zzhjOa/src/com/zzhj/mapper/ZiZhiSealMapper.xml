@@ -12,6 +12,7 @@
 		<result column="copiesNumber" property="copiesNumber"/>
 		<result column="text" property="text"/>
 		<result column="why" property="why"/>
+		<result column="agent" property="agent"/>
 		<result column="pageNumber" property="pageNumber"/>
 		<association property="userId" javaType="users">
 			<result column="name" property="name"/>
@@ -52,7 +53,7 @@
   	 where id=#{sealId}
   </update>
   <select id="approverZiZhiSeal" resultMap="zs" parameterType="int">
-  		SELECT z.id,z.number,z.projectName,z.requestDate,z.approver,z.overDate,z.state,z.copiesNumber,z.text,z.why,z.pageNumber,u.name FROM zi_zhi_seal z INNER JOIN users u ON u.id=z.user_id where z.state='已审批' limit #{startPage},#{rows}
+  		SELECT z.id,z.number,z.projectName,z.requestDate,z.approver,z.overDate,z.state,z.copiesNumber,z.text,z.why,z.pageNumber,z.agent,u.name FROM zi_zhi_seal z INNER JOIN users u ON u.id=z.user_id where z.state='已审批' limit #{startPage},#{rows}
   </select>
   
   <select id="approverTotal" resultType="int">

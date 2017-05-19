@@ -13,6 +13,7 @@
 		<result column="text" property="text"/>
 		<result column="why" property="why"/>
 		<result column="pageNumber" property="pageNumber"/>
+		<result column="agent" property="agent"/>
 		<association property="userId" javaType="users">
 			<result column="name" property="name"/>
 		</association>
@@ -57,7 +58,7 @@
   </select>
   
   <select id="approverRequestSeal" parameterType="int" resultMap="zs">
-  	 SELECT r.id,r.number,r.project_name,r.request_date,r.approver,r.over_date,r.state,r.copiesNumber,r.text,r.why,r.pageNumber,u.name FROM request_seal r INNER JOIN users u ON u.id=r.user_id INNER JOIN seal s ON s.id=r.seal_id where r.state='已审批' limit #{startPage},#{rows}
+  	 SELECT r.id,r.number,r.project_name,r.request_date,r.approver,r.over_date,r.state,r.copiesNumber,r.text,r.why,r.pageNumber,r.agent,u.name FROM request_seal r INNER JOIN users u ON u.id=r.user_id INNER JOIN seal s ON s.id=r.seal_id where r.state='已审批' limit #{startPage},#{rows}
   </select>
   
   <select id="approverTotal" resultType="int">

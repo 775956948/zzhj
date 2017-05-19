@@ -11,9 +11,9 @@ body{font:normal 0.8rem/1.5 'Microsoft Yahei',Helvetica,arial,sans-serif;  backg
 li{list-style:none;}
 h1, h2, h3, h4, h5, h6, b{font-weight:normal; font-size:12px;}
 i, em {font-style:normal;}
-input, textarea, select{outline:none;}
-input{border:none 0;}
-input::-ms-clear{display:none;}
+/* input, textarea, select{outline:none;}
+input{border:none 0;} */
+/* input::-ms-clear{display:none;} */
 textarea{resize:none;}
 a{text-decoration:none; color:#666;}
 a img{display:block; border:none;}

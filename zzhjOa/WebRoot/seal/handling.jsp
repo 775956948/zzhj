@@ -14,9 +14,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		 <div id="handling_Tb">
 			<a  class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="add_handling_Tb()" >查看</a>			
 		</div>
-		<div id="handling_tanc" style="display: none;"> 
+		<div id="handling_tanc" > 
 			<form action="" method="post" id="handling_form" class="approve-form">
-				<input name="id" id="dis_none" style="display:none !important;"/>
+				<input name="id" id="dis_none" style="display:none !important;color:#fff !important;" />
 				<h2 class="cmn_tit">资质章盖章经办单</h2>
 				<ul class="cmn_list">
 					<li><span>编号</span><input type="text" name="number"  value="" readonly="readonly" class="apply-val" /></li>
@@ -58,7 +58,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 		<script type="text/javascript">	
 			
-		
+		$("#dis_none").hide();
 		$('#handling_Dg').datagrid({
 			 url:'ziZhiSeal/approverZiZhiSeal.action',
 			
@@ -108,6 +108,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			if(row == null){
 			   alert("请选择一条数据");
 			}else{
+				var  aa = row.why;
+				
+				if(aa == "是"){
+					$(".cmn_list li input[type = radio]").eq(0).click()
+				}else if(aa == "否"){
+					$(".cmn_list li input[type = radio]").eq(1).click()
+				}
+				
 				$("input[name = id]").val(row.id);
 				$("input[name = number]").val(row.number);
 				$("textarea[name = projectName]").val(row.projectName);
@@ -123,15 +131,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		
 
-		 function handling_Submit(){	 			
+		 function handling_Submit(){	 	
+			 var id = $("#dis_none").val();
 			$.ajax({
 				   url:"ziZhiSeal/handLing.action",
 				   type:"post",
-				   data:$("#handling_form").serialize(),	
-				   dataType:"",			   
+				   data:{'id':id},	   
 				   success:function(data){
 					   if(data == 1){
-					   		$('handling_#tanc').dialog({
+					   		$('#handling_tanc').dialog({
 								closed : true,
 							});
 					   	alert("经办完成");
