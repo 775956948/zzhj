@@ -4,13 +4,12 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'carInfo.jsp' starting page</title>
+    <title>用车信息</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -111,8 +110,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		function addCarInfo(){
 			$('#carInfoDd').dialog({
 					title : '添加用车信息',
-					width : 700,
-					height : 500,
+					width : 500,
+					height : 400,
 					closed : false,
 					cache : false,
 					modal : true, 
@@ -184,8 +183,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				$.post('carInfo/carInfoOne.action',{'id':row.id},function(data){
 						$('#carInfoDd').dialog({
 						title : '完善用车信息',
-						width : 700,
-						height : 500,
+						width : 500,
+						height : 400,
 						closed : false,
 						cache : false,
 						modal : true, 

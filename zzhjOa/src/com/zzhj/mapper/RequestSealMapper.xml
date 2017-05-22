@@ -23,7 +23,7 @@
 	</resultMap>
 
    <select id="queryAll" resultMap="zs" parameterType="int">
-  		 SELECT r.id,r.number,r.project_name,r.request_date,r.approver,r.over_date,r.state,r.copiesNumber,r.text,r.why,r.pageNumber,u.name FROM request_seal r INNER JOIN users u ON u.id=r.user_id INNER JOIN seal s ON s.id=r.seal_id  limit #{startPage},#{rows}
+  		 SELECT r.id,r.number,r.project_name,r.request_date,r.approver,r.over_date,r.state,r.copiesNumber,r.text,r.why,r.pageNumber,r.agent,u.name FROM request_seal r INNER JOIN users u ON u.id=r.user_id INNER JOIN seal s ON s.id=r.seal_id  limit #{startPage},#{rows}
   </select>
   <select id="totalCount" resultType="int">
   		select count(id) from request_seal
@@ -54,11 +54,11 @@
   </select>
   
     <select id="queryOneself" parameterType="object" resultMap="zs">
-  	SELECT r.id,r.number,r.project_name,r.request_date,r.approver,r.over_date,r.state,r.copiesNumber,r.text,r.why,r.pageNumber,s.type_name,u.name FROM request_seal r INNER JOIN users u ON u.id=r.user_id inner join seal s on s.id=r.seal_id where approver=#{userName} limit #{startPage},#{rows}
+  	SELECT r.id,r.number,r.project_name,r.request_date,r.approver,r.over_date,r.state,r.copiesNumber,r.text,r.why,r.pageNumber,r.agent,s.type_name,u.name FROM request_seal r INNER JOIN users u ON u.id=r.user_id inner join seal s on s.id=r.seal_id where approver=#{userName} limit #{startPage},#{rows}
   </select>
   
   <select id="approverRequestSeal" parameterType="int" resultMap="zs">
-  	 SELECT r.id,r.number,r.project_name,r.request_date,r.approver,r.over_date,r.state,r.copiesNumber,r.text,r.why,r.pageNumber,r.agent,u.name FROM request_seal r INNER JOIN users u ON u.id=r.user_id INNER JOIN seal s ON s.id=r.seal_id where r.state='已审批' limit #{startPage},#{rows}
+  	 SELECT r.id,r.number,r.project_name,r.request_date,r.approver,r.over_date,r.state,r.copiesNumber,r.text,r.why,r.pageNumber,r.agent,u.name,s.type_name FROM request_seal r INNER JOIN users u ON u.id=r.user_id INNER JOIN seal s ON s.id=r.seal_id where r.state='已审批' limit #{startPage},#{rows}
   </select>
   
   <select id="approverTotal" resultType="int">

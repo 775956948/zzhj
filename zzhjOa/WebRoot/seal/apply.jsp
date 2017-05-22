@@ -6,15 +6,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE html>
 <html>
 	<head>
+		<base href="<%=basePath%>">
 		<meta charset="UTF-8">
 		<title>资质章盖章申请单</title>
+		<meta http-equiv="pragma" content="no-cache">
+		<meta http-equiv="cache-control" content="no-cache">
+		<meta http-equiv="expires" content="0">    
+		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+		<meta http-equiv="description" content="This is my page">
 	</head>
-	<style type="text/css">
-		td>div{
-			width: auto !important;
-			padding:0 10px !important;
-		}
-	</style>
 	<body>
 		 <div id="sealTb">
 			<a  class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="addApply()" >创建申请</a>
@@ -22,39 +22,39 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		<div id="apply-tanc"  class="easyui-dialog" closed=true >
   		<form action="" method="post" id="apply-form">
-  			   <table>
+  			   <table id="nimabi" style="font-size: 12px; margin-left: 60px; margin-top:10px;">
   			   		<tr>
-  			   			<td colspan="2"><h2>资质章盖章申请单</h2></td>
+  			   			<td colspan="2"><h2 style="font-size: 16px; margin-left: 70px; margin-bottom: 20px;">资质章盖章申请单</h2></td>
   			   		</tr>
   			   		<tr>
   			   			<td>编号</td>
-  			   			<td><input type="text" name="number"  value="" class="apply-val" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();"/></td>
+  			   			<td><input type="text" name="number"  value=""  onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();" /></td>
   			   		</tr>
   			   		<tr>
   			   			<td>项目名称</td>
-  			   			<td><input type="text" name="projectName"  value="" class="apply-val"/></td>
+  			   			<td><input type="text" name="projectName"  value="" /></td>
   			   		</tr>
   			   		
   			   		<tr>
   			   			<td>盖章内容</td>
   			   			<td>
-  			   				<textarea name="text" rows="" cols="" class="apply-val"></textarea>
+  			   				<textarea name="text" rows="" cols="" ></textarea>
   			   			</td>
   			   		</tr>
   			   		<tr>
   			   			<td>盖章事由</td>
   			   			<td>
-  			   				<textarea name="why" rows="" cols="" class="apply-val"></textarea>
+  			   				<textarea name="why" rows="" cols="" ></textarea>
   			   			</td>
   			   		</tr>
   			   		 
   			   		<tr>
   			   			<td>页数</td>
-  			   			<td><input type="text" name="pageNumber"  value="" class="apply-val " onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();"/></td>
+  			   			<td><input type="text" name="pageNumber"  value="" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();"/></td>
   			   		</tr>
   			   		<tr>
   			   			<td>份数</td>
-  			   			<td><input type="numberbox" name="copiesNumber"  value="" class="apply-val" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();"/></td>
+  			   			<td><input type="numberbox" name="copiesNumber"  value="" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();"/></td>
   			   		</tr>
   			   		<tr align="center">
   			   			<td colspan="2"><input type="button" value="申请" onclick="applySubmit()"/></td>
@@ -62,6 +62,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   			   
   			   </table>
   		</form>
+
   		</div>
   		
   		 <table id="applyDg"></table> 
@@ -95,30 +96,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		 	 		 	
   		 	$('#applyDg').datagrid({    
    			 url:'ziZhiSeal/queryAll.action',
-   			 fitColumns:false,
+   			 fitColumns:true,
    			 toolbar:'#sealTb', 
    			 pagination:true,
    			 singleSelect:true,
    			 columns:[[
-		   		{field:'id',title:'编号',checkbox:true,}, 
+		   		{field:'id',title:'',checkbox:true,}, 
 		   		{field:'number',title:'编号'},       
 	        		{field:'projectName',title:'项目名称',},
-	        		{field:'userName',title:'申请人',formmater:function(value){
+	        		{field:'userId',title:'申请人',formatter:function(value){
 	        			return value.name;
 	        		}},
 	        		{field:'requestDate',title:'申请时间',},
+	        		{field:'state',title:'状态',},
+	        		{field:'approver',title:'审批人',},
+	        		{field:'agent',title:'经办人',},
+	        		{field:'overDate',title:'盖章时间',},
 	        		{field:'text',title:'盖章内容',},  
 	        		{field:'why',title:'盖章事由',},
 	        		{field:'pageNumber',title:'页数',},   
 	        		{field:'copiesNumber',title:'份数',},        		
-	        		{field:'approver',title:'审批人',},
-	        		{field:'agent',title:'经办人',},   	        		
-	        		{field:'overDate',title:'结束时间',},
-
-	        		{field:'state',title:'状态',},
-
-	        		{field:'overDate',title:'状态',},
-	        		
 
     		]]    
 		}); 

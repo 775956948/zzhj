@@ -17,7 +17,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		<div id="spprove-tanc"> 
  			<form action="" method="post" id="approve-form" class="approve-form">
-				<input name="sealId" id="dis_none" style="display:none !important;"/>
+				<input name="sealId" id="dis_none" style="opacity:0;"/>
 				<h2 class="cmn_tit">资质章盖章申请单</h2>
 				<ul class="cmn_list">
 					<li><span>编号</span><input type="text" name="id2"  value="" readonly="readonly" class="apply-val" /></li>
@@ -45,33 +45,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 		<script type="text/javascript">	
 		$('#approveDg').datagrid({
-			 url:'ziZhiSeal/queryOneself.action',
-			rownumbers:true,
-		    singleSelect:true, 
-			nowarp:false,
-		    fit:true, 
-		    fitColumns:false,
-		    border:false,
+			url:'ziZhiSeal/queryOneself.action',
+		    fitColumns:true,
 			pagination:true,
 	 		singleSelect:true,
 		    toolbar:'#spproveTb', 
 		   	columns:[[    
 	        {field:'id',title:'id',checkbox:true,}, 
 			{field:'number',title:'编号',width:50,},       
-			{field:'projectName',title:'项目名称',width:140,},		
-    			{field:'text',title:'盖章内容',width:140,},  
-			{field:'why',title:'盖章事由',width:140,},
-			{field:'requestDate',title:'申请时间',width:140,},
-			{field:'overDate',title:'盖章时间',width:140,},			
-			{field:'pageNumber',title:'页数',width:70,},   
-			{field:'copiesNumber',title:'份数',width:70,},  
+			{field:'projectName',title:'项目名称',width:140,},	
 			{field:'userId',title:'申请人',width:70,formatter:function(value){
     			return value.name;
     		}},
-			{field:'approver',title:'审批人',width:70,},
-			{field:'agent',title:'经办人',width:70,},   	        		
+    		{field:'requestDate',title:'申请时间',width:140,},
+    		{field:'state',title:'状态',width:70,},
+    		{field:'approver',title:'审批人',width:70,},
+    		{field:'agent',title:'经办人',width:70,}, 
+    		{field:'overDate',title:'盖章时间',width:140,},
+    		{field:'text',title:'盖章内容',width:140,},  
+			{field:'why',title:'盖章事由',width:140,},		
+			{field:'pageNumber',title:'页数',width:70,},   
+			{field:'copiesNumber',title:'份数',width:70,},  
+		
+			 	        		
        		
-       		{field:'state',title:'状态',width:70,},
+       		
 		    ]],
 		})
 	

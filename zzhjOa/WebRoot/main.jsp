@@ -87,7 +87,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		}
 	</script>
 	
-	<style type="text/css"> 
+ 	<style type="text/css"> 
 		.logo_btn{
 		    float: left;
 		    display: block;
@@ -100,7 +100,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			line-height: 62px;
 		    font-size: 14px;
 		    display: inline-block;
-		}
+		} 
 		#user{
 			float:right;width:300px;
 		}
@@ -109,8 +109,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			width:100px;
 			line-height: 62px;
 		}
-	</style>
-
+	</style> 
   </head>
 	<body>    
     	<div id="cc" class="easyui-layout" fit=true "style="height:70px;">   
@@ -123,7 +122,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     			</span>
     		</div>	
 	
-			<div id="user" style="">
+			<div id="user">
 				<ul>
 					<li><h2>当前用户:${users.name }</h2></li>
 					<li><h2>${message }</h2></li>

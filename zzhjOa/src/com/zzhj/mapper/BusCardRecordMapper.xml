@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "http://mybatis.org/dtd/mybatis-3-mapper.dtd" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzhj.mapper.BusCardRecordMapper">
+	<resultMap type="busCardRecord" id="bcr">
+		<id column="id" property="id"/>
+		<result column="start" property="start"/>
+		<result column="over" property="over"/>
+		<result column="start_date" property="startDate"/>
+		<result column="over_date" property="overDate"/>
+		<result column="start_money" property="startMoney"/>
+		<result column="over_money" property="overMoney"/>
+		<association property="busCardId" javaType="busCard">
+			<result column="car_number" property="carNumber"/>
+		</association>
+		<association property="userId" javaType="users">
+			<result column="name" property="name"/>
+		</association>
+	</resultMap>
+  	<select id="queryAll" parameterType="int" resultMap="bcr">
+  		select r.id,r.start,r.over,r.start_date,r.over_date,r.start_money,r.over_money,b.card_number,u.name from bus_card_record r inner join bus_card b on b.id=r.bus_card_id inner join users u on u.id=r.user_id
+  		limit #{startPage},#{rows}
+  	</select>
+  	<select id="totalCount" resultType="int">
+  		select count(id) from bus_card_record
+  	</select>
+  	<insert id="save" parameterType="busCardRecord">
+  		INSERT INTO bus_card_record(bus_card_id,user_id,START,start_date,start_money)
+ 		VALUES(#{busCardId.id},#{userId.id},#{start},#{startDate},#{startMoney})
+  	</insert>
+  	<update id="update" parameterType="busCardRecord">
+  		update bus_card_record set over=#{over},over_date=#{overDate},start_money=#{startMoney},over_money=#{overMoney}
+  		where id=#{id}
+  	</update>
+</mapper>

@@ -13,7 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 	</head>
 	<body>
-		<div id="sealTb">
+		<div id="requestSealTb">
 			<a  class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="addapply_official_Tb()" >创建申请</a>
 		</div>
 
@@ -37,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</li>
  					<li>
 						<span>章类型</span>
-						<input  name="sealId.id" id="apply_offcial_select" class="apply_offcial_select" value="" style="border:0 !important;" />
+						<input  name="sealId.id" id="apply_offcial_select" class="apply_offcial_select"  />
 					
 					</li> 
 					<li>
@@ -63,29 +63,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 			$('#apply_official_Dg').datagrid({				
 				url:'requestSeal/queryAll.action',
-   			    rownumbers:false,
-			    singleSelect:true, 
-				nowarp:false,
-			    fit:true, 
-			    fitColumns:false,
-			    border:false,
+			    fitColumns:true,
 				pagination:true,
 		 		singleSelect:true,
+		 		toolbar:'#requestSealTb',
 			   	columns:[[    
 			        {field:'id',checkbox:true,}, 
-			   		{field:'number',title:'编号',width:50,},       
-		        		{field:'projectName',title:'项目名称',width:140,},
-		        		{field:'text',title:'收文主题',width:200,},
-		        		{field:'userId',title:'申请人',width:70,formatter:function(value){return value.name}},
-		        		{field:'requestDate',title:'申请日期',width:100,},
-		        		{field:'overDate',title:'盖章日期',width:100,},		        		
-		        		{field:'pageNumber',title:'页数',width:70,},
-		        		{field:'copiesNumber',title:'份数',width:70,},
-		        		{field:'approver',title:'审批人',width:70},		        		
-		        		{field:'agent',title:'经办人',width:70,},		        		
-		        		{field:'state',title:'审批状态',width:70,},
-		        		{field:'why',title:'是否骑缝',width:70},
-	
+			   		{field:'number',title:'编号',width:50,},    
+			   		{field:'userId',title:'申请人',width:70,formatter:function(value){return value.name}},
+		        	{field:'projectName',title:'项目名称',width:140,},
+		        	{field:'requestDate',title:'申请日期',width:100,},	
+		        	{field:'state',title:'审批状态',width:70,},
+		        	{field:'approver',title:'审批人',width:70},
+		        	{field:'agent',title:'经办人',width:70,},
+		        	{field:'overDate',title:'盖章日期',width:100,},
+		        	{field:'text',title:'收文主题',width:200,},
+		        	{field:'why',title:'是否骑缝',width:70},	        		
+		        	{field:'pageNumber',title:'页数',width:70,},
+		        	{field:'copiesNumber',title:'份数',width:70,},	
 			    ]],
 			})
 			

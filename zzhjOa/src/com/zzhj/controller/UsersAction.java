@@ -37,7 +37,7 @@ public class UsersAction {
 				session.setAttribute("users", user);
 				mv.setViewName("redirect: ../main.jsp");
 			}else{
-				mv.addObject("message", "账户或密码错误");
+				session.setAttribute("loginMessage","用户名或密码错误");
 				mv.setViewName("redirect: ../login.jsp");
 			}
 		}else{

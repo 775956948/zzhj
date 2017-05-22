@@ -1,9 +1,9 @@
-<!--<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
--->
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -47,8 +47,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	</div>
   	<div class="login_main">
   		<div id="max" class="login_table">
+  			<p style="size: 10px; padding-left:80;color: red;">${loginMessage }</p>
+  			<c:remove var="loginMessage"/>
 	  		<form action="" method="post" id="form">
 				    <table id="table">
+					 
 					    <tr>			    	
 					    		<h5>登录</h5>
 					    </tr>
@@ -75,9 +78,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					    			<a href="back.jsp" class="forget_btn">忘记密码？</a><a href="javascript:;" class="register_btn" onclick="registered()">没账号？点击注册</a>
 					    		</td>
 					    		
-					    	</tr>
-					   		 <tr>
-					    		<td colspan="2">${message }</td>
 					    	</tr>
 				    	</table>  
 		    </form>

@@ -7,7 +7,7 @@
 .login_main{
 	max-width: 1920px;
 	height: 600px;
-		background: url('../image/login.jpg') no-repeat center;
+	background: url('../image/login.jpg') no-repeat center;
 	background-size:cover;
 	margin: 0 auto;
 }

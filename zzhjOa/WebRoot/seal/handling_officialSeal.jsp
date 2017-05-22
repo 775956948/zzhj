@@ -78,18 +78,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		<table id="hanhling_official_Dg"></table>
 		
-<input type="checkbox" name="" id="" value="" />
 
 		<script type="text/javascript">	
 		
 		$('#hanhling_official_Dg').datagrid({
 			 url:'requestSeal/approverRequestSeal.action',
-			rownumbers:false,
-			
-		    singleSelect:true, 
-			nowarp:false,
-		    fit:true, 
-		    border:false,
 			pagination:true,
 	 		singleSelect:true,
 	 		fitColumns:false,
@@ -98,19 +91,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	       	    {field:'id',title:'id',checkbox:true,}, 
 				{field:'number',title:'编号',width:50,},   
 				{field:'projectName',title:'项目名称',width:140,},
+				{field:'sealId',title:'章类型',width:70,formatter:function(value){ return value.typeName}},
+				{field:'userId',title:'申请人',width:70,formatter:function(value){
+	    			return value.name;
+	    		}},
+	    		{field:'requestDate',title:'申请日期',width:100,},
+	    		{field:'state',title:'审批状态',width:70,},
+	    		{field:'approver',title:'审批人',width:70,},
+	    		{field:'agent',title:'经办人',width:70,},
+	    		{field:'overDate',title:'盖章日期',width:100,},
 				{field:'text',title:'收文主题',width:200,},  			
-				{field:'requestDate',title:'申请日期',width:100,},
-	       		{field:'overDate',title:'盖章日期',width:100,},
 	       		{field:'pageNumber',title:'页数',width:70,},   
 				{field:'copiesNumber',title:'份数',width:70,},
 				{field:'why',title:'是否骑缝',width:70,},
-				{field:'sealId',title:'章类型',width:70,},
-				{field:'userId',title:'申请人',width:70,formatter:function(value){
-		    			return value.name;
-		    		}},
-	       		{field:'approver',title:'审批人',width:70,},
-				{field:'agent',title:'经办人',width:70,},
-	       		{field:'state',title:'审批状态',width:70,},
+       		
 		    ]],
 		})
 		handling_official_tanc = $('#hanhling_official_tanc').dialog({
@@ -137,7 +131,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				}
 				
 				$("input[name = id]").val(row.id);				
-				$("#type option").val(row.sealId).text(row.sealId);
+				$("#type option").val(row.sealId.id).text(row.sealId.typeName);
 				$("input[name = sealId]").val(row.sealId); 
 				$("input[name = number]").val(row.number);
 				$("textarea[name = projectName]").val(row.projectName);
