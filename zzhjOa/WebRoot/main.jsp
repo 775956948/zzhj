@@ -11,11 +11,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <base href="<%=basePath%>">
     
     <title>中兆恒基Oa办公系统</title>
-	<meta http-equiv="pragma" content="no-cache">
+<!-- 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
+	<meta http-equiv="description" content="This is my page"> -->
 	<script type="text/javascript">	
 		$(function(){
 			/* $("#mainTree").tree({
@@ -98,22 +98,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		}
 		.main_span{
 			line-height: 62px;
-		    font-size: 14px;
+		    font-size: 18px;
 		    display: inline-block;
 		} 
 		#user{
-			float:right;width:300px;
+			float:right;
+			margin-top: -50px;
+			margin-right: 100px;
 		}
 		#user li{
-			float:left;
-			width:100px;
-			line-height: 62px;
+			list-style: none;
+			line-height: 20px;
+			margin: 0px;
+			padding: 0px;
+		}
+		#cc{
+			overflow: hidden;
+		}
+		#user h3,h4{
+			margin: 0px;
+			padding: 0px;
+		}
+		/*-------rest.jsp-----*/
+		#addRest li span {
+			display:inline-block;
+			width: 50px;
+		}
+		.marginLeft{
+			margin-left: 40px;
 		}
 	</style> 
+	<link rel="stylesheet" type="text/css" href="css/parent.css">
+	
   </head>
 	<body>    
     	<div id="cc" class="easyui-layout" fit=true "style="height:70px;">   
-    	<div data-options="region:'north'" style="height:70px;background-color: E0ECFF;">
+    	<div data-options="region:'north'" style="height:80px;background-color: E0ECFF;" id="title" >
     		<a href="#" class="logo_btn"><img src="image/logo_02.png"/></a>
     		<span class="main_span">中兆恒基Oa办公系统</span>
     		<div class="fr"> 
@@ -124,9 +144,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 			<div id="user">
 				<ul>
-					<li><h2>当前用户:${users.name }</h2></li>
-					<li><h2>${message }</h2></li>
-					<li><h2 onclick="exit()" style="cursor:pointer">退出登陆</h2></li>
+					<li><h3>当前用户:${users.name }</h3></li>
+					<li><h4>${message }</h4></li>
+					<li><h4 onclick="exit()" style="cursor:pointer">退出登陆</h4></li>
 				</ul>
 			</div>
     	</div>      

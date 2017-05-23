@@ -19,7 +19,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
+	<style type="text/css">
+		
+	</style>
   </head>
   
   <body>
@@ -29,10 +31,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		<div id="abnormalDd"  class="easyui-dialog" closed=true >
   		<form action="" method="post">
-  				<h2 class="cmn_tit">打卡异常信息表</h2>
-				<ul class="cmn_list">
+  				<h2 style="margin: auto; width:130px; margin-top: 20px;">打卡异常信息表</h2>
+				<ul class='marginLeft'>
 					<li>
-						<span>申请人</span>
+						<span>申请人&nbsp;</span>
 						<input type="text" name="userId" disabled="disabled"  value="${users.name}"/>
 					</li>
 					<li>
@@ -42,16 +44,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  			   					<option>下午</option>
  			   					<option>全天</option>
  			   				</select>
-					<li class="data_ipt">
+					<li>
 						<span>异常时间</span>
 						<input type="datetime-local" name="abnormalDate" />
 					</li>
-					<li class="data_ipt">
-						<span>异常原由</span>
-						<input type="datetime-local" name="abnormalDate" />
+					<li >
+						<span style="float: left;">异常原由</span>
+						<textarea rows="2" cols="30" name="abnormalText"></textarea>
 					</li>
-					<li class="txt_ctr">
-						<input type="button" value="申请" onclick="abnormalSubmit()"/>
+					<li >
+						<input style="margin-left: 65px;"  type="button" value="申请" onclick="abnormalSubmit()"/>
 					</li>
 				
 				</ul>

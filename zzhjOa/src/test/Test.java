@@ -29,7 +29,7 @@ public class Test {
 		 Map<String,Object> map =b.queryAll(1,10);
 		 List<BusCardRecord> list =(List<BusCardRecord>) map.get("rows");
 		 System.out.println(map.get("total"));
-		 System.out.println(list.get(0).getUserId().getName());
+		 System.out.println(list.get(0).getBusCardId().getCardNumber());
 	
 
 	}

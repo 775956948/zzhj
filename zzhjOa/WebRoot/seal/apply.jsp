@@ -22,10 +22,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		<div id="apply-tanc"  class="easyui-dialog" closed=true >
   		<form action="" method="post" id="apply-form">
-  			   <table id="nimabi" style="font-size: 12px; margin-left: 60px; margin-top:10px;">
+  			   <table  style="font-size: 12px; margin-left: 60px; margin-top:10px;" name="form">
   			   		<tr>
-  			   			<td colspan="2"><h2 style="font-size: 16px; margin-left: 70px; margin-bottom: 20px;">资质章盖章申请单</h2></td>
-  			   		</tr>
+					 <td colspan="2" align="center"><h5>资质章申请</h5></td>
+					</tr>
   			   		<tr>
   			   			<td>编号</td>
   			   			<td><input type="text" name="number"  value=""  onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();" /></td>

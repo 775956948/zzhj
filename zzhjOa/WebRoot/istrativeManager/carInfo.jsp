@@ -25,12 +25,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	<div id="carInfoTb">
 		<a  class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="addCarInfo()">添加</a>
 		<a  class="easyui-linkbutton" iconCls="icon-save" plain="true" onclick="deleteCarInfo()">刪除</a>
-		<a  class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="updateCarInfo()">完善/查看信息</a>
+		<a  class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="updateCarInfo()">还车</a>
 	</div>
 	
 	<div id="carInfoDd"  class="easyui-dialog" closed=true >
 		<form>
-			<table style="width: 400px; height:300px; margin: 0 auto;">
+			<table name="form">
+				<tr>
+					<td colspan="2" align="center"><h5>用车信息</h5></td>
+				</tr>
 				<tr>
 					<td>申请人</td>
 					<td><input type="text" name="requestName" /></td>
@@ -72,7 +75,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<td><input type="text" name="overNumber"/></td>
 				</tr>
 				<tr>
-					<td colspan="2"><button type="button"  onclick="checkSubmit()" >提交</button></td>
+					<td colspan="2" align="center"><button type="button"  onclick="checkSubmit()"  >提交</button></td>
 				</tr>
 			</table>
 		</form>

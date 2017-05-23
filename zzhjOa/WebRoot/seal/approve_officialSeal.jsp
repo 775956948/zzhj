@@ -19,14 +19,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div id="approve_official_tanc"> 
 			<form action="" method="post" id="approve_official_form" class="approve_official_form">
 				<input name="requestSealId" id="dis_none" style="opacity:0;" value=""/> 
-				<h2 class="cmn_tit">公章盖章审批单</h2>
+				<h2 align="center">公章盖章审批单</h2>
 				<ul class="cmn_list">
 					<li>
 						<span>编号</span>
 						<input type="text" name="number"  value="" readonly="readonly" class="approve_official_val" />
 					</li>
 					<li>
-						<span>项目名称</span>
+						<span style="vertical-align: top;" >项目名称</span>
 						<textarea name="projectName" rows="" cols="" readonly="readonly" class="approve_official_val"></textarea>
 					</li>
 					<li>
@@ -41,8 +41,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 						<span>是否骑缝</span>
 						
-						<b class="pd10" style="padding:0 5px;">是<input type="radio" name="why" id="" value="是"/></b>
-						<b class="pd10" style="padding:0 5px;">否<input type="radio" name="why" id="" value="否"/></b>
+						<b >是<input style="width: 50px;" type="radio" name="why" id="" value="是"/></b>
+						<b >否<input style="width: 50px;" type="radio" name="why" id="" value="否"/></b>
 					<li>
 					<li>
 						<span>页数</span>
@@ -53,7 +53,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<input type="text" name="copiesNumber" readonly="readonly" value="" class="approve_official_val" />
 					</li>
 					<li>
-						<span>收文主题</span>
+						<span style="vertical-align: top;" >收文主题</span>
 						<textarea name="text"  rows="" cols="" readonly="readonly" class="approve_official_val"></textarea>
 					</li>
 					<li class="txt_ctr">

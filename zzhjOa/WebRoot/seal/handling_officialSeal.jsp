@@ -10,11 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<title>公章经办</title>	
 
 	</head>
-	<style> 
-		td{
-			text-align: left;
-		}
-	</style>
+
 	<body>
 		<!--经办表格-->
 		 <div id="hanhling_official_Tb">
@@ -22,8 +18,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		<div id="hanhling_official_tanc" style="display: none;">
 			<form action="" method="post" id="approve_official_form" class="approve_official_form">
-				<input name="id" id="dis_none" style="color:#fff !important;     position: relative;  top: -19px;"/>
-				<h2 class="cmn_tit">公章盖章经办单</h2>
+				<input name="id" id="dis_none" style="opacity:0" />
+				<h2 align="center">公章盖章经办单</h2>
 				<ul class="cmn_list">
 					<li>
 						<span>编号</span>
@@ -50,8 +46,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 						<span>是否骑缝</span>
 						
-						<b class="pd10" style="padding:0 5px;">是<input type="radio" name="why" id="" value="是"/></b>
-						<b class="pd10" style="padding:0 5px;">否<input type="radio" name="why" id="" value="否"/></b>
+						<b >是<input style="width: 50px;" type="radio" name="why" id="" value="是"/></b>
+						<b >否<input style="width: 50px;" type="radio" name="why" id="" value="否"/></b>
 					<li>
 					<li>
 						<span>页数</span>
@@ -153,13 +149,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				   data:{'id':id},				   
 				   success:function(data){
 					   if(data == 1){
+						 	$('#hanhling_official_Dg').datagrid('reload');
 					   		$('#hanhling_official_tanc').dialog({
 								closed : true,
 							});
 					   	alert("提交成功");
-					   	spprove_tanc.dialog('close');
-					   	$('#hanhling_official_Dg').datagrid('reload');
-					   	
+					   	spprove_tanc.dialog('close');	
 					   }else{
 					   	alert("提交失败");
 					   	

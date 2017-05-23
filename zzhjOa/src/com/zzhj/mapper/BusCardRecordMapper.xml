@@ -10,7 +10,7 @@
 		<result column="start_money" property="startMoney"/>
 		<result column="over_money" property="overMoney"/>
 		<association property="busCardId" javaType="busCard">
-			<result column="car_number" property="carNumber"/>
+			<result column="card_number" property="cardNumber"/>
 		</association>
 		<association property="userId" javaType="users">
 			<result column="name" property="name"/>
@@ -24,8 +24,8 @@
   		select count(id) from bus_card_record
   	</select>
   	<insert id="save" parameterType="busCardRecord">
-  		INSERT INTO bus_card_record(bus_card_id,user_id,START,start_date,start_money)
- 		VALUES(#{busCardId.id},#{userId.id},#{start},#{startDate},#{startMoney})
+  		INSERT INTO bus_card_record(bus_card_id,user_id,START,start_date,over)
+ 		VALUES(#{busCardId.id},#{userId.id},#{start},#{startDate},#{over})
   	</insert>
   	<update id="update" parameterType="busCardRecord">
   		update bus_card_record set over=#{over},over_date=#{overDate},start_money=#{startMoney},over_money=#{overMoney}

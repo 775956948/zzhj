@@ -8,4 +8,5 @@ import com.zzhj.po.BusCard;
 
 public interface BusCardMapper {
 	List<BusCard> queryAll();
+	int updateState(@Param("busCardId")int busCardId,@Param("state")String state);
 }

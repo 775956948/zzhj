@@ -68,5 +68,6 @@ public class BusCardRecord implements Serializable{
 		this.overMoney = overMoney;
 	}
 	
+	
 
 }

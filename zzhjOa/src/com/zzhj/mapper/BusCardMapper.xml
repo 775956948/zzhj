@@ -2,6 +2,9 @@
 <!DOCTYPE mapper PUBLIC "http://mybatis.org/dtd/mybatis-3-mapper.dtd" "mybatis-3-mapper.dtd" >
 <mapper namespace="com.zzhj.mapper.BusCardMapper">
   	<select id="queryAll" resultType="busCard">
-  		select id,card_number from bus_card 
+  		select id,card_number as cardNumber from bus_card where state="可用"
   	</select>
+  	<update id="updateState" parameterType="object">
+  		update bus_card set state=#{state} where id=#{busCardId}
+  	</update>
 </mapper>

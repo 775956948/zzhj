@@ -75,8 +75,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			if(row){
 				$('#roleDd').dialog({
 					title : '角色分配',
-					width : 600,
-					height : 400,
+					width : 300,
+					height :300,
 					closed : false,
 					cache : false,
 					modal : true, 

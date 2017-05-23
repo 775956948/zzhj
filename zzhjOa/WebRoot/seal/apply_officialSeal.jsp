@@ -22,37 +22,38 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div id="apply_official_tanc"  class="easyui-dialog" closed=true >
 			<form action="" method="post" id="apply_official_form">
   	<!-- 		  	<input name="id" id="dis_none" style="display:none !important;"/> -->
-				<h2 class="cmn_tit">公章盖章提交单</h2>
+				<h2 align="center">公章盖章提交单</h2>
 				<ul class="cmn_list">
 					<li>
 						<span>编号</span>
-						<input type="text" name="number"  value=""  class="apply_official_val" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();"/></li>
+						<input type="text" name="number"  value=""   onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();"/></li>
 					<li>
-						<span>项目名称</span>
-						<textarea name="projectName" rows="" cols="" class="apply_official_val"></textarea>
+						<span style="vertical-align: top;"> 项目名称</span>
+						<textarea name="projectName" rows="" cols="" c></textarea>
 					</li>
 					<li>
-						<span>收文主题</span>
-						<textarea name="text" rows="" cols="" class="apply_official_val"></textarea>
+						<span style="vertical-align: top;">收文主题</span>
+						<textarea name="text" rows="" cols="" ></textarea>
 					</li>
  					<li>
 						<span>章类型</span>
-						<input  name="sealId.id" id="apply_offcial_select" class="apply_offcial_select"  />
+						<select  name="sealId.id" id="apply_offcial_select" class="apply_offcial_select" >
+						</select>
 					
 					</li> 
 					<li>
 						<span>是否骑缝</span>
-						<b class="pd10" style="padding:0 5px;">是<input type="radio" name="why" id="" value="是" /></b>
-						<b class="pd10" style="padding:0 5px;">否<input type="radio" name="why" id="" value="否" /></b>
+						<b >是<input style="width: 50px;" type="radio" name="why" id="" value="是" /></b>
+						<b >否<input style="width: 50px;" type="radio" name="why" id="" value="否" /></b>
 					</li> 	
 					<li>
 						<span>页数</span>
-						<input type="text" name="pageNumber"  value="" class="apply_official_val " onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();"/></li>
+						<input type="text" name="pageNumber"  value=""  onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();"/></li>
 					<li>
 						<span>份数</span>
-						<input type="text" name="copiesNumber"  value="" class="apply_official_val" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();"/></li>
-					<li class="txt_ctr">
-						<input type="button" value="提交" onclick="apply_official_Submit()"/>
+						<input type="text" name="copiesNumber"  value=""  onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();"/></li>
+					<li>
+						<input  type="button" value="提交" onclick="apply_official_Submit()"/>
 					</li>
 					
 				</ul>
@@ -93,12 +94,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					closed : false,
 					cache : false,
 					modal : true
-				});	
-				$('#apply_offcial_select').combobox({
-				    url:'seal/queryAll.action',
-				    valueField:'id',
-				    textField:'typeName'
 				});
+				$("#apply_offcial_select").empty();
+				$.post('seal/queryAll.action',function(data){
+					for (var i = 0; i < data.length; i++) {
+						$("#apply_offcial_select").append("<option value='"+data[i].id+"'>"+data[i].typeName+"</option>")
+					}
+				})
 				
 			}
 				

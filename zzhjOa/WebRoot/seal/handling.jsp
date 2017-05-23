@@ -17,7 +17,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div id="handling_tanc" > 
 			<form action="" method="post" id="handling_form" class="approve-form">
 				<input name="id" id="dis_none" style="display:none !important;color:#fff !important;" />
-				<h2 class="cmn_tit">资质章盖章经办单</h2>
+				<h2 align="center">资质章盖章经办单</h2>
 				<ul class="cmn_list">
 					<li><span>编号</span><input type="text" name="number"  value="" readonly="readonly" class="apply-val" /></li>
 					<li>

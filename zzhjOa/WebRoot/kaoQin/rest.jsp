@@ -19,7 +19,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
   </head>
   
   <body>
@@ -29,8 +28,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		<div id="restDd"  class="easyui-dialog" closed=true >
   		<form action="" method="post">
-  				<h2 class="cmn_tit">请假/休假信息表</h2>
-				<ul class="cmn_list">
+  				<h2 style="margin: auto; width:150px; margin-top: 20px;">请假/休假信息表</h2>
+				<ul id="addRest" class="marginLeft">
 					<li>
 						<span>请假人</span>
 						<input type="text" name="userId" disabled="disabled"  value="${users.name}"/>
@@ -42,16 +41,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<span>请假天数</span>
 						<input type="text" name="restDate"/>
 					</li>
-					<li class="data_ipt">
+					<li>
 						<span>请假起始时间</span>
 						<input type="date" name="currentDate"/>
 					</li>
 					<li>
-						<span>请假原由</span>
-						<textarea name="restText" rows="10" cols="30"></textarea>
+						<span style="float: left;">请假原由</span>
+						<textarea name="restText" rows="3" cols="30"></textarea>
 					</li>
-					<li class="txt_ctr">
-						<input type="button" value="申请" onclick="abnormalSubmit()"/>
+					<li>
+						<input style="margin-left: 65px;" type="button" value="申请" onclick="restSubmit()" />
 					</li>
 				
 				</ul>

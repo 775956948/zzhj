@@ -28,7 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		<div id="userDd"  class="easyui-dialog" closed=true >
 			<form>
-			<table id="table">
+			<table id="table" style="font-size: 12px;">
 				<tr>
 					<td><input type="text" name="name" disabled="disabled"/></td>
 					<td colspan="2">请选择角色:<select name="roleId.id" onchange="change()"></select></td>
