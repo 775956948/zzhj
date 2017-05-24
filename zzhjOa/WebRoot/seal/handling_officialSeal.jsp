@@ -27,11 +27,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</li>
 					<li>
 						<span>项目名称</span>
-						<textarea name="projectName"  rows="" cols="" readonly="readonly" class="approve_official_val"></textarea>
+						<textarea name="projectName"  rows="" cols="" readonly="readonly" style="vertical-align: top;"></textarea>
 					</li>	
 					<li>
 						<span>收文主题</span>
-						<textarea name="text"  rows="" cols="" readonly="readonly" class="approve_official_val"></textarea>
+						<textarea name="text"  rows="" cols="" readonly="readonly" style="vertical-align: top;" ></textarea>
 					</li>
 					<li>
 						<span>章类型</span>
@@ -51,15 +51,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<li>
 					<li>
 						<span>页数</span>
-						<input type="text" name="pageNumber" readonly="readonly" value="" class="approve_official_val "/>
+						<input type="text" name="pageNumber" readonly="readonly" value="" "/>
 					</li>
 					<li>
 						
 						<span>份数</span>
-						<input type="text" name="copiesNumber" readonly="readonly" value="" class="approve_official_val" />
+						<input type="text" name="copiesNumber" readonly="readonly" value=""  />
 					</li>
 					
-					<li class="txt_ctr">
+					<li class="txt_ctr" >
 						<input type="button" value="经办" onclick="hanhling_official_Submit()"/>
 				
 					</li>

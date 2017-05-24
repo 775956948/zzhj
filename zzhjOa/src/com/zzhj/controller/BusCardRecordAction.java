@@ -33,4 +33,9 @@ public class BusCardRecordAction {
 		b.setUserId(user);
 		return bcrs.save(b);
 	}
+	@RequestMapping("/update.action")
+	@ResponseBody
+	public int update(BusCardRecord b){
+		return bcrs.update(b);
+	}
 }

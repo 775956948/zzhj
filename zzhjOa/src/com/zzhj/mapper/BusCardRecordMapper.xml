@@ -10,6 +10,7 @@
 		<result column="start_money" property="startMoney"/>
 		<result column="over_money" property="overMoney"/>
 		<association property="busCardId" javaType="busCard">
+			<id column="b_id" property="id"/>
 			<result column="card_number" property="cardNumber"/>
 		</association>
 		<association property="userId" javaType="users">
@@ -17,7 +18,7 @@
 		</association>
 	</resultMap>
   	<select id="queryAll" parameterType="int" resultMap="bcr">
-  		select r.id,r.start,r.over,r.start_date,r.over_date,r.start_money,r.over_money,b.card_number,u.name from bus_card_record r inner join bus_card b on b.id=r.bus_card_id inner join users u on u.id=r.user_id
+  		select r.id,r.start,r.over,r.start_date,r.over_date,r.start_money,r.over_money,b.card_number,b.id as b_id,u.name from bus_card_record r inner join bus_card b on b.id=r.bus_card_id inner join users u on u.id=r.user_id
   		limit #{startPage},#{rows}
   	</select>
   	<select id="totalCount" resultType="int">
@@ -28,7 +29,7 @@
  		VALUES(#{busCardId.id},#{userId.id},#{start},#{startDate},#{over})
   	</insert>
   	<update id="update" parameterType="busCardRecord">
-  		update bus_card_record set over=#{over},over_date=#{overDate},start_money=#{startMoney},over_money=#{overMoney}
+  		update bus_card_record set over_date=#{overDate},start_money=#{startMoney},over_money=#{overMoney}
   		where id=#{id}
   	</update>
 </mapper>

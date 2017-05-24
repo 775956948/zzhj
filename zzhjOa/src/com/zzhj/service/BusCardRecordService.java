@@ -32,6 +32,9 @@ public class BusCardRecordService {
 		return brm.save(b);
 	}
 	
-	
+	public int update(BusCardRecord b){
+		bcm.updateState(b.getBusCardId().getId(),"ø…”√");
+		return brm.update(b);
+	}
 
 }

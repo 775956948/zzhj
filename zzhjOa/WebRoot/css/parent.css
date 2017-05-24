@@ -6,10 +6,9 @@ input,select,textarea{
 	width: 150px;
     border: 1px solid #ccc;
     padding: 5px 0;
-    text-indent: 5px;
     border-radius: 4px;
     margin-bottom: 10px;
-}
+}  
 input[type='button']{
 	width:90px;
 	margin: auto;
@@ -24,7 +23,7 @@ table[name='form'] tr td{
 }
 
 .cmn_list{
-	text-align: center;
+	text-align:center;
 	padding: 0px;
 	margin: 0px;
 }
@@ -33,5 +32,9 @@ table[name='form'] tr td{
 	width: 70px;
 	vertical-align: middle;
 }
+.align{
+	vertical-align: top;	
+}
+
 
 

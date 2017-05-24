@@ -19,26 +19,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<input name="id" id="dis_none" style="display:none !important;color:#fff !important;" />
 				<h2 align="center">资质章盖章经办单</h2>
 				<ul class="cmn_list">
-					<li><span>编号</span><input type="text" name="number"  value="" readonly="readonly" class="apply-val" /></li>
+					<li><span>编号</span><input type="text" name="number"  value="" readonly="readonly" /></li>
 					<li>
 						<span>项目名称</span>
-						<textarea name="projectName"  rows="" cols="" readonly="readonly" class="apply-val"></textarea>
+						<textarea name="projectName"  rows="" cols="" readonly="readonly" style="vertical-align: top;"W></textarea>
 					</li>
 					<li
 						><span>页数</span>
-						<input type="text" name="pageNumber" readonly="readonly" value="" class="apply-val "/>
+						<input type="text" name="pageNumber" readonly="readonly" value="" />
 					</li>
 					<li>
 						<span>份数</span>
-						<input type="text" name="copiesNumber" readonly="readonly" value="" class="apply-val" />
+						<input type="text" name="copiesNumber" readonly="readonly" value=""  />
 					</li>
 					<li>
 						<span>盖章内容</span>
-						<textarea name="text"  rows="" cols="" readonly="readonly" class="apply-val"></textarea>
+						<textarea name="text"  rows="" cols="" readonly="readonly" style="vertical-align: top;"></textarea>
 					</li>
 					<li>
 						<span>盖章事由</span>
-						<textarea name="why" rows="" cols="" readonly="readonly" class="apply-val"></textarea>
+						<textarea name="why" rows="" cols="" readonly="readonly" style="vertical-align: top;"></textarea>
 					</li>
 					<li class="txt_ctr">
 					<input type="button" value="经办" onclick="handling_Submit()"/>

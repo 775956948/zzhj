@@ -18,6 +18,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="description" content="This is my page"> -->
 	<script type="text/javascript">	
 		$(function(){
+			
+			//begin  mian.jsp----- <div id='mgeInfo'>
+			$("#mgeInfo").hide();
+			$("#message").mouseover(function(){
+				$("#mgeInfo").show();
+			});
+			$("#title").mouseleave(function(){
+				$("#mgeInfo").hide();
+			});
+			//end  -----
+			
+			
 			/* $("#mainTree").tree({
 				url:'function/getNode.action',
 				loadFilter:function(data){
@@ -85,6 +97,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				location.href=data;
 			}); 
 		}
+		
+		
+		
 	</script>
 	
  	<style type="text/css"> 
@@ -102,9 +117,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    display: inline-block;
 		} 
 		#user{
-			float:right;
-			margin-top: -50px;
-			margin-right: 100px;
+			position: absolute;
+			right: 50px;
+			top:10px;
 		}
 		#user li{
 			list-style: none;
@@ -127,39 +142,76 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		.marginLeft{
 			margin-left: 40px;
 		}
+		/*-------main.jsp-----*/
+		#message{
+			clear: right;
+			position: absolute;
+			top: 20px;
+			left:650px;
+		}
+		#mgeTitle{
+			cursor: pointer;
+		}
+		#mgeInfo{
+			color:white;
+			position:absolute;
+			left:800px;
+			top: 5px;
+		 	background-color:black;
+			width: 200px;
+			height:70px; 
+			overflow: auto;
+		}
+		#mgeInfo p{
+			border: 1px solid white;
+			padding-top:5px;
+			padding-bottom:5px;
+			margin:0 auto;
+			width: auto;
+			text-align: center;
+		}
 	</style> 
 	<link rel="stylesheet" type="text/css" href="css/parent.css">
-	
   </head>
-	<body>    
-    	<div id="cc" class="easyui-layout" fit=true "style="height:70px;">   
-    	<div data-options="region:'north'" style="height:80px;background-color: E0ECFF;" id="title" >
+	<body>   
+    	<div id="cc" class="easyui-layout" fit=true "style="height:70px;"> 
+    	<!-- 上侧 -->
+    	<div data-options="region:'north'" style="height:80px;/* background-color: E0ECFF; */background-color: black " id="title" >
     		<a href="#" class="logo_btn"><img src="image/logo_02.png"/></a>
     		<span class="main_span">中兆恒基Oa办公系统</span>
-    		<div class="fr"> 
-    			<span>
-    			
-    			</span>
-    		</div>	
-	
+    	 	<div id="message"> 
+    			<p id="mgeTitle">你有未处理的消息<img src="image/lb.png" style="vertical-align: middle; margin-left:15px;"></p>
+    		</div>
+    		<div id="mgeInfo">
+    			<p>公章未审批</p>
+    			<p>资质章未办理</p>
+    			<p>人工智能计划</p>
+    			<p>python</p>
+    			<p>zookeeper</p>
+    			<p>大数据</p>
+    		</div> 
 			<div id="user">
-				<ul>
+				<ul style="position: relative;">
+				<p style=" position: absolute; left:-20px; top: -15px;"> <img alt="" src="image/2017-05-24_145120.png" width="50px;" style="border-radius:25px;"></p>
 					<li><h3>当前用户:${users.name }</h3></li>
 					<li><h4>${message }</h4></li>
 					<li><h4 onclick="exit()" style="cursor:pointer">退出登陆</h4></li>
 				</ul>
 			</div>
     	</div>      
-    	<div id="parent" data-options="region:'west',title:'菜单栏',split:true" style="width:300px;" class="easyui-accordion">
+    	<!-- 左侧 -->
+    	<div id="parent" data-options="region:'west',title:'菜单栏',split:true" style="width:280px;" class="easyui-accordion">
     		 <!-- 	<ul id='mainTree'></ul>	  -->
-    	</div>   
-    	<div data-options="region:'center',title:'窗口'" style="padding:5px;background:#eee;">
+    	</div>  
+    	<!-- 右侧 --> 
+    	<div data-options="region:'center',title:'窗口'" style="background:#eee;">
     		<div id="mytabs" class="easyui-tabs" fit=true>   
 				   <div title="首页" style="padding:50px;">
 				   	<h1>欢迎使用中兆恒基Oa办公管理系统</h1> 
 				   	<div>
 				   		公司始终专注于测绘领域，拥有中高级工程师、助理工程师及各类专业技术人员。专业从事于工程测量、房产测绘、地籍测量、地理信息系统工程等专业测绘服务。在地形图测绘、变形监测、沉降观测、规划监督测量、商品房预售面积测算、商品房销售面积实测、地籍测量、土地确权测量等领域有着丰富的测绘经验并取得了骄人的业绩。
 				   	</div>
+				   	<iframe src="http://news.szhk.com/" width="100%" height="100%" frameborder="0" ></iframe>
 				   </div>   
 			</div> 
     	</div>   
