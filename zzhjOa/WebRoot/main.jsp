@@ -27,6 +27,50 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			$("#title").mouseleave(function(){
 				$("#mgeInfo").hide();
 			});
+			
+			/* --echats */
+			 var myChart = echarts.init(document.getElementById('zhu'));
+		        var option = {
+		                title: {
+		                    text: '数据展示'
+		                },
+		                tooltip: {},
+		                legend: {
+		                    data:['销量']
+		                },
+		                xAxis: {
+		                    data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+		                },
+		                yAxis: {},
+		                series: [{
+		                    name: '销量',
+		                    type: 'bar',
+		                    data: [5, 20, 36, 10, 10, 20]
+		                }]
+		            };
+
+		            // 使用刚指定的配置项和数据显示图表。
+		            myChart.setOption(option);
+		            //
+		            var bing = echarts.init(document.getElementById('bing'));
+		           var bingOption = {
+		            	    series : [
+		            	        {
+		            	            name: '访问来源',
+		            	            type: 'pie',
+		            	            radius: '55%',
+		            	            roseType: 'angle',
+		            	            data:[
+		            	                {value:235, name:'视频广告'},
+		            	                {value:274, name:'联盟广告'},
+		            	                {value:310, name:'邮件营销'},
+		            	                {value:335, name:'直接访问'},
+		            	                {value:400, name:'搜索引擎'}
+		            	            ]
+		            	        }
+		            	    ]
+		            	};
+		           bing.setOption(bingOption);
 			//end  -----
 			
 			
@@ -170,6 +214,51 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			width: auto;
 			text-align: center;
 		}
+		#echart{
+			width: 48.5%;
+			height: 500px;
+			background-color:white;
+			float: left;
+			margin-left: 8px;
+			margin-top: 1px;
+			margin-bottom: 10px;
+			border-right: 3px solid black;
+			boder-radius:10px;
+			
+		
+		}
+		#notice{
+			width: 48.5%;
+			height: 500px;
+			background-color:white;
+			float: left;
+			margin-left: 8px;
+			margin-top: 1px;
+			margin-bottom: 10px;
+			
+		}
+		#south{
+			width: 100%;
+			height: 70%;
+			margin-bottom: 20px;
+			
+		}
+	
+		#north{
+			width: 100%;
+			height: 30%;
+			border:3px solid #E9E9E9;
+			margin-bottom: 20px;
+		}
+		#tianQi{
+			text-align: center;
+			background-color: 5F9FDD;
+			width: 100%;
+			height: auto;
+			margin:0px;
+			/* border-radius:10px; */
+		}
+
 	</style> 
 	<link rel="stylesheet" type="text/css" href="css/parent.css">
   </head>
@@ -205,11 +294,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	</div>  
     	<!-- 右侧 --> 
     	<div data-options="region:'center',title:'窗口'" style="background:#eee;">
-    		<div id="mytabs" class="easyui-tabs" fit=true>   
-				   <div title="首页" style="padding:50px;">
-				   	<h1>欢迎使用中兆恒基Oa办公管理系统</h1> 
+    		<div id="mytabs" class="easyui-tabs" fit=true >   
+				   <div title="首页" style="background-color: white;">
+				   	<!-- <h1>欢迎使用中兆恒基Oa办公管理系统</h1> 
 				   	<div>
 				   		公司始终专注于测绘领域，拥有中高级工程师、助理工程师及各类专业技术人员。专业从事于工程测量、房产测绘、地籍测量、地理信息系统工程等专业测绘服务。在地形图测绘、变形监测、沉降观测、规划监督测量、商品房预售面积测算、商品房销售面积实测、地籍测量、土地确权测量等领域有着丰富的测绘经验并取得了骄人的业绩。
+				   	</div> -->
+				   	<div id="tianQi">
+						<iframe name="weather_inc" src="http://i.tianqi.com/index.php?c=code&id=2&num=5" width="650" height="70" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+					</div>
+				   	<div id="echart">
+				   		<div id="zhu" style="width: 400px; height: 200px; padding: 10px; margin-left: 20px;"></div>
+				   		<div id="bing" style="width: 400px; height: 220px; padding: 10px; margin-left: 20px; "></div>
+				   	</div>
+				   	<div id="notice">
+				   		 <div id="north">
+				   			<img src="image/gg.png" width="100%"/>	
+				   		</div> 
+				   		<div id="south">
+				   			 <iframe src="date.html" width="100%" height="100%" frameborder="0" ></iframe> 
+				   		</div>
+				   		
 				   	</div>
 				   	<iframe src="http://news.szhk.com/" width="100%" height="100%" frameborder="0" ></iframe>
 				   </div>   
