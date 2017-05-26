@@ -17,7 +17,39 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page"> -->
 	<script type="text/javascript">	
+		//websocket实例
+		var ws;
 		$(function(){
+			//--------webSocket----------
+            if ("WebSocket" in window){
+               // 打开一个 web socket
+                ws = new WebSocket("ws://localhost:8080/zzhjOa/serverHandler");
+				
+               ws.onopen = function()
+               {
+                  // Web Socket 已连接上，使用 send() 方法发送数据
+               /*    ws.send("发送数据"); */
+               };
+				
+               ws.onmessage = function (evt) 
+               { 
+                  var msg = evt.data;
+                  var jsonObject =JSON.parse(msg);
+                  alert(jsonObject.theme+"----发起人---"+jsonObject.from); 
+               };
+				
+               ws.onclose = function()
+               { 
+                  // 关闭 websocket
+               };
+            }
+            
+            else
+            {
+               // 浏览器不支持 WebSocket
+               alert("您的浏览器不支持 WebSocket!");
+            }
+			
 			
 			//begin  mian.jsp----- <div id='mgeInfo'>
 			$("#mgeInfo").hide();
@@ -142,6 +174,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			}); 
 		}
 		
+
 		
 		
 	</script>
@@ -201,7 +234,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			position:absolute;
 			left:800px;
 			top: 5px;
-		 	background-color:black;
+/* 		 	background-color:; */
 			width: 200px;
 			height:70px; 
 			overflow: auto;
@@ -265,7 +298,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<body>   
     	<div id="cc" class="easyui-layout" fit=true "style="height:70px;"> 
     	<!-- 上侧 -->
-    	<div data-options="region:'north'" style="height:80px;/* background-color: E0ECFF; */background-color: black " id="title" >
+    	<div data-options="region:'north'" style="height:80px;/* background-color: E0ECFF; */background-color: gray; " id="title" >
     		<a href="#" class="logo_btn"><img src="image/logo_02.png"/></a>
     		<span class="main_span">中兆恒基Oa办公系统</span>
     	 	<div id="message"> 

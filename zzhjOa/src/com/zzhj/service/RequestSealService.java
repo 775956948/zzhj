@@ -11,12 +11,14 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 
+import com.zzhj.entityCustom.Message;
 import com.zzhj.listener.SessionListener;
 import com.zzhj.mapper.RequestSealMapper;
 import com.zzhj.mapper.UsersMapper;
 import com.zzhj.po.RequestSeal;
 import com.zzhj.po.Users;
 import com.zzhj.po.ZiZhiSeal;
+import com.zzhj.webSocket.ServerHandler;
 
 @Service
 public class RequestSealService {
@@ -43,13 +45,10 @@ public class RequestSealService {
 		r.setRequestDate(time);
 		r.setState("待审批");
 		r.setApprover(user.getName());
-		/*		List<HttpSession> list =SessionListener.list;
-		for (HttpSession session : list) {
-			Users u = (Users) session.getAttribute("users");
-			if(u.getName().equals(user.getName())){
-				session.setAttribute("ziZhiSeal", "您有未审批的资质章消息");
-			}
-		}*/
+		Message mes =new Message();
+		mes.setFrom(r.getUserId().getName());
+		mes.setTheme("您有未审批得公章");
+		ServerHandler.send(user.getName(),mes);
 		return rsm.save(r);
 	}
 	

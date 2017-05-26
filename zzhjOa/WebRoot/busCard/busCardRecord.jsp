@@ -10,7 +10,7 @@
 	  <div id="busCardTb">
 		<a  class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="addBusCardRecord()">添加</a>
 		<a  class="easyui-linkbutton" iconCls="icon-save" plain="true" onclick="deleteBusCardRecord()">刪除</a>
-			<a  class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="updateBusCardRecord()">还卡</a>
+		<a  class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="updateBusCardRecord()">还卡</a>
 	</div>
 	
 	<div id="busCardDd"  class="easyui-dialog" closed=true >
@@ -71,6 +71,7 @@
 		    fitColumns:true,
 			pagination:true,
 	 		singleSelect:true,
+		    fit:true, 
 	 		toolbar:'#busCardTb',
 		   	columns:[[    
 			   	{field:'id',title:'编号',checkbox:true},
@@ -132,7 +133,7 @@
 				}
 				
 			})
-			if(i>3){
+			if(i>4){
 				 $.messager.alert("提示", "请填写完整信息", "info");  
 			}else{
 				var start =$("input[name='start']").val();
@@ -173,7 +174,7 @@
 				var overMoney = $("input[name='overMoney']").val();
 				var id=$("input[name='id']").val();
 				var busCardId =$("select[name='busCardId.id']").val();
-				$.post('busCardRecord/update.action',{'id':id,'overDate':overDate,'startMoney':startMoney,'overMoney':overMoney,'busCardId.id':busCardId},function(data){
+			 	$.post('busCardRecord/update.action',{'id':id,'overDate':overDate,'startMoney':startMoney,'overMoney':overMoney,'busCardId.id':busCardId},function(data){
 					if(data>0){
 						$("#busCardDd").dialog({
 							closed:true
@@ -181,7 +182,7 @@
 						$('#busCardRecordDg').datagrid('reload');
 						 $.messager.alert("提示", "还卡成功", "info"); 
 					}
-				})
+				}) 
 				
 			}
 		}
@@ -195,12 +196,12 @@
 			$("tr[name='overMoney']").show();
 			var row =$("#busCardRecordDg").datagrid("getSelected");
 			if(row){
-				alert(row.busCardId.id)
 				$("#busCardDd").dialog({
 					title:'公交一卡通还车信息',
 					width : 400,
 					closed : false,
 					onOpen:function(){
+						$("input[name='id']").val(row.id);
 						$("select[name='busCardId.id']").empty();
 						$("select[name='busCardId.id']").append("<option value='"+row.busCardId.id+"'>"+row.busCardId.cardNumber+"</option>");
 						$("input[name='start']").val(row.start);

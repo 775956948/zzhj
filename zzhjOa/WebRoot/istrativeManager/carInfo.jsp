@@ -22,6 +22,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
+  		<div style="width: 100%; height: 250px; position: relative; overflow: hidden; background-color: white;">
+	   <iframe  src="http://cha.weiche.me/limit.php?channel=sm&city_name=北京" style="width: 100%; height: 1000px; position: absolute; top:-418px; " width="100%" height="250px" frameborder="0"   scrolling="no" >
+	   </iframe>
+	   </div>
   	<div id="carInfoTb">
 		<a  class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="addCarInfo()">添加</a>
 		<a  class="easyui-linkbutton" iconCls="icon-save" plain="true" onclick="deleteCarInfo()">刪除</a>
