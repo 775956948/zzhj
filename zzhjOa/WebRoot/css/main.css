@@ -1,0 +1,127 @@
+	.logo_btn{
+		    float: left;
+		    display: block;
+			width: 163px;
+		}
+		.logo_btn img{
+			width: 100%;
+		}
+		.main_span{
+			line-height: 62px;
+		    font-size: 18px;
+		    display: inline-block;
+		} 
+		#user{
+			position: absolute;
+			right: 50px;
+			top:10px;
+		}
+		#user li{
+			list-style: none;
+			line-height: 20px;
+			margin: 0px;
+			padding: 0px;
+		}
+		#cc{
+			overflow: hidden;
+		}
+		#user h3,h4{
+			margin: 0px;
+			padding: 0px;
+		}
+		/*-------rest.jsp-----*/
+		#addRest li span {
+			display:inline-block;
+			width: 50px;
+		}
+		.marginLeft{
+			margin-left: 40px;
+		}
+		/*-------main.jsp-----*/
+		#message{
+			clear: right;
+			position: absolute;
+			top: 20px;
+			left:650px;
+			width: 200px;;
+			height: 100px;;
+		}
+		#mgeTitle{
+			cursor: pointer;
+		}
+		#mgeInfo{
+			color:white;
+			position:absolute;
+			left:800px;
+			top: 5px;
+/* 		 	background-color:; */
+			width: 200px;
+			height:70px; 
+			overflow: auto;
+		}
+		#mgeInfo p{
+			border: 1px solid white;
+			padding-top:5px;
+			padding-bottom:5px;
+			margin:0 auto;
+			width: auto;
+			text-align: center;
+		}
+		#echart{
+			width: 48.5%;
+			height: 500px;
+			background-color:white;
+			float: left;
+			margin-left: 8px;
+			margin-top: 1px;
+			margin-bottom: 10px;
+			border-right: 3px solid black;
+			boder-radius:10px;
+			
+		
+		}
+		#notice{
+			width: 48.5%;
+			height: 500px;
+			background-color:white;
+			float: left;
+			margin-left: 8px;
+			margin-top: 1px;
+			margin-bottom: 10px;
+			
+		}
+		#south{
+			width: 100%;
+			height: 70%;
+			margin-bottom: 20px;
+		}
+	
+		#north{
+			width: 100%;
+			height: 30%;
+			border:3px solid #E9E9E9;
+			margin-bottom: 20px;
+		}
+		#tianQi{
+			text-align: center;
+			background-color: 5F9FDD;
+			width: 100%;
+			height: auto;
+			margin:0px;
+			/* border-radius:10px; */
+		}
+		#listMes{
+			margin: 0px;
+			padding: 0px;
+		}
+		#listMes li{
+			font-size: 14px;
+			text-align:center;
+			cursor: pointer;
+			margin-top: 10px;
+			border-radius:4px;
+			border: 1px solid;
+		}
+		#listMes li:HOVER {
+			text-decoration: underline;	
+		}

@@ -83,4 +83,7 @@
   	<select id="parentId" parameterType="int" resultType="users">
   		select parent_id as parentId from users where id=#{value}
   	</select>
+	<select id="departmentUser" parameterType="string" resultType="users">
+			SELECT u.name FROM users u INNER JOIN department d ON u.departmentId = d.id WHERE d.name=#{value}
+	</select>
 </mapper>

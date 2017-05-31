@@ -11,11 +11,13 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 
+import com.zzhj.entityCustom.Message;
 import com.zzhj.listener.SessionListener;
 import com.zzhj.mapper.UsersMapper;
 import com.zzhj.mapper.ZiZhiSealMapper;
 import com.zzhj.po.Users;
 import com.zzhj.po.ZiZhiSeal;
+import com.zzhj.webSocket.ServerHandler;
 
 @Service
 public class ZiZhiSealService {
@@ -41,13 +43,8 @@ public class ZiZhiSealService {
 		z.setRequestDate(time);
 		z.setState("待审批");
 		z.setApprover(user.getName());
-		/*		List<HttpSession> list =SessionListener.list;
-		for (HttpSession session : list) {
-			Users u = (Users) session.getAttribute("users");
-			if(u.getName().equals(user.getName())){
-				session.setAttribute("ziZhiSeal", "您有未审批的资质章消息");
-			}
-		}*/
+		//调用推送方法
+		send(user.getName(),z.getUserId().getName());
 		return zs.save(z);
 	}
 	public int delete(int id){
@@ -68,6 +65,7 @@ public class ZiZhiSealService {
 	
 	public int approver(int sealId,int userId){
 		Users user =um.parentId(userId);
+		String requestName=zs.requestName(sealId);
 		Users parentUser=new Users();
 		if(user!=null&&user.getParentId()!=null&&user.getParentId()!=0){
 			Users u=um.query(user.getParentId());
@@ -75,7 +73,7 @@ public class ZiZhiSealService {
 		}else{
 			 parentUser.setName("");
 		}
-		
+		send(parentUser.getName(),requestName);
 		return zs.approver(sealId,parentUser.getName());
 	}
 	
@@ -95,5 +93,29 @@ public class ZiZhiSealService {
 		String time=f.format(today);
 		z.setOverDate(time);
 		return zs.handling(z);
+	}
+	/**
+	 * 
+	 * @Description: 推送消息
+	 * @param @param userName
+	 * @param @param requestName   
+	 * @return void  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年5月31日
+	 */
+	private void send(String userName,String requestName){
+		Message mes =new Message();
+		mes.setFrom(requestName);
+		mes.setTheme("您有未处理的得公章信息");
+		if(!userName.equals("")){
+			ServerHandler.send(userName,mes);
+		}else{
+			List<Users> list =um.departmentUser("行政部");
+			for (int i = 0; i < list.size(); i++) {
+				ServerHandler.send(list.get(i).getName(),mes);
+			}
+		}
+		
 	}
 }

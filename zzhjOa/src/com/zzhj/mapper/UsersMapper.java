@@ -52,4 +52,16 @@ public interface UsersMapper {
 	 * @date 2017年5月11日
 	 */
 	Users parentId(int userId);
+	/**
+	 * 
+	 * @Description: 根据部门返回部门所有员工
+	 * @param @param departmentName
+	 * @param @return   
+	 * @return List<Users>  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年5月31日
+	 */
+	List<Users> departmentUser(String departmentName);
+
 }

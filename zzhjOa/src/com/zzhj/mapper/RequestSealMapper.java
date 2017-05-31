@@ -127,4 +127,15 @@ public interface RequestSealMapper {
 	  * @date 2017年5月18日
 	  */
 	 int handling(RequestSeal r);
+	 /**
+	  * 
+	  * @Description: 根据id返回申请人用户名
+	  * @param @param sealId
+	  * @param @return   
+	  * @return String  
+	  * @throws
+	  * @author 小白
+	  * @date 2017年5月31日
+	  */
+	 String requestName(int sealId);
 }

@@ -87,6 +87,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	
 	<table id="carInfoDg"></table> 
+	
 	<script type="text/javascript">
 		$(function(){
 			$('#carInfoDg').datagrid({    

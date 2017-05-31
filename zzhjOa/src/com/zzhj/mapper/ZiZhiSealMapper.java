@@ -60,4 +60,15 @@ public interface ZiZhiSealMapper {
 	int approverTotal();
 	
 	int handling(ZiZhiSeal z);
+	/**
+	 * 
+	 * @Description: 根据id返回申请人用户名
+	 * @param @param id
+	 * @param @return   
+	 * @return String  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年5月31日
+	 */
+	String requestName(int id);
 }	

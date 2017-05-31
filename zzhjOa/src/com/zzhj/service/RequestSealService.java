@@ -45,15 +45,14 @@ public class RequestSealService {
 		r.setRequestDate(time);
 		r.setState("待审批");
 		r.setApprover(user.getName());
-		Message mes =new Message();
-		mes.setFrom(r.getUserId().getName());
-		mes.setTheme("您有未审批得公章");
-		ServerHandler.send(user.getName(),mes);
+		//调用推送方法
+		send(user.getName(),r.getUserId().getName());
 		return rsm.save(r);
 	}
 	
 	public int approver(int sealId,int userId){
 		Users user =um.parentId(userId);
+		String requestName=rsm.requestName(sealId);
 		Users parentUser=new Users();
 		if(user!=null&&user.getParentId()!=null&&user.getParentId()!=0){
 			Users u=um.query(user.getParentId());
@@ -61,7 +60,7 @@ public class RequestSealService {
 		}else{
 			 parentUser.setName("");
 		}
-		
+		send(parentUser.getName(),requestName);
 		return rsm.approver(sealId,parentUser.getName());
 	}
 	
@@ -91,6 +90,31 @@ public class RequestSealService {
 		String time=f.format(today);
 		r.setOverDate(time);
 		return rsm.handling(r);
+	}
+	
+	/**
+	 * 
+	 * @Description: 推送消息
+	 * @param @param userName
+	 * @param @param requestName   
+	 * @return void  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年5月31日
+	 */
+	private void send(String userName,String requestName){
+		Message mes =new Message();
+		mes.setFrom(requestName);
+		mes.setTheme("您有未处理的得公章信息");
+		if(!userName.equals("")){
+			ServerHandler.send(userName,mes);
+		}else{
+			List<Users> list =um.departmentUser("行政部");
+			for (int i = 0; i < list.size(); i++) {
+				ServerHandler.send(list.get(i).getName(),mes);
+			}
+		}
+		
 	}
 	
 }
