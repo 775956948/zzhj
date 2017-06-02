@@ -16,12 +16,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page"> -->
-	<script type="text/javascript">	
-		 $("#message").hide(); 
+	<script type="text/javascript">
 		
 		//websocket实例
 		var ws;
 		$(function(){
+			 $("#message").hide(); 
+			 //查询公告
+ 			 $.post("notice/queryAll.action",function(data){
+				 for (var i = 0; i < data.length; i++) {
+					 $("#north").append("<p style='overflow: hidden; '><a href='notice/queryOne.action?id="+data[i].id+"'  target='notice/showNotice.jsp'>"+"《主题》："+data[i].theme+"&nbsp;&nbsp;《发布时间》："+data[i].releaseDate+"&nbsp;&nbsp;《发布人》:"+data[i].userId.name+"</a></p>") 
+				}
+				 
+			 }) 
+			 
 			//--------webSocket----------
             if ("WebSocket" in window){
             	alert("您的浏览器支持webScoket");
@@ -199,6 +207,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
 	<body>   
     	<div id="cc" class="easyui-layout" fit=true "style="height:70px;"> 
+    	<audio src="mp3/4331.mp3" id="audio"></audio>
     	<!-- 上侧 -->
     	<div data-options="region:'north'" style="height:80px;/* background-color: E0ECFF; */background-color: gray; " id="title" >
     		<a href="#" class="logo_btn"><img src="image/logo_02.png"/></a>
@@ -231,9 +240,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				   		<div id="bing" style="width: 400px; height: 220px; padding: 10px; margin-left: 20px; "></div>
 				   	</div>
 				   	<div id="notice">
-				   		 <div id="north">
-				   			<img src="image/gg.png" width="100%"/>	
-				   			<audio src="mp3/4331.mp3" id="audio"></audio>
+				   		 <div id="north" style="overflow: auto;">
+				   			<img src="image/gg.png" width="100%"/>
 				   		</div> 
 				   		<div id="south">
 				   			 <iframe src="date.html" width="100%" height="100%" frameborder="0" ></iframe> 

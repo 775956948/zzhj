@@ -107,7 +107,7 @@ public class ZiZhiSealService {
 	private void send(String userName,String requestName){
 		Message mes =new Message();
 		mes.setFrom(requestName);
-		mes.setTheme("您有未处理的得公章信息");
+		mes.setTheme("您有未处理的资质章信息");
 		if(!userName.equals("")){
 			ServerHandler.send(userName,mes);
 		}else{

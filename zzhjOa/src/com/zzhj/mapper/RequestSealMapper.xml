@@ -68,7 +68,7 @@
   <update id="handling" parameterType="requestSeal">
   	update request_seal set agent=#{agent},over_date=#{overDate} where id=#{id}
   </update>
-  <select id="requestName" parameterType="int" resultType="string">
-  	SELECT u.name FROM request_seal r INNER JOIN users u ON u.id=r.user_id where r.id=#{value}
+  <select id="requestName" parameterType="int" resultMap="zs">
+  	SELECT u.name,s.type_name FROM request_seal r INNER JOIN users u ON u.id=r.user_id INNER JOIN seal s ON s.id=r.seal_id where r.id=#{value}
   </select>
 </mapper>

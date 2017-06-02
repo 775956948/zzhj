@@ -129,7 +129,7 @@ public interface RequestSealMapper {
 	 int handling(RequestSeal r);
 	 /**
 	  * 
-	  * @Description: 根据id返回申请人用户名
+	  * @Description: 根据id返回章信息
 	  * @param @param sealId
 	  * @param @return   
 	  * @return String  
@@ -137,5 +137,5 @@ public interface RequestSealMapper {
 	  * @author 小白
 	  * @date 2017年5月31日
 	  */
-	 String requestName(int sealId);
+	 RequestSeal requestName(int sealId);
 }
