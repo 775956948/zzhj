@@ -1,7 +1,10 @@
 package com.zzhj.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -13,7 +16,10 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.zzhj.listener.SessionListener;
@@ -137,5 +143,25 @@ public class UsersAction {
 			u.setParentId(null);
 		}
 		return us.roleUser(u);
+	}
+	@RequestMapping("/queryUserInfoOne.action")
+	@ResponseBody
+	public Users queryUserInfoOne(int id){
+		return us.queryUserInfoOne(id);
+	}
+	@RequestMapping(value="/updateUserInfo.action",method = RequestMethod.POST)
+	@ResponseBody
+	public int updateUserInfo(Users user,@RequestParam("file")  MultipartFile file){
+		String fileName=file.getOriginalFilename();
+		String path="d:\\image";
+		user.setImageName(fileName);
+		File newFile = new File(path+fileName);
+		try {
+			file.transferTo(newFile);
+		} catch (IllegalStateException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 1;
 	}
 }

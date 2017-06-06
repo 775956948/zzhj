@@ -124,3 +124,15 @@
 		#listMes li:HOVER {
 			cursor: pointer;
 		}
+		/*-------writeUser.jsp-----*/
+		#userInfo input{
+			margin-right: 50px;
+			margin-left: 10px;
+		}
+		#userInfo{
+			width: 650px;
+			margin: auto;
+			padding-top: 20px;
+		}
+		
+		

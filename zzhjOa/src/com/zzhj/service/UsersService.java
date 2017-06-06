@@ -108,4 +108,12 @@ public class UsersService {
 	public List<Users> roleUser(Users user){
 		return um.roleUser(user);
 	}
+	
+	public Users queryUserInfoOne(int id){
+		return um.queryUserInfoOne(id);
+	}
+	
+	public int updateUserInfo(Users user){
+		return um.updateUserInfo(user);
+	}
 }

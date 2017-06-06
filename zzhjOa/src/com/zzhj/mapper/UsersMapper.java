@@ -17,6 +17,16 @@ public interface UsersMapper {
 	int exist(String name);
 	List<Users> roleQueryAll(@Param("startPage") int startPage,@Param("rows") int rows);
 	int updateRole(Users user);
+	/**
+	 * 
+	 * @Description: 修改用户密码
+	 * @param @param user
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年6月6日
+	 */
 	int updateUser(Users user);
 	List<Users> queryUser(@Param("departmentName") String departmentName,@Param("roleName") String roleName);
 	/**
@@ -63,5 +73,27 @@ public interface UsersMapper {
 	 * @date 2017年5月31日
 	 */
 	List<Users> departmentUser(String departmentName);
-
+	/**
+	 * 
+	 * @Description: 根据id返回用户详细信息
+	 * @param @param id
+	 * @param @return   
+	 * @return Users  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年6月6日
+	 */
+	Users queryUserInfoOne(int id);
+	
+	/**
+	 * 
+	 * @Description: 修改用户个人信息
+	 * @param @param user
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年6月6日
+	 */
+	int updateUserInfo(Users user);
 }

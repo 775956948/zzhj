@@ -86,4 +86,12 @@
 	<select id="departmentUser" parameterType="string" resultType="users">
 			SELECT u.name FROM users u INNER JOIN department d ON u.departmentId = d.id WHERE d.name=#{value}
 	</select>
+	<select id="queryUserInfoOne" resultType="users" parameterType="int">
+		select u.name,u.password,u.image_name as imageName,u.phone,u.induction_date as inductionDate,u.positiveDate,u.birthday,u.sex from users u where u.id=#{value} 
+	</select>
+
+	
+	<update id="updateUserInfo" parameterType="users">
+		update users set name=#{name},password=#{password},image_name=#{imageName},phone=#{phone},induction_date=#{inductionDate},positiveDate=#{positiveDate},birthday=#{birthday},sex=#{sex} where id=#{id}
+	</update>
 </mapper>

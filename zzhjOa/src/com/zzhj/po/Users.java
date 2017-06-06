@@ -21,8 +21,10 @@ public class Users implements Serializable{
 	private String graduated;/*毕业学校*/
 	private String education;/*文化程度*/
 	private String professional;/*专业*/
-	private Integer parentId;
-	private String state;
+	private Integer parentId;	//父id
+	private String state;		//用户状态
+	private String inductionDate;//入职时间
+	private String imageName;
 	public int getId() {
 		return id;
 	}
@@ -144,6 +146,18 @@ public class Users implements Serializable{
 	}
 	public void setState(String state) {
 		this.state = state;
+	}
+	public String getInductionDate() {
+		return inductionDate;
+	}
+	public void setInductionDate(String inductionDate) {
+		this.inductionDate = inductionDate;
+	}
+	public String getImageName() {
+		return imageName;
+	}
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
 	}
 	
 		
