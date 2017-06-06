@@ -29,7 +29,7 @@
   		select count(id) from request_seal
   </select>
   
-  <insert id="save" parameterType="requestSeal">			 
+  <insert id="save" parameterType="requestSeal" useGeneratedKeys="true" keyProperty="id" >			 
   	insert into request_Seal(number,project_name,pageNumber,copiesNumber,text,why,user_id,request_date,approver,state,seal_id)
   	values(#{number},#{projectName},#{pageNumber},#{copiesNumber},#{text},#{why},#{userId.id},#{requestDate},#{approver},#{state},#{sealId.id})
   </insert>	

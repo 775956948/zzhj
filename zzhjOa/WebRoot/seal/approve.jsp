@@ -7,7 +7,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>审批</title>
+		<title>资质章审批</title>
 	</head>
 	<body>
 		<!--审批表格-->
@@ -18,7 +18,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div id="spprove-tanc"> 
  			<form action="" method="post" id="approve-form" class="approve-form">
 				<input name="sealId" id="dis_none" style="opacity:0;"/>
-				<h2 align="center">资质章盖章申请单</h2>
+				<h2 align="center">资质章审批</h2>
 				<ul class="cmn_list">
 					<li><span>编号</span><input type="text" name="id2"  value="" readonly="readonly" class="apply-val" /></li>
 					<li><span>项目名称</span><input type="text" name="projectName2" readonly="readonly" value="" class="apply-val"/></li>
@@ -31,7 +31,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				
 					</li>
 				</ul>
-				<!--<input name="aaa" type="text"/> -->
+				
   			   
   			</form>
 
@@ -120,7 +120,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		}
 		
 
-  		 function applySubmit(){	 			
+  		 function applySubmit(){	 		
+  			 var id=$("#dis_none").val();
 			$.ajax({
 				   url:"ziZhiSeal/approver.action",
 				   type:"post",
@@ -134,7 +135,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					   	alert("审批完成");
 					   	spprove_tanc.dialog('close');
 					   	$('#approveDg').datagrid('reload');
-					   	
+					   	$("#listMes li").each(function(){
+					   		 var target=$(this).attr("id");
+					   		 if(target==id){
+					   		 	 $(this).remove(); 
+					   		 	var number =$("#listMes").children('li').length;
+					   		 	if(number==0){
+					   		 	 $("#message").hide();  
+					   		 	}
+					   		 }
+					   	})
 					   }else{
 					   	alert("提交失败");
 					   	

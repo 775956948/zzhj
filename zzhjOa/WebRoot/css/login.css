@@ -66,6 +66,12 @@
     padding-top: 11px;
     font-size: 16px;
     padding-left: 10px;
+    
+    height:40px\0;
+    height:0px\9\0;
+    line-height:40px\0;
+    
+    
 }
 .login_table .login_input{	
 	margin: 6px 0;
@@ -75,6 +81,8 @@
 	border: 1px solid #cdcdcd;
 	text-indent: 38px;
 	    font-size: 14px;
+	height:35px\0;   
+	height:0px\9\0;  
 }
 .login_table .login_input-icon1{background: url(../image/login-icon1.png) no-repeat 12px;background-size:18px ;}
 .login_table .login_input-icon2{background: url(../image/login-icon2.png) no-repeat 12px;background-size:18px ;}

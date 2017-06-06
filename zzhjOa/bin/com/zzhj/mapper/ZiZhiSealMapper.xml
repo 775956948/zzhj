@@ -22,7 +22,7 @@
   <select id="queryAll" resultMap="zs" parameterType="int">
   	SELECT z.id,z.number,z.projectName,z.requestDate,z.approver,z.overDate,z.state,z.copiesNumber,z.text,z.why,z.pageNumber,z.agent,u.name FROM zi_zhi_seal z INNER JOIN users u ON u.id=z.user_id limit #{startPage},#{rows}
   </select>
-  <insert id="save" parameterType="ziZhiSeal">			 
+  <insert id="save" parameterType="ziZhiSeal" useGeneratedKeys="true" keyProperty="id">			 
   	insert into zi_zhi_seal(number,projectName,pageNumber,copiesNumber,text,why,user_id,requestDate,approver,state)
   	values(#{number},#{projectName},#{pageNumber},#{copiesNumber},#{text},#{why},#{userId.id},#{requestDate},#{approver},#{state})
   </insert>											

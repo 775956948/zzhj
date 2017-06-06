@@ -157,7 +157,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							});
 					   	$('#approve_official_Dg').datagrid('reload');
 					   	alert("审批完成");
-					   
+					   	$("#listMes li").each(function(){
+					   		 var target=$(this).attr("id");
+					   		 if(target==id){
+					   		 	 $(this).remove(); 
+					   		 	var number =$("#listMes").children('li').length;
+					   		 	if(number==0){
+					   		 	 $("#message").hide();  
+					   		 	}
+					   		 }
+					   	})
 					   }else{
 					   	alert("提交失败");
 					   	

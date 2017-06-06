@@ -11,17 +11,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <base href="<%=basePath%>">
     
     <title>中兆恒基Oa办公系统</title>
-<!-- <meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page"> -->
+	<meta http-equiv="description" content="This is my page">
 	<script type="text/javascript">
 		
 		//websocket实例
 		var ws;
 		$(function(){
-			 $("#message").hide(); 
+		 	 $("#message").hide();  
 			 //查询公告
  			 $.post("notice/queryAll.action",function(data){
 				 for (var i = 0; i < data.length; i++) {
@@ -40,17 +40,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                {
                   // Web Socket 已连接上，使用 send() 方法发送数据
                /*    ws.send("发送数据"); */
-               alert("已链接webSocket服务器，牵手成功")
+               alert("已链接webSocket服务器，牵手成功。")
                };
 				
                ws.onmessage = function (evt) 
                { 
                   var msg = evt.data;
                   var jsonObject =JSON.parse(msg);
-              	  $("#message").show();
-                  $("#listMes").append("<li>"+jsonObject.theme+"————发起人————"+jsonObject.from+"</li>")
-                  var audioEle = document.getElementById("audio");
-      			  audioEle.play();
+                  if(jsonObject.type=="seal"){
+                	  seal(jsonObject);
+                  }
+
                };
 				
                ws.onclose = function()
@@ -100,7 +100,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		            	            radius: '55%',
 		            	            roseType: 'angle',
 		            	            data:[
-		            	                {value:235, name:'视频广告'},
+		            	                {value:235, name:'视频广告 '},
 		            	                {value:274, name:'联盟广告'},
 		            	                {value:310, name:'邮件营销'},
 		            	                {value:335, name:'直接访问'},
@@ -145,13 +145,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             onSelect : function(title, index) { 
             	var param =$("ul[name='" + title + "']").attr("param");
                  $("ul[name='" + title + "']").tree({  
-                    url : '${pageContext.request.contextPath}/function/getNode.action',  
+                    url :'${pageContext.request.contextPath}/function/getNode.action',  
                     queryParams : {  
                         id : param
                     }, 
                     lines : true,//显示虚线效果     
                     onClick: function(node){// 在用户点击一个子节点即二级菜单时触发addTab()方法,用于添加tabs  
                         if(node.url){//判断url是否存在，存在则创建tabs  
+                        	
+        
                             addTab(node.text,node.url);  
                         }  
                     }  
@@ -168,11 +170,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  	  			title:tab,
 	  	  			href:url,
 	  	  			closable:true
-	  	  		}) ;
+	  	  		});
 	  			
 	  		}
 	  		else{
-	  			$("#mytabs").tabs('select',tab) ;
+	  			$("#mytabs").tabs('select',tab);
 	  		}
 	  	}
 		
@@ -186,17 +188,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		 	$('#mesDd').dialog({
 				width : 400,
 				height : 300,
-				modal : true, 
+				modal : false, 
 				title : '查看未处理信息',
 				closed : false,
 				onClose:function(){
-					$("#listMes").empty();
-					$("#message").hide();
 				}
 			});  
 			
 		}
 		
+		function messageTo(text,url){
+			  addTab(text,url);  
+		}
+		
+		//盖章通知方法
+		function seal(json){
+        	 $("#message").show();
+        	  var text=json.targetName;
+        	  var url=json.viewTarget;
+              $("#listMes").append('<li id='+json.contentId+' onclick=messageTo("'+text+'","'+url+'")>'+json.theme+'————发起人————'+json.from+'</li>')
+              var audioEle = document.getElementById("audio");
+  			  audioEle.play();
+		}
 
 		
 		
@@ -249,7 +262,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				   		
 				   	</div>
 				   	<iframe src="http://news.szhk.com/" width="100%" height="100%" frameborder="0" ></iframe>
-				   </div>   
+				   </div>    
 			</div> 
 			<div id="mesDd"  class="easyui-dialog" closed=true >
 				<ul id="listMes"></ul>

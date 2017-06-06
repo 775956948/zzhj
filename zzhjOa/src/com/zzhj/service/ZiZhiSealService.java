@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Service;
 
 import com.zzhj.entityCustom.Message;
+import com.zzhj.entityCustom.MessageType;
 import com.zzhj.listener.SessionListener;
 import com.zzhj.mapper.UsersMapper;
 import com.zzhj.mapper.ZiZhiSealMapper;
@@ -43,9 +44,10 @@ public class ZiZhiSealService {
 		z.setRequestDate(time);
 		z.setState("待审批");
 		z.setApprover(user.getName());
+		int number =zs.save(z);
 		//调用推送方法
-		send(user.getName(),z.getUserId().getName());
-		return zs.save(z);
+		send(user.getName(),z.getUserId().getName(),z.getId(),"seal/approve.jsp","资质章审批");
+		return number;
 	}
 	public int delete(int id){
 		return zs.delete(id);
@@ -64,16 +66,22 @@ public class ZiZhiSealService {
 	}
 	
 	public int approver(int sealId,int userId){
+		String view="";
+		String targetName="";
 		Users user =um.parentId(userId);
 		String requestName=zs.requestName(sealId);
 		Users parentUser=new Users();
 		if(user!=null&&user.getParentId()!=null&&user.getParentId()!=0){
 			Users u=um.query(user.getParentId());
+			view="seal\\approve.jsp";
+			targetName="资质章审批";
 			parentUser.setName(u.getName());
 		}else{
 			 parentUser.setName("");
+			 view="seal\\handling.jsp";
+			 targetName="资质章办理";
 		}
-		send(parentUser.getName(),requestName);
+		send(parentUser.getName(),requestName,sealId,view,targetName);
 		return zs.approver(sealId,parentUser.getName());
 	}
 	
@@ -99,14 +107,19 @@ public class ZiZhiSealService {
 	 * @Description: 推送消息
 	 * @param @param userName
 	 * @param @param requestName   
+	 * @param @param id 
 	 * @return void  
 	 * @throws
 	 * @author 小白
 	 * @date 2017年5月31日
 	 */
-	private void send(String userName,String requestName){
+	private void send(String userName,String requestName,int id,String view,String targetName){
 		Message mes =new Message();
+		mes.setTargetName(targetName);
+		mes.setContentId(id);
+		mes.setViewTarget(view);
 		mes.setFrom(requestName);
+		mes.setType(MessageType.seal);
 		mes.setTheme("您有未处理的资质章信息");
 		if(!userName.equals("")){
 			ServerHandler.send(userName,mes);
