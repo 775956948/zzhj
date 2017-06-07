@@ -230,7 +230,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		</div>
 			<div id="user">
 				<ul style="position: relative;">
-				<p style=" position: absolute; left:-20px; top:-15px;"> <img alt="" src="image/2017-05-24_145120.png" width="50px;" style="border-radius:25px;"></p>
+				<p style=" position: absolute; left:-20px; top:-15px;"> <img alt="" src="image/${users.imageName }" width="50px;" style="border-radius:25px;"></p>
 					<li><h3>当前用户:${users.name }</h3></li>
 					<li><h4>${message }</h4></li>
 					<li><h4 onclick="exit()" style="cursor:pointer">退出登陆</h4></li>
@@ -261,7 +261,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				   		</div>
 				   		
 				   	</div>
-				   	<iframe src="http://news.szhk.com/" width="100%" height="100%" frameborder="0" ></iframe>
+				  <!--  	<iframe src="http://news.szhk.com/" width="100%" height="100%" frameborder="0" ></iframe> -->
 				   </div>    
 			</div> 
 			<div id="mesDd"  class="easyui-dialog" closed=true >

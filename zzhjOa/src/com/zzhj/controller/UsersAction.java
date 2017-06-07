@@ -2,6 +2,8 @@ package com.zzhj.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -14,12 +16,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.zzhj.listener.SessionListener;
@@ -149,19 +157,74 @@ public class UsersAction {
 	public Users queryUserInfoOne(int id){
 		return us.queryUserInfoOne(id);
 	}
-	@RequestMapping(value="/updateUserInfo.action",method = RequestMethod.POST)
-	@ResponseBody
-	public int updateUserInfo(Users user,@RequestParam("file")  MultipartFile file){
-		String fileName=file.getOriginalFilename();
-		String path="d:\\image";
-		user.setImageName(fileName);
-		File newFile = new File(path+fileName);
-		try {
-			file.transferTo(newFile);
-		} catch (IllegalStateException | IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return 1;
+	
+	//上传文件
+	@RequestMapping(value="/updateUserInfo.action")
+	public String updateUserInfo(HttpServletRequest request,HttpSession session){
+		String path=request.getServletContext().getRealPath("/image");
+		Users user = new Users();
+		DiskFileItemFactory factory = new DiskFileItemFactory();  
+        // 内存存储的最大值  
+        factory.setSizeThreshold(4096);  
+  
+        ServletFileUpload upload = new ServletFileUpload(factory);  
+        //设置文件上传大小  
+        upload.setSizeMax(1000000 * 20);  
+        try {  
+            List fileItems = upload.parseRequest(request);  
+            String itemNo = "";  
+            for (Iterator iter = fileItems.iterator(); iter.hasNext();) {  
+                FileItem item = (FileItem) iter.next();  
+                  
+                //是普通的表单输入域  
+                if(item.isFormField()) {  
+                    switch (item.getFieldName()) {
+                    case "id":
+                    	user.setId(Integer.parseInt(item.getString()));
+					case "password":
+						user.setPassword(item.getString());
+						break;
+					case "phone":
+						user.setPhone(item.getString());
+						break;
+					case "inductionDate":
+						user.setInductionDate(item.getString());
+						break;
+					case "positiveDate":
+						user.setPositiveDate(item.getString());
+						break;
+					case "birthday":
+						user.setBirthday(item.getString());
+						break;
+					case "sex":
+						user.setSex(item.getString("utf-8"));
+						break;
+					}
+                }  
+                //是否为input="type"输入域  
+                if (!item.isFormField()) {  
+                    String fileName = item.getName();  
+                    long size = item.getSize();  
+                    if ((fileName == null || fileName.equals("")) && size == 0) {  
+                        continue;  
+                    }  
+                    //截取字符串 如：C:\WINDOWS\Debug\PASSWD.LOG  
+                    fileName = fileName.substring(fileName.lastIndexOf("\\") + 1, fileName.length());  
+                    item.write(new File(path, fileName));  
+                    user.setImageName(fileName);
+                }  
+            }
+            
+        } catch (Exception e) {  
+            e.printStackTrace();  
+        }
+        int result=us.updateUserInfo(user);
+        String view="";
+        if(result>0){
+        	view="redirect: ../login.jsp";
+        }else{
+        	view="redirect: ../error/500.html";
+        }
+        return view;
 	}
 }
