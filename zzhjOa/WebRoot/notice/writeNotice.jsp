@@ -35,6 +35,7 @@
 					$.post('notice/save.action',{'text':text,'theme':theme},function(data){
 						if(data>0){
 							$.messager.alert("提示", "提交成功", "info"); 
+							noticeQuery();
 						}
 					});
 				}else{

@@ -78,7 +78,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         		{field:'abnormalText',title:'异常原由',width:400},  
         		{field:'abnormalType',title:'异常类型',width:200},
         		{field:'abnormalDate',title:'异常时间'}, 
-        		{field:'date',title:'申请时间'},
+        		{field:'date',title:'申请时间',sortable:true},
         		{field:'approver',title:'审批人'},
         		{field:'state',title:'状态'},   
     		]]    

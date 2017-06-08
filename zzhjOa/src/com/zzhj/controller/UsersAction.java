@@ -227,4 +227,9 @@ public class UsersAction {
         }
         return view;
 	}
+	@RequestMapping("/searchUserInfo.action")
+	@ResponseBody
+	public Map searchUserInfo(int page,int rows,Users user){
+		return us.searchUserInfo(page, rows, user);
+	}
 }

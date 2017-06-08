@@ -106,7 +106,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				}
         		},    
         		{field:'requestText',title:'用途',width:300},
-        		{field:'startDate',title:'用车日期'},
+        		{field:'startDate',title:'用车日期',sortable:true},
         		{field:'startNumber',title:'用车公里数'}, 
         		{field:'overDate',title:'还车日期'}, 
         		{field:'overNumber',title:'还车公里数'},    

@@ -21,14 +21,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		//websocket实例
 		var ws;
 		$(function(){
-		 	 $("#message").hide();  
-			 //查询公告
- 			 $.post("notice/queryAll.action",function(data){
-				 for (var i = 0; i < data.length; i++) {
-					 $("#north").append("<p style='overflow: hidden; '><a href='notice/queryOne.action?id="+data[i].id+"'  target='notice/showNotice.jsp'>"+"《主题》："+data[i].theme+"&nbsp;&nbsp;《发布时间》："+data[i].releaseDate+"&nbsp;&nbsp;《发布人》:"+data[i].userId.name+"</a></p>") 
-				}
-				 
-			 }) 
+			 $("#message").hide();  
+			//查询公告
+			noticeQuery();
 			 
 			//--------webSocket----------
             if ("WebSocket" in window){
@@ -49,6 +44,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   var jsonObject =JSON.parse(msg);
                   if(jsonObject.type=="seal"){
                 	  seal(jsonObject);
+                  }else if(jsonObject.type="notice"){
+                	  noticeQuery();
                   }
 
                };
@@ -111,23 +108,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		            	};
 		           bing.setOption(bingOption);
 			//end  -----
-			
-			
-			/* $("#mainTree").tree({
-				url:'function/getNode.action',
-				loadFilter:function(data){
-					for(var i = 0; i < data.length;i++){
-		  				data[i].attributes = {'url':data[i].url};
-		  			}
-		  			return data;
-				},
-			 	dnd:false,
-			    animate:true,
-			    lines:true,
-			    onClick:function(node){
-			    	addTab(node.text,node.url);
-				}
-			}); */
 			
 			//手风琴开始
 			$.post('function/getNode.action',function(data){
@@ -210,7 +190,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               var audioEle = document.getElementById("audio");
   			  audioEle.play();
 		}
-
+	//查询公告
+	function noticeQuery(){
+		 //查询公告
+			 $.post("notice/queryAll.action",function(data){
+				 $("#north").empty();
+			 for (var i = 0; i < data.length; i++) {
+				 $("#north").append("<p style='overflow: hidden; '><a href='notice/queryOne.action?id="+data[i].id+"'  target='notice/showNotice.jsp'>"+"《主题》："+data[i].theme+"&nbsp;&nbsp;《发布时间》："+data[i].releaseDate+"&nbsp;&nbsp;《发布人》:"+data[i].userId.name+"</a></p>") 
+			}
+			 
+		 }) 
+	}
 		
 		
 	</script>

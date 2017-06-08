@@ -7,8 +7,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.zzhj.entityCustom.Message;
+import com.zzhj.entityCustom.MessageType;
 import com.zzhj.mapper.NoticeMapper;
 import com.zzhj.po.Notice;
+import com.zzhj.webSocket.ServerHandler;
 
 @Service
 public class NoticeService {
@@ -24,6 +27,9 @@ public class NoticeService {
 		SimpleDateFormat f=new SimpleDateFormat("yyyy-MM-dd");
 		String time=f.format(today);
 		n.setReleaseDate(time);
+		Message msg = new Message();
+		msg.setType(MessageType.notice);
+		ServerHandler.sendAll(msg);
 		return nm.save(n);
 	}
 	

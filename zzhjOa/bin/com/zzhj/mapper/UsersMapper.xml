@@ -19,8 +19,10 @@
 		<result column="name" property="name"/>
 		<result column="password" property="password"/>
 		<result column="image_name" property="imageName"/>
+		<result column="phone" property="phone"/>
 		<association property="roleId" javaType="com.zzhj.po.Roles">
 			<id column="r_id" property="id"/>
+			<result column="r_name" property="name"/>
 		</association>
 		<association property="departmentId" javaType="department">
 			<result column="d_name" property="name"/>
@@ -99,4 +101,17 @@
 		</if>
 		phone=#{phone},induction_date=#{inductionDate},positiveDate=#{positiveDate},birthday=#{birthday},sex=#{sex} where id=#{id}
 	</update>
+	
+	<select id="searchUserInfo" parameterType="object" resultMap="ur">
+			select u.name,u.id,u.phone,d.name as d_name,r.name as r_name  from users u inner join department d on u.departmentId=d.id inner join roles r on r.id=u.role_id
+			<where>
+				<if test="user.departmentId!=null and user.departmentId.id!=0">
+					and u.departmentId=#{user.departmentId.id}
+				</if>
+				<if test='user.name!=null and user.name!="" '>
+					and u.name like '%${user.name}%'
+				</if>
+			</where>
+			limit #{startPage},#{rows}
+	</select>
 </mapper>

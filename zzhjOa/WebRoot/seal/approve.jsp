@@ -57,7 +57,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			{field:'userId',title:'申请人',width:70,formatter:function(value){
     			return value.name;
     		}},
-    		{field:'requestDate',title:'申请时间',width:140,},
+    		{field:'requestDate',title:'申请时间',width:140,sortable:true},
     		{field:'state',title:'状态',width:70,},
     		{field:'approver',title:'审批人',width:70,},
     		{field:'agent',title:'经办人',width:70,}, 

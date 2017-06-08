@@ -116,4 +116,14 @@ public class UsersService {
 	public int updateUserInfo(Users user){
 		return um.updateUserInfo(user);
 	}
+	
+	public Map<String,Users> searchUserInfo(int page,int rows,Users user){
+		int startPage =(page-1)*(rows/2);
+		List<Users> list = um.searchUserInfo(startPage, rows,user);
+		int total = um.totalCount();
+		Map map = new HashMap();
+		map.put("rows",list);
+		map.put("total", total);
+		return map;
+	}
 }

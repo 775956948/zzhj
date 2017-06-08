@@ -96,4 +96,18 @@ public interface UsersMapper {
 	 * @date 2017年6月6日
 	 */
 	int updateUserInfo(Users user);
+	/**
+	 * 
+	 * @Description: 查询员工的信息
+	 * @param @param startPage
+	 * @param @param rows
+	 * @param @param departmentId
+	 * @param @param userName
+	 * @param @return   
+	 * @return List<Users>  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年6月8日
+	 */
+	List<Users> searchUserInfo(@Param("startPage") int startPage,@Param("rows") int rows,@Param("user")Users user);
 }

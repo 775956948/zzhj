@@ -93,7 +93,7 @@
  			   	},},    
 			   	{field:'start',title:'启始站点',},   
 			   	{field:'over',title:'结束站点',},   
-			   	{field:'startDate',title:'领取时间',},   
+			   	{field:'startDate',title:'领取时间',sortable:true},   
 			   	{field:'overDate',title:'归还时间',},   
 			   	{field:'startMoney',title:'领取金额',}, 
 			   	{field:'overMoney',title:'归还金额',},

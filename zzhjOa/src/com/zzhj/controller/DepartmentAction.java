@@ -29,4 +29,10 @@ public class DepartmentAction {
 		mv.setViewName("/registered.jsp");
 		return mv;
 	}
+	
+	@RequestMapping("/departmentInfo.action")
+	@ResponseBody
+	public List<Department> departmentInfo(){
+		return ds.queryAll();
+	}
 }
