@@ -8,4 +8,5 @@ public interface CarMapper {
 	List<Car> getAll();
 	int CarId(String carNo);
 	void updateState(Car car);
+	int addCar(Car c);
 }	

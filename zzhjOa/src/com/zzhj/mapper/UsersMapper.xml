@@ -114,4 +114,8 @@
 			</where>
 			limit #{startPage},#{rows}
 	</select>
+	
+	<select id="querySubclass" parameterType="int" resultType="string">
+		SELECT NAME FROM users WHERE parent_id=#{value}
+	</select>
 </mapper>

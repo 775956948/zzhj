@@ -232,4 +232,10 @@ public class UsersAction {
 	public Map searchUserInfo(int page,int rows,Users user){
 		return us.searchUserInfo(page, rows, user);
 	}
+	@RequestMapping("/querySubclass.action")
+	@ResponseBody
+	public List<String> querySubclass(HttpSession session){
+		Users user =(Users) session.getAttribute("users");
+		return us.querySubclass(user.getId());
+	}
 }

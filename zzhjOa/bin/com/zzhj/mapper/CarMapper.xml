@@ -10,4 +10,7 @@
 	<update id="updateState" parameterType="car">
 		update car set state=#{state} where id=#{id}
 	</update>
+	<insert id="addCar" parameterType="car">
+		insert into car(carNo,carName,state)values(#{carNo},#{carName},#{state})
+	</insert>
 </mapper>

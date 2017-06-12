@@ -27,7 +27,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			 
 			//--------webSocket----------
             if ("WebSocket" in window){
-            	alert("您的浏览器支持webScoket");
                // 打开一个 web socket
                 ws = new WebSocket("ws://localhost:8080/zzhjOa/serverHandler");
 				
@@ -35,7 +34,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                {
                   // Web Socket 已连接上，使用 send() 方法发送数据
                /*    ws.send("发送数据"); */
-               alert("已链接webSocket服务器，牵手成功。")
                };
 				
                ws.onmessage = function (evt) 
@@ -53,7 +51,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                ws.onclose = function()
                { 
                   // 关闭 websocket
-                  alert("webscoet关闭")
                };
             }
             
@@ -213,7 +210,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<audio src="mp3/4331.mp3" id="audio"></audio>
     	<!-- 上侧 -->
     	<div data-options="region:'north'" style="height:80px;/* background-color: E0ECFF; */background-color: gray; " id="title" >
-    		<a href="#" class="logo_btn"><img src="image/logo_02.png"/></a>
+    		<a  class="logo_btn"><img src="image/logo_02.png"/></a>
     		<span class="main_span">中兆恒基Oa办公系统</span>
     	 	<div id="message" > 
     			<p id="mgeTitle"  onclick="mes()">你有未处理的消息<img src="image/lb.png" style="vertical-align: middle; margin-left:15px;"></p>
@@ -228,7 +225,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
     	</div>      
     	<!-- 左侧 -->
-    	<div id="parent" data-options="region:'west',title:'菜单栏',split:true" style="width:280px;" class="easyui-accordion">
+    	<div id="parent" data-options="region:'west',title:'菜单栏',split:true" style="width:200px;" class="easyui-accordion">
     		 <!-- 	<ul id='mainTree'></ul>	  -->
     	</div>  
     	<!-- 右侧 --> 

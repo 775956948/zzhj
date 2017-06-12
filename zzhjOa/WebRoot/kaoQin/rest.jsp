@@ -64,7 +64,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		 
   		 
   	<script type="text/javascript">
-  		 	$('#restDg').datagrid({    
+   		 	$('#restDg').datagrid({    
    			 url:'rest/queryAll.action',
    			 fitColumns:true,
    			 toolbar: '#restTb', 
@@ -77,11 +77,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         		{field:'restTypeId',title:'请假类型',formatter: function(value){return value.name;},width:100},
         		{field:'restDate',title:'请假天数'},
         		{field:'currentDate',title:'请假起始时间'}, 
-        		{field:'date',title:'申请时间',sortable:true},
+        		{field:'date',title:'申请时间'},
         		{field:'approver',title:'审批人'},
         		{field:'state',title:'状态'},   
     		]]    
-		}); 
+		});  
 		////
 		function addRest(){
 			$("#restDd").dialog({

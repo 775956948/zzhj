@@ -41,7 +41,7 @@ public class UrlIntercepter implements HandlerInterceptor {
 				return true;
 			}
 		}
-		response.sendRedirect("../../login.jsp");
+		response.sendRedirect("/zzhjOa/login.jsp");
        return false; 
 	}
 

@@ -102,20 +102,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    			 singleSelect:true,
    			 columns:[[
 		   		{field:'id',title:'',checkbox:true,}, 
-		   		{field:'number',title:'编号'},       
-	        		{field:'projectName',title:'项目名称',},
-	        		{field:'userId',title:'申请人',formatter:function(value){
+		   		{field:'number',title:'编号',width:50},       
+	        		{field:'projectName',title:'项目名称',width:140},
+	        		{field:'userId',title:'申请人',width:70,formatter:function(value){
 	        			return value.name;
 	        		}},
-	        		{field:'requestDate',title:'申请时间',sortable:true},
-	        		{field:'state',title:'状态',},
-	        		{field:'approver',title:'审批人',},
-	        		{field:'agent',title:'经办人',},
-	        		{field:'overDate',title:'盖章时间',},
-	        		{field:'text',title:'盖章内容',},  
-	        		{field:'why',title:'盖章事由',},
-	        		{field:'pageNumber',title:'页数',},   
-	        		{field:'copiesNumber',title:'份数',},        		
+	        		{field:'requestDate',title:'申请时间',sortable:true,width:100},
+	        		{field:'state',title:'状态',width:50},
+	        		{field:'approver',title:'审批人',width:100},
+	        		{field:'agent',title:'经办人',width:100},
+	        		{field:'overDate',title:'盖章时间',width:100},
+	        		{field:'text',title:'盖章内容',width:200},  
+	        		{field:'why',title:'盖章事由',width:200},
+	        		{field:'pageNumber',title:'页数',width:50},   
+	        		{field:'copiesNumber',title:'份数',width:50},        		
 
     		]]    
 		}); 

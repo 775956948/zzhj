@@ -23,11 +23,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
   		<div style="width: 100%; height: 250px; position: relative; overflow: hidden; background-color: white;">
-	   <iframe  src="http://cha.weiche.me/limit.php?channel=sm&city_name=北京" style="width: 100%; height: 1000px; position: absolute; top:-418px; " width="100%" height="250px" frameborder="0"   scrolling="no" >
+	   <iframe  src="http://cha.weiche.me/limit.php?channel=sm&city_name=北京" style="width: 100%; height: 1000px; position: absolute; top:-443px; " width="100%" height="250px" frameborder="0"   scrolling="no" >
 	   </iframe>
 	   </div>
   	<div id="carInfoTb">
-		<a  class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="addCarInfo()">添加</a>
+		<a  class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="addCarInfo()">添加用车信息</a>
+		<a  class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="addCar()">添加车辆</a>
 		<a  class="easyui-linkbutton" iconCls="icon-save" plain="true" onclick="deleteCarInfo()">刪除</a>
 		<a  class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="updateCarInfo()">还车</a>
 	</div>
@@ -85,6 +86,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</form>
 	</div> 
 	
+	<div id="carDd"  class="easyui-dialog" closed=true >
+		<form action="" method="post">
+			<table>
+				<tr>
+					<td colspan="2" align="center"><h5>新增车辆</h5></td>
+				</tr>
+				<tr>
+					<td>车辆名称：</td>
+					<td><input type="text" name="carName" /></td>
+				</tr>
+				<tr>
+					<td>车牌号：</td>
+					<td><input type="text" id="carNo"/></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center"><input type="button" value="提交" onclick="submitAddCar()"/></td>
+				</tr>
+			</table>
+		</form>
+	</div>
 	
 	<table id="carInfoDg"></table> 
 	
@@ -93,7 +114,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			$('#carInfoDg').datagrid({    
    			 url:'carInfo/getCarInfo.action',
    			 fitColumns:true,
-   			 toolbar: '#tb', 
+   			 toolbar: '#carInfoTb', 
    			 pagination:true,
    			 singleSelect:true,
    			 columns:[[
@@ -215,6 +236,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			}else{
 				 $.messager.alert("提示", "请选中一行记录", "info");  
 			}
+		}
+		function addCar(){
+			$('#carDd').dialog({
+				title : '添加车辆信息',
+				width : 400,
+				height : 300,
+				closed : false,
+				cache : false,
+				modal : true, 
+			}); 
+		}
+		function submitAddCar(){
+			var carNo=$("#carNo").val();
+			var carName=$("#carDd input[name='carName']").val();
+ 			if(carNo!=''&& carName!=''){	
+				
+				$.post('car/addCar.action',{'carNo':carNo,'carName':carName},function(data){
+					if(data>0){
+						$.messager.alert("提示", "添加成功", "info"); 
+						$('#carDd').dialog({
+							closed : true
+						}); 
+					}
+				})
+			}else{
+				$.messager.alert("提示", "信息不完整", "info");
+			} 
 		}
 	</script>
   </body>

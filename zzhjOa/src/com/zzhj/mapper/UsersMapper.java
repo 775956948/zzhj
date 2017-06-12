@@ -29,16 +29,8 @@ public interface UsersMapper {
 	 */
 	int updateUser(Users user);
 	List<Users> queryUser(@Param("departmentName") String departmentName,@Param("roleName") String roleName);
-	/**
-	 * 
-	 * @Description: 返回子用户（自己的下属）
-	 * @param @param id
-	 * @param @return   
-	 * @return List<Users>  
-	 * @throws
-	 * @author 小白
-	 * @date 2017年5月3日
-	 */
+
+	
 	List<Users> roleUser(Users user);
 	/**
 	 * 
@@ -110,4 +102,15 @@ public interface UsersMapper {
 	 * @date 2017年6月8日
 	 */
 	List<Users> searchUserInfo(@Param("startPage") int startPage,@Param("rows") int rows,@Param("user")Users user);
+	/**
+	 * 
+	 * @Description: 根据参数id返回子类的用户名
+	 * @param @param userId
+	 * @param @return   
+	 * @return List<String>  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年6月12日
+	 */
+	List<String> querySubclass(int userId);
 }

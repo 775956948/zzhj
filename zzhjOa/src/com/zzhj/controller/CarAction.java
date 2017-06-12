@@ -22,4 +22,10 @@ public class CarAction {
 	public List<Car> getAll(){
 		return cs.getAll();
 	}
+	
+	@RequestMapping("/addCar.action")
+	@ResponseBody
+	public int addCar(Car c){
+		return cs.addCar(c);
+	}
 }

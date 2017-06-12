@@ -126,4 +126,8 @@ public class UsersService {
 		map.put("total", total);
 		return map;
 	}
+	
+	public List<String> querySubclass(int userId){
+		return um.querySubclass(userId);
+	}
 }
