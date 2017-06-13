@@ -43,7 +43,7 @@
     position: absolute;
     right: 50%;
     margin-right: -480px;
-    width: 300px;
+    width: 350px;
     border-radius: 6px;
     overflow: hidden;
     margin-top: 89px;
@@ -75,6 +75,11 @@
 .login_table li{
 	margin: 6px auto;
 	height: auto;
+	padding: 0px;
+}
+.login_table ul{
+	padding: 0px;
+	margin: 0px 20px;
 }
 .login_table .td_name{
     background: url(../image/login-icon1.png) no-repeat 12px;

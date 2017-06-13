@@ -134,5 +134,19 @@
 			margin: auto;
 			padding-top: 20px;
 		}
+		#userInfo button{
+		        border:none;
+		        background-color: #e68900;
+                color: #CCC;
+                width:59px;
+                height:150%;
+                line-height:100%;
+               font-weight: 700;
+               font-size: 13px;
+               text-align: center;
+               border-radius: 5px;
+               position: relative;
+               left:20em;
+		}
 		
 		

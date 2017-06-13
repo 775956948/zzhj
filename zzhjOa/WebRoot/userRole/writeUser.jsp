@@ -92,7 +92,7 @@
 			<td>男 <input id="male" type="radio" name="sex" value="男" style="width: 20px;"/>女 <input id="female" type="radio" name="sex" value="女" style="width: 20px;"/></td>
 		</tr>
 		<tr>
-			<td colspan="4" align="center">	<button type="button" onclick="submitInfo();">提交</button></td>
+			<td colspan="4" >	<button type="button" onclick="submitInfo();">提交</button></td>
 		</tr>
 	</table> 
 	</form>

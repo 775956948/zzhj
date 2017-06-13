@@ -12,18 +12,25 @@
     width: 600px;
     height: auto;
     margin: 0 auto ;
+    overflow:hidden;
 }
 #changeTask  li{
     margin: 20px auto;
     width: 80%;
     font-size: 16px;
     height: auto;
-    line-height: 100%;
+    line-height: 40px;
+    overflow:hidden;
+}
+
+#changeTask  li span{
+	float:left;
 }
 #changeTask  li input{
     width: 70%;
     border-radius: 5px;
     height: 42px;
+     float:left;
     position: relative;
     behavior: url(pie.htc);
 }
@@ -32,6 +39,7 @@
     border-radius: 5px;
     position: relative;
     behavior: url(pie.htc);
+    float:left;
 }
 #changeTask  li button{
     border: none;
@@ -44,6 +52,7 @@
     margin: 30px auto;
     text-align: center;
     line-height: 100%;
+     border-radius: 5px;
     position: relative;
     behavior: url(pie.htc);
 }
