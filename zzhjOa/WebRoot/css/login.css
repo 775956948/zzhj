@@ -1,15 +1,11 @@
 
-
-
-
-
-
 .login_main{
 	max-width: 1920px;
 	height: 600px;
 	background: url('../image/login.jpg') no-repeat center;
 	background-size:cover;
 	margin: 0 auto;
+	font-family: 微软雅黑;
 }
 /*头部*/
 .login_header{
@@ -18,7 +14,6 @@
 	background: #000;
 	box-shadow: 0 0 2px #333;
 }
-
 .header_container{
 	width: 1210px;
 	margin: 0 auto;
@@ -41,7 +36,7 @@
 }
 
 .login_table{
-	box-shadow: 0px 02px 3px #ccc;
+	box-shadow: 5px 5px 3px #ccc;
 	padding-left:25px;
 	padding-right:25px;
 	box-sizing: border-box;
@@ -53,63 +48,78 @@
     overflow: hidden;
     margin-top: 89px;
     background-color: #fff;
-	
 }
 .login_table lable{
 	text-align: center;
 	font-size: 14px;
 }
-.login_table tr,.login_table td,.login_table table{
+.login_table tr,.login_table td,.login_table table ul li{
 	width: 100%;
 }
 .login_table h5{
-    padding-top: 11px;
+    height: 40px;
     font-size: 16px;
     padding-left: 10px;
-    
-    height:40px\0;
-    height:0px\9\0;
-    line-height:40px\0;
-    
-    
+    line-height:40px;
+	cursor: default;
 }
-.login_table .login_input{	
-	margin: 6px 0;
-	padding: 12px 0;
-	width: 100%;
+.login_table .login_input{
+	width: 80%;
+	height: 40px;
+	line-height: 40px;
+    border: none;
+    outline: none;
+    margin-left: 38px;
+    font-size: 14px;
+}
+.login_table li{
+	margin: 6px auto;
+	height: auto;
+}
+.login_table .td_name{
+    background: url(../image/login-icon1.png) no-repeat 12px;
+	background-size:18px ;
+    border: 1px solid #cdcdcd;
 	border-radius: 4px;
-	border: 1px solid #cdcdcd;
-	text-indent: 38px;
-	    font-size: 14px;
-	height:35px\0;   
-	height:0px\9\0;  
+	position: relative;
+	/*z-index: 2;*/
+	behavior: url(pie.htc);
 }
-.login_table .login_input-icon1{background: url(../image/login-icon1.png) no-repeat 12px;background-size:18px ;}
-.login_table .login_input-icon2{background: url(../image/login-icon2.png) no-repeat 12px;background-size:18px ;}
+.login_table .td_password{
+    background: url(../image/login-icon2.png) no-repeat 12px;
+    background-size:18px ;
+    border: 1px solid #cdcdcd;
+    border-radius: 4px;
+	position: relative;
+	behavior: url(pie.htc);
+}
 .button{
 	display: block;
-	margin: 4px auto;
-    width: 97%;
+	margin: 7px auto;
+	margin-top: 16px;
+    width: 100%;
     background: #eb6d1f;
     border-radius: 4px;
     text-align: center;
+	font-weight: 700;
     color: #FFF3F3;
-    padding: 10px 0;
-    font-size: 13px;
+    /*padding: 10px 0;*/
+	height: 44px;
+	line-height: 100%;
+    font-size: 20px;
     border: none;
-
+	position: relative;
+	behavior: url(pie.htc);
+	cursor: pointer;
 }
-
-
 .forget_btn{
 	float: left;
 	display: block;
-	margin-top: 6px;
+	margin: 6px 0 10px 0;
 	font-size: 13px;
 }
-
 .register_btn{
 	float: right;
 	font-size: 13px;
-	margin-top: 6px;
+	margin: 6px 0 10px 0;
 }
