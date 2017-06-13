@@ -48,17 +48,18 @@ h3{
     behavior: url(pie.htc);
     border:1px solid #e4b9c0;
 }
-button{
+.inputDivZT .inputDiv button{
     width: 60%;
     height: 40px;
     border: none;
     background-color: #e68900;
     color: white;
-    font-weight: 900;
+    font-weight: 800;
     font-size: 30px;
     text-align: center;
     line-height: 100%;
     margin: 15px auto;
+    margin-bottom: 32px;
     display: block;
     border-radius: 5px;
     position: relative;

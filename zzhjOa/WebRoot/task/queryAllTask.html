@@ -6,35 +6,38 @@
 
 </head>
 <body>
-<h3>查 看 所 有 任 务</h3>
-<div class="buttonBar" id="buttonBar">
-    <a class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="changeTask()">修改</a>
-</div>
-<div id="changeTask" class="easyui-dialog" title="修改任务" closed=true>
-    <ul>
-        <li>
-            <input type="hidden" name="userid">
-        </li>
-        <li>
-            <span>任务主题：</span>
-            <input type="text" name="taskTheme">
-        </li>
+<div class="PagingBody">
+    <h3>查 看 所 有 任 务</h3>
+    <div class="buttonBar" id="buttonBar">
+        <a class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="changeTask()">修改</a>
+    </div>
+    <div id="changeTask" class="easyui-dialog" title="修改任务" closed=true>
+        <ul>
+            <li>
+                <input type="hidden" name="userid">
+            </li>
+            <li>
+                <span>任务主题：</span>
+                <input type="text" name="taskTheme">
+            </li>
 
-        <li>
-            <span>任务天数：</span>
-            <input type="number" name="taskDay">
-        </li>
-        <li>
-            <span>任务内容：</span>
-            <textarea type="text" name="taskText" rows="5" cols="30"></textarea>
-        </li>
-        <li>
-            <button onclick="submitTask()">确 认 修 改</button>
-        </li>
-    </ul>
+            <li>
+                <span>任务天数：</span>
+                <input type="number" name="taskDay">
+            </li>
+            <li>
+                <span>任务内容：</span>
+                <textarea type="text" name="taskText" rows="5" cols="30"></textarea>
+            </li>
+            <li>
+                <button onclick="submitTask()">确 认 修 改</button>
+            </li>
+        </ul>
+    </div>
+    <!--表格-->
+    <table id="allTeskDg"></table>
 </div>
-<!--表格-->
-<table id="allTeskDg"></table>
+
 
 <script type="text/javascript">
 
@@ -52,8 +55,6 @@
 	                 $("textarea[name = taskText]").val(checkTask.taskText);
 	            }
 	        });
-	       
-	           
 	        } else {
 	        	 $.messager.alert("提示", "请选择一条数据", "info");
 	        }
@@ -107,9 +108,9 @@
                 },
                 success: function (data) {
                     if(data>0){
-                        $.messager.alert("提示", "修改成功", "info")
+                        $.messager.alert("提示", "修改成功", "info");
                          $('#changeTask').dialog({
-	            				closed: true, //更改 显示隐藏
+	            				closed: true //更改 显示隐藏
                          })
                           $('#allTeskDg').datagrid("reload");
 	          

@@ -6,20 +6,24 @@
 
 </head>
 <body>
-<h3>添加任务信息</h3>
-<div class="inputDivZT">
-    <div class="inputDiv">
-        <span>任务主题:</span>
-        <input type="text" name="taskTheme" title="任务主题">
-        <span>任务内容:</span>
-        <textarea rows="3" cols="30"  name="taskContent" id="taskContent" ></textarea>
-        <span>任务天数:</span>
-        <input type="number" name="taskDays">
-        <span>任务接收人:</span>
-        <select name="taskReceive" style="margin: 0 auto;display: block"></select>
-        <button id="submitTask">确认发布</button>
+<div class="PagingBody">
+    <div class="inputDivZT">
+        <div class="inputDiv">
+            <span>任务主题:</span>
+            <input type="text" name="taskTheme" title="任务主题">
+            <span>任务内容:</span>
+            <textarea rows="6" cols="30"  name="taskContent" id="taskContent" ></textarea>
+            <span>任务天数:</span>
+            <input type="number" name="taskDays">
+            <span>任务接收人:</span>
+            <select name="taskReceive" style="margin: 0 auto;display: block"></select>
+            <button id="submitTask">确  认  发  布</button>
+        </div>
     </div>
+    <h3>添加任务信息</h3>
 </div>
+
+
 <script type="text/javascript">
     $.ajax({
         url:'users/querySubclass.action',
