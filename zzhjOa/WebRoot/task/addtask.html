@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>添加任务信息</title>
-    <link rel="stylesheet" href="../css/basic.css">
-    <link rel="stylesheet" href="../css/addtask.css">
+
 </head>
 <body>
 <h3>添加任务信息</h3>
@@ -15,7 +14,7 @@
         <span>任务内容:</span>
         <textarea rows="3" cols="30"  name="taskContent" id="taskContent" ></textarea>
         <span>任务天数:</span>
-        <input type="text" name="taskDays">
+        <input type="number" name="taskDays">
         <span>任务接收人:</span>
         <select name="taskReceive" style="margin: 0 auto;display: block"></select>
         <button id="submitTask">确认发布</button>
@@ -23,31 +22,28 @@
 </div>
 <script type="text/javascript">
     $.ajax({
-        url:'',
+        url:'users/querySubclass.action',
         type:'POST',
         async:false,
-        data:{},
         success:function(data){
+        	 $("select[name='taskReceive']").empty();
             for(var i=0;i<data.length;i++){
-                $("select[name='taskReceive']").append("<option value="+data[i].recipient+" >"+data[i].name+"</option>")
+                $("select[name='taskReceive']").append("<option>"+data[i]+"</option>")
             }
         }
     });
 
     $(function(){
-
+    	
         var submitTask=$("#submitTask");
         submitTask.click(function(){
             var taskTheme=$("input[name='taskTheme']").val();
             var taskContent=$("#taskContent").val();
             var taskDays=$("input[name='taskDays']").val();
-            var taskReceive=$("input[name='taskReceive']").val();
-            console.log(taskTheme);
-            console.log(taskContent);
-            console.log(taskDays);
-            if(taskTheme!=""&&taskContent!=""&&taskTheme!=""){
+            var taskReceive=$("select[name='taskReceive']").find("option:selected").text();
+            if(taskDays!=""&&taskContent!=""&&taskTheme!=""){
                 $.ajax({
-                    url:'',
+                    url:'task/addTask.action',
                     type:'POST',
                     async:false,
                     data:{
@@ -56,8 +52,12 @@
                         taskDay:taskDays,
                         recipient:taskReceive
                     },
-                    success:function(){
-                        $.messager.alert("提示","发布成功","info")
+                    success:function(data){
+                    	if(data>0){
+                    		 $.messager.alert("提示","发布成功","info")
+                    	}
+                    	$(".inputDiv input,textarea").val("");
+                       
                     },
                     error:function(){
                         $.messager.alert("错误","发布失败","info")
@@ -65,7 +65,7 @@
                 })
             }else{
                 $.messager.alert("提示","请填写完整信息", "info");
-            }
+            } 
         })
 
     })

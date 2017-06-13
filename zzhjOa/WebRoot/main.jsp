@@ -44,6 +44,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 	  seal(jsonObject);
                   }else if(jsonObject.type="notice"){
                 	  noticeQuery();
+                  }else if(jsoObject.type=="task"){
+                	  
                   }
 
                };
@@ -198,12 +200,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			 
 		 }) 
 	}
+	//工作任务通知方法
+	function toTask(json){
+	  $("#message").show();
+   	  var text=json.targetName;
+   	  var url=json.viewTarget;
+         $("#listMes").append('<li id='+json.contentId+' onclick=messageTo("'+text+'","'+url+'")>'+json.theme+'————下达人————'+json.from+'</li>')
+         var audioEle = document.getElementById("audio");
+			  audioEle.play();
+	}
 		
 		
 	</script>
-	
+	<link rel="stylesheet" href="css/basic.css">
+    <link rel="stylesheet" href="css/addtask.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<link rel="stylesheet" type="text/css" href="css/parent.css">
+
   </head>
 	<body>   
     	<div id="cc" class="easyui-layout" fit=true "style="height:70px;"> 

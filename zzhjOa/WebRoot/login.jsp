@@ -1,19 +1,17 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%-->
+<%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-<!--%>
+%>
 <!DOCTYPE html>
 <html>
 <head>
 
     <base href="<%=basePath%>">
 
-<<<<<<< HEAD
     <title>中兆恒基Oa登陆</title>
-=======
 	<link rel="stylesheet" href="css/basic.css" />
 	<link rel="stylesheet" href="css/login.css" />
 	<script type="text/javascript" src="easyui/jquery.min.js"></script>
@@ -35,38 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		});
 	</script>
   </head>
-  <body>
-  	<div class="login_header">
-  		<div class="header_container"> 
-  			<a href="#" class="logo_btn"><img src="image/logo_02.png"/></a>
-  			<!--<span>Oa办公系统登陆</span>-->
-  		</div>
-  	</div>
-  	<div class="login_main">
-  		<div id="max" class="login_table">
-  			<p style="size: 10px; padding-left:80;color: red;">${loginMessage }</p>
-  			<c:remove var="loginMessage"/>
-	  		<form action="" method="post" id="form">
-				    <table id="table">
-					 
-					    <tr>			    	
-					    		<h5>登录</h5>
-					    </tr>
-					    	<tr>
-					    		<td colspan="2" class="">
->>>>>>> b9bb27149be3d41bc99e0544f0e40e969e5263d1
-
-    <meta http-equiv="pragma" content="no-cache">
-    <meta http-equiv="cache-control" content="no-cache">
-    <meta http-equiv="expires" content="0">
-    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-    <meta http-equiv="description" content="This is my page">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta http-equiv="x-ua-compatible" content="edge" >
-    <link rel="stylesheet" href="css/basic.css"/>
-    <link rel="stylesheet" href="css/login.css"/>
-    <script type="text/javascript" src="easyui/jquery.min.js"></script>
-    <script type="text/javascript">
+ <script type="text/javascript">
         function registered() {
             $("#form").attr("action", "department/queryAll.action");
             $("#form").submit();

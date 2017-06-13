@@ -9,8 +9,10 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.zzhj.entityCustom.Message;
 import com.zzhj.mapper.TaskMapper;
 import com.zzhj.po.Task;
+import com.zzhj.webSocket.ServerHandler;
 
 import utils.DateFormater;
 
@@ -35,7 +37,14 @@ public class TaskService {
 		Date d = new Date();
 		String taskDate=DateFormater.format(d);
 		t.setTaskDate(taskDate);
-		return tm.addTask(t);
+		int result=tm.addTask(t);
+/*		if(result>0){
+			Message mes = new Message();
+			mes.setFrom(t.getRecipient());
+			mes.setTargetName("下达任务");
+			send(mes, t.getUserName());
+		}*/
+		return result;
 	}
 	/**
 	 * 
@@ -136,5 +145,22 @@ public class TaskService {
 		map.put("total", total);
 		map.put("rows", list);
 		return map;
+	}
+	/**
+	 * 
+	 * @Description: 修改任务信息的某些字段
+	 * @param @param t
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年6月13日
+	 */
+	public int updateTask(Task t){
+		return tm.updateTask(t);
+	}
+	
+	private void send(Message mes,String userName){
+		ServerHandler.send(userName, mes);
 	}
 }

@@ -39,7 +39,7 @@ public interface TaskMapper {
 	int transmitTask(@Param("taskId")int taskId,@Param("userName")String userName);
 	 /**
 	  * 
-	  * @Description: 接收，开始执行一个任务
+	  * @Description: 开始执行一个任务
 	  * @param @param taskId
 	  * @param @param startDate
 	  * @param @return   
@@ -117,4 +117,15 @@ public interface TaskMapper {
 	 * @date 2017年6月12日
 	 */
 	int totalCOuntOwn(String name);
+	/**
+	 * 
+	 * @Description: 修改任务信息某些字段
+	 * @param @param t
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年6月13日
+	 */
+	int updateTask(Task t);
 }

@@ -11,20 +11,28 @@ public class Message implements Serializable{
 
 	//消息主题
 	private String theme;
+	
 	//消息内容
 	private String content;
+	
 	//发给谁
 	private String to;
+	
 	//谁发的
 	private String from;
+	
 	//发送的消息类型(枚举类型)
 	private MessageType type;
+	
 	//消息的id唯一标识
 	private int contentId;
+	
 	//目标视图
 	private String viewTarget;
+	
 	//目标名称
 	private String targetName;
+	
 	public String getTheme() {
 		return theme;
 	}

@@ -57,4 +57,9 @@ public class TaskAction {
 		Users user = (Users) session.getAttribute("users");
 		return ts.queryOwn(page, rows, user.getName());
 	}
+	@RequestMapping("updateTask.action")
+	@ResponseBody
+	public int updateTask(Task t){
+		return ts.updateTask(t);
+	}
 }

@@ -52,7 +52,17 @@ public class RequestSealService {
 		send(user.getName(),r.getUserId().getName(),rs.getSealId().getTypeName(),r.getId(),"seal/approve_officialSeal.jsp","盖章审批");
 		return number;
 	}
-	
+	/**
+	 * 
+	 * @Description: 公共章审批方法
+	 * @param @param sealId
+	 * @param @param userId
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年6月13日
+	 */
 	public int approver(int sealId,int userId){
 		String view="";
 		String targetName="";
@@ -67,7 +77,7 @@ public class RequestSealService {
 		}else{
 			view="seal\\handling_officialSeal.jsp";
 			targetName="盖章经办";
-			 parentUser.setName("");
+			parentUser.setName("");
 		}
 		send(parentUser.getName(),rs.getUserId().getName(),rs.getSealId().getTypeName(),sealId,view,targetName);
 		return rsm.approver(sealId,parentUser.getName());
