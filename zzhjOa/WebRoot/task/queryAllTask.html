@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>查看所有任务</title>
+    <link rel="stylesheet" href="../css/basic.css">
+    <link rel="stylesheet" href="../easyui/themes/icon.css">
+    <link rel="stylesheet" href="../easyui/themes/default/easyui.css">
+    <link rel="stylesheet" href="../css/queryAllTask.css">
+    <script src="../easyui/jquery.min.js"></script>
+    <script src="../easyui/jquery.easyui.min.js"></script>
+</head>
+<body>
+<h3>查 看 所 有 任 务</h3>
+<div class="buttonBar" id="buttonBar">
+    <a class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="changeTask()">修改</a>
+</div>
+<div id="changeTask" class="easyui-dialog" title="修改任务" closed=true>
+    <ul>
+        <li style="display: none">
+            <span>ID</span>
+            <input type="text" name="userid">
+        </li>
+        <li>
+            <span>任务主题：</span>
+            <input type="text" name="taskTheme">
+        </li>
+
+        <li>
+            <span>任务天数：</span>
+            <input type="number" name="taskDay">
+        </li>
+        <li>
+            <span>任务内容：</span>
+            <textarea type="text" name="taskText" rows="5" cols="30"></textarea>
+        </li>
+        <li>
+            <button onclick="submitTask()">确 认 修 改</button>
+        </li>
+    </ul>
+</div>
+<!--表格-->
+<table id="allTeskDg"></table>
+
+<script type="text/javascript">
+
+    //初始化弹窗 修改任务
+    function changeTask() {
+        $('#changeTask').dialog({
+            closed: false, //更改 显示隐藏
+            cache: false//是否缓存
+        });
+        var checkTask = $('#allTeskDg').datagrid('getSelected');
+        if (checkTask) {
+            $.messager.alert("提示", "请选择一条数据", "info");
+        } else {
+            $("input[name = userid]").val(checkTask.id);
+            $("input[name = taskTheme]").val(checkTask.taskTheme);
+            $("input[name = taskDay]").val(checkTask.taskDay);
+            $("textarea[name = taskText]").val(checkTask.taskText);
+        }
+    }
+
+    //初始化表格  查看任务
+    $('#allTeskDg').datagrid({
+        url: '',
+        method: 'POST',
+        pagination: true,
+        singleSelect:true,  //仅可以选中一行
+        fitColumns: true, //自动展开 铺满横向
+        toolbar: "#buttonBar",  //使上方控制器和表格融为一体
+        columns: [[
+            {field: 'id', title: '编号', checkbox: true, width: 200},
+            {field: 'taskTheme', title: '任务主题'},
+            {field: 'taskText', title: '任务内容'},
+            {field: 'userName', title: '发布人'},
+            {field: 'taskDay', title: '任务天数'},
+            {field: 'taskDate', title: '任务发布日期', width: 100},
+            {field: 'recipient', title: '接收人'},
+            {field: 'implement', title: '执行人'},
+            {field: 'implementDate', title: '任务开始时间', width: 100},
+            {field: 'successDate', title: '任务完成时间', width: 100},
+            {
+                field: 'speed', title: '任务进度', formatter: function (value) {
+                return '<div id="p" class="easyui-progressbar" data-options="value:' + value + '" style="width:300px;"></div>'
+            }, width: 300
+            },
+            {field: 'state', title: '任务状态'}
+        ]]
+    });
+
+    //提交
+    function submitTask() {
+        var number = 0;
+        $("#changeTask input,textarea").each(function () {
+            var val = $(this).val();
+            if (val == "" || val == undefined || val == null) {
+                number = number + 1;
+            }
+        });
+        if (number = 0) {
+            $.ajax({
+                url: "",
+                method: "POST",
+                data: {
+                    id: $("input[name = userid]").val(),
+                    taskTheme: $("input[name = taskTheme]").val(),
+                    taskDay: $("input[name = taskDay]").val(),
+                    taskText: $("textarea[name = taskText]").val()
+                },
+                success: function (data) {
+                    if(data>0){
+                        $.messager.alert("提示", "修改成功", "info")
+                    }else{
+                        $.messager.alert("提示", "修改失败", "info")
+                    }
+                }
+            })
+        } else {
+            $.messager.alert("提示", "请完整填写", "info");
+        }
+    }
+
+
+</script>
+</body>
+</html>
