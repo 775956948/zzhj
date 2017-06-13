@@ -19,6 +19,17 @@ import com.zzhj.service.TaskService;
 public class TaskAction {
 	@Autowired
 	private TaskService ts;
+	/**
+	 * 
+	 * @Description: 添加一个任务信息
+	 * @param @param t
+	 * @param @param session
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年6月13日
+	 */
 	@RequestMapping("/addTask.action")
 	@ResponseBody
 	public int addTask(Task t,HttpSession session){
@@ -26,40 +37,116 @@ public class TaskAction {
 		t.setUserName(user.getName());
 		return ts.addTask(t);
 	}
+	/**
+	 * 
+	 * @Description: 下达一个任务信息
+	 * @param @param taskId
+	 * @param @param userName
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年6月13日
+	 */
 	@RequestMapping("/transmitTask.action")
 	@ResponseBody
-	public int transmitTask(int taskId,String userName){
-		return ts.transmitTask(taskId, userName);
+	public int transmitTask(int taskId,String implement){
+		return ts.transmitTask(taskId, implement);
 	}
+	/**
+	 * 
+	 * @Description: 接受开始执行一个任务
+	 * @param @param taskId
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年6月13日
+	 */
 	@RequestMapping("/acceptTask.action")
 	@ResponseBody
 	public int acceptTask(int taskId){
 		return ts.acceptTask(taskId);
 	}
+	/**
+	 * 
+	 * @Description: 任务完成提交
+	 * @param @param taskId
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年6月13日
+	 */
 	@RequestMapping("/successTask.action")
 	@ResponseBody
 	public int successTask(int taskId){
 		return ts.successTask(taskId);
 	}
+	/**
+	 * 
+	 * @Description: 修改任务进度
+	 * @param @param taskId
+	 * @param @param speed
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年6月13日
+	 */
 	@RequestMapping("/updateTaskSpeed.action")
 	@ResponseBody
 	public int updateTaskSpeed(int taskId,int speed){
 		return ts.updateTaskSpeed(taskId, speed);
 	}
+	/**
+	 * 
+	 * @Description: 查询所有任务信息
+	 * @param @param page
+	 * @param @param rows
+	 * @param @return   
+	 * @return Map<String,Object>  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年6月13日
+	 */
 	@RequestMapping("/queryAll.action")
 	@ResponseBody
 	public Map<String,Object> queryAll(int page,int rows){
 		return ts.queryAll(page, rows);
 	}
+	/**
+	 * 
+	 * @Description: 插叙属于自己的任务信息
+	 * @param @param page
+	 * @param @param rows
+	 * @param @param session
+	 * @param @return   
+	 * @return Map<String,Object>  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年6月13日
+	 */
 	@RequestMapping("/queryOwn.action")
 	@ResponseBody
 	public Map<String,Object> queryOwn(int page,int rows,HttpSession session){
 		Users user = (Users) session.getAttribute("users");
 		return ts.queryOwn(page, rows, user.getName());
 	}
+	/**
+	 * 
+	 * @Description: 修改任务某个信息（天数，项目主题，项目内容）
+	 * @param @param t
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年6月13日
+	 */
 	@RequestMapping("updateTask.action")
 	@ResponseBody
 	public int updateTask(Task t){
+		System.out.println(t.getId());
 		return ts.updateTask(t);
 	}
 }

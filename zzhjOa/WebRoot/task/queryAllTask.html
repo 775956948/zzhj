@@ -3,12 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>查看所有任务</title>
-    <link rel="stylesheet" href="../css/basic.css">
-    <link rel="stylesheet" href="../easyui/themes/icon.css">
-    <link rel="stylesheet" href="../easyui/themes/default/easyui.css">
-    <link rel="stylesheet" href="../css/queryAllTask.css">
-    <script src="../easyui/jquery.min.js"></script>
-    <script src="../easyui/jquery.easyui.min.js"></script>
+
 </head>
 <body>
 <h3>查 看 所 有 任 务</h3>
@@ -17,9 +12,8 @@
 </div>
 <div id="changeTask" class="easyui-dialog" title="修改任务" closed=true>
     <ul>
-        <li style="display: none">
-            <span>ID</span>
-            <input type="text" name="userid">
+        <li>
+            <input type="hidden" name="userid">
         </li>
         <li>
             <span>任务主题：</span>
@@ -46,24 +40,28 @@
 
     //初始化弹窗 修改任务
     function changeTask() {
-        $('#changeTask').dialog({
-            closed: false, //更改 显示隐藏
-            cache: false//是否缓存
-        });
-        var checkTask = $('#allTeskDg').datagrid('getSelected');
-        if (checkTask) {
-            $.messager.alert("提示", "请选择一条数据", "info");
-        } else {
-            $("input[name = userid]").val(checkTask.id);
-            $("input[name = taskTheme]").val(checkTask.taskTheme);
-            $("input[name = taskDay]").val(checkTask.taskDay);
-            $("textarea[name = taskText]").val(checkTask.taskText);
-        }
+    	var checkTask = $('#allTeskDg').datagrid('getSelected');
+    	 if (checkTask) {
+	        $('#changeTask').dialog({
+	            closed: false, //更改 显示隐藏
+	            cache: false,//是否缓存
+	            onOpen:function(){
+	            	 $("input[name = userid]").val(checkTask.id);
+	                 $("input[name = taskTheme]").val(checkTask.taskTheme);
+	                 $("input[name = taskDay]").val(checkTask.taskDay);
+	                 $("textarea[name = taskText]").val(checkTask.taskText);
+	            }
+	        });
+	       
+	           
+	        } else {
+	        	 $.messager.alert("提示", "请选择一条数据", "info");
+	        }
     }
 
     //初始化表格  查看任务
     $('#allTeskDg').datagrid({
-        url: '',
+        url: 'task/queryAll.action',
         method: 'POST',
         pagination: true,
         singleSelect:true,  //仅可以选中一行
@@ -80,10 +78,9 @@
             {field: 'implement', title: '执行人'},
             {field: 'implementDate', title: '任务开始时间', width: 100},
             {field: 'successDate', title: '任务完成时间', width: 100},
-            {
-                field: 'speed', title: '任务进度', formatter: function (value) {
+            {field: 'speed', title: '任务进度', formatter: function (value) {
                 return '<div id="p" class="easyui-progressbar" data-options="value:' + value + '" style="width:300px;"></div>'
-            }, width: 300
+            	}, width: 300
             },
             {field: 'state', title: '任务状态'}
         ]]
@@ -98,9 +95,9 @@
                 number = number + 1;
             }
         });
-        if (number = 0) {
+        if (number == 0) {
             $.ajax({
-                url: "",
+                url: "task/updateTask.action",
                 method: "POST",
                 data: {
                     id: $("input[name = userid]").val(),
@@ -111,6 +108,11 @@
                 success: function (data) {
                     if(data>0){
                         $.messager.alert("提示", "修改成功", "info")
+                         $('#changeTask').dialog({
+	            				closed: true, //更改 显示隐藏
+                         })
+                          $('#allTeskDg').datagrid("reload");
+	          
                     }else{
                         $.messager.alert("提示", "修改失败", "info")
                     }

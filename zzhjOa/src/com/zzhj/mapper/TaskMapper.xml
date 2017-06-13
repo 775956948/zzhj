@@ -20,10 +20,14 @@
   </update>
   
   <select id="queryAll" parameterType="int" resultType="task">
-  	select * from tasks limit#{startPage},#{rows}
+  	select t.id,t.task_theme as taskTheme,t.task_text as taskText,t.user_name as userName,t.task_day as taskDay,t.task_date as taskDate,
+  	t.implement_date as implementDate,t.success_date as successDate,t.recipient,t.implement,t.speed,t.state
+  	from tasks t limit #{startPage},#{rows}
   </select>
   <select id="queryOwn" parameterType="object" resultType="task">
-  	select * from tasks where implement=#{userName} or recipient=#{userName} LIMIT #{startpage},#{rows}
+  	select t.id,t.task_theme as taskTheme,t.task_text as taskText,t.user_name as userName,t.task_day as taskDay,t.task_date as taskDate,
+  	t.implement_date as implementDate,t.success_date as successDate,t.recipient,t.implement,t.speed,t.state
+  	 from tasks t where t.implement=#{userName} or t.recipient=#{userName} LIMIT #{startpage},#{rows}
   </select>
   <select id="totalCount" resultType="int">
   	select count(id) from tasks
@@ -32,6 +36,6 @@
   	select count(id) from tasks where implement=#{value} or recipient=#{value}
   </select>
   <update id="updateTask" parameterType="task">
-  	update set tasks_theme=#{taskTheme},task_text=#{taskText},task_day=#{taskDay} where id=#{id}
+  	update tasks set task_theme=#{taskTheme},task_text=#{taskText},task_day=#{taskDay} where id=#{id}
   </update>
 </mapper>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>下达任务</title>
+</head>
+<body>
+	  	<div id="taskTb">
+			<a  class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="transmitTask()">下达任务</a>
+		</div>
+		<div id="taskDd"  class="easyui-dialog" closed=true >
+			<form id="transmitForm">
+				<ul>
+					<li><input type="hidden" name="taskId"/></li>
+					<li>任务主题：<input type="text" name="taskTheme"/ readonly="readonly"></li>
+					<li>任务内容：<textarea name="taskText" rows="3" cols="30" readonly="readonly"></textarea></li>
+					<li>发布人：<input type="text" name="userName" readonly="readonly"/></li>
+					<li>任务天数：<input type="text" name="taskDay" readonly="readonly"/></li>
+					<li>执行人：<select name="implement"></select></li>
+					<li><input type="submit" value="下达" onclick="transmit"()"/></li>
+				</ul>
+			</form>
+		</div>
+		<table id="teskDg"></table> 
+		
+		<script type="text/javascript">
+			$('#teskDg').datagrid({    
+	  			 url:'task/queryOwn.action',
+	  			 fitColumns:true,
+	  			 toolbar: '#taskTb', 
+	  			 pagination:true,
+	  			 singleSelect:true,
+	  			 columns:[[
+	  			        {field:'id',title:'编号',checkbox:true,width:200},
+	  		            {field: 'taskTheme', title: '任务主题',width:200},
+	  		            {field: 'taskText', title: '任务内容'},
+	  		            {field: 'userName', title: '发布人'},
+	  		            {field: 'taskDay', title: '任务天数'},
+	  		            {field: 'taskDate', title: '任务发布日期',width:100},
+	  		            {field: 'recipient', title: '接收人'},
+	  		            {field: 'implement', title: '执行人'},
+	  		            {field: 'implementDate', title: '任务开始时间', width: 100},
+	  		            {field: 'successDate', title: '任务完成时间', width: 100},
+	  		            {field: 'speed', title: '任务进度',formatter: function(value){
+	  		            	
+	  		            	return '<div class="easyui-progressbar" data-options="value:20" style="width:300px;" ></div> ';
+	  		            	}, width: 400},
+	  		            {field: 'state', title: '任务状态'} 
+	   			]]    
+			});  
+
+			function transmitTask(){
+				var row = $('#teskDg').datagrid('getSelected');
+				if(row){
+					$("#taskDd").dialog({
+						title : '任务信息',
+						width : 400,
+						height : 400,
+						closed : false,
+						onOpen:function(){
+							$.post('users/querySubclass.action',function(data){
+								$("#transmitForm select[name='implement']").empty();
+								for (var i = 0; i < data.length; i++) {
+									$("#transmitForm select[name='implement']").append("<option>"+data[i]+"</option>")
+								}
+							})
+							$("input[name='id']").val(row.id);
+							$("input[name='taskTheme']").val(row.taskTheme);
+							$("input[name='userName']").val(row.userName);
+							$("input[name='taskDay']").val(row.taskDay);
+							$("textarea[name='taskText']").val(row.taskText);
+						}
+					})
+				}else{
+					$.messager.alert("提示", "请选中一条信息", "info");
+				}
+			}
+			
+			function transmit(){
+		 		var number=0;
+		 		$("#transmitForm input,textarea").each(function(){
+		 			var val =$(this).val();
+		 			if(val==""||val==undefined||val==null){
+		 				number=number+1;
+		 			}
+		 		})
+		 		if(!number>0){
+		 			$.ajax({
+						   url:"task/transmitTask.action",
+						   type:"post",
+						   data:$("#transmitForm").serialize(),
+						   success:function(data){
+							   if(data>0){
+									$.messager.alert("提示", "下达成功", "info");
+									$("#restDd").dialog({
+										closed : true,
+									})
+							   }
+						   }
+		 			})	   
+		 		}else{
+		 			$.messager.alert("提示", "信息不完整", "info");
+		 		}
+			}
+				
+		</script>
+		
+</body>
+</html>

@@ -84,7 +84,7 @@ public interface TaskMapper {
 	 * @author 小白
 	 * @date 2017年6月12日
 	 */
-	List<Task> queryAll(@Param("startpage")int startPage,@Param("rows")int rows);
+	List<Task> queryAll(@Param("startPage")int startPage,@Param("rows")int rows);
 	/**
 	 * 
 	 * @Description: 查看属于自己的任务
