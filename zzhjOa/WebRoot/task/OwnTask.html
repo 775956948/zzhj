@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人任务</title>
+    <link rel="stylesheet" href="../css/basic.css">
+    <link rel="stylesheet" href="../easyui/themes/icon.css">
+    <link rel="stylesheet" href="../easyui/themes/default/easyui.css">
+    <link rel="stylesheet" href="../css/OwnTask.css">
+    <script src="../easyui/jquery.min.js"></script>
+    <script src="../easyui/jquery.easyui.min.js"></script>
+</head>
+<body>
+<div class="PagingBody">
+    <h3>个 人 任 务</h3>
+    <div class="buttonBar" id="buttonBarOwn">
+        <a class="easyui-linkbutton" iconCls="icon-sp" plain="true" onclick="viewTask()">查看任务</a>
+        <a class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="changeSpeedDig()">修改任务进度</a>
+    </div>
+    <div id="viewTask" class="easyui-dialog" title="查看个人任务" closed=true>
+        <ul>
+            <li>
+                <input type="hidden" name="userid">
+            </li>
+            <li style="height: 40px">
+                <div class="splitLi">
+                    <span>任 务 主 题：</span>
+                    <input type="text" name="taskTheme" readonly="readonly">
+                </div>
+                <div class="splitLi">
+                    <span>发 &nbsp 布 &nbsp 人：</span>
+                    <input type="text" name="userName" readonly>
+                </div>
+            </li>
+            <li style="height: 40px">
+                <div class="splitLi">
+                    <span>任 务 天 数：</span>
+                    <input type="text" name="taskDay" readonly>
+                </div>
+                <div class="splitLi">
+                    <span>发 布 日 期：</span>
+                    <input type="text" name="taskDate" readonly>
+                </div>
+            </li>
+            <li style="height: 40px">
+                <div class="splitLi">
+                    <span>任务接收人：</span>
+                    <input type="text" name="recipient" readonly>
+                </div>
+                <div class="splitLi">
+                    <span>任务执行人：</span>
+                    <input type="text" name="implement" readonly>
+                </div>
+            </li>
+            <li style="height: 40px">
+                <div class="splitLi">
+                    <span>任务开始时间：</span>
+                    <input type="text" name="implementDate" readonly>
+                </div>
+                <div class="splitLi">
+                    <span>任务完成时间：</span>
+                    <input type="text" name="successDate" readonly>
+                </div>
+            </li>
+            <li>
+                <span style="float: left">任 务 进 度：</span>
+                <div id="speedTask" class="easyui-progressbar" style="width:71%; height: 90%"></div>
+            </li>
+            <li>
+                <span>任 务 状 态：</span>
+                <input type="text" name="state" readonly style="border: none">
+            </li>
+            <li>
+                <span style="position: absolute;top: 29%;">任 务 内 容：</span>
+                <textarea name="taskText" rows="7" cols="30" style="width: 70%;margin-left: 95px" readonly></textarea>
+            </li>
+            <li style="margin: 20px auto">
+                <button onclick="acceptTask()">确 认 接 收</button>
+            </li>
+        </ul>
+    </div>
+</div>
+<div id="changeSpeed" class="easyui-dialog" title="修改进度" closed=true>
+    <ul>
+        <li>
+            <span>修 改 进 度：</span>
+            <input type="number" name="changeSpeed" title="请输入1-100数字" min="1" max="100" value="1">
+        </li>
+        <li style="margin: 20px auto">
+            <button onclick="changeSpeed()">确认提交</button>
+        </li>
+    </ul>
+</div>
+<!--表格-->
+<table id="viewTeskDg"></table>
+
+<script type="text/javascript">
+
+    //初始化弹窗 查看任务
+    function viewTask() {
+        var viewTask = $('#viewTeskDg').datagrid('getSelected');
+        if (viewTask) {
+            $('#viewTask').dialog({
+                width: 800,
+                closed: false, //更改 显示隐藏
+                cache: false,//是否缓存
+                onOpen: function () {
+                    $("input[name = userid]").val(viewTask.id);
+                    $("input[name = userName]").val(viewTask.userName);
+                    $("input[name = recipient]").val(viewTask.recipient);
+                    $("input[name = implement]").val(viewTask.implement);
+                    $("input[name = implementDate]").val(viewTask.implementDate);
+                    $("input[name = successDate]").val(viewTask.successDate);
+                    $("input[name = taskDate]").val(viewTask.taskDate);
+                    $("input[name = taskTheme]").val(viewTask.taskTheme);
+                    $("input[name = taskDay]").val(viewTask.taskDay);
+                    $("input[name = state]").val(viewTask.state);
+                    $("textarea[name = taskText]").val(viewTask.taskText);
+                    $('#speedTask').progressbar({
+                        value: viewTask.speed
+                    });
+                }
+            });
+        } else {
+            $.messager.alert("提示", "请选择一条数据", "info");
+        }
+    }
+
+    //初始化表格  任务表格
+    $('#viewTeskDg').datagrid({
+        url: '',
+        method: 'POST',
+        pagination: true,
+        singleSelect: true,  //仅可以选中一行
+        fitColumns: true, //自动展开 铺满横向
+        toolbar: "#buttonBarOwn",  //使上方控制器和表格融为一体
+        columns: [[
+            {field: 'id', title: '编号', checkbox: true, width: 200},
+            {field: 'taskTheme', title: '任务主题'},
+            {field: 'taskText', title: '任务内容'},
+            {field: 'userName', title: '发布人'},
+            {field: 'taskDay', title: '任务天数'},
+            {field: 'taskDate', title: '任务发布日期', width: 100},
+            {field: 'recipient', title: '接收人'},
+            {field: 'implement', title: '执行人'},
+            {field: 'implementDate', title: '任务开始时间', width: 100},
+            {field: 'successDate', title: '任务完成时间', width: 100},
+            {
+                field: 'speed', title: '任务进度', formatter: function (value) {
+                var htmlstr = '<div class="easyui-progressbar progressbar" style="width: 300px; height: 20px;" value="' + value + '" text="' + value + '%">' +
+                        '<div class="progressbar-text" style="width: 300px; height: 20px; line-height: 20px;">' + value + '%</div>' +
+                        '<div class="progressbar-value" style="width: ' + value + '%; height: 20px; line-height: 20px;">' +
+                        '<div class="progressbar-text" style="width: 300px; height: 20px; line-height: 20px;">' + value + '%</div>' +
+                        '</div>' +
+                        '</div>';
+                return htmlstr;
+            }, width: 300
+            },
+            {field: 'state', title: '任务状态'}
+        ]]
+    });
+
+    //提交
+    function acceptTask() {
+        $.ajax({
+            url: "",
+            method: "POST",
+            data: {
+                taskId: $("input[name = userid]").val()
+            },
+            success: function (data) {
+                if (data > 0) {
+                    $.messager.alert("提示", "接收任务成功", "info");
+                    $('#viewTask').dialog({
+                        closed: true //更改 显示隐藏
+                    });
+                    $('#viewTeskDg').datagrid("reload");
+                } else {
+                    $.messager.alert("提示", "接收任务失败", "info")
+                }
+            }
+        })
+    }
+
+
+    //进度修改弹窗
+    function changeSpeedDig() {
+        $('#changeSpeed').dialog({
+            closed: false
+        })
+    }
+
+
+    //    提交修改任务进度
+    function changeSpeed() {
+        $.ajax({
+            url: "",
+            method: "POST",
+            data: {
+                speed: $("input[name = changeSpeed]").val()
+            },
+            success: function (data) {
+                if (data > 0) {
+                    $.messager.alert("提示", "修改进度成功", "info");
+                    $('#changeSpeed').dialog({
+                        closed: true //更改 显示隐藏
+                    });
+                    $('#viewTeskDg').datagrid("reload");
+                } else {
+                    $.messager.alert("提示", "修改进度失败", "info")
+                }
+            }
+        })
+    }
+
+</script>
+</body>
+</html>

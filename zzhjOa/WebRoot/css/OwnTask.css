@@ -1,0 +1,57 @@
+#viewTask ul,#changeSpeed ul{
+    width: 700px;
+    margin: 0 auto;
+    height: auto;
+    overflow: hidden;
+}
+#changeSpeed ul{
+    width: 200px;
+    margin: 10px 0 0 10px;
+    height: auto;
+    overflow: hidden;
+    padding: 0;
+}
+#viewTask li,#changeSpeed li{
+    width: 100%;
+    min-height: 40px;
+    font-size: 16px;
+    line-height: 40px;
+    overflow: hidden;
+    position: relative;
+}
+#viewTask .splitLi{
+    width: 50%;
+    float: left;
+    overflow: hidden;
+}
+#viewTask  span input ,#changeSpeed span  input{
+    float: left;
+    border: none;
+    box-sizing: border-box;
+}
+#changeSpeed span  input{
+    text-align: center;
+}
+#viewTask .splitLi input{
+   text-align: center;
+    border: none;
+}
+#viewTask #speedTask{
+    display: inline-block;
+    margin-top: 3px;
+    float: left;
+    height: 80%;
+}
+#viewTask li button,#changeSpeed li button{
+    display: block;
+    height: 40px;
+    width: 50%;
+    background-color: #ff9900;
+    border: none;
+    text-align: center;
+    line-height: 100%;
+    margin: 0 auto;
+    color: white;
+    font-weight: 800;
+    font-size: 20px;
+}
