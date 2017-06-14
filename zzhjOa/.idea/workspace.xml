@@ -41,13 +41,42 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="queryAllTask.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="queryAllTask.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebRoot/task/queryAllTask.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.67256635">
-              <caret line="82" column="34" selection-start-line="82" selection-start-column="34" selection-end-line="82" selection-end-column="34" />
+            <state vertical-scroll-proportion="-14.25">
+              <caret line="87" column="33" selection-start-line="87" selection-start-column="33" selection-end-line="87" selection-end-column="33" />
               <folding>
-                <marker date="1497347870894" expanded="true" signature="2792:2804" placeholder="..." />
+                <marker date="1497420613985" expanded="true" signature="2768:2795" placeholder="..." />
+                <marker date="1497420613985" expanded="true" signature="2907:2953" placeholder="..." />
+                <marker date="1497420613985" expanded="true" signature="3042:3097" placeholder="..." />
+                <marker date="1497420613985" expanded="true" signature="3165:3211" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OwnTask.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebRoot/css/OwnTask.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-10.0">
+              <caret line="41" column="16" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OwnTask.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/WebRoot/task/OwnTask.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-1.7823008">
+              <caret line="16" column="53" selection-start-line="16" selection-start-column="53" selection-end-line="16" selection-end-column="53" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#li#5;n#ul#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <marker date="1497420873510" expanded="true" signature="6049:6076" placeholder="..." />
+                <marker date="1497420873510" expanded="true" signature="6188:6234" placeholder="..." />
+                <marker date="1497420873510" expanded="true" signature="6323:6378" placeholder="..." />
+                <marker date="1497420873510" expanded="true" signature="6446:6492" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -115,7 +144,9 @@
         <option value="$PROJECT_DIR$/WebRoot/css/addtask.css" />
         <option value="$PROJECT_DIR$/WebRoot/css/queryAllTask.css" />
         <option value="$PROJECT_DIR$/WebRoot/task/addtask.html" />
+        <option value="$PROJECT_DIR$/WebRoot/css/OwnTask.css" />
         <option value="$PROJECT_DIR$/WebRoot/task/queryAllTask.html" />
+        <option value="$PROJECT_DIR$/WebRoot/task/OwnTask.html" />
       </list>
     </option>
   </component>
@@ -125,8 +156,8 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-280" />
-    <option name="y" value="24" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
     <option name="width" value="1382" />
     <option name="height" value="754" />
   </component>
@@ -209,24 +240,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="task" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zzhjOa" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zzhjOa" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebRoot" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -315,8 +328,8 @@
     <option name="totallyTimeSpent" value="212000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-280" y="24" width="1382" height="754" extended-state="1" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="版本控制" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -374,7 +387,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="55" column="17" selection-start-line="55" selection-start-column="17" selection-end-line="55" selection-end-column="17" />
           <folding>
-            <marker date="1497347870894" expanded="true" signature="2792:2804" placeholder="..." />
+            <marker date="1497420613985" expanded="true" signature="2768:2795" placeholder="..." />
+            <marker date="1497420613985" expanded="true" signature="2907:2953" placeholder="..." />
+            <marker date="1497420613985" expanded="true" signature="3042:3097" placeholder="..." />
+            <marker date="1497420613985" expanded="true" signature="3165:3211" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -434,7 +450,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="55" column="17" selection-start-line="55" selection-start-column="17" selection-end-line="55" selection-end-column="17" />
           <folding>
-            <marker date="1497347870894" expanded="true" signature="2792:2804" placeholder="..." />
+            <marker date="1497420613985" expanded="true" signature="2768:2795" placeholder="..." />
+            <marker date="1497420613985" expanded="true" signature="2907:2953" placeholder="..." />
+            <marker date="1497420613985" expanded="true" signature="3042:3097" placeholder="..." />
+            <marker date="1497420613985" expanded="true" signature="3165:3211" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -494,7 +513,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1497347870894" expanded="true" signature="2792:2804" placeholder="..." />
+            <marker date="1497420613985" expanded="true" signature="2768:2795" placeholder="..." />
+            <marker date="1497420613985" expanded="true" signature="2907:2953" placeholder="..." />
+            <marker date="1497420613985" expanded="true" signature="3042:3097" placeholder="..." />
+            <marker date="1497420613985" expanded="true" signature="3165:3211" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -588,12 +610,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/WebRoot/css/OwnTask.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.0">
+          <caret line="41" column="16" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/WebRoot/task/queryAllTask.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.67256635">
-          <caret line="82" column="34" selection-start-line="82" selection-start-column="34" selection-end-line="82" selection-end-column="34" />
+        <state vertical-scroll-proportion="-14.25">
+          <caret line="87" column="33" selection-start-line="87" selection-start-column="33" selection-end-line="87" selection-end-column="33" />
           <folding>
-            <marker date="1497347870894" expanded="true" signature="2792:2804" placeholder="..." />
+            <marker date="1497420613985" expanded="true" signature="2768:2795" placeholder="..." />
+            <marker date="1497420613985" expanded="true" signature="2907:2953" placeholder="..." />
+            <marker date="1497420613985" expanded="true" signature="3042:3097" placeholder="..." />
+            <marker date="1497420613985" expanded="true" signature="3165:3211" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebRoot/task/OwnTask.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.7823008">
+          <caret line="16" column="53" selection-start-line="16" selection-start-column="53" selection-end-line="16" selection-end-column="53" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#li#5;n#ul#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1497420873510" expanded="true" signature="6049:6076" placeholder="..." />
+            <marker date="1497420873510" expanded="true" signature="6188:6234" placeholder="..." />
+            <marker date="1497420873510" expanded="true" signature="6323:6378" placeholder="..." />
+            <marker date="1497420873510" expanded="true" signature="6446:6492" placeholder="..." />
           </folding>
         </state>
       </provider>

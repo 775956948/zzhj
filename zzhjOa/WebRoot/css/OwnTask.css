@@ -40,7 +40,6 @@
     display: inline-block;
     margin-top: 3px;
     float: left;
-    height: 80%;
 }
 #viewTask li button,#changeSpeed li button{
     display: block;

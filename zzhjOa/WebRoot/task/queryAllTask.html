@@ -79,9 +79,15 @@
             {field: 'implement', title: '执行人'},
             {field: 'implementDate', title: '任务开始时间', width: 100},
             {field: 'successDate', title: '任务完成时间', width: 100},
-            {field: 'speed', title: '任务进度', formatter: function (value) {
-                return '<div id="p" class="easyui-progressbar" data-options="value:' + value + '" style="width:300px;"></div>'
-            	}, width: 300
+            {field: 'speed', title: '任务进度', formatter:function (value) {
+                var htmlstr = '<div class="easyui-progressbar progressbar" style="width: 300px; height: 20px;" value="' + value + '" text="' + value + '%">' +
+                        '<div class="progressbar-text" style="width: 300px; height: 20px; line-height: 20px;">' + value + '%</div>' +
+                        '<div class="progressbar-value" style="width: ' + value + '%; height: 20px; line-height: 20px;">' +
+                        '<div class="progressbar-text" style="width: 300px; height: 20px; line-height: 20px;">' + value + '%</div>' +
+                        '</div>' +
+                        '</div>';
+                return htmlstr;
+            }, width: 300
             },
             {field: 'state', title: '任务状态'}
         ]]
