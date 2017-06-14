@@ -24,16 +24,20 @@
     float: left;
     overflow: hidden;
 }
-#viewTask  span input ,#changeSpeed span  input{
+#viewTask  span,#changeSpeed span{
     float: left;
     border: none;
     box-sizing: border-box;
 }
-#changeSpeed span  input{
+#changeSpeed input{
+    float: left;
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
     text-align: center;
 }
 #viewTask .splitLi input{
-   text-align: center;
+    text-align: center;
     border: none;
 }
 #viewTask #speedTask{
