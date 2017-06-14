@@ -31,12 +31,68 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="login.jsp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="login.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebRoot/login.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.03362832">
+            <state vertical-scroll-proportion="-0.6785714">
               <caret line="27" column="44" selection-start-line="27" selection-start-column="44" selection-end-line="27" selection-end-column="44" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="queryAllTask.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebRoot/task/queryAllTask.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-19.035715">
+              <caret line="87" column="33" selection-start-line="87" selection-start-column="33" selection-end-line="87" selection-end-column="33" />
+              <folding>
+                <marker date="1497420613985" expanded="true" signature="2768:2795" placeholder="..." />
+                <marker date="1497420613985" expanded="true" signature="2907:2953" placeholder="..." />
+                <marker date="1497420613985" expanded="true" signature="3042:3097" placeholder="..." />
+                <marker date="1497420613985" expanded="true" signature="3165:3211" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OwnTask.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebRoot/task/OwnTask.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-57.67857">
+              <caret line="85" column="20" selection-start-line="85" selection-start-column="20" selection-end-line="85" selection-end-column="20" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#li#5;n#ul#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <marker date="1497420873510" expanded="true" signature="6049:6076" placeholder="..." />
+                <marker date="1497420873510" expanded="true" signature="6188:6234" placeholder="..." />
+                <marker date="1497420873510" expanded="true" signature="6323:6378" placeholder="..." />
+                <marker date="1497420873510" expanded="true" signature="6446:6492" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OwnTask.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebRoot/css/OwnTask.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-26.285715">
+              <caret line="59" column="1" selection-start-line="59" selection-start-column="1" selection-end-line="59" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="queryOwnTask.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/WebRoot/task/queryOwnTask.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.7734513">
+              <caret line="50" column="43" selection-start-line="50" selection-start-column="43" selection-end-line="50" selection-end-column="43" />
+              <folding>
+                <marker date="1497423332644" expanded="true" signature="1848:1875" placeholder="..." />
+                <marker date="1497423332644" expanded="true" signature="1972:2018" placeholder="..." />
+                <marker date="1497423332644" expanded="true" signature="2092:2147" placeholder="..." />
+                <marker date="1497423332644" expanded="true" signature="2200:2246" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -54,6 +110,7 @@
         <option value="$PROJECT_DIR$/WebRoot/task/queryAllTask.html" />
         <option value="$PROJECT_DIR$/WebRoot/task/OwnTask.html" />
         <option value="$PROJECT_DIR$/WebRoot/css/OwnTask.css" />
+        <option value="$PROJECT_DIR$/WebRoot/task/queryOwnTask.html" />
       </list>
     </option>
   </component>
@@ -147,24 +204,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="task" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zzhjOa" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zzhjOa" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebRoot" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -527,9 +566,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/WebRoot/login.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.6785714">
+          <caret line="27" column="44" selection-start-line="27" selection-start-column="44" selection-end-line="27" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebRoot/task/queryAllTask.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-19.035715">
+          <caret line="87" column="33" selection-start-line="87" selection-start-column="33" selection-end-line="87" selection-end-column="33" />
+          <folding>
+            <marker date="1497420613985" expanded="true" signature="2768:2795" placeholder="..." />
+            <marker date="1497420613985" expanded="true" signature="2907:2953" placeholder="..." />
+            <marker date="1497420613985" expanded="true" signature="3042:3097" placeholder="..." />
+            <marker date="1497420613985" expanded="true" signature="3165:3211" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/WebRoot/task/OwnTask.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.821428">
+        <state vertical-scroll-proportion="-57.67857">
           <caret line="85" column="20" selection-start-line="85" selection-start-column="20" selection-end-line="85" selection-end-column="20" />
           <folding>
             <element signature="n#style#0;n#div#0;n#li#5;n#ul#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -543,30 +603,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/WebRoot/css/OwnTask.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.580531">
+        <state vertical-scroll-proportion="-26.285715">
           <caret line="59" column="1" selection-start-line="59" selection-start-column="1" selection-end-line="59" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebRoot/task/queryAllTask.html">
+    <entry file="file://$PROJECT_DIR$/WebRoot/task/queryOwnTask.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7061947">
-          <caret line="87" column="33" selection-start-line="87" selection-start-column="33" selection-end-line="87" selection-end-column="33" />
+        <state vertical-scroll-proportion="0.7734513">
+          <caret line="50" column="43" selection-start-line="50" selection-start-column="43" selection-end-line="50" selection-end-column="43" />
           <folding>
-            <marker date="1497420613985" expanded="true" signature="2768:2795" placeholder="..." />
-            <marker date="1497420613985" expanded="true" signature="2907:2953" placeholder="..." />
-            <marker date="1497420613985" expanded="true" signature="3042:3097" placeholder="..." />
-            <marker date="1497420613985" expanded="true" signature="3165:3211" placeholder="..." />
+            <marker date="1497423332644" expanded="true" signature="1848:1875" placeholder="..." />
+            <marker date="1497423332644" expanded="true" signature="1972:2018" placeholder="..." />
+            <marker date="1497423332644" expanded="true" signature="2092:2147" placeholder="..." />
+            <marker date="1497423332644" expanded="true" signature="2200:2246" placeholder="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebRoot/login.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.03362832">
-          <caret line="27" column="44" selection-start-line="27" selection-start-column="44" selection-end-line="27" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
