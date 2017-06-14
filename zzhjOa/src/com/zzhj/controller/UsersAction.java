@@ -236,6 +236,6 @@ public class UsersAction {
 	@ResponseBody
 	public List<String> querySubclass(HttpSession session){
 		Users user =(Users) session.getAttribute("users");
-		return us.querySubclass(user.getId());
+		return us.querySubclass(user.getDepartmentId().getName());
 	}
 }
