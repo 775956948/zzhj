@@ -59,14 +59,24 @@
       <file leaf-file-name="OwnTask.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebRoot/task/OwnTask.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-57.67857">
-              <caret line="85" column="20" selection-start-line="85" selection-start-column="20" selection-end-line="85" selection-end-column="20" />
+            <state vertical-scroll-proportion="-54.285713">
+              <caret line="80" column="20" selection-start-line="80" selection-start-column="20" selection-end-line="80" selection-end-column="20" />
               <folding>
+                <element signature="n#style#0;n#li#1;n#ul#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#li#2;n#ul#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#li#3;n#ul#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#li#4;n#ul#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#li#5;n#ul#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#li#5;n#ul#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1497420873510" expanded="true" signature="6049:6076" placeholder="..." />
-                <marker date="1497420873510" expanded="true" signature="6188:6234" placeholder="..." />
-                <marker date="1497420873510" expanded="true" signature="6323:6378" placeholder="..." />
-                <marker date="1497420873510" expanded="true" signature="6446:6492" placeholder="..." />
+                <element signature="n#style#0;n#input#0;n#li#6;n#ul#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#li#7;n#ul#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#textarea#0;n#li#7;n#ul#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#li#8;n#ul#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#li#1;n#ul#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <marker date="1497423425803" expanded="true" signature="5721:5748" placeholder="..." />
+                <marker date="1497423425803" expanded="true" signature="5860:5906" placeholder="..." />
+                <marker date="1497423425803" expanded="true" signature="5995:6050" placeholder="..." />
+                <marker date="1497423425803" expanded="true" signature="6118:6164" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -85,13 +95,13 @@
       <file leaf-file-name="queryOwnTask.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/WebRoot/task/queryOwnTask.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7734513">
-              <caret line="50" column="43" selection-start-line="50" selection-start-column="43" selection-end-line="50" selection-end-column="43" />
+            <state vertical-scroll-proportion="0.3699115">
+              <caret line="11" column="56" selection-start-line="11" selection-start-column="56" selection-end-line="11" selection-end-column="56" />
               <folding>
-                <marker date="1497423332644" expanded="true" signature="1848:1875" placeholder="..." />
-                <marker date="1497423332644" expanded="true" signature="1972:2018" placeholder="..." />
-                <marker date="1497423332644" expanded="true" signature="2092:2147" placeholder="..." />
-                <marker date="1497423332644" expanded="true" signature="2200:2246" placeholder="..." />
+                <marker date="1497426252067" expanded="true" signature="1941:1968" placeholder="..." />
+                <marker date="1497426252067" expanded="true" signature="2080:2126" placeholder="..." />
+                <marker date="1497426252067" expanded="true" signature="2215:2270" placeholder="..." />
+                <marker date="1497426252067" expanded="true" signature="2338:2384" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -110,6 +120,7 @@
         <option value="$PROJECT_DIR$/WebRoot/task/queryAllTask.html" />
         <option value="$PROJECT_DIR$/WebRoot/task/OwnTask.html" />
         <option value="$PROJECT_DIR$/WebRoot/css/OwnTask.css" />
+        <option value="$PROJECT_DIR$/WebRoot/easyui/themes/icon.css" />
         <option value="$PROJECT_DIR$/WebRoot/task/queryOwnTask.html" />
       </list>
     </option>
@@ -207,6 +218,46 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zzhjOa" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zzhjOa" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebRoot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="easyui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zzhjOa" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zzhjOa" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebRoot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="easyui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="themes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -220,6 +271,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\myRepository\zzhj\zzhjOa\WebRoot\easyui\themes\icons" />
       <recent name="E:\myRepository\zzhj\zzhjOa\WebRoot\css" />
       <recent name="E:\myRepository\zzhj\zzhjOa\WebRoot\task" />
     </key>
@@ -292,7 +344,7 @@
     <option name="totallyTimeSpent" value="212000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="版本控制" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -587,20 +639,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebRoot/task/OwnTask.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-57.67857">
-          <caret line="85" column="20" selection-start-line="85" selection-start-column="20" selection-end-line="85" selection-end-column="20" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#li#5;n#ul#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1497420873510" expanded="true" signature="6049:6076" placeholder="..." />
-            <marker date="1497420873510" expanded="true" signature="6188:6234" placeholder="..." />
-            <marker date="1497420873510" expanded="true" signature="6323:6378" placeholder="..." />
-            <marker date="1497420873510" expanded="true" signature="6446:6492" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WebRoot/css/OwnTask.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-26.285715">
@@ -609,15 +647,47 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/WebRoot/easyui/themes/icon.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5400372">
+          <caret line="128" column="55" selection-start-line="128" selection-start-column="55" selection-end-line="128" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebRoot/task/OwnTask.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-54.285713">
+          <caret line="80" column="20" selection-start-line="80" selection-start-column="20" selection-end-line="80" selection-end-column="20" />
+          <folding>
+            <element signature="n#style#0;n#li#1;n#ul#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#2;n#ul#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#3;n#ul#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#4;n#ul#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#li#5;n#ul#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#li#5;n#ul#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#li#6;n#ul#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#li#7;n#ul#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#textarea#0;n#li#7;n#ul#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#8;n#ul#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#1;n#ul#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1497423425803" expanded="true" signature="5721:5748" placeholder="..." />
+            <marker date="1497423425803" expanded="true" signature="5860:5906" placeholder="..." />
+            <marker date="1497423425803" expanded="true" signature="5995:6050" placeholder="..." />
+            <marker date="1497423425803" expanded="true" signature="6118:6164" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/WebRoot/task/queryOwnTask.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7734513">
-          <caret line="50" column="43" selection-start-line="50" selection-start-column="43" selection-end-line="50" selection-end-column="43" />
+        <state vertical-scroll-proportion="0.3699115">
+          <caret line="11" column="56" selection-start-line="11" selection-start-column="56" selection-end-line="11" selection-end-column="56" />
           <folding>
-            <marker date="1497423332644" expanded="true" signature="1848:1875" placeholder="..." />
-            <marker date="1497423332644" expanded="true" signature="1972:2018" placeholder="..." />
-            <marker date="1497423332644" expanded="true" signature="2092:2147" placeholder="..." />
-            <marker date="1497423332644" expanded="true" signature="2200:2246" placeholder="..." />
+            <marker date="1497426252067" expanded="true" signature="1941:1968" placeholder="..." />
+            <marker date="1497426252067" expanded="true" signature="2080:2126" placeholder="..." />
+            <marker date="1497426252067" expanded="true" signature="2215:2270" placeholder="..." />
+            <marker date="1497426252067" expanded="true" signature="2338:2384" placeholder="..." />
           </folding>
         </state>
       </provider>
