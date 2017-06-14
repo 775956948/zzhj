@@ -115,7 +115,7 @@
 			limit #{startPage},#{rows}
 	</select>
 	
-	<select id="querySubclass" parameterType="int" resultType="string">
-		SELECT NAME FROM users WHERE parent_id=#{value}
+	<select id="querySubclass" parameterType="string" resultType="string">
+		SELECT u.NAME FROM users u INNER JOIN department d ON u.departmentId=d.id INNER JOIN roles r ON r.id=u.role_id WHERE d.name=#{value} AND r.name='主管'
 	</select>
 </mapper>

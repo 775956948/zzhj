@@ -3,12 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>个人任务</title>
-    <link rel="stylesheet" href="../css/basic.css">
-    <link rel="stylesheet" href="../easyui/themes/icon.css">
-    <link rel="stylesheet" href="../easyui/themes/default/easyui.css">
-    <link rel="stylesheet" href="../css/OwnTask.css">
-    <script src="../easyui/jquery.min.js"></script>
-    <script src="../easyui/jquery.easyui.min.js"></script>
+
 </head>
 <body>
 <div class="PagingBody">
@@ -128,7 +123,7 @@
 
     //初始化表格  任务表格
     $('#viewTeskDg').datagrid({
-        url: '',
+        url: 'task/queryOwn.action',
         method: 'POST',
         pagination: true,
         singleSelect: true,  //仅可以选中一行

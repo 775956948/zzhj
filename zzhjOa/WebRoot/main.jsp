@@ -212,11 +212,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		
 	</script>
- 	<link rel="stylesheet" href="css/basic.css"> 
-    <link rel="stylesheet" href="css/addtask.css">
+ 	<link rel="stylesheet" type="text/css" href="css/basic.css"> 
+    <link rel="stylesheet" type="text/css" href="css/addtask.css">
     <link rel="stylesheet" href="css/queryAllTask.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<link rel="stylesheet" type="text/css" href="css/parent.css">
+	<link rel="stylesheet" type="text/css" href="css/OwnTask.css">
 
   </head>
 	<body>   

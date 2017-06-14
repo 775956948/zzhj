@@ -25,7 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
     <table id="jobLogtt"></table>  
     
-    <div id="jobLogDd"  class="easyui-dialog" closed=true >
+    <div id="jobLogDd"  class="easyui-dialog" closed=true >          
     	 <div id="jobLogTb">
     	 	<input name="jobLogDate" type="date" />
     	 	<div style="margin-left:80px; display: inline;">

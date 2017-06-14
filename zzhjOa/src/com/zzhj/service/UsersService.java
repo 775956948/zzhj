@@ -127,7 +127,7 @@ public class UsersService {
 		return map;
 	}
 	
-	public List<String> querySubclass(int userId){
-		return um.querySubclass(userId);
+	public List<String> querySubclass(String departmentName){
+		return um.querySubclass(departmentName);
 	}
 }

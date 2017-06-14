@@ -104,7 +104,7 @@ public interface UsersMapper {
 	List<Users> searchUserInfo(@Param("startPage") int startPage,@Param("rows") int rows,@Param("user")Users user);
 	/**
 	 * 
-	 * @Description: 根据参数id返回子类的用户名
+	 * @Description: 根据部门返回部门主管名称
 	 * @param @param userId
 	 * @param @return   
 	 * @return List<String>  
@@ -112,5 +112,5 @@ public interface UsersMapper {
 	 * @author 小白
 	 * @date 2017年6月12日
 	 */
-	List<String> querySubclass(int userId);
+	List<String> querySubclass(String departmentName);
 }
