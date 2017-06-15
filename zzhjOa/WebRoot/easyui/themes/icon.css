@@ -131,6 +131,36 @@
 .icon-gaiZhang{
 	background:url('icons/gaiZhang.png') no-repeat center center;
 }
+/*工作任务*/
 .icon-gr{
 	background:url('icons/task.png') no-repeat center center;
+}
+
+/*目录*/
+.icon-ml{
+	background:url('icons/mulu.png') no-repeat center center;
+}
+/*系统*/
+.icon-xt{
+	background:url('icons/xt.png') no-repeat center center;
+}
+/*人员*/
+.icon-ry{
+	background:url('icons/ry.png') no-repeat center center;
+}
+/*公司*/
+.icon-gs{
+	background:url('icons/gs.png') no-repeat center center;
+}
+/*修改*/
+.icon-xg{
+	background:url('icons/xg.png') no-repeat center center;
+}
+/*收藏*/
+.icon-sc{
+	background:url('icons/sc.png') no-repeat center center;
+}
+/*查找*/
+.icon-cz{
+	background:url('icons/cz.png') no-repeat center center;
 }

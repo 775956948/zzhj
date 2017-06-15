@@ -1,0 +1,48 @@
+#viewTask ul,#changeSpeed ul,#seeMessage ul,#viewApplication ul{
+    width: 700px;
+    margin: 0 auto;
+    height: auto;
+    overflow: hidden;
+}
+#viewTask li,#changeSpeed li,#seeMessage li,#viewApplication li{
+    width: 100%;
+    min-height: 40px;
+    font-size: 16px;
+    line-height: 40px;
+    overflow: hidden;
+    position: relative;
+}
+#viewApplication .splitLi{
+    width: 50%;
+    float: left;
+    overflow: hidden;
+}
+#viewApplication span{
+    float: left;
+    border: none;
+    box-sizing: border-box;
+}
+#viewApplication input{
+    float: left;
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+    text-align: center;
+}
+#viewApplication .splitLi input{
+    text-align: center;
+    border: none;
+}
+#viewApplication button{
+    display: block;
+    height: 40px;
+    width: 50%;
+    background-color: #ff9900;
+    border: none;
+    text-align: center;
+    line-height: 100%;
+    margin: 0 auto;
+    color: white;
+    font-weight: 800;
+    font-size: 20px;
+}

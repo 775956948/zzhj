@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>申请反馈</title>
+    <link rel="stylesheet" href="../css/basic.css">
+    <link rel="stylesheet" href="../easyui/themes/icon.css">
+    <link rel="stylesheet" href="../easyui/themes/default/easyui.css">
+    <link rel="stylesheet" href="../css/requestFeedback.css">
+    <link rel="stylesheet" href="../css/OwnTask.css">
+    <script src="../easyui/jquery.min.js"></script>
+    <script src="../easyui/jquery.easyui.min.js"></script>
+</head>
+<body>
+<div class="PagingBody">
+    <h3>申 请 反 馈</h3>
+</div>
+<div class="buttonBar" id="buttonBarRefuse">
+    <a class="easyui-linkbutton" iconCls="icon-ml" plain="true" onclick="appFeedback()">申请反馈信息</a>
+    <a class="easyui-linkbutton" iconCls="icon-cz" plain="true" onclick="viewInformation()">查看信息</a>
+</div>
+<div id="appFeedback" class="easyui-dialog" title="申请反馈信息" closed=true>
+    <ul>
+        <li>
+            <span>任务主题：</span>
+            <input type="text" name="taskName" id="seeTaskName">
+        </li>
+        <li>
+            <span style="position: absolute;top: 28%">反馈信息：</span>
+            <textarea name="info" rows="7" cols="30" style="width: 70%;margin-left: 80px;font-size: 16px"
+                      id="feedTaskTest"></textarea>
+        </li>
+        <li>
+            <button onclick="submitApplication()">提 交 申 请</button>
+        </li>
+    </ul>
+</div>
+
+<div id="seeMessage" class="easyui-dialog" title="查看信息" closed=true>
+    <ul>
+        <li>
+            <input type="hidden" name="userid">
+        </li>
+        <li style="height: 40px">
+            <div class="splitLi">
+                <span>任 务 主 题：</span>
+                <input type="text" name="taskName" readonly="readonly">
+            </div>
+            <div class="splitLi">
+                <span>申 &nbsp 请 &nbsp 人：</span>
+                <input type="text" name="requestName" readonly>
+            </div>
+        </li>
+        <li style="height: 40px">
+            <div class="splitLi">
+                <span>申 请 时 间：</span>
+                <input type="text" name="requestDate" readonly>
+            </div>
+            <div class="splitLi">
+                <span>结 束 时 间：</span>
+                <input type="text" name="overDate" readonly>
+            </div>
+        </li>
+        <li style="height: 40px">
+            <div class="splitLi">
+                <span>审 &nbsp 批 &nbsp 人：</span>
+                <input type="text" name="approver" readonly>
+            </div>
+            <div class="splitLi">
+                <span>申 请 状 态：</span>
+                <input type="text" name="state" readonly>
+            </div>
+        </li>
+        <li>
+            <span style="position: absolute;top: 29%;">反 馈 信 息：</span>
+            <textarea name="info" rows="7" cols="30" style="width: 70%;margin-left: 95px" readonly></textarea>
+        </li>
+        <li>
+            <span style="position: absolute;top: 29%;">打 回 信 息：</span>
+            <textarea name="refuseInfo" rows="7" cols="30" style="width: 70%;margin-left: 95px" readonly></textarea>
+        </li>
+        <li style="margin: 20px auto">
+            <button onclick="closeMessage()">确 认 关 闭</button>
+        </li>
+    </ul>
+</div>
+
+<!--表格-->
+<table id="refuseInfoDg"></table>
+
+
+<script type="text/javascript">
+    //初始化表格 查看申请
+    $('#refuseInfoDg').datagrid({
+        url: '',
+        method: 'POST',
+        pagination: true,
+        singleSelect: true,  //仅可以选中一行
+        fitColumns: true, //自动展开 铺满横向
+        toolbar: "#buttonBarRefuse",  //使上方控制器和表格融为一体
+        columns: [[
+            {field: 'id', title: '编号', checkbox: true},
+            {field: 'requestName', title: '申请人'},
+            {field: 'requestDate', title: '申请时间', width: 60},
+            {field: 'taskName', title: '任务主题'},
+            {field: 'info', title: '反馈信息'},
+            {field: 'refuseInfo', title: '打回信息'},
+            {field: 'approver', title: '审批人'},
+            {field: 'overDate', title: '结束时间', width: 60},
+            {field: 'state', title: '任务状态'}
+        ]]
+    });
+
+    function appFeedback() {
+        $('#appFeedback').dialog({
+            closed: false //更改 显示隐藏
+        })
+    }
+
+    //    提交申请
+    function submitApplication() {
+        var number = 0;
+        $("#appFeedback input,#appFeedback textarea").each(function () {
+            var val = $(this).val();
+            if (val == ""||val==undefined||val == null) {
+                number = number + 1;
+            }
+        });
+        if (number == 0) {
+            $.ajax({
+                url: "",
+                method: "POST",
+                data: {
+                    taskName: $("#seeTaskName").val(),
+                    info: $("#feedTaskTest").val()
+                },
+                success: function (data) {
+                    if (data > 0) {
+                        $.messager.alert("提示", "提交申请成功", "info");
+                        $('#appFeedback').dialog({
+                            closed: true //更改 显示隐藏
+                        });
+                        $('#refuseInfoDg').datagrid("reload");
+                    } else {
+                        $.messager.alert("提示", "提交申请失败", "info")
+                    }
+                }
+            })
+        } else {
+            $.messager.alert("提示", "请完整填写", "info");
+        }
+    }
+    //    查看信息
+    function viewInformation() {
+        var refuseData = $('#refuseInfoDg').datagrid('getSelected');
+        if (refuseData) {
+            $('#seeMessage').dialog({
+                width: 800,
+                closed: false, //更改 显示隐藏
+                cache: false,//是否缓存
+                onOpen: function () {
+                    $("input[name = userid]").val(refuseData.id);
+                    $("input[name = requestName]").val(refuseData.requestName);
+                    $("input[name = requestDate]").val(refuseData.requestDate);
+                    $("input[name = taskName]").val(refuseData.taskName);
+                    $("input[name = approver]").val(refuseData.approver);
+                    $("input[name = overDate]").val(refuseData.overDate);
+                    $("input[name = state]").val(refuseData.state);
+                    $("textarea[name = info]").val(refuseData.info);
+                    $("textarea[name = refuseInfo]").val(refuseData.refuseInfo);
+                }
+            });
+        } else {
+            $.messager.alert("提示", "请选择一条数据", "info");
+        }
+    }
+
+    function closeMessage() {
+        $('#seeMessage').dialog({
+            closed: true //更改 显示隐藏
+        })
+    }
+
+
+</script>
+</body>
+</html>

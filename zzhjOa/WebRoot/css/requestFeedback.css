@@ -1,0 +1,44 @@
+
+#appFeedback ul{
+    width: 500px;
+    margin: 10px 0 0 10px;
+    height: auto;
+    overflow: hidden;
+    padding: 0;
+}
+#appFeedback li{
+    width: 100%;
+    min-height: 40px;
+    font-size: 16px;
+    line-height: 40px;
+    margin: 20px auto;
+    overflow: hidden;
+    position: relative;
+}
+#appFeedback  span{
+    float: left;
+    border: none;
+    box-sizing: border-box;
+}
+#appFeedback input{
+    float: left;
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid #c4c4c4;
+}
+#appFeedback li button{
+    display: block;
+    height: 40px;
+    width: 50%;
+    background-color: #ff9900;
+    border: none;
+    text-align: center;
+    line-height: 100%;
+    margin: 0 auto;
+    color: white;
+    font-weight: 800;
+    font-size: 20px;
+}
