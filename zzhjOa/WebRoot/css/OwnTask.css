@@ -1,4 +1,4 @@
-#viewTask ul,#changeSpeed ul{
+#viewTask ul,#changeSpeed ul,#seeMessage ul{
     width: 700px;
     margin: 0 auto;
     height: auto;
@@ -11,7 +11,7 @@
     overflow: hidden;
     padding: 0;
 }
-#viewTask li,#changeSpeed li{
+#viewTask li,#changeSpeed li,#seeMessage li{
     width: 100%;
     min-height: 40px;
     font-size: 16px;
@@ -19,24 +19,24 @@
     overflow: hidden;
     position: relative;
 }
-#viewTask .splitLi{
+#viewTask .splitLi ,#seeMessage .splitLi{
     width: 50%;
     float: left;
     overflow: hidden;
 }
-#viewTask  span,#changeSpeed span{
+#viewTask  span,#changeSpeed span ,#seeMessage span{
     float: left;
     border: none;
     box-sizing: border-box;
 }
-#changeSpeed input{
+#changeSpeed input,#seeMessage input{
     float: left;
     height: 40px;
     line-height: 40px;
     font-size: 20px;
     text-align: center;
 }
-#viewTask .splitLi input{
+#viewTask .splitLi input ,#seeMessage .splitLi input{
     text-align: center;
     border: none;
 }
@@ -45,7 +45,7 @@
     margin-top: 3px;
     float: left;
 }
-#viewTask li button,#changeSpeed li button{
+#viewTask li button,#changeSpeed li button ,#seeMessage li button{
     display: block;
     height: 40px;
     width: 50%;
