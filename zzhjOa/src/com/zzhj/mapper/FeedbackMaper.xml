@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "http://mybatis.org/dtd/mybatis-3-mapper.dtd" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzhj.mapper.FeedbackMapper">
+	<resultMap type="feedback" id="fm">
+		<id column="id" property="id"/>
+		<result column="request_name" property="requestName"/>
+		<result column="request_date" property="requestDate"/>
+		<result column="task_name" property="taskName"/>
+		<result column="info" property="info"/>
+		<result column="refuse_info" property="refuseInfo"/>
+		<result column="approver" property="approver"/>
+		<result column="over_date" property="overDate"/>
+		<result column="state" property="state"/>
+	</resultMap>
+
+	<select id="queryOwn" parameterType="object" resultMap="fm">
+		select * from feedback where request_name=#{requestName} limit #{startPage,#{rows}
+	</select>
+	<select id="approverOnw" parameterType="object" resultMap="fm">
+		select * from feedbcak where approver=#{approverName} limit #{startPage},#{rows}
+	</select>
+	<select id="totalCount" parameterType="string" resultType="int">
+		select count(id) from feedback where request_name=#{value} or approver=#{value}
+	</select>
+	<insert id="addFeedback" parameterType="feedback">
+		INSERT FROM feedback(request_name,request_date,task_name,info,state)
+		values(#{requestName},#{requestDate},#{taskName},#{info},#{state})
+	</insert>
+	<update id="appover" parameterType="object">
+		update feedback set 
+		<if test="nextApprover!=''">
+			approver=#{nextApprover} 
+		</if>
+		<if test="nextAppover==''">
+			state="已完成",over_date=DATE_FORMAT(NOW(),'%Y-%m-%d')
+		</if>
+		where id=#{feedbackId}
+	</update>
+	<update id="refuse" parameterType="obejct">
+		update feedback set refuse_info=#{refuseInfo},state="以打回",over_date=#{overDate}
+		where id=#{feedbackId}
+	</update>
+</mapper>

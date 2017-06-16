@@ -158,7 +158,7 @@
     //提交
     function acceptTask() {
         $.ajax({
-            url: "",
+            url: "task/acceptTask.action",
             method: "POST",
             data: {
                 taskId: $("input[name = userid]").val()
@@ -189,9 +189,10 @@
     //    提交修改任务进度
     function changeSpeed() {
         $.ajax({
-            url: "",
+            url: "task/updateTaskSpeed.action",
             method: "POST",
             data: {
+            	taskId: $("input[name = userid]").val(),
                 speed: $("input[name = changeSpeed]").val()
             },
             success: function (data) {

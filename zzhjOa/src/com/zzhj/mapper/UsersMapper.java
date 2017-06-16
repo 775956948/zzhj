@@ -8,14 +8,32 @@ import com.zzhj.po.Users;
 
 public interface UsersMapper {
 	Users login(Users users);
+	
 	int save(Users users);
+	
 	List<Users> queryAll(@Param("startPage") int startPage,@Param("rows") int rows);
+	
 	int totalCount();
+	
 	int deleteUser(int id);
+	/**
+	 * 
+	 * @Description: 根据id返回用户，用户名
+	 * @param @param id
+	 * @param @return   
+	 * @return Users  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年6月15日
+	 */
 	Users query(int id);
+	
 	int queryId(String roleName);
+	
 	int exist(String name);
+	
 	List<Users> roleQueryAll(@Param("startPage") int startPage,@Param("rows") int rows);
+	
 	int updateRole(Users user);
 	/**
 	 * 
@@ -28,6 +46,7 @@ public interface UsersMapper {
 	 * @date 2017年6月6日
 	 */
 	int updateUser(Users user);
+	
 	List<Users> queryUser(@Param("departmentName") String departmentName,@Param("roleName") String roleName);
 
 	
@@ -45,7 +64,7 @@ public interface UsersMapper {
 	Users userId(String departmentName);
 	/**
 	 * 
-	 * @Description: 根据用户id返回parentName
+	 * @Description: 根据用户id返回parentId
 	 * @param @param userId
 	 * @param @return   
 	 * @return Users  

@@ -68,7 +68,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <h5>登录</h5>
                 </li>
                 <li  class="td_name"  title="请输入用户名">
-                        <input type="text" name="name" class="login_input login_input-icon1" placeholder="请输入用户名"/>
+                        <input type="text" name="name"  class="login_input login_input-icon1" placeholder="请输入用户名"/>
                 </li>
                 <li  class="td_password"  title="请输入密码">
                         <input type="password" name="password" class="login_input login_input-icon2"
