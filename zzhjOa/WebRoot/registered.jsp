@@ -176,10 +176,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="nc SX" style="margin-top: 38px">
             <div class="wz"></div>
             <div class="Sr cc">
-
-=======
                 <input style="background-color: #69b946;color: white;height: 52px; width: 306px;text-align: center;font-family: 微软雅黑;font-size: 22px;border: none;"  value="立即注册" onclick="submits()"/>
-
+	<sub><a href="login.jsp">返回首页</a></sub>
             </div>
         </div>
         <div class="nc SX" style="margin-top: 38px">
