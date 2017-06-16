@@ -174,9 +174,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="nc SX" style="margin-top: 38px">
             <div class="wz"></div>
             <div class="Sr cc">
-                <button style="background-color: #69b946;color: white;height: 52px; width: 306px;text-align: center;font-family: 微软雅黑;font-size: 22px;border: none;"
-                        onclick="submits()">立即注册
-                </button>
+                <input style="background-color: #69b946;color: white;height: 52px; width: 306px;text-align: center;font-family: 微软雅黑;font-size: 22px;border: none;"  value="立即注册" onclick="submits()"/>
             </div>
         </div>
         <div class="nc SX" style="margin-top: 38px">
@@ -191,15 +189,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     function submits() {
         var cout = 0;
         $("#ZT input").each(function () {
-            if ($(this).val() == ''|| $(this)== null) {
+            if ($(this).val() == '') {
                 cout=cout+1;
-                console.log($(this).val())
             }
         });
         if (cout<1) {
             $("#form").submit();
+           
         } else {
-            window.alert("信息填写不完整");
+            alert("信息填写不完整");
         }
     }
 </script>
