@@ -21,11 +21,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     -->
     <script type="text/javascript" src="easyui/jquery.min.js"></script>
     <style type="text/css">
+       	::-webkit-inner-spin-button{
+	       visibility: hidden;
+     	}
         * {
             margin: 0;
             padding: 0;
         }
-
         input {
             border: 0;
             list-style: none;
@@ -177,6 +179,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <button style="background-color: #69b946;color: white;height: 52px; width: 306px;text-align: center;font-family: 微软雅黑;font-size: 22px;border: none;"
                         onclick="submits()">立即注册
                 </button>
+	           <sub><a href="login.jsp">返回首页</a></sub>
             </div>
         </div>
         <div class="nc SX" style="margin-top: 38px">
