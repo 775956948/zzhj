@@ -180,9 +180,14 @@
 
     //进度修改弹窗
     function changeSpeedDig() {
-        $('#changeSpeed').dialog({
-            closed: false
-        })
+        var SpeedData = $('#viewTeskDg').datagrid('getSelected');
+        if (SpeedData.state=="以执行") {
+            $('#changeSpeed').dialog({
+                closed: false
+            })
+        } else {
+            $.messager.alert("提示", "请先接收任务", "info");
+        }
     }
 
 
