@@ -14,13 +14,39 @@
 <div id="taskDd" class="easyui-dialog" closed=true>
     <form id="transmitForm">
         <ul>
-            <li><input type="hidden" name="taskId"/></li>
-            <li>任务主题：<input type="text" name="taskTheme"/ readonly="readonly"></li>
-            <li>任务内容：<textarea name="taskText" rows="3" cols="30" readonly="readonly"></textarea></li>
-            <li>发布人：<input type="text" name="userName" readonly="readonly"/></li>
-            <li>任务天数：<input type="text" name="taskDay" readonly="readonly"/></li>
-            <li>执行人：<select name="implement"></select></li>
-            <li><input type="button" value="下达" onclick="transmitTask()"/></li>
+            <li>
+                <input type="hidden" name="taskId">
+            </li>
+            <li style="height: 40px">
+                <div class="splitLi">
+                    <span>任 务 主 题：</span>
+                    <input type="text" name="taskTheme" readonly="readonly">
+                </div>
+            <li>
+                <span style="position: absolute;top: 29%;">任 务 内 容：</span>
+                <textarea name="taskText" rows="7" cols="30" style="width: 70%;margin-left: 95px" readonly></textarea>
+            </li>
+            <li>
+                <div class="splitLi">
+                    <span>发 &nbsp 布 &nbsp 人：</span>
+                    <input type="text" name="userName" readonly>
+                </div>
+            </li>
+            <li style="height: 40px">
+                <div class="splitLi">
+                    <span>任 务 天 数：</span>
+                    <input type="text" name="taskDay" readonly>
+                </div>
+            </li>
+            <li style="height: 40px">
+                <div class="splitLi">
+                    <span>任务执行人：</span>
+                    <select name="implement"></select>
+                </div>
+            </li>
+            <li style="margin: 20px auto">
+                <button onclick="transmitTask()">确 认 下 达</button>
+            </li>
         </ul>
     </form>
 </div>
@@ -101,9 +127,9 @@
                 if (data > 0) {
                     $.messager.alert("提示", "下达成功", "info");
                     $("#taskDd").dialog({
-                        closed: true,
+                        closed: true
                     })
-                    $('#teskDg').datagrid('relaod');
+                    $('#teskDg').datagrid('reload');
 
                 }
             })
