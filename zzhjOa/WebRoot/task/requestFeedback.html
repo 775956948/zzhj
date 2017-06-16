@@ -92,7 +92,7 @@
 <script type="text/javascript">
     //初始化表格 查看申请
     $('#refuseInfoDg').datagrid({
-        url: '',
+        url: 'feedback/queryOwn.action',
         method: 'POST',
         pagination: true,
         singleSelect: true,  //仅可以选中一行
@@ -128,7 +128,7 @@
         });
         if (number == 0) {
             $.ajax({
-                url: "",
+                url: "feedback/addFeedback.action",
                 method: "POST",
                 data: {
                     taskName: $("#seeTaskName").val(),

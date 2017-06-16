@@ -3,12 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>反馈审批</title>
-    <link rel="stylesheet" href="../css/basic.css">
-    <link rel="stylesheet" href="../easyui/themes/icon.css">
-    <link rel="stylesheet" href="../easyui/themes/default/easyui.css">
-    <link rel="stylesheet" href="../css/feedbackApproval.css">
-    <script src="../easyui/jquery.min.js"></script>
-    <script src="../easyui/jquery.easyui.min.js"></script>
+  
 </head>
 <body>
 <div class="PagingBody">
@@ -63,7 +58,7 @@
 <script type="text/javascript">
     //初始化表格 查看申请
     $('#feedbackApprovalDg').datagrid({
-        url: '',
+        url: 'feedback/approverOnw.action',
         method: 'POST',
         pagination: true,
         singleSelect: true,  //仅可以选中一行
@@ -106,7 +101,7 @@
     function refuseApplication(){
         if($("textarea[name = refuseInfo]").val()!=''&&$("textarea[name = refuseInfo]").val()!=null){
             $.ajax({
-                url: "",
+                url: "feedback/refuse.action",
                 method: "POST",
                 data: {
                     refuseInfo:$("textarea[name = refuseInfo]").val(),
@@ -131,7 +126,7 @@
 //    同意
     function agreeApply(){
             $.ajax({
-                url: "",
+                url: "feedback/approver.action",
                 method: "POST",
                 data: {
                     feedbackId: $("input[name = userid]").val()

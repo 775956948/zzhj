@@ -75,7 +75,14 @@ public class FeedbackService {
 	 * @author 小白
 	 * @date 2017年6月15日
 	 */
-	public int addFeedback(Feedback f){
+	public int addFeedback(Feedback f,int currentId){
+		Date d = new Date();
+		Users userId= um.parentId(currentId);
+		Users nextApprover =um.query(userId.getParentId());
+		String requestDate= DateFormater.format(d);
+		f.setRequestDate(requestDate);
+		f.setApprover(nextApprover.getName());
+		f.setState("待审批");
 		return fm.addFeedback(f);
 	}
 	/**
@@ -89,10 +96,13 @@ public class FeedbackService {
 	 * @author 小白
 	 * @date 2017年6月15日
 	 */
-	public int approver(int id,int currentUserId){
-		Users parentId=um.parentId(currentUserId);
-		Users nextApprover =um.query(parentId.getId());
-		return fm.approver(id, nextApprover.getName());
+	public int approver(int id,Users user){
+		String nextApprover ="";
+		if(user.getRoleId().getName().equals("主管")){
+			Users f =um.userId(user.getDepartmentId().getName());
+			nextApprover=f.getName();
+		}
+		return fm.approver(id,nextApprover );
 	}
 	/**
 	 * 

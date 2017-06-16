@@ -214,10 +214,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</script>
  	<link rel="stylesheet" type="text/css" href="css/basic.css"> 
     <link rel="stylesheet" type="text/css" href="css/addtask.css">
-    <link rel="stylesheet" href="css/queryAllTask.css">
+    <link rel="stylesheet" type="text/css" href="css/queryAllTask.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<link rel="stylesheet" type="text/css" href="css/parent.css">
 	<link rel="stylesheet" type="text/css" href="css/OwnTask.css">
+	<link rel="stylesheet" type="text/css" href="css/requestFeedback.css">
+	<link rel="stylesheet" type="text/css" href="css/feedbackApproval.css">
 
   </head>
 	<body>   
@@ -263,7 +265,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				   		</div>
 				   		
 				   	</div>
-				  <!--  	<iframe src="http://news.szhk.com/" width="100%" height="100%" frameborder="0" ></iframe> -->
+				    	<iframe src="http://www.cehui8.com/" width="100%" height="100%" frameborder="0" ></iframe> 
 				   </div>    
 			</div> 
 			<div id="mesDd"  class="easyui-dialog" closed=true >

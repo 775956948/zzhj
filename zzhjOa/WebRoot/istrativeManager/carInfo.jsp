@@ -29,7 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	<div id="carInfoTb">
 		<a  class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="addCarInfo()">添加用车信息</a>
 		<a  class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="addCar()">添加车辆</a>
-		<a  class="easyui-linkbutton" iconCls="icon-save" plain="true" onclick="deleteCarInfo()">刪除</a>
+<!-- 		<a  class="easyui-linkbutton" iconCls="icon-save" plain="true" onclick="deleteCarInfo()">刪除</a> -->
 		<a  class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="updateCarInfo()">还车</a>
 	</div>
 	

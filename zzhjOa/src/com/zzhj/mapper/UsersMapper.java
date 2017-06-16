@@ -123,7 +123,7 @@ public interface UsersMapper {
 	List<Users> searchUserInfo(@Param("startPage") int startPage,@Param("rows") int rows,@Param("user")Users user);
 	/**
 	 * 
-	 * @Description: 根据部门返回部门主管名称
+	 * @Description: 根据部门返回部门员工名称
 	 * @param @param userId
 	 * @param @return   
 	 * @return List<String>  

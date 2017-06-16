@@ -9,7 +9,7 @@
 <body>
 	  <div id="busCardTb">
 		<a  class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="addBusCardRecord()">添加</a>
-		<a  class="easyui-linkbutton" iconCls="icon-save" plain="true" onclick="deleteBusCardRecord()">刪除</a>
+<!-- 		<a  class="easyui-linkbutton" iconCls="icon-save" plain="true" onclick="deleteBusCardRecord()">刪除</a> -->
 		<a  class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="updateBusCardRecord()">还卡</a>
 	</div>
 	
