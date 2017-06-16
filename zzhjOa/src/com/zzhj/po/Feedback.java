@@ -37,6 +37,12 @@ public class Feedback implements Serializable{
 	public void setRequestName(String requestName) {
 		this.requestName = requestName;
 	}
+	public String getRequestDate() {
+		return requestDate;
+	}
+	public void setRequestDate(String requestDate) {
+		this.requestDate = requestDate;
+	}
 	public String getTaskName() {
 		return taskName;
 	}
@@ -61,23 +67,18 @@ public class Feedback implements Serializable{
 	public void setApprover(String approver) {
 		this.approver = approver;
 	}
-	public String getState() {
-		return state;
-	}
-	public void setState(String state) {
-		this.state = state;
-	}
-	public String getRequestDate() {
-		return requestDate;
-	}
-	public void setRequestDate(String requestDate) {
-		this.requestDate = requestDate;
-	}
 	public String getOverDate() {
 		return overDate;
 	}
 	public void setOverDate(String overDate) {
 		this.overDate = overDate;
 	}
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
+	}
+	
 	
 }

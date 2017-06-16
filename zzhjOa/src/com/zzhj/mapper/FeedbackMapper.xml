@@ -14,29 +14,29 @@
 	</resultMap>
 
 	<select id="queryOwn" parameterType="object" resultMap="fm">
-		select * from feedback where request_name=#{requestName} limit #{startPage,#{rows}
+		select * from feedback where request_name=#{requestName} limit #{startPage},#{rows}
 	</select>
 	<select id="approverOnw" parameterType="object" resultMap="fm">
-		select * from feedbcak where approver=#{approverName} limit #{startPage},#{rows}
+		select * from feedback where approver=#{approverName} limit #{startPage},#{rows}
 	</select>
 	<select id="totalCount" parameterType="string" resultType="int">
 		select count(id) from feedback where request_name=#{value} or approver=#{value}
 	</select>
-	<insert id="addFeedback" parameterType="feedback">
-		INSERT FROM feedback(request_name,request_date,task_name,info,state)
-		values(#{requestName},#{requestDate},#{taskName},#{info},#{state})
+	<insert id="addFeedback" parameterType="Feedback">
+		INSERT INTO feedback(request_name,request_date,task_name,info,state,approver)
+		values(#{requestName},#{requestDate},#{taskName},#{info},#{state},#{approver})
 	</insert>
-	<update id="appover" parameterType="object">
+	<update id="approver" parameterType="object">
 		update feedback set 
 		<if test="nextApprover!=''">
 			approver=#{nextApprover} 
 		</if>
-		<if test="nextAppover==''">
+		<if test="nextApprover==''">
 			state="已完成",over_date=DATE_FORMAT(NOW(),'%Y-%m-%d')
 		</if>
 		where id=#{feedbackId}
 	</update>
-	<update id="refuse" parameterType="obejct">
+	<update id="refuse" parameterType="object">
 		update feedback set refuse_info=#{refuseInfo},state="以打回",over_date=#{overDate}
 		where id=#{feedbackId}
 	</update>

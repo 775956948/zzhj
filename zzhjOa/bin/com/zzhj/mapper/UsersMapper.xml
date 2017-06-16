@@ -30,7 +30,7 @@
 	</resultMap>
 	
   	<select id="login" parameterType="users" resultMap="ur">
-  		SELECT u.id,u.name,d.name as d_name,u.password,u.image_name,r.id as r_id FROM users u INNER JOIN roles r ON r.id =u.role_id inner join department d on d.id=u.departmentId  WHERE u.name=#{name} AND u.password=#{password}
+  		SELECT u.id,u.name,d.name as d_name,u.password,u.image_name,r.id as r_id,r.name as r_name FROM users u INNER JOIN roles r ON r.id =u.role_id inner join department d on d.id=u.departmentId  WHERE u.name=#{name} AND u.password=#{password}
   	</select>
   	<insert id="save" parameterType="users" keyProperty="id" useGeneratedKeys="true">
   		insert into users(name,password,sex,birthday,phone,departmentId)values(#{name},#{password},#{sex},#{birthday},#{phone},#{departmentId.id})
@@ -116,6 +116,6 @@
 	</select>
 	
 	<select id="querySubclass" parameterType="string" resultType="string">
-		SELECT u.NAME FROM users u INNER JOIN department d ON u.departmentId=d.id INNER JOIN roles r ON r.id=u.role_id WHERE d.name=#{value} AND r.name='主管'
+		SELECT u.NAME FROM users u INNER JOIN department d ON u.departmentId=d.id INNER JOIN roles r ON r.id=u.role_id WHERE d.name=#{value} AND r.name='员工'
 	</select>
 </mapper>

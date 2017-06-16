@@ -68,8 +68,10 @@ public class FeedbackAction {
 	 */
 	@RequestMapping("/addFeedback.action")
 	@ResponseBody
-	public int addFeedback(Feedback f){
-		return fs.addFeedback(f);
+	public int addFeedback(Feedback f,HttpSession session){
+		Users user = (Users) session.getAttribute("users");
+		f.setRequestName(user.getName());
+		return fs.addFeedback(f,user.getId());
 	}
 	
 	/**
@@ -87,7 +89,7 @@ public class FeedbackAction {
 	@ResponseBody
 	public int appover(int feedbackId,HttpSession session){
 		Users user = (Users) session.getAttribute("users");
-		return fs.approver(feedbackId, user.getId());
+		return fs.approver(feedbackId, user);
 	}
 	/**
 	 * 
