@@ -1,5 +1,7 @@
 package com.zzhj.webSocket;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,6 +19,7 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
+import org.apache.jasper.tagplugins.jstl.core.Out;
 import org.codehaus.jackson.map.ObjectMapper;
 
 import com.zzhj.entityCustom.Message;
@@ -31,11 +34,16 @@ public class ServerHandler {
 	private HttpSession httpSession;
 	@OnOpen
 	public void buildConnect(Session session, EndpointConfig config){
-		this.session=session;
-		httpSession =(HttpSession) config.getUserProperties().get(HttpSession.class.getName());
-		Users user =(Users) httpSession.getAttribute("users");
-		users.put(user.getName(),this);
-		offlineUserSend(user.getName());
+		try {
+			this.session=session;
+			httpSession =(HttpSession) config.getUserProperties().get(HttpSession.class.getName());
+			Users user =(Users) httpSession.getAttribute("users");
+			users.put(user.getName(),this);
+			offlineUserSend(user.getName());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 	@OnClose
 	public void close(){
