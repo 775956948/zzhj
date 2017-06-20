@@ -65,7 +65,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</tr>
 				<tr>
 					<td>用车日期</td>
-					<td><input type="datetime-local" name="startDate"  /> </td>
+					<td><input type="text" name="startDate"  id="CarstartDate"/> </td>
 				</tr>
 				<tr>
 					<td>用车里程数</td>
@@ -73,7 +73,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</tr>
 				<tr name='overDate'>
 					<td>还车日期</td>
-					<td><input  type="datetime-local" name="overDate"   /></td>
+					<td><input  type="text" name="overDate"   id="overReturnDate" /></td>
 				</tr>
 				<tr name='overNumber'>
 					<td>还车里程数</td>
@@ -110,6 +110,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<table id="carInfoDg"></table> 
 	
 	<script type="text/javascript">
+	$("#overReturnDate").datetimebox({
+	required: true,
+	showSeconds: false
+	});
+	    $("#CarstartDate").datetimebox({
+	    required: true,
+	    showSeconds: false
+	    });
 		$(function(){
 			$('#carInfoDg').datagrid({    
    			 url:'carInfo/getCarInfo.action',
@@ -130,7 +138,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         		{field:'startDate',title:'用车日期',sortable:true},
         		{field:'startNumber',title:'用车公里数'}, 
         		{field:'overDate',title:'还车日期'}, 
-        		{field:'overNumber',title:'还车公里数'},    
+        		{field:'overNumber',title:'还车公里数'}
     		]]    
 		}); 
 		
@@ -143,7 +151,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					height : 400,
 					closed : false,
 					cache : false,
-					modal : true, 
+					modal : true
 				}); 
 			$("input").val('');
 			$("textarea").val('');
@@ -225,9 +233,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							$("input[name='requestName']").val(data.requestName);
 							$("input[name='departmentName']").val(data.departmentName);
 							$("textarea[name='requestText']").val(data.requestText);
-							$("input[name='startDate']").val(data.startDate); 
+	                        $("#CarstartDate").datetimebox({
+	                        value: data.startDate,
+	                        required: true,
+	                        showSeconds: false
+	                        });
 							$("input[name='startNumber']").val(data.startNumber);
-							$("input[name='overDate']").val(data.overDate);
+	                        $("#overReturnDate").datetimebox({
+	                        value: data.overDate,
+	                        required: true,
+	                        showSeconds: false
+	                        });
 							$("input[name='driver']").val(data.driver);
 							$("input[name='overNumber']").val(data.overNumber); 
 						}

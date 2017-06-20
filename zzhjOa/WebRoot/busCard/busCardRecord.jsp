@@ -39,11 +39,11 @@
 				</tr>
 				<tr>
 					<td>起始时间</td>
-					<td><input type="datetime-local" name="startDate"/></td>
+					<td><input type="text" name="startDate" id="startDate"/></td>
 				</tr>
 				<tr name="overDate">
 					<td>结束时间</td>
-					<td><input type="datetime-local" name="overDate"  /> </td>
+					<td><input type="text" name="overDate"  id="overDate" /> </td>
 				</tr>
 				<tr name="startMoney">
 					<td>起始金额</td>
@@ -66,6 +66,16 @@
 	<table id="busCardRecordDg"></table> 
 	
 	<script type="text/javascript">
+
+	$("#startDate").datetimebox({
+	required: true,
+	showSeconds: false
+	});
+
+	$("#overDate").datetimebox({
+	required: true,
+	showSeconds: false
+	});
 		$('#busCardRecordDg').datagrid({				
 			url:'busCardRecord/queryAll.action',
 		    fitColumns:true,
@@ -91,11 +101,11 @@
 	    			}
 				   		
  			   	},},    
-			   	{field:'start',title:'启始站点',},   
-			   	{field:'over',title:'结束站点',},   
+			   	{field:'start',title:'启始站点',},
+			   	{field:'over',title:'结束站点',},
 			   	{field:'startDate',title:'领取时间',sortable:true},   
-			   	{field:'overDate',title:'归还时间',},   
-			   	{field:'startMoney',title:'领取金额',}, 
+			   	{field:'overDate',title:'归还时间',},
+			   	{field:'startMoney',title:'领取金额',},
 			   	{field:'overMoney',title:'归还金额',},
 		   			
 		    ]],
@@ -206,8 +216,18 @@
 						$("select[name='busCardId.id']").append("<option value='"+row.busCardId.id+"'>"+row.busCardId.cardNumber+"</option>");
 						$("input[name='start']").val(row.start);
 						$("input[name='over']").val(row.over);
-						$("input[name='startDate']").val(row.startDate);
-						$("select[name='busCardId.id']").val(row.busCardId.id);
+	                    $("select[name='busCardId.id']").val(row.busCardId.id);
+						<%--$("input[name='startDate']").val(row.startDate);--%>
+	                    $("#startDate").datetimebox({
+	                    value: row.startDate,
+	                    required: true,
+	                    showSeconds: false
+	                    });
+	                    $("#overDate").datetimebox({
+	                    value: row.overDate,
+	                    required: true,
+	                    showSeconds: false
+	                    });
 					}
 				});	
 				$("select[name='busCardId.id'] option:first").prop("selected", 'selected'); 

@@ -43,7 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</li>
 					<li>
 						<span>请假起始时间</span>
-						<input type="date" name="currentDate"/>
+						<input type="text" name="currentDate" id="currentDate"/>
 					</li>
 					<li>
 						<span style="float: left;">请假原由</span>
@@ -64,6 +64,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		 
   		 
   	<script type="text/javascript">
+	        $("#currentDate").datetimebox({
+	        required: true,
+	        showSeconds: false
+	        });
    		 	$('#restDg').datagrid({    
    			 url:'rest/queryAll.action',
    			 fitColumns:true,

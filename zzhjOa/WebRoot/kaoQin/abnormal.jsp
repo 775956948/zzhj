@@ -46,7 +46,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  			   				</select>
 					<li>
 						<span>异常时间</span>
-						<input type="datetime-local" name="abnormalDate" />
+						<input type="text" name="abnormalDate" id="adnormalDate" />
 					</li>
 					<li >
 						<span style="float: left;">异常原由</span>
@@ -66,6 +66,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		 
   		 
   	<script type="text/javascript">
+	        $("#adnormalDate").datetimebox({
+	        required: true,
+	        showSeconds: false
+	        });
   		 	$('#abnormalDg').datagrid({    
    			 url:'abnormal/queryAll.action',
    			 fitColumns:true,

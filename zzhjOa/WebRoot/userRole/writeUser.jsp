@@ -19,9 +19,9 @@
 				$("input[name='password']").val(data.password);
 				$("input[name='file']").val(data.imageName);
 				$("input[name='phone']").val(data.phone);
-				$("input[name='inductionDate']").val(data.inductionDate);
-				$("input[name='positiveDate']").val(data.positiveDate);
-				$("input[name='birthday']").val(data.birthday);
+	            $("#joinTime").datebox('setValue',data.inductionDate);
+	            $("#becomeTime").datebox('setValue',data.positiveDate);
+	            $("#birthTime").datebox('setValue',data.birthday);
 				if(data.sex!=null){
 					if(data.sex=="男"){
 						$("#male").attr("checked","checked")
@@ -39,6 +39,10 @@
 					$("#userInfoimg").hide();
 				}
 			})
+       	$('#joinTime').datebox({ required:true});
+	    $('#becomeTime').datebox({ required:true});
+	    $('#birthTime').datebox({ required:true});
+
 		}) 
 		
 		function submitInfo(){
@@ -81,13 +85,13 @@
 		</tr>
 		<tr>
 			<td>入职时间</td>
-			<td><input type="date" name="inductionDate"/></td>
+			<td><input type="text" name="inductionDate" class="easyui-datebox" id="joinTime" /></td>
 			<td>转正时间</td>
-			<td><input type="date" name="positiveDate"></td>
+			<td><input type="text" name="positiveDate"  class="easyui-datebox"  id="becomeTime" /></td>
 		</tr>
 		<tr>
 			<td>出生日期</td>
-			<td><input type="date" name="birthday"></td>
+			<td><input type="text" name="birthday" class="easyui-datebox" id="birthTime" /></td>
 			<td>性别</td>
 			<td>男 <input id="male" type="radio" name="sex" value="男" style="width: 20px;"/>女 <input id="female" type="radio" name="sex" value="女" style="width: 20px;"/></td>
 		</tr>
