@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper SYSTEM "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.zzhj.mapper.FunctionMapper">
-
+<cache/>
   <select id="nodes" resultType="function" parameterType="Integer">
   	 SELECT f.* FROM FUNCTION f INNER JOIN function_roles fr ON fr.function_id=f.id WHERE f.parentId IS NOT NULL AND fr.role_id=#{roleId} AND f.parentId=#{parentId} 
   </select>

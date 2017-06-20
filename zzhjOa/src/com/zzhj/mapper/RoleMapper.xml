@@ -10,4 +10,7 @@
   <delete id="deleteRole" parameterType="int">
   	delete from roles where id=#{value}
   </delete>
+  <select id="queryRoleName" parameterType="int" resultType="string">
+  	select name from roles where id=#{value}
+  </select>
 </mapper>

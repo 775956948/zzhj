@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.zzhj.mapper.RoleMapper;
 import com.zzhj.mapper.UsersMapper;
 import com.zzhj.po.Users;
 /**
@@ -24,7 +25,11 @@ import com.zzhj.po.Users;
 @Service
 public class UsersService {
 	@Resource(name="usersMapper")
-	UsersMapper um;
+	private UsersMapper um;
+	
+	@Autowired
+	private RoleMapper rm;
+	
 	
 	public Users login(Users users){
 		return um.login(users);
@@ -42,11 +47,11 @@ public class UsersService {
 		
 	}
 	public Map<String,Object> queryAll(int page,int rows){
-		int startPage =(page-1)*(rows/2);
+		int startPage =(page-1)*(rows);
 		int total=um.totalCount();
-		List<Users> list = um.queryAll(startPage, rows);
+/*		List<Users> list = um.queryAll(startPage, rows);*/
 		List<Users> roleList =um.roleQueryAll(startPage,rows);
-		for (int i = 0; i < list.size(); i++) {
+		/*for (int i = 0; i < list.size(); i++) {
 			boolean where=true;
 			for (int j = 0; j < roleList.size(); j++) {
 				if(roleList.get(j).getName().equals(list.get(i).getName())){
@@ -56,7 +61,7 @@ public class UsersService {
 			if(where){
 				roleList.add(list.get(i));
 			}
-		}
+		}*/
 		Map<String,Object> map = new HashMap<String, Object>();
 		map.put("rows", roleList);
 		map.put("total", total);
@@ -76,6 +81,12 @@ public class UsersService {
 		if(user.getParentId()==0){
 			int id=um.queryId("总经理");
 			user.setParentId(id);
+		}
+		String roleName =rm.queryRoleName(user.getRoleId().getId());
+		if(!roleName.equals("员工")){
+			user.setState("closed");
+		}else{
+			user.setState("open");
 		}
 		return um.updateRole(user);
 	}
@@ -118,7 +129,7 @@ public class UsersService {
 	}
 	
 	public Map<String,Users> searchUserInfo(int page,int rows,Users user){
-		int startPage =(page-1)*(rows/2);
+		int startPage =(page-1)*(rows);
 		List<Users> list = um.searchUserInfo(startPage, rows,user);
 		int total = um.totalCount();
 		Map map = new HashMap();
