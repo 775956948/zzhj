@@ -55,24 +55,10 @@ public class CarInfoService {
 	}
 	public CarInfo carInfoId(int id){
 		CarInfo carInfo = cm.carInfoId(id);
-		carInfo.setStartDate(insertChar(carInfo.getStartDate()));
 		String overDate =carInfo.getOverDate();
-		if(overDate!=null&&!"".equals(overDate)){
-			carInfo.setOverDate(insertChar(carInfo.getOverDate()));
-		}
 		System.out.println(carInfo.getStartDate());
 		return carInfo;
 	}
-	private String insertChar(String str){
-		char [] chars =str.toCharArray();
-		StringBuffer sb = new StringBuffer();
-		for (int i = 0; i < 19; i++) {
-			if(i==10){
-				chars[i]='T';
-			}
-			sb.append(chars[i]);
-		}
-		return sb.toString();
-	}
+
 	
 }
