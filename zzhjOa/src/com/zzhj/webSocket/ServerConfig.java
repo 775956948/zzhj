@@ -10,6 +10,6 @@ public class ServerConfig extends ServerEndpointConfig.Configurator {
 	public void modifyHandshake(ServerEndpointConfig config, HandshakeRequest request, HandshakeResponse response) {
 		// TODO Auto-generated method stub
 		 HttpSession httpSession = (HttpSession)request.getHttpSession();
-	     config.getUserProperties().put(HttpSession.class.getName(),httpSession);
+	     config.getUserProperties().put(HttpSession.class.hashCode()+"",httpSession);
 	}
 }

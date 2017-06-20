@@ -1,5 +1,9 @@
 package com.zzhj.service;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -49,19 +53,7 @@ public class UsersService {
 	public Map<String,Object> queryAll(int page,int rows){
 		int startPage =(page-1)*(rows);
 		int total=um.totalCount();
-/*		List<Users> list = um.queryAll(startPage, rows);*/
 		List<Users> roleList =um.roleQueryAll(startPage,rows);
-		/*for (int i = 0; i < list.size(); i++) {
-			boolean where=true;
-			for (int j = 0; j < roleList.size(); j++) {
-				if(roleList.get(j).getName().equals(list.get(i).getName())){
-					where=false;
-				}
-			}
-			if(where){
-				roleList.add(list.get(i));
-			}
-		}*/
 		Map<String,Object> map = new HashMap<String, Object>();
 		map.put("rows", roleList);
 		map.put("total", total);
