@@ -20,9 +20,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<a  class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="addApply()" >创建申请</a>
 			<a  class="easyui-linkbutton" iconCls="icon-Remove" plain="true" onclick="deleteApply()">删除</a>
 		</div>
-		<div id="apply-tanc"  class="easyui-dialog" closed=true >
+		<div id="apply-tanc"  class="easyui-dialog" closed=true  style="width:600px">
   		<form action="" method="post" id="apply-form">
-  			   <table  style="font-size: 12px; margin-left: 60px; margin-top:10px;" name="form">
+  			   <table   name="form">
   			   		<tr>
 					 <td colspan="2" align="center"><h5>资质章申请</h5></td>
 					</tr>
@@ -123,7 +123,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		function addApply(){
 			$('#apply-tanc').dialog({
 				title : '资质盖章申请单',
-				width : 400,
 				height : 400,
 				closed : false,
 				cache : false,

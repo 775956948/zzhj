@@ -33,7 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<a  class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="updateCarInfo()">还车</a>
 	</div>
 	
-	<div id="carInfoDd"  class="easyui-dialog" closed=true >
+	<div id="carInfoDd"  class="easyui-dialog" closed=true  style="width: 600px">
 		<form>
 			<table name="form">
 				<tr>
@@ -69,18 +69,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</tr>
 				<tr>
 					<td>用车里程数</td>
-					<td><input type="text" name="startNumber"/></td>
+					<td><input type="number" name="startNumber"  min="1" /></td>
 				</tr>
-				<tr name='overDate'>
+	            <tr name='overDate'>
 					<td>还车日期</td>
 					<td><input  type="text" name="overDate"   id="overReturnDate" /></td>
 				</tr>
-				<tr name='overNumber'>
+	            <tr name='overNumber'>
 					<td>还车里程数</td>
-					<td><input type="text" name="overNumber"/></td>
+					<td><input type="number" name="overNumber" min="1"/></td>
 				</tr>
 				<tr>
-					<td colspan="2" align="center"><button type="button"  onclick="checkSubmit()"  >提交</button></td>
+					<td colspan="2" align="center">
+	                    <input type="button" onclick="checkSubmit()" value="提交" ></td>
 				</tr>
 			</table>
 		</form>
@@ -101,7 +102,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<td><input type="text" id="carNo"/></td>
 				</tr>
 				<tr>
-					<td colspan="2" align="center"><input type="button" value="提交" onclick="submitAddCar()"/></td>
+					<td colspan="2" align="center"><input type="button" value="提 交" onclick="submitAddCar()"/></td>
 				</tr>
 			</table>
 		</form>
@@ -147,13 +148,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		function addCarInfo(){
 			$('#carInfoDd').dialog({
 					title : '添加用车信息',
-					width : 500,
-					height : 400,
+					height : 300,
 					closed : false,
 					cache : false,
 					modal : true
-				}); 
-			$("input").val('');
+				});
+	        $("input[type=text]").val('');
 			$("textarea").val('');
 			$("tr[name='overDate']").hide();
 			$("tr[name='overNumber']").hide();

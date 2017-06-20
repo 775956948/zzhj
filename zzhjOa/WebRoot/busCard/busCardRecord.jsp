@@ -23,8 +23,7 @@
 				<tr>
 					<td>一卡通卡号</td>
 					<td>
-						<select name="busCardId.id">
-						</select>
+						<select name="busCardId.id"></select>
 					</td> 
 				</tr>
 				<tr>
@@ -137,13 +136,17 @@
 		//
 		function submitBusCardRecord(){
 			var i=0;
+
 			$("#busCardRecordForm input").each(function(){
 				if($(this).val()==""){
 					i=i+1;
 				}
-				
 			})
-			if(i>4){
+	       if($("input[name = start]").val()==''&&$("input[name = startDate]").val()==''&&$("input[name = overDate]").val()==''&&$("input[name = over]").val()==''&&$("input[name = startMoney]").val()==''&&$("input[name = overMoney]").val()==''){
+	           i=i+1;
+	        }
+
+			if(i>0){
 				 $.messager.alert("提示", "请填写完整信息", "info");  
 			}else{
 				var start =$("input[name='start']").val();
@@ -170,13 +173,10 @@
 		///
 		function updateBusCardRecordSubmit(){
 			var i=0;
-			$("#busCardRecordForm input").each(function(){
-				if($(this).val()==""){
-					i=i+1;
-				}
-				
-			})
-			if(i>1){
+	        if($("input[name = start]").val()==''&&$("input[name = startDate]").val()==''&&$("input[name = over]").val()==''){
+	        i=i+1;
+	        }
+			if(i>0){
 				 $.messager.alert("提示", "请填写完整信息", "info");  
 			}else{
 				var overDate = $("input[name='overDate']").val();
