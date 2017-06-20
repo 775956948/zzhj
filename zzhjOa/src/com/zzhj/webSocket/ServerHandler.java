@@ -34,16 +34,11 @@ public class ServerHandler {
 	private HttpSession httpSession;
 	@OnOpen
 	public void buildConnect(Session session, EndpointConfig config){
-		try {
 			this.session=session;
 			httpSession =(HttpSession) config.getUserProperties().get(HttpSession.class.getName());
 			Users user =(Users) httpSession.getAttribute("users");
 			users.put(user.getName(),this);
 			offlineUserSend(user.getName());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
 	}
 	@OnClose
 	public void close(){
