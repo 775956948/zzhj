@@ -19,7 +19,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <!--
     <link rel="stylesheet" type="text/css" href="styles.css">
     -->
+    <link rel="stylesheet" href="easyui/themes/icon.css">
+    <link rel="stylesheet" href="easyui/themes/default/easyui.css">
     <script type="text/javascript" src="easyui/jquery.min.js"></script>
+    <script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="easyui/locale/easyui-lang-zh_CN.js"></script>
     <style type="text/css">
        	::-webkit-inner-spin-button{
 	       visibility: hidden;
@@ -117,6 +121,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         select {
             border-color: #0c8ed9
         }
+        .textbox{
+        background-color: transparent;
+        border: none;
+        }
+        .validatebox-text{
+        background-color: transparent;
+        }
+        .textbox-icon{
+        height:33px !important;
+        margin-top: 1px;
+        }
 
     </style>
 
@@ -152,8 +167,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="nc SX">
             <div class="wz"><span style="margin-right: 10px">生日</span></div>
             <div class="Sr">
-                <input style="height: 100%;background-color: transparent;width:100%;text-align: center;line-height: 100%"
-                       name="birthday" type="date"/>
+                <input id="birthdayChange"  class="easyui-datebox Sr2" type="text" style="width: 100%;height: 100%;background-color: transparent" name="birthday" />
             </div>
         </div>
         <div class="nc SX">
@@ -189,18 +203,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
 </form>
 <script type="text/javascript">
+    $('#birthdayChange').datebox({ required:true});
     function submits() {
         var cout = 0;
-        $("#ZT input").each(function () {
-            if ($(this).val() == '') {
-                cout=cout+1;
-            }
-        });
+    if($("input[name = name]").val()==''||$("input[name = password]").val()==""||$("input[name = phone]").val()==""){
+         cout=cout+1;
+       }
         if (cout<1) {
             $("#form").submit();
-           
         } else {
-            alert("信息填写不完整");
+            $.message.alert("信息填写不完整");
         }
     }
 </script>

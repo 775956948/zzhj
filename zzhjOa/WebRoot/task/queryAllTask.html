@@ -30,7 +30,7 @@
                 <textarea type="text" name="taskText" rows="7" cols="30"></textarea>
             </li>
             <li>
-                <button onclick="submitTask()">确 认 修 改</button>
+                <input type="button" class="button-task"  onclick="submitTask()" value="确 认 修 改">
             </li>
         </ul>
     </div>
@@ -96,12 +96,9 @@
     //提交
     function submitTask() {
         var number = 0;
-        $("#changeTask input,textarea").each(function () {
-            var val = $(this).val();
-            if (val == "" || val == undefined || val == null) {
-                number = number + 1;
-            }
-        });
+        if($("input[name=taskTheme]").val()==""||$("input[name=taskDay]").val()==""||$("textarea[name=taskText]").val()==""){
+            number=number+1;
+        }
         if (number == 0) {
             $.ajax({
                 url: "task/updateTask.action",

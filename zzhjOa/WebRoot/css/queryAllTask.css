@@ -41,7 +41,8 @@
     behavior: url(pie.htc);
     float:left;
 }
-#changeTask  li button{
+#changeTask  li button,#changeTask li .button-task{
+    float: none;
     border: none;
     width: 65%;
     height: 42px;

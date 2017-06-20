@@ -45,7 +45,7 @@
     margin-top: 3px;
     float: left;
 }
-#viewTask li button,#changeSpeed li button ,#seeMessage li button,#transmitForm li button{
+#viewTask li .button-task,#changeSpeed li .button-task ,#seeMessage li .button-task,#transmitForm li .button-task{
     display: block;
     height: 40px;
     width: 50%;

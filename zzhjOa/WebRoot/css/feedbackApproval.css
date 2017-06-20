@@ -33,7 +33,8 @@
     text-align: center;
     border: none;
 }
-#viewApplication button{
+#viewApplication .button-task{
+    float: none;
     display: block;
     height: 40px;
     width: 50%;

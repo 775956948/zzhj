@@ -45,7 +45,7 @@
                 </div>
             </li>
             <li style="margin: 20px auto">
-                <button onclick="transmitTask()">确 认 下 达</button>
+                <input type="button" class="button-task" onclick="transmitTask()" value="确 认 下 达">
             </li>
         </ul>
     </form>
@@ -114,12 +114,9 @@
 
     function transmitTask() {
         var number = 0;
-        $("#transmitForm input,textarea").each(function () {
-            var val = $(this).val();
-            if (val == "" || val == undefined || val == null) {
-                number = number + 1;
-            }
-        })
+        if($("input[name=taskTheme]").val()==""||$("input[name=taskDay]").val()==""||$("textarea[name=taskText]").val()==""||$("select[name=implement]").val()==""||$("input[name=userName]").val()==""){
+            number=number+1;
+        }
         if (number == 0) {
             var id = $("input[name='taskId']").val();
             var implement = $("select[name='implement']").find("option:selected").text();
@@ -129,7 +126,7 @@
                     $("#taskDd").dialog({
                         closed: true
                     })
-                    $('#taskDd').datagrid('reload');
+                    $('#teskDg').datagrid('reload');
                 }
             })
 

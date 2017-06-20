@@ -29,7 +29,8 @@
     border-radius: 5px;
     border: 1px solid #c4c4c4;
 }
-#appFeedback li button{
+#appFeedback li button,#appFeedback li .button-task,#seeMessage li .button-task{
+    float: none;
     display: block;
     height: 40px;
     width: 50%;
