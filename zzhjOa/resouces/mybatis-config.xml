@@ -2,6 +2,7 @@
 <!DOCTYPE configuration PUBLIC "http://mybatis.org/dtd/mybatis-3-config.dtd" "mybatis-3-config.dtd" >
 <configuration>
  	<settings>
+ 		<setting name="cacheEnabled" value="true"/>
 		<setting name="logImpl" value="stdout_logging"/> 
 	</settings>
 	<typeAliases>

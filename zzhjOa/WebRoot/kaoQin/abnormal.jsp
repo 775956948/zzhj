@@ -98,8 +98,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		function abnormalSubmit(){
 			var abnormalDate=$("input[name='abnormalDate']").val();
 			var abnormalType= $("select[name='abnormalType']").find("option:selected").text();
-			var abnormalText=$("textarea[name='abnormalText']").val();
-		 	if(abnormalDate!=""){
+			var abnormalType=$("textarea[name='abnormalText']").val();
+		 	if(abnormalDate!=""&& abnormalType!=""&& abnormalType!=""){
 				$.post('abnormal/save.action',{'abnormalDate':abnormalDate,'abnormalType':abnormalType,'abnormalText':abnormalText},function(data){
 					if(data!=null&&data>0){
 						$('#abnormalDg').datagrid('reload');

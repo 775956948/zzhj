@@ -132,4 +132,16 @@ public interface UsersMapper {
 	 * @date 2017年6月12日
 	 */
 	List<String> querySubclass(String departmentName);
+	
+	/**
+	 * 
+	 * @Description: 返回查询当前用户下是否有子用户，即手下员工
+	 * @param @param id
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年6月20日
+	 */
+	int querySubCount(int id);
 }

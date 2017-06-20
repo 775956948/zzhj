@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "http://mybatis.org/dtd/mybatis-3-mapper.dtd" "mybatis-3-mapper.dtd" >
 <mapper namespace="com.zzhj.mapper.UsersMapper">
+	<cache/>
  	<resultMap type="users" id="ud">
 		<id column="id" property="id"/>
 		<result column="name" property="name"/>
@@ -39,7 +40,7 @@
   		select u.name,u.password,u.id ,d.name as d_name from users u inner join department d on u.departmentId=d.id  limit #{startPage},#{rows}
   	</select>
   	<select id="roleQueryAll" parameterType="int" resultMap="ud">
-  		select u.name,u.password,u.id ,d.name as d_name,r.name as r_name  from users u inner join department d on u.departmentId=d.id inner join roles r on r.id=u.role_id limit #{startPage},#{rows}
+  		select u.name,u.password,u.id ,d.name as d_name,r.name as r_name  from users u left join department d on u.departmentId=d.id left join roles r on r.id=u.role_id limit #{startPage},#{rows}
   	</select>
   	<select id="totalCount" resultType="int">
   		select count(id) from users
@@ -54,7 +55,7 @@
   		select count(id) from users where name=#{value}
   	</select>
   	<update id="updateRole" parameterType="users">
-  		update users set role_id=#{roleId.id},parent_id=#{parentId} where name=#{name}
+  		update users set role_id=#{roleId.id},parent_id=#{parentId},state=#{state} where name=#{name}
   	</update>
   	
   	<update id="updateUser" parameterType="users">
@@ -117,5 +118,9 @@
 	
 	<select id="querySubclass" parameterType="string" resultType="string">
 		SELECT u.NAME FROM users u INNER JOIN department d ON u.departmentId=d.id INNER JOIN roles r ON r.id=u.role_id WHERE d.name=#{value} AND r.name='员工'
+	</select>
+	
+	<select id="querySubCount" parameterType="int" resultType="int">
+		select count(id) from users where parent_id=#{value}
 	</select>
 </mapper>
