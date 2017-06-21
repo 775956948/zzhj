@@ -111,13 +111,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<table id="carInfoDg"></table> 
 	
 	<script type="text/javascript">
-	$("#overReturnDate").datetimebox({
-	required: true,
-	showSeconds: false
-	});
+		$("#overReturnDate").datetimebox({
+			required: true,
+			showSeconds: false,
+			editable:false
+		});
 	    $("#CarstartDate").datetimebox({
-	    required: true,
-	    showSeconds: false
+		    required: true,
+		    showSeconds: false,
+		    editable:false
 	    });
 		$(function(){
 			$('#carInfoDg').datagrid({    
@@ -148,10 +150,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		function addCarInfo(){
 			$('#carInfoDd').dialog({
 					title : '添加用车信息',
-					height : 300,
+					height : 500,
 					closed : false,
 					cache : false,
-					modal : true
+					modal : true,
+					top:50
 				});
 	        $("input[type=text]").val('');
 			$("textarea").val('');

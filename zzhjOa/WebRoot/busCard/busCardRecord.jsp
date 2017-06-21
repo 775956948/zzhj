@@ -68,12 +68,14 @@
 
 	$("#startDate").datetimebox({
 	required: true,
-	showSeconds: false
+	showSeconds: false,
+	editable:false
 	});
 
 	$("#overDate").datetimebox({
 	required: true,
-	showSeconds: false
+	showSeconds: false,
+	editable:false
 	});
 		$('#busCardRecordDg').datagrid({				
 			url:'busCardRecord/queryAll.action',

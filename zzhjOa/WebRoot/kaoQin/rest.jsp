@@ -29,7 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div id="restDd"  class="easyui-dialog" closed=true  style="width: 750px">
   		<form action="" method="post">
   				<h2 style="margin: auto; width:150px; margin-top: 20px;">请假/休假信息表</h2>
-				<ul id="addRest" class="marginLeft">
+				<ul id="addRest" >
 					<li>
 						<span>请假人</span>
 						<input type="text" name="userId" disabled="disabled"  value="${users.name}"/>
@@ -43,7 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</li>
 					<li>
 						<span>请假起始时间</span>
-						<input type="text" name="currentDate" id="currentDate"/>
+						<input type="text" name="currentDate" id="currentDate" />
 					</li>
 					<li>
 						<span style="float: left;">请假原由</span>
@@ -62,7 +62,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	<script type="text/javascript">
 	        $("#currentDate").datetimebox({
 	        required: true,
-	        showSeconds: false
+	        showSeconds: false,
+	        editable:false
 	        });
    		 	$('#restDg').datagrid({    
    			 url:'rest/queryAll.action',
@@ -86,7 +87,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		function addRest(){
 			$("#restDd").dialog({
 				title : '请假信息',
-				width : 400,
 				height : 400,
 				closed : false,
 				cache : false,
@@ -107,7 +107,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			var currentDate=$("input[name='currentDate']").val();
 			var restTypeId=$("select[name='restTypeId']").val();
 			var restText=$("textarea[name='restText']").val();
-		 	if(restDate!=""){
+		 	if(restDate!=""&&currentDate!=""&&restTypeId!=""&&restText!=""){
 				$.post('rest/save.action',{'restDate':restDate,'restTypeId.id':restTypeId,'restText':restText,'currentDate':currentDate},function(data){
 					if(data!=null&&data>0){
 						$('#restDg').datagrid('reload');

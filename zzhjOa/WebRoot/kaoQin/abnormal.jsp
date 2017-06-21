@@ -32,7 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div id="abnormalDd"  class="easyui-dialog" closed=true style="width: 750px;padding: 0" >
   		<form action="" method="post">
   				<h2 style="margin: auto; width:130px; margin-top: 20px;">打卡异常信息表</h2>
-				<ul class='marginLeft' id="addRest">
+				<ul  id="addRest">
 					<li>
 						<span>申请人&nbsp;</span>
 						<input type="text" name="userId" disabled="disabled"  value="${users.name}"/>
@@ -68,7 +68,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	<script type="text/javascript">
 	        $("#adnormalDate").datetimebox({
 	        required: true,
-	        showSeconds: false
+	        showSeconds: false,
+	        editable:false
 	        });
   		 	$('#abnormalDg').datagrid({    
    			 url:'abnormal/queryAll.action',
@@ -101,8 +102,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		function abnormalSubmit(){
 			var abnormalDate=$("input[name='abnormalDate']").val();
 			var abnormalType= $("select[name='abnormalType']").find("option:selected").text();
-			var abnormalType=$("textarea[name='abnormalText']").val();
-		 	if(abnormalDate!=""&& abnormalType!=""&& abnormalType!=""){
+			var abnormalText=$("textarea[name='abnormalText']").val();
+		 	if(abnormalDate!=""&& abnormalType!=""&& abnormalText!=""){
 				$.post('abnormal/save.action',{'abnormalDate':abnormalDate,'abnormalType':abnormalType,'abnormalText':abnormalText},function(data){
 					if(data!=null&&data>0){
 						$('#abnormalDg').datagrid('reload');

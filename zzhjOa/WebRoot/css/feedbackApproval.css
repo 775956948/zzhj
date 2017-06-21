@@ -12,6 +12,9 @@
     overflow: hidden;
     position: relative;
 }
+#viewApplication li{
+	margin-top: 5px;
+}
 #viewApplication .splitLi{
     width: 50%;
     float: left;
@@ -31,7 +34,6 @@
 }
 #viewApplication .splitLi input{
     text-align: center;
-    border: none;
 }
 #viewApplication .button-task{
     float: none;

@@ -7,7 +7,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>经办</title>
+		<title>资质章办理</title>
 	</head>
 	<body>
 		<!--审批表格-->

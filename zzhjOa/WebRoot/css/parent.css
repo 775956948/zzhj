@@ -18,9 +18,6 @@ table[name='form']{
 	width: 300px;
 	margin: 0 auto;
 }
-table[name='form'] tr td{
-	width: 60px;
-}
 
 .cmn_list{
 	text-align:center;
