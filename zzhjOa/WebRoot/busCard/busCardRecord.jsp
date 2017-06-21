@@ -46,11 +46,11 @@
 				</tr>
 				<tr name="startMoney">
 					<td>起始金额</td>
-					<td><input type="number" name="startMoney"/></td>
+					<td><input type="number" name="startMoney"    onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"/></td>
 				</tr>
 				<tr name="overMoney">
 					<td>结束金额</td>
-					<td><input  type="number" name="overMoney"   /></td>
+					<td><input  type="number" name="overMoney"     onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"/></td>
 				</tr>
 				<tr name="saveCard">
 					<td colspan="2" align="center" ><button type="button"  onclick="submitBusCardRecord()" >提交</button></td>

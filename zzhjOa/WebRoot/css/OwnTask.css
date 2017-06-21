@@ -1,17 +1,17 @@
-#viewTask ul,#changeSpeed ul,#seeMessage ul,#transmitForm ul{
+#viewTask ul,#seeMessage ul,#transmitForm ul,#addRest ul{
     width: 700px;
     margin: 0 auto;
     height: auto;
     overflow: hidden;
 }
 #changeSpeed ul{
-    width: 200px;
+    width: 260px;
     margin: 10px 0 0 10px;
     height: auto;
     overflow: hidden;
     padding: 0;
 }
-#viewTask li,#changeSpeed li,#seeMessage li,#transmitForm li{
+#viewTask li,#changeSpeed li,#seeMessage li,#transmitForm li,#addRest li{
     width: 100%;
     min-height: 40px;
     font-size: 16px;
@@ -19,33 +19,59 @@
     overflow: hidden;
     position: relative;
 }
+#addRest li{
+    margin: 10px auto;
+}
+#addRest li select{
+    font-size: 16px;
+    height: 35px;
+    text-align: center
+}
 #viewTask .splitLi ,#seeMessage .splitLi ,#transmitForm .splitLi{
     width: 50%;
     float: left;
     overflow: hidden;
 }
-#viewTask  span,#changeSpeed span ,#seeMessage span,#transmitForm span{
+#viewTask  span,#changeSpeed span ,#seeMessage span,#transmitForm span,#addRest span{
     float: left;
     border: none;
     box-sizing: border-box;
 }
-#changeSpeed input,#seeMessage input,#transmitForm input{
+#addRest li span{
+    width: 210px;
+    text-align: center;
+    display: block;
+}
+#addRest li  span .combo-arrow{
+    float: right;
+}
+#addRest li .datebox{
+    border: 1px solid #d2d2d2;
+    border-radius: 0;
+}
+#changeSpeed input,#seeMessage input,#transmitForm input ,#addRest input{
     float: left;
     height: 40px;
     line-height: 40px;
     font-size: 20px;
     text-align: center;
 }
+#addRest input{
+    width: 350px;
+}
 #viewTask .splitLi input ,#seeMessage .splitLi input,#transmitForm .splitLi input{
     text-align: center;
-    border: none;
+    font-size: 16px;
+    font-family: 宋体;
+    font-weight: 700;
 }
-#viewTask ,#speedTask{
+#viewTask ,#speedTask {
     display: inline-block;
     margin-top: 3px;
     float: left;
 }
-#viewTask li .button-task,#changeSpeed li .button-task ,#seeMessage li .button-task,#transmitForm li .button-task{
+#viewTask li .button-task,#changeSpeed li .button-task ,#seeMessage li .button-task,#transmitForm li .button-task,#addRest li .button-task{
+    float: none;
     display: block;
     height: 40px;
     width: 50%;

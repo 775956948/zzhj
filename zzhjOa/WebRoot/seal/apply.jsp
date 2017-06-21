@@ -24,36 +24,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		<form action="" method="post" id="apply-form">
   			   <table   name="form">
   			   		<tr>
-					 <td colspan="2" align="center"><h5>资质章申请</h5></td>
+					 <td colspan="2" align="center"><h4>资质章申请</h4></td>
 					</tr>
   			   		<tr>
-  			   			<td>编号</td>
+  			   			<td align="center">编号</td>
   			   			<td><input type="text" name="number"  value=""  onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();" /></td>
   			   		</tr>
   			   		<tr>
-  			   			<td>项目名称</td>
+  			   			<td align="center">项目名称</td>
   			   			<td><input type="text" name="projectName"  value="" /></td>
   			   		</tr>
   			   		
   			   		<tr>
-  			   			<td>盖章内容</td>
+  			   			<td align="center">盖章内容</td>
   			   			<td>
   			   				<textarea name="text" rows="" cols="" ></textarea>
   			   			</td>
   			   		</tr>
   			   		<tr>
-  			   			<td>盖章事由</td>
+  			   			<td align="center">盖章事由</td>
   			   			<td>
   			   				<textarea name="why" rows="" cols="" ></textarea>
   			   			</td>
   			   		</tr>
   			   		 
   			   		<tr>
-  			   			<td>页数</td>
+  			   			<td align="center">页数</td>
   			   			<td><input type="text" name="pageNumber"  value="" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();"/></td>
   			   		</tr>
   			   		<tr>
-  			   			<td>份数</td>
+  			   			<td align="center">份数</td>
   			   			<td><input type="numberbox" name="copiesNumber"  value="" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();"/></td>
   			   		</tr>
   			   		<tr align="center">
@@ -123,7 +123,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		function addApply(){
 			$('#apply-tanc').dialog({
 				title : '资质盖章申请单',
-				height : 400,
+				height : 480,
 				closed : false,
 				cache : false,
 				modal : true

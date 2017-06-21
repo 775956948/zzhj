@@ -29,10 +29,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<a  class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="addAbnormal()">打卡异常申请</a>
 			<a  class="easyui-linkbutton" iconCls="icon-Remove" plain="true" onclick="deleteAbnormal()">删除</a>
 		</div>
-		<div id="abnormalDd"  class="easyui-dialog" closed=true >
+		<div id="abnormalDd"  class="easyui-dialog" closed=true style="width: 750px;padding: 0" >
   		<form action="" method="post">
   				<h2 style="margin: auto; width:130px; margin-top: 20px;">打卡异常信息表</h2>
-				<ul class='marginLeft'>
+				<ul class='marginLeft' id="addRest">
 					<li>
 						<span>申请人&nbsp;</span>
 						<input type="text" name="userId" disabled="disabled"  value="${users.name}"/>
@@ -50,10 +50,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</li>
 					<li >
 						<span style="float: left;">异常原由</span>
-						<textarea rows="2" cols="30" name="abnormalText"></textarea>
+						<textarea rows="4" cols="30" name="abnormalText" style="width: 348px"></textarea>
 					</li>
 					<li >
-						<input style="margin-left: 65px;"  type="button" value="申请" onclick="abnormalSubmit()"/>
+						<input  type="button" value="申请" onclick="abnormalSubmit()" class="button-task"/>
 					</li>
 				
 				</ul>
@@ -91,7 +91,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		function addAbnormal(){
 			$("#abnormalDd").dialog({
 				title : '异常信息',
-				width : 400,
 				height : 400,
 				closed : false,
 				cache : false,

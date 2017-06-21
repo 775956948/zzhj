@@ -62,8 +62,10 @@
                 <div id="speedTask" class="easyui-progressbar" style="width:71%; height: 38px"></div>
             </li>
             <li>
-                <span>任 务 状 态：</span>
-                <input type="text" name="state" readonly style="border: none">
+                <div class="splitLi">
+                    <span>任 务 状 态：</span>
+                    <input type="text" name="state" readonly >
+                </div>
             </li>
             <li>
                 <span style="position: absolute;top: 29%;">任 务 内 容：</span>
@@ -149,6 +151,7 @@
                         '</div>' +
                         '</div>';
                 return htmlstr;
+
             }, width: 300
             },
             {field: 'state', title: '任务状态'}
@@ -212,6 +215,7 @@
                 }
             }
         })
+
     }
 
 </script>

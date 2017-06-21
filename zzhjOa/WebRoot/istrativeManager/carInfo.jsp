@@ -22,8 +22,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-  		<div style="width: 100%; height: 250px; position: relative; overflow: hidden; background-color: white;">
-	   <iframe  src="http://cha.weiche.me/limit.php?channel=sm&city_name=北京" style="width: 100%; height: 1000px; position: absolute; top:-443px; " width="100%" height="250px" frameborder="0"   scrolling="no" >
+  		<div style="width: 100%; height: 300px; position: relative; background-color: white;">
+	   <iframe  src="http://cha.weiche.me/limit.php?channel=sm&city_name=北京" style="width: 100%; height: 1000px; position: absolute; top:-476px; " width="100%" height="250px" frameborder="0"   scrolling="no" >
 	   </iframe>
 	   </div>
   	<div id="carInfoTb">
@@ -69,7 +69,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</tr>
 				<tr>
 					<td>用车里程数</td>
-					<td><input type="number" name="startNumber"  min="1" /></td>
+					<td><input type="number" name="startNumber"  min="1"   onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"/></td>
 				</tr>
 	            <tr name='overDate'>
 					<td>还车日期</td>
@@ -77,7 +77,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</tr>
 	            <tr name='overNumber'>
 					<td>还车里程数</td>
-					<td><input type="number" name="overNumber" min="1"/></td>
+					<td><input type="number" name="overNumber" min="1"   onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"/></td>
 				</tr>
 				<tr>
 					<td colspan="2" align="center">
@@ -170,7 +170,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			var row = $('#carInfoDg').datagrid('getSelected');
 			 if (row){
 				$.post('carInfo/delCarInfo.action',{'id':row.id,'carId.carNo':row.carId.carNo}); 
-				alert("删除成功");
+				$.messager.alert("提示","删除成功","info");
 				$('#carInfoDg').datagrid('reload');
 			}else{
 				 $.messager.alert("提示", "请选中一行记录", "info");  
@@ -192,7 +192,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				 	$.messager.alert("提示", "请填写完整信息", "info");  
 				}else{
 				 	$.post('carInfo/updateCarInfo.action',{'id':row.id,'carId.carNo':carNo,'requestName':requestName,'requestText':requestText,'startDate':startDate,'departmentName':departmentName,'startNumber':startNumber,'overDate':overDate,'overNumber':overNumber,'driver':driver});
-						alert("还车成功");  
+						$.messager.alert("提示","还车成功","info");
 						$('#carInfoDd').dialog({
 							closed : true
 						}); 
@@ -204,7 +204,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					 $.messager.alert("提示", "请填写完整信息", "info");  
 				}else{
 					 $.post('carInfo/saveCarInfo.action',{'carId.carNo':carNo,'requestName':requestName,'requestText':requestText,'startDate':startDate,'departmentName':departmentName,'startNumber':startNumber,'driver':driver});
-						alert("添加成功");  
+	                  $.messager.alert("提示","添加成功","info");
 						$('#carInfoDd').dialog({
 							closed : true
 						}); 

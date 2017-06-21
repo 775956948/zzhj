@@ -26,7 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<a  class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="addRest()">申请请假/休假</a>
 			<a  class="easyui-linkbutton" iconCls="icon-Remove" plain="true" onclick="deleteRest()">删除</a>
 		</div>
-		<div id="restDd"  class="easyui-dialog" closed=true >
+		<div id="restDd"  class="easyui-dialog" closed=true  style="width: 750px">
   		<form action="" method="post">
   				<h2 style="margin: auto; width:150px; margin-top: 20px;">请假/休假信息表</h2>
 				<ul id="addRest" class="marginLeft">
@@ -39,7 +39,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<select name="restTypeId"></select>
 					<li >
 						<span>请假天数</span>
-						<input type="text" name="restDate"/>
+						<input type="number" name="restDate" min="0" onchange="if(!/^\d+(\.5)?$/.test(this.value)){$.messager.alert('请输入请假天数','只能输入0.5的倍数！','info');this.value='';}" />
 					</li>
 					<li>
 						<span>请假起始时间</span>
@@ -47,16 +47,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</li>
 					<li>
 						<span style="float: left;">请假原由</span>
-						<textarea name="restText" rows="3" cols="30"></textarea>
+						<textarea name="restText" rows="3" cols="30"  style="width: 348px"></textarea>
 					</li>
 					<li>
-						<input style="margin-left: 65px;" type="button" value="申请" onclick="restSubmit()" />
+						<input class="button-task" type="button" value="申请" onclick="restSubmit()" />
 					</li>
-				
 				</ul>
-  		
-  			
-  		
   		</form>
   		</div>
   		
