@@ -38,4 +38,8 @@
   <update id="updateTask" parameterType="task">
   	update tasks set task_theme=#{taskTheme},task_text=#{taskText},task_day=#{taskDay} where id=#{id}
   </update>
+  
+  <delete id="deleteTask">
+  	delete from tasks where id=#{value}
+  </delete>
 </mapper>

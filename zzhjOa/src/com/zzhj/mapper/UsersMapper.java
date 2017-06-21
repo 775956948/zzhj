@@ -144,4 +144,15 @@ public interface UsersMapper {
 	 * @date 2017年6月20日
 	 */
 	int querySubCount(int id);
+	/**
+	 * 
+	 * @Description: 返回当前部门主管
+	 * @param @param departmentName
+	 * @param @return   
+	 * @return List<String>  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年6月21日
+	 */
+	List<String> querySubZhuGuan(String departmentName);
 }

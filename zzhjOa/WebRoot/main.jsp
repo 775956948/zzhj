@@ -220,7 +220,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="css/OwnTask.css">
 	<link rel="stylesheet" type="text/css" href="css/requestFeedback.css">
 	<link rel="stylesheet" type="text/css" href="css/feedbackApproval.css">
-
+	<link rel="stylesheet" type="text/css" href="css/apply.css">
   </head>
 	<body>   
     	<div id="cc" class="easyui-layout" fit=true "style="height:70px;"> 

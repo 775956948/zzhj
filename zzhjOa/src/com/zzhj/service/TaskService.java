@@ -159,6 +159,19 @@ public class TaskService {
 	public int updateTask(Task t){
 		return tm.updateTask(t);
 	}
+	/**
+	 * 
+	 * @Description: 删除一条任务
+	 * @param @param taskId
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年6月21日
+	 */
+	public int deleteTask(int taskId){
+		return tm.deleteTask(taskId);
+	}
 	
 	private void send(Message mes,String userName){
 		ServerHandler.send(userName, mes);

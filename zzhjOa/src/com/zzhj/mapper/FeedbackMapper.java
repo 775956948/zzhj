@@ -66,4 +66,16 @@ public interface FeedbackMapper {
 	int refuse(@Param("feedbackId")int feedbackId,@Param("refuseInfo")String refuseInfo,@Param("overDate")String overDate);
 	
 	int totalCount(String userName);
+	/**
+	 * 
+	 * @Description: 删除一条信息
+	 * @param @param feedbackId
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年6月21日
+	 */
+	int deleteFeedback(int feedbackId);
+	
 }

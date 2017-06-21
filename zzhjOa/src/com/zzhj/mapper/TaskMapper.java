@@ -128,4 +128,15 @@ public interface TaskMapper {
 	 * @date 2017年6月13日
 	 */
 	int updateTask(Task t);
+	/**
+	 * 
+	 * @Description: 删除一条任务
+	 * @param @param taskId
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年6月21日
+	 */
+	int deleteTask(int taskId);
 }

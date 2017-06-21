@@ -121,4 +121,17 @@ public class FeedbackService {
 		return fm.refuse(feedbackId, refuseInfo, overDate);
 		
 	}
+	/**
+	 * 
+	 * @Description: 删除一条信息
+	 * @param @param feedbackId
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年6月21日
+	 */
+	public int deleteFeedback(int feedbackId){
+		return fm.deleteFeedback(feedbackId);
+	}
 }

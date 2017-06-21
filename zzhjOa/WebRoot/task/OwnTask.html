@@ -160,24 +160,29 @@
 
     //提交
     function acceptTask() {
-        $.ajax({
-            url: "task/acceptTask.action",
-            method: "POST",
-            data: {
-                taskId: $("input[name = userid]").val()
-            },
-            success: function (data) {
-                if (data > 0) {
-                    $.messager.alert("提示", "接收任务成功", "info");
-                    $('#viewTask').dialog({
-                        closed: true //更改 显示隐藏
-                    });
-                    $('#viewTeskDg').datagrid("reload");
-                } else {
-                    $.messager.alert("提示", "接收任务失败", "info")
-                }
-            }
-        })
+    	var row=$('#viewTeskDg').datagrid('getSelected');
+    	if(row.state=="已下达"){
+	        $.ajax({
+	            url: "task/acceptTask.action",
+	            method: "POST",
+	            data: {
+	                taskId: $("input[name = userid]").val()
+	            },
+	            success: function (data) {
+	                if (data > 0) {
+	                    $.messager.alert("提示", "接收任务成功", "info");
+	                    $('#viewTask').dialog({
+	                        closed: true //更改 显示隐藏
+	                    });
+	                    $('#viewTeskDg').datagrid("reload");
+	                } else {
+	                    $.messager.alert("提示", "接收任务失败", "info")
+	                }
+	            }
+	        })
+    	}else{
+    		 $.messager.alert("提示", "只能接收已下达任务", "info");
+    	}
     }
 
 
@@ -196,6 +201,11 @@
 
     //    提交修改任务进度
     function changeSpeed() {
+    	var row= $('#viewTeskDg').datagrid('getSelected');
+    	var speed=$("input[name='changeSpeed']").val();
+	 	if(speed>=100){
+    		$.post('task/successTask.action',{'taskId':row.id}); 
+    	}  
         $.ajax({
             url: "task/updateTaskSpeed.action",
             method: "POST",

@@ -10,6 +10,7 @@
     <h3>查 看 所 有 任 务</h3>
     <div class="buttonBar" id="buttonBar">
         <a class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="changeTask()">修改</a>
+        <a class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="deleteTask()">删除</a>
     </div>
     <div id="changeTask" class="easyui-dialog" title="修改任务" closed=true>
         <ul>
@@ -127,7 +128,23 @@
         }
     }
 
-
+	function deleteTask(){
+		var row = $('#allTeskDg').datagrid('getSelected');
+		if(row){
+			if(row.state =='已完成'){
+				$.post('task/deleteTask.action',{'taskId':row.id},function(data){
+					if(data>0){
+						 $('#allTeskDg').datagrid("reload");
+						 $.messager.alert("提示", "删除成功", "info");
+					}
+				})
+			}else{
+				 $.messager.alert("提示", "不可删除未完成任务", "info");
+			}
+		}else{
+			 $.messager.alert("提示", "请选择一条数据", "info");
+		}
+	}
 </script>
 </body>
 </html>

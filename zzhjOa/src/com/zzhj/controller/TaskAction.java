@@ -149,4 +149,9 @@ public class TaskAction {
 		System.out.println(t.getId());
 		return ts.updateTask(t);
 	}
+	@RequestMapping("/deleteTask.action")
+	@ResponseBody
+	public int deleteTask(int taskId){
+		return ts.deleteTask(taskId);
+	}
 }

@@ -238,4 +238,11 @@ public class UsersAction {
 		Users user =(Users) session.getAttribute("users");
 		return us.querySubclass(user.getDepartmentId().getName());
 	}
+	
+	@RequestMapping("/querySubZhuGuan.action")
+	@ResponseBody
+	public List<String> querySubZhuGuan(HttpSession session){
+		Users user =(Users) session.getAttribute("users");
+		return us.querySubZhuGuan(user.getDepartmentId().getName());
+	}
 }

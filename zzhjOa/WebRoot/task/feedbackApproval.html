@@ -11,6 +11,7 @@
 </div>
 <div class="buttonBar" id="buttonBarfeedBack">
     <a class="easyui-linkbutton" iconCls="icon-xg" plain="true" onclick="subJectFeed()">审批申请</a>
+    <a class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="deleteFeedback()">删除</a>
 </div>
 
 <div id="viewApplication"  class="easyui-dialog" title="查看申请" closed=true>
@@ -144,6 +145,19 @@
                 }
             })
     }
+   	function deleteFeedback(){
+   		var row =$('#feedbackApprovalDg').datagrid('getSelected');
+   		if(row){
+   			$.post('feedback/deleteFeedback.action',{'id'row.id},function(data){
+   				if(data>0){
+   				 $('#feedbackApprovalDg').datagrid("reload");
+   				 $.messager.alert("提示", "删除成功", "info");
+   				}
+   			})
+   		}else{
+   		   $.messager.alert("提示", "请选择一条数据", "info");
+   		}
+   	}
 </script>
 
 

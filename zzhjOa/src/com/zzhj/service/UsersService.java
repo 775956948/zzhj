@@ -133,4 +133,8 @@ public class UsersService {
 	public List<String> querySubclass(String departmentName){
 		return um.querySubclass(departmentName);
 	}
+	
+	public List<String> querySubZhuGuan(String departmentName){
+		return um.querySubZhuGuan(departmentName);
+	}
 }

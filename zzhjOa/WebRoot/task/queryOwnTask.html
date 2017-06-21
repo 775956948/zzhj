@@ -88,25 +88,28 @@
     function transmitTaskOpen() {
         var row = $('#teskDg').datagrid('getSelected');
         if (row) {
-            $("#taskDd").dialog({
-                title: '任务信息',
-                width: 400,
-                height: 400,
-                closed: false,
-                onOpen: function () {
-                    $.post('users/querySubclass.action', function (data) {
-                        $("#transmitForm select[name='implement']").empty();
-                        for (var i = 0; i < data.length; i++) {
-                            $("#transmitForm select[name='implement']").append("<option>" + data[i] + "</option>")
-                        }
-                    })
-                    $("input[name='taskId']").val(row.id);
-                    $("input[name='taskTheme']").val(row.taskTheme);
-                    $("input[name='userName']").val(row.userName);
-                    $("input[name='taskDay']").val(row.taskDay);
-                    $("textarea[name='taskText']").val(row.taskText);
-                }
-            })
+        	if(row.state=="已发布"){
+	            $("#taskDd").dialog({
+	                title: '任务信息',
+	                height: 500,
+	                closed: false,
+	                onOpen: function () {
+	                    $.post('users/querySubclass.action', function (data) {
+	                        $("#transmitForm select[name='implement']").empty();
+	                        for (var i = 0; i < data.length; i++) {
+	                            $("#transmitForm select[name='implement']").append("<option>" + data[i] + "</option>")
+	                        }
+	                    })
+	                    $("input[name='taskId']").val(row.id);
+	                    $("input[name='taskTheme']").val(row.taskTheme);
+	                    $("input[name='userName']").val(row.userName);
+	                    $("input[name='taskDay']").val(row.taskDay);
+	                    $("textarea[name='taskText']").val(row.taskText);
+	                }
+	            })
+        	}else{
+        		 $.messager.alert("提示", "只能下达已发布任务", "info");
+        	}
         } else {
             $.messager.alert("提示", "请选中一条信息", "info");
         }

@@ -107,4 +107,9 @@ public class FeedbackAction {
 	public int refuse(int feedbackId,String refuseInfo){
 		return fs.refuse(feedbackId, refuseInfo);
 	}
+	@RequestMapping("/deleteFeedback.action")
+	@ResponseBody
+	public int deleteFeedback(int feedbackId){
+		return fs.deleteFeedback(feedbackId);
+	}
 }

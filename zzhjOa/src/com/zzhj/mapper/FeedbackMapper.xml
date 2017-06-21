@@ -40,4 +40,7 @@
 		update feedback set refuse_info=#{refuseInfo},state="以打回",over_date=#{overDate}
 		where id=#{feedbackId}
 	</update>
+	<delete id="deleteFeedback">
+		delete from feedback where id=#{value}
+	</delete>
 </mapper>
