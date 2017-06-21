@@ -19,7 +19,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 		<table id="apply_official_Dg"></table> 
 		
-		<div id="apply_official_tanc"  class="easyui-dialog" closed=true >
+		<div id="apply_official_tanc"  class="easyui-dialog" closed=true  style="width: 650px">
 			<form action="" method="post" id="apply_official_form">
   	<!-- 		  	<input name="id" id="dis_none" style="display:none !important;"/> -->
 				<h2 align="center">公章盖章提交单</h2>
@@ -43,8 +43,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</li> 
 					<li>
 						<span>是否骑缝</span>
-						<b >是<input style="width: 50px;" type="radio" name="why" id="" value="是" /></b>
-						<b >否<input style="width: 50px;" type="radio" name="why" id="" value="否" /></b>
+						<span >是<input style="width: 50px;" type="radio" name="why" id="" value="是" /></span>
+						<span>否<input style="width: 50px;" type="radio" name="why" id="" value="否" /></span>
 					</li> 	
 					<li>
 						<span>页数</span>
@@ -89,7 +89,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			function addapply_official_Tb(){
 				$('#apply_official_tanc').dialog({
 					title : '公章审批提交单',
-					width : 400,
 					height : 400,
 					closed : false,
 					cache : false,

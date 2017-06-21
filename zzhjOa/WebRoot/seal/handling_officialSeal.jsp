@@ -16,7 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		 <div id="hanhling_official_Tb">
 			<a  class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="hanhling_official_Tb()" >查看</a>				
 		</div>
-		<div id="hanhling_official_tanc" style="display: none;">
+		<div id="hanhling_official_tanc" style="display: none;" class="easyui-dialog"  style="width: 650px">
 			<form action="" method="post" id="approve_official_form" class="approve_official_form">
 				<input name="id" id="dis_none" style="opacity:0" />
 				<h2 align="center">公章盖章经办单</h2>
@@ -46,12 +46,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 						<span>是否骑缝</span>
 						
-						<b >是<input style="width: 50px;" type="radio" name="why" id="" value="是"/></b>
-						<b >否<input style="width: 50px;" type="radio" name="why" id="" value="否"/></b>
+						<span>是<input style="width: 50px;" type="radio" name="why" id="" value="是"/></span>
+						<span>否<input style="width: 50px;" type="radio" name="why" id="" value="否"/></span>
 					<li>
 					<li>
 						<span>页数</span>
-						<input type="text" name="pageNumber" readonly="readonly" value="" "/>
+						<input type="text" name="pageNumber" readonly="readonly" value="" />
 					</li>
 					<li>
 						
@@ -61,13 +61,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					
 					<li class="txt_ctr" >
 						<input type="button" value="经办" onclick="hanhling_official_Submit()"/>
-				
 					</li>
-						
 				</ul>
-  			   
   			</form>
-
 		</div>
 		
 		
@@ -99,13 +95,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				{field:'text',title:'收文主题',width:200,},  			
 	       		{field:'pageNumber',title:'页数',width:70,},   
 				{field:'copiesNumber',title:'份数',width:70,},
-				{field:'why',title:'是否骑缝',width:70,},
-       		
-		    ]],
+				{field:'why',title:'是否骑缝',width:70,}
+		    ]]
 		})
 		handling_official_tanc = $('#hanhling_official_tanc').dialog({
 				title : '经办',
-				width : 400,
 				height : 400,
 				closed : true,
 				cache : false,
@@ -116,7 +110,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		function hanhling_official_Tb(){		
 			var row = $('#hanhling_official_Dg').datagrid('getSelected');
 			if(row == null){
-			   alert("请选择一条数据");
+			   $.messager.alert("请选择一条数据");
 			}else{
 				var  aa = row.why;
 				
@@ -134,7 +128,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				$("input[name = pageNumber]").val(row.pageNumber);
 				$("input[name = copiesNumber]").val(row.copiesNumber);
 				$("textarea[name = text]").val(row.text);
-				
 				handling_official_tanc.dialog('open')
 			}
 		};
@@ -151,13 +144,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					   if(data == 1){
 						 	$('#hanhling_official_Dg').datagrid('reload');
 					   		$('#hanhling_official_tanc').dialog({
-								closed : true,
+								closed : true
 							});
-					   	alert("提交成功");
+					   	$.messager.alert("提交成功");
 					   	spprove_tanc.dialog('close');	
 					   }else{
-					   	alert("提交失败");
-					   	
+	                    $.messager.alert("提交失败");
 					   }
 				   }
 			})

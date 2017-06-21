@@ -15,7 +15,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<a  class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="addSpproveTb()" >查看</a>
 			<!--  <a  class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="deleteSpprove()">删除</a>-->				
 		</div>
-		<div id="spprove-tanc"> 
+		<div id="spprove-tanc" class="easyui-dialog" style="width: 650px">
  			<form action="" method="post" id="approve-form" class="approve-form">
 				<input name="sealId" id="dis_none" style="opacity:0;"/>
 				<h2 align="center">资质章审批</h2>
@@ -65,17 +65,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		{field:'text',title:'盖章内容',width:140,},  
 			{field:'why',title:'盖章事由',width:140,},		
 			{field:'pageNumber',title:'页数',width:70,},   
-			{field:'copiesNumber',title:'份数',width:70,},  
-		
-			 	        		
-       		
-       		
+			{field:'copiesNumber',title:'份数',width:70,}
 		    ]],
 		})
 	
 		spprove_tanc = $('#spprove-tanc').dialog({
 			title : '审批',
-			width : 400,
 			height : 400,
 			closed : true,
 			cache : false,

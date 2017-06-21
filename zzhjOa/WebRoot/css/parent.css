@@ -4,11 +4,11 @@ ul li{
 }
 input,select,textarea{
 	width: 150px;
-    border: 1px solid #ccc;
-    padding: 5px 0;
-    border-radius: 4px;
-    margin-bottom: 10px;
-}  
+	border: 1px solid #ccc;
+	padding: 5px 0;
+	border-radius: 4px;
+	margin-bottom: 10px;
+}
 input[type='button']{
 	width:90px;
 	margin: auto;
@@ -20,17 +20,51 @@ table[name='form']{
 }
 
 .cmn_list{
+	font-size: 18px;
 	text-align:center;
-	padding: 0px;
-	margin: 0px;
+	padding: 0;
+	width: 600px;
+	margin:0 auto;
+	overflow: hidden;
+}
+.cmn_list li {
+	width: 100%;
+	overflow: hidden;
+	min-height: 40px;
 }
 .cmn_list span{
 	display: inline-block;
-	width: 70px;
+	width: 150px;
 	vertical-align: middle;
+	float: left;
+}
+.cmn_list li input,.cmn_list li select,.cmn_list li textarea{
+	width: 380px;
+	float: left;
+	display: block;
+}
+.cmn_list li input[type=text]{
+	height: 21px;
+	line-height: 100%;
+	text-align: center;
+}
+.cmn_list li input[type=button]{
+	float: none;
+	display: block;
+	height: 40px;
+	width: 50%;
+	background-color: #ff9900;
+	border: none;
+	text-align: center;
+	line-height: 100%;
+	margin: 10px auto;
+	color: white;
+	font-weight: 800;
+	font-size: 20px;
+
 }
 .align{
-	vertical-align: top;	
+	vertical-align: top;
 }
 
 

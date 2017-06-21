@@ -14,7 +14,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		 <div id="handling_Tb">
 			<a  class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="add_handling_Tb()" >查看</a>			
 		</div>
-		<div id="handling_tanc" > 
+		<div id="handling_tanc" class="easyui-dialog"  style="width: 650px">
 			<form action="" method="post" id="handling_form" class="approve-form">
 				<input name="id" id="dis_none" style="display:none !important;color:#fff !important;" />
 				<h2 align="center">资质章盖章经办单</h2>
@@ -42,7 +42,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</li>
 					<li class="txt_ctr">
 					<input type="button" value="经办" onclick="handling_Submit()"/>
-				
 					</li>
 				</ul>
   			   
@@ -80,17 +79,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				{field:'text',title:'盖章内容',width:140,},  
 				{field:'why',title:'盖章事由',width:140,},				
 				{field:'pageNumber',title:'页数',width:70,},   
-				{field:'copiesNumber',title:'份数',width:70},   
-				
-				 	        		
-
-	       		
-		    ]],
+				{field:'copiesNumber',title:'份数',width:70}
+		    ]]
 		})
 	
 		handling_tanc = $('#handling_tanc').dialog({
 			title : '经办',
-			width : 400,
 			height : 400,
 			closed : true,
 			cache : false,
@@ -122,8 +116,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				$("textarea[name = why]").val(row.why);
 				handling_tanc.dialog('open') 
 			}
-			
-			
 		};
 		
 		
@@ -137,20 +129,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				   success:function(data){
 					   if(data == 1){
 					   		$('#handling_tanc').dialog({
-								closed : true,
+								closed : true
 							});
 					   	alert("经办完成");
 					   	spprove_tanc.dialog('close');
 					   	$('#handling_Dg').datagrid('reload');
-					   	
 					   }else{
 					   	alert("提交失败");
-					   	
 					   }
 				   }
 			})
 		}
   	</script>
-		
 	</body>
 </html>

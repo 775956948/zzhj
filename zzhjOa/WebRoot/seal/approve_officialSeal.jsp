@@ -16,7 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		 <div id="approve_official_Tb">
 			<a  class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="approve_official_Tb()" >查看</a>			
 		</div>
-		<div id="approve_official_tanc"> 
+		<div id="approve_official_tanc" class="easyui-dialog"  style="width: 650px">
 			<form action="" method="post" id="approve_official_form" class="approve_official_form">
 				<input name="requestSealId" id="dis_none" style="opacity:0;" value=""/> 
 				<h2 align="center">公章盖章审批单</h2>
@@ -41,8 +41,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 						<span>是否骑缝</span>
 						
-						<b >是<input style="width: 50px;" type="radio" name="why" id="" value="是"/></b>
-						<b >否<input style="width: 50px;" type="radio" name="why" id="" value="否"/></b>
+						<span >是<input style="width: 50px;" type="radio" name="why" id="" value="是"/></span>
+						<span>否<input style="width: 50px;" type="radio" name="why" id="" value="否"/></span>
 					<li>
 					<li>
 						<span>页数</span>
@@ -94,17 +94,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				{field:'text',title:'收文主题',width:200,},  
 	       		{field:'pageNumber',title:'页数',width:70,},   
 				{field:'copiesNumber',title:'份数',width:70},
-				{field:'why',title:'是否骑缝',width:70,},
-				
-	       		
-				
-	       		
-			    ]],
+				{field:'why',title:'是否骑缝',width:70,}
+			    ]]
 			})
 	
 		spprove_tanc2 = $('#approve_official_tanc').dialog({
 			title : '审批',
-			width : 400,
 			height : 400,
 			closed : true,
 			cache : false,
@@ -116,10 +111,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			var row = $('#approve_official_Dg').datagrid('getSelected');
 			if(row == null){
 			   alert("请选择一条数据");
-			}else{		
-				
+			}else{
 				var  aa = row.why;
-				
 				if(aa == "是"){
 					$(".cmn_list li input[type = radio]").eq(0).click()
 				}else if(aa == "否"){
