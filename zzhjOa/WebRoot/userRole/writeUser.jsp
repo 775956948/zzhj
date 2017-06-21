@@ -56,7 +56,11 @@
 	 		if(number>1){
 	 			$.messager.alert("提示", "信息填寫不完整", "info");
 	 		}else{
-	 			$("#userInfo").submit();
+	 			$.messager.confirm('确认','修改后需重新登陆',function(r){    
+	 			    if (r){    
+	 			    	$("#userInfo").submit();
+	 			    }    
+	 			});  	
 	 		}
 	 	}
 	 	function userInfoImg(){

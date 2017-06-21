@@ -221,6 +221,7 @@ public class UsersAction {
         int result=us.updateUserInfo(user);
         String view="";
         if(result>0){
+        	session.removeAttribute("users");
         	view="redirect: ../login.jsp";
         }else{
         	view="redirect: ../error/500.html";

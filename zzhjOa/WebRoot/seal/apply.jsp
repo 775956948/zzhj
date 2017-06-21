@@ -24,7 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		<form action="" method="post" id="apply-form">
   			   <table   name="form">
   			   		<tr>
-					 <td colspan="2" align="center"><h4>资质章申请</h4></td>
+					 <td colspan="2" align="center"><h4 style="margin-bottom: 10px;">资质章申请</h4></td>
 					</tr>
   			   		<tr>
   			   			<td align="center">编号</td>
