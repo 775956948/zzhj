@@ -13,19 +13,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     <title>用户密码找回</title>
 
-    <link rel="stylesheet" href="css/basic.css">
-    <link rel="stylesheet" href="easyui/themes/icon.css">
-    <link rel="stylesheet" href="easyui/themes/default/easyui.css">
-
-    <script type="text/javascript" src="easyui/jquery.min.js"></script>
-    <script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
+    
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="expires" content="0">
     <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
     <meta http-equiv="description" content="This is my page">
+    <link rel="stylesheet" href="css/basic.css">
+    <link rel="stylesheet" href="easyui/themes/icon.css">
+    <link rel="stylesheet" href="easyui/themes/default/easyui.css">
 
+    <script type="text/javascript" src="easyui/jquery.min.js"></script>
+    <script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
 
     <style type="text/css">
         #ZT {
@@ -60,7 +60,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         #ZT li{
             height:  0;
             overflow: hidden;
-            transition: 1.5s;
+            transition: all 1.5s ease;
         }
         #ZT p{
             display: block;
@@ -101,7 +101,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <h3>用户密码修改</h3>
 
         <ul>
-            <li id="inputNameLi" style="height: auto">
+            <li id="inputNameLi" style="height: 159px;">
                 <p>请输入用户名:</p>
                 <input type="text" name="userName" style="text-align: center">
                 <input type="button" id="nextStepName" value="下一步">
@@ -133,7 +133,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         var Name=$("input[name='userName']");
         var nextStepName=$("#nextStepName");
 
-        var Question=$("input[name='userQuertion']");
+        var Question=$("input[name='userQuestion']");
         var Answer=$("input[name='userAnswer']");
 
         var NewPassword=$("input[name='userPassword']");
@@ -148,10 +148,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         userName:Name.val()
                     },
                     success:function(data){
-                        if(data>0){
+                        if(data){
                             LiOne.css({"height":"0"});
-                            LiTwo.css({"height":"auto"});
-                            LiThree.css({"height":"auto"});
+                            LiTwo.css({"height":"150px"});
+                            LiThree.css({"height":"160px"});
                             Question.val(data);
                         }else{
                             $.messager.alert("提示","用户名不存在！","info")
@@ -170,7 +170,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     url:"users/updateUser.action",
                     type:'post',
                     data:{
-                        userName:Name.val(),
+                        name:Name.val(),
                         securityAnswer:Answer.val(),
                         password:NewPassword.val()
                     },
@@ -188,6 +188,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         });
 
     })
+    
 </script>
 
 </body>

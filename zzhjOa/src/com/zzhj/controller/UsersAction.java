@@ -240,7 +240,7 @@ public class UsersAction {
 		Users user =(Users) session.getAttribute("users");
 		return us.querySubZhuGuan(user.getDepartmentId().getName());
 	}
-	@RequestMapping(value="/userExist.action",produces = "application/json; charset=utf-8")
+	@RequestMapping(value="/userExist.action")
 	@ResponseBody
 	public String userExist(String userName){
 		return us.userExist(userName);

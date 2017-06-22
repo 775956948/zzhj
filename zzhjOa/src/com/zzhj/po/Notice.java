@@ -9,11 +9,11 @@ import java.io.Serializable;
  */
 public class Notice implements Serializable{
 	
-	private int id;
-	private String theme;
-	private String text;
-	private Users userId;
-	private String releaseDate;
+	private int id; 			//id
+	private String theme;		//公告主题
+	private String text;		//公告内容
+	private Users userId;		//用户
+	private String releaseDate; //发布日期
 	public int getId() {
 		return id;
 	}

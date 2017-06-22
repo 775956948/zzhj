@@ -78,7 +78,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <input type="button" value="立 即 登 录" onclick="login()" class="button"/>
                 </li>
                 <li>
-                        <a href="#" class="forget_btn" title="找回密码">忘记密码？</a><a href="registered.jsp" class="register_btn">没账号？点击注册</a>
+                        <a href="back.jsp" class="forget_btn" title="找回密码">忘记密码？</a><a href="registered.jsp" class="register_btn">没账号？点击注册</a>
                 </li>
             </ul>
         </form>
