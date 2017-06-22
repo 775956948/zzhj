@@ -24,7 +24,9 @@ public class Users implements Serializable{
 	private Integer parentId;	//父id
 	private String state;		//用户状态
 	private String inductionDate;//入职时间
-	private String imageName;
+	private String imageName; //用户头像
+	private SecurityQuestion securityQuestionId;//密保问题
+	private String securityAnswer;//密保答案
 	public int getId() {
 		return id;
 	}
@@ -159,6 +161,19 @@ public class Users implements Serializable{
 	public void setImageName(String imageName) {
 		this.imageName = imageName;
 	}
+	public SecurityQuestion getSecurityQuestionId() {
+		return securityQuestionId;
+	}
+	public void setSecurityQuestionId(SecurityQuestion securityQuestionId) {
+		this.securityQuestionId = securityQuestionId;
+	}
+	public String getSecurityAnswer() {
+		return securityAnswer;
+	}
+	public void setSecurityAnswer(String securityAnswer) {
+		this.securityAnswer = securityAnswer;
+	}
+	
 	
 		
 }
