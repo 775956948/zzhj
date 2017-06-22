@@ -33,8 +33,8 @@ public class Test {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		 ApplicationContext ap =new ClassPathXmlApplicationContext(new String[]{"application_context.xml","application_dao.xml","application_mvc.xml"});
-		 SecurityQuestionService s = (SecurityQuestionService) ap.getBean("securityQuestionService");
-		 System.out.println(s.queryAll());
+		 NoticeService s = (NoticeService) ap.getBean("noticeService");
+		 System.out.println(s.queryAllList(1, 10));
 
 	}
 

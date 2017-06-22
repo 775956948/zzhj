@@ -1,6 +1,7 @@
 package com.zzhj.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -37,5 +38,36 @@ public class NoticeAction {
 		Notice n =ns.queryOne(id);
 		session.setAttribute("notice",n);
 		return"/notice/showNotice.jsp";
+	}
+	/**
+	 * 
+	 * @Description: 分页查询所有公告信息
+	 * @param @param rows
+	 * @param @param page
+	 * @param @return   
+	 * @return Map<String,Object>  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年6月22日
+	 */
+	@RequestMapping("/queryAllList.action")
+	@ResponseBody
+	public Map<String,Object> queryAllList(int rows,int page){
+		return ns.queryAllList(page, rows);
+	}
+	/**
+	 * 
+	 * @Description: 根据id删除一条公告信息
+	 * @param @param noticeId
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年6月22日
+	 */
+	@RequestMapping("deleteNotice.action")
+	@ResponseBody
+	public int deleteNotice(int noticeId){
+		return ns.deleteNotice(noticeId);
 	}
 }

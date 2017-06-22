@@ -23,4 +23,13 @@
     <select id="queryOne" parameterType="int" resultMap="nu">
   	select n.*,u.name from notice n inner join users u on u.id=n.user_id where n.id=#{value}
   </select> 
+  <select id="queryAllList" parameterType="int" resultMap="nu">
+  	select n.*,u.name from notice n inner join users u on u.id=n.user_id limit #{startPage},#{rows}
+  </select>
+  <select id="totalCount" resultType="int">
+  	select count(id) from notice
+  </select>
+  <delete id="deleteNotice" parameterType="int" >
+  	delete from notice where id=#{value}
+  </delete>
 </mapper>

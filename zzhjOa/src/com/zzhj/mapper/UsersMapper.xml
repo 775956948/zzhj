@@ -124,7 +124,7 @@
 	</select>
 	
 	<select id="querySubZhuGuan" parameterType="string" resultType="string">
-		SELECT u.NAME FROM users u INNER JOIN department d ON u.departmentId=d.id INNER JOIN roles r ON r.id=u.role_id WHERE d.name=#{value} AND r.name='主管'
+		SELECT u.NAME FROM users u INNER JOIN department d ON u.departmentId=d.id INNER JOIN roles r ON r.id=u.role_id WHERE r.name='主管' or r.name='部门经理' and d.name=#{value}
 	</select>
 	
 	<select id="userExist" parameterType="string" resultType="string">
