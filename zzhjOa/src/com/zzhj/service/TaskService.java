@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.zzhj.entityCustom.Message;
+import com.zzhj.entityCustom.MessageType;
 import com.zzhj.mapper.TaskMapper;
 import com.zzhj.po.Task;
 import com.zzhj.webSocket.ServerHandler;
@@ -25,7 +26,7 @@ public class TaskService {
 	
 	/**
 	 * 
-	 * @Description:添加一个工作任务信息
+	 * @Description:添加一个工作任务信息（并下达给主管或者部门经理）
 	 * @param @param t
 	 * @param @return   
 	 * @return int  
@@ -38,12 +39,15 @@ public class TaskService {
 		String taskDate=DateFormater.format(d);
 		t.setTaskDate(taskDate);
 		int result=tm.addTask(t);
-/*		if(result>0){
+		if(result>0){
 			Message mes = new Message();
-			mes.setFrom(t.getRecipient());
+			mes.setFrom(t.getUserName());
 			mes.setTargetName("下达任务");
-			send(mes, t.getUserName());
-		}*/
+			mes.setViewTarget("task/queryOwnTask.html");
+			mes.setType(MessageType.task);
+			mes.setContentId(t.getId());
+			send(mes,t.getRecipient());
+		}
 		return result;
 	}
 	/**
@@ -58,7 +62,18 @@ public class TaskService {
 	 * @date 2017年6月12日
 	 */
 	public int transmitTask(int taskId,String userName){
-		return tm.transmitTask(taskId, userName);
+		int result=tm.transmitTask(taskId, userName);
+		String recipient=tm.queryRecipient(taskId);
+		if(result>0){
+			Message mes = new Message();
+			mes.setFrom(recipient);
+			mes.setTargetName("个人任务");
+			mes.setViewTarget("task/OwnTask.html");
+			mes.setType(MessageType.task);
+			mes.setContentId(taskId);
+			send(mes,userName);
+		}
+		return result;
 	}
 	 /**
 	  * 
@@ -173,7 +188,33 @@ public class TaskService {
 		return tm.deleteTask(taskId);
 	}
 	
+	/**
+	 * 
+	 * @Description: 返回当前用户执行人是自己的信息
+	 * @param @param userName
+	 * @param @return   
+	 * @return List<Task>  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年6月22日
+	 */
+	public List<Task> queryImplementOwn(String userName){
+		return tm.queryImplementOwn(userName);
+	}
+	
+	/**
+	 * 
+	 * @Description: 通知方法
+	 * @param @param mes
+	 * @param @param userName   
+	 * @return void  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年6月22日
+	 */
 	private void send(Message mes,String userName){
 		ServerHandler.send(userName, mes);
 	}
+	
+	
 }

@@ -149,9 +149,27 @@ public class TaskAction {
 		System.out.println(t.getId());
 		return ts.updateTask(t);
 	}
+	
 	@RequestMapping("/deleteTask.action")
 	@ResponseBody
 	public int deleteTask(int taskId){
 		return ts.deleteTask(taskId);
+	}
+	
+	/**
+	 * 
+	 * @Description: 返回执行人是当前用户的反馈任务信息
+	 * @param @param session
+	 * @param @return   
+	 * @return List<Task>  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年6月22日
+	 */
+	@RequestMapping("/queryImplementOwn.action")
+	@ResponseBody
+	public List<Task> queryImplementOwn(HttpSession session){
+		Users user = (Users) session.getAttribute("users");
+		return ts.queryImplementOwn(user.getName());
 	}
 }

@@ -71,7 +71,7 @@ public class FeedbackAction {
 	public int addFeedback(Feedback f,HttpSession session){
 		Users user = (Users) session.getAttribute("users");
 		f.setRequestName(user.getName());
-		return fs.addFeedback(f,user.getId());
+		return fs.addFeedback(f);
 	}
 	
 	/**

@@ -139,4 +139,28 @@ public interface TaskMapper {
 	 * @date 2017年6月21日
 	 */
 	int deleteTask(int taskId);
+	/**
+	 * 
+	 * @Description: 根据id返回接收人姓名
+	 * @param @param taskId
+	 * @param @return   
+	 * @return String  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年6月22日
+	 */
+	String queryRecipient(int taskId);
+	/**
+	 * 
+	 * @Description: 返回当执行人是当前用户的信息
+	 * @param @param userName
+	 * @param @return   
+	 * @return List<Task>  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年6月22日
+	 */
+	List<Task> queryImplementOwn(String userName);
+	
+
 }

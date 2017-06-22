@@ -1,3 +1,9 @@
+<%@ page language="java"  pageEncoding="utf-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,6 +53,7 @@
                         },
                         success:function(data){
                             if(data>0){
+                            	 $('#showNotice').datagrid("reload");
                                 $.messager.alert("提示","删除成功！","info")
                             }else{
                                 $.messager.alert("提示","数据有误，请后重试！","info")

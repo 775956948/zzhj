@@ -5,26 +5,29 @@
 		<id column="id" property="id"/>
 		<result column="request_name" property="requestName"/>
 		<result column="request_date" property="requestDate"/>
-		<result column="task_name" property="taskName"/>
 		<result column="info" property="info"/>
 		<result column="refuse_info" property="refuseInfo"/>
 		<result column="approver" property="approver"/>
 		<result column="over_date" property="overDate"/>
 		<result column="state" property="state"/>
+		<association property="taskId" javaType="task">
+			<id column="task_id" property="id"/>
+			<result column="task_theme" property="taskTheme"/>
+		</association>
 	</resultMap>
 
 	<select id="queryOwn" parameterType="object" resultMap="fm">
-		select * from feedback where request_name=#{requestName} limit #{startPage},#{rows}
+		select f.*,t.task_theme from feedback f inner join tasks t on t.id=f.task_id where request_name=#{requestName} limit #{startPage},#{rows}
 	</select>
 	<select id="approverOnw" parameterType="object" resultMap="fm">
-		select * from feedback where approver=#{approverName} limit #{startPage},#{rows}
+		select f.*,t.task_theme from feedback f inner join tasks t on t.id=f.task_id where approver=#{approverName} limit #{startPage},#{rows}
 	</select>
 	<select id="totalCount" parameterType="string" resultType="int">
 		select count(id) from feedback where request_name=#{value} or approver=#{value}
 	</select>
 	<insert id="addFeedback" parameterType="Feedback">
-		INSERT INTO feedback(request_name,request_date,task_name,info,state,approver)
-		values(#{requestName},#{requestDate},#{taskName},#{info},#{state},#{approver})
+		INSERT INTO feedback(request_name,request_date,task_id,info,state,approver)
+		values(#{requestName},#{requestDate},#{taskId.id},#{info},#{state},#{approver})
 	</insert>
 	<update id="approver" parameterType="object">
 		update feedback set 

@@ -14,7 +14,7 @@ public class Feedback implements Serializable{
 	//申请时间
 	private String requestDate;
 	//任务的名称
-	private String taskName;
+	private Task taskId;
 	//反馈的信息
 	private String info;
 	//打回信息
@@ -43,11 +43,11 @@ public class Feedback implements Serializable{
 	public void setRequestDate(String requestDate) {
 		this.requestDate = requestDate;
 	}
-	public String getTaskName() {
-		return taskName;
+	public Task getTaskId() {
+		return taskId;
 	}
-	public void setTaskName(String taskName) {
-		this.taskName = taskName;
+	public void setTaskId(Task taskId) {
+		this.taskId = taskId;
 	}
 	public String getInfo() {
 		return info;

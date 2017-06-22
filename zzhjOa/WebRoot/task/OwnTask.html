@@ -161,6 +161,7 @@
     //提交
     function acceptTask() {
     	var row=$('#viewTeskDg').datagrid('getSelected');
+    	var taskId=row.id;
     	if(row.state=="已下达"){
 	        $.ajax({
 	            url: "task/acceptTask.action",
@@ -175,6 +176,16 @@
 	                        closed: true //更改 显示隐藏
 	                    });
 	                    $('#viewTeskDg').datagrid("reload");
+					   	$("#listMes li").each(function(){
+					   		 var target=$(this).attr("id");
+					   		 if(target==taskId){
+					   		 	 $(this).remove(); 
+					   		 	var number =$("#listMes").children('li').length;
+					   		 	if(number==0){
+					   		 	 $("#message").hide();  
+					   		 	}
+					   		 }
+					   	})
 	                } else {
 	                    $.messager.alert("提示", "接收任务失败", "info")
 	                }

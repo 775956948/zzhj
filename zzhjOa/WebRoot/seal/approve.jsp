@@ -127,7 +127,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					   		$('#approve-tanc').dialog({
 								closed : true,
 							});
-					   	alert("审批完成");
+					   	 $.messager.alert("提示", "审批完成", "info");  
 					   	spprove_tanc.dialog('close');
 					   	$('#approveDg').datagrid('reload');
 					   	$("#listMes li").each(function(){

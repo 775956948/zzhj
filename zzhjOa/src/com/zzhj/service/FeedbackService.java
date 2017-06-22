@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.zzhj.mapper.FeedbackMapper;
+import com.zzhj.mapper.TaskMapper;
 import com.zzhj.mapper.UsersMapper;
 import com.zzhj.po.Feedback;
 import com.zzhj.po.Users;
@@ -22,10 +23,12 @@ public class FeedbackService {
 	private FeedbackMapper fm;
 	@Autowired
 	private UsersMapper um;
+	@Autowired
+	private TaskMapper tm;
 	
 	/**
 	 * 
-	 * @Description: 查询申请人是当前用户的信息
+	 * @Description: 查询当前用户的反馈申请信息
 	 * @param @param page
 	 * @param @param rows
 	 * @param @param requestName
@@ -75,13 +78,12 @@ public class FeedbackService {
 	 * @author 小白
 	 * @date 2017年6月15日
 	 */
-	public int addFeedback(Feedback f,int currentId){
+	public int addFeedback(Feedback f){
 		Date d = new Date();
-		Users userId= um.parentId(currentId);
-		Users nextApprover =um.query(userId.getParentId());
+		String nextApprover =tm.queryRecipient(f.getTaskId().getId());
 		String requestDate= DateFormater.format(d);
 		f.setRequestDate(requestDate);
-		f.setApprover(nextApprover.getName());
+		f.setApprover(nextApprover);
 		f.setState("待审批");
 		return fm.addFeedback(f);
 	}
@@ -98,7 +100,7 @@ public class FeedbackService {
 	 */
 	public int approver(int id,Users user){
 		String nextApprover ="";
-		if(user.getRoleId().getName().equals("主管")){
+		if(user.getRoleId().getName().equals("主管")||user.getRoleId().getName().equals("部门经理")){
 			Users f =um.userId(user.getDepartmentId().getName());
 			nextApprover=f.getName();
 		}

@@ -44,8 +44,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 	  seal(jsonObject);
                   }else if(jsonObject.type="notice"){
                 	  noticeQuery();
-                  }else if(jsoObject.type=="task"){
-                	  
+                  }else if(jsonObject.type=="task"){
+                	  toTask(jsonObject);
+                  }else if(jsonObject.type=="feedback"){
+                	  toFeedback(jsonObject)
                   }
 
                };
@@ -209,7 +211,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          var audioEle = document.getElementById("audio");
 			  audioEle.play();
 	}
-		
+	//任务反馈提醒
+	function toFeedback(json){
+		  $("#message").show();
+	   	  var text=json.targetName;
+	   	  var url=json.viewTarget;
+	         $("#listMes").append('<li id='+json.contentId+' onclick=messageTo("'+text+'","'+url+'")>'+json.theme+'————发起人————'+json.from+'</li>')
+	         var audioEle = document.getElementById("audio");
+				  audioEle.play();
+	}
 		
 	</script>
  	<link rel="stylesheet" type="text/css" href="css/basic.css"> 

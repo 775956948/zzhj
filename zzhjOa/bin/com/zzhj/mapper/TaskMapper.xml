@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "http://mybatis.org/dtd/mybatis-3-mapper.dtd" "mybatis-3-mapper.dtd" >
 <mapper namespace="com.zzhj.mapper.TaskMapper">
 
-  <insert id="addTask" parameterType="task">
+  <insert id="addTask" parameterType="task" useGeneratedKeys="true" keyProperty="id">
   	INSERT INTO tasks(task_theme,task_text,user_name,task_day,task_date,recipient,state)
   	values(#{taskTheme},#{taskText},#{userName},#{taskDay},#{taskDate},#{recipient},"已发布")
   </insert>
@@ -42,4 +42,12 @@
   <delete id="deleteTask">
   	delete from tasks where id=#{value}
   </delete>
+  
+  <select id="queryRecipient" parameterType="int" resultType="string">
+  select recipient from tasks where id=#{value}
+  </select>
+  
+  <select id="queryImplementOwn" parameterType="string" resultType="task">
+  	select id,task_theme as taskTheme from tasks where implement=#{value} 
+  </select>
 </mapper>
