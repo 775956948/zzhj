@@ -22,7 +22,7 @@ public class Users implements Serializable{
 	private String education;/*文化程度*/
 	private String professional;/*专业*/
 	private Integer parentId;	//父id
-	private String state;		//用户状态
+	private String state;		//用户层级别状态（工作日志）
 	private String inductionDate;//入职时间
 	private String imageName; //用户头像
 	private SecurityQuestion securityQuestionId;//密保问题

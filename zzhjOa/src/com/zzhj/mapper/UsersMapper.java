@@ -155,4 +155,15 @@ public interface UsersMapper {
 	 * @date 2017年6月21日
 	 */
 	List<String> querySubZhuGuan(String departmentName);
+	/**
+	 * 
+	 * @Description: 判断用户名是否存在，存在则返回对应的密保问题
+	 * @param @param userId
+	 * @param @return   
+	 * @return Users  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年6月22日
+	 */
+	String userExist(String userName);
 }

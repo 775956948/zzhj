@@ -83,14 +83,19 @@ public class UsersService {
 		return um.updateRole(user);
 	}
 	
+	/**
+	 * 
+	 * @Description: 修改用户密码
+	 * @param @param user
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年6月22日
+	 */
 	public int updateUser(Users user){
-		int count =0;
-		try {
-			count =um.updateUser(user);
-		} catch (Exception e) {
-			count=-1;
-		}
-		return count;
+		
+		return um.updateUser(user);
 		
 	}
 	/**
@@ -136,5 +141,19 @@ public class UsersService {
 	
 	public List<String> querySubZhuGuan(String departmentName){
 		return um.querySubZhuGuan(departmentName);
+	}
+	/**
+	 * 
+	 * @Description: 判断用户是否存在，存在则返回用户密保问题
+	 * @param @return   
+	 * @return String  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年6月22日
+	 */
+	public String userExist(String userName){
+		String a =um.userExist(userName);
+		System.out.println(a);
+		return a;
 	}
 }

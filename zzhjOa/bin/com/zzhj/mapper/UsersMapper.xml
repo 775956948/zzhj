@@ -58,7 +58,7 @@
   	</update>
   	
   	<update id="updateUser" parameterType="users">
-  		update users set password=#{password} where name=#{name}
+  		update users set password=#{password} where name=#{name} and security_answer=#{securityAnswer}
   	</update>
   	
   	<select id="queryUser" parameterType="string" resultType="users">
@@ -125,5 +125,9 @@
 	
 	<select id="querySubZhuGuan" parameterType="string" resultType="string">
 		SELECT u.NAME FROM users u INNER JOIN department d ON u.departmentId=d.id INNER JOIN roles r ON r.id=u.role_id WHERE d.name=#{value} AND r.name='主管'
+	</select>
+	
+	<select id="userExist" parameterType="string" resultType="string">
+		SELECT s.name FROM users u INNER JOIN security_question s ON s.id =u.security_question_id where u.name=#{value}
 	</select>
 </mapper>

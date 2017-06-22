@@ -113,16 +113,10 @@ public class UsersAction {
 	}
 	
 	@RequestMapping("/updateUser.action")
-	public ModelAndView updateUser(Users user){
-		ModelAndView mv = new ModelAndView();
-		int count =us.updateUser(user);
-		if(count>0){
-			mv.setViewName("/login.jsp");
-		}else{
-			mv.addObject("message", "该用户名不存在");
-			mv.setViewName("/back.jsp");
-		}
-		return mv;
+	@ResponseBody
+	public int updateUser(Users user){
+		
+		return us.updateUser(user);
 	}
 	/**
 	 * 
@@ -245,5 +239,10 @@ public class UsersAction {
 	public List<String> querySubZhuGuan(HttpSession session){
 		Users user =(Users) session.getAttribute("users");
 		return us.querySubZhuGuan(user.getDepartmentId().getName());
+	}
+	@RequestMapping(value="/userExist.action",produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public String userExist(String userName){
+		return us.userExist(userName);
 	}
 }
