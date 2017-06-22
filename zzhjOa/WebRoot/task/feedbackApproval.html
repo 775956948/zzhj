@@ -69,7 +69,7 @@
             {field: 'id', title: '编号', checkbox: true},
             {field: 'requestName', title: '申请人'},
             {field: 'requestDate', title: '申请时间', width: 60},
-            {field: 'taskName', title: '任务主题'},
+            {field: 'taskId', title: '任务主题',formatter:function(value){return value.taskTheme}},
             {field: 'info', title: '反馈信息'},
             {field: 'refuseInfo', title: '打回信息'},
             {field: 'approver', title: '审批人'},
@@ -90,7 +90,7 @@
                     $("input[name = userid]").val(Data.id);
                     $("input[name = requestName]").val(Data.requestName);
                     $("input[name = requestDate]").val(Data.requestDate);
-                    $("input[name = taskName]").val(Data.taskName);
+                    $("input[name = taskName]").val(Data.taskId.taskTheme);
                     $("textarea[name = info]").val(Data.info);
                 }
             });

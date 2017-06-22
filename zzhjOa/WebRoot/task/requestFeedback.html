@@ -23,7 +23,7 @@
     <ul>
         <li>
             <span>任务主题：</span>
-            <input type="text" name="taskName" id="seeTaskName">
+            <select name="taskName.id" id="" style="height: 40px;width: auto;line-height: 40px"></select>
         </li>
         <li>
             <span style="position: absolute;top: 28%">反馈信息：</span>
@@ -90,6 +90,20 @@
 
 
 <script type="text/javascript">
+    $(function(){
+        $.ajax({
+            url:"task/queryImplementOwn.action",
+            type: "post",
+            success: function (data) {
+                $("select[name='taskName.id']").empty();
+                for (var i = 0; i < data.length; i++) {
+                    $("select[name='taskName.id']").append("<option value=" + data[i].id + " >" + data[i].taskTheme + "</option>")
+                }
+            }
+        })
+    })
+
+
     //初始化表格 查看申请
     $('#refuseInfoDg').datagrid({
         url: 'feedback/queryOwn.action',
@@ -102,7 +116,7 @@
             {field: 'id', title: '编号', checkbox: true},
             {field: 'requestName', title: '申请人'},
             {field: 'requestDate', title: '申请时间', width: 60},
-            {field: 'taskName', title: '任务主题'},
+            {field: 'taskId', title: '任务主题',formatter:function(value){return value.taskTheme}},
             {field: 'info', title: '反馈信息'},
             {field: 'refuseInfo', title: '打回信息'},
             {field: 'approver', title: '审批人'},
@@ -120,7 +134,7 @@
     //    提交申请
     function submitApplication() {
         var number = 0;
-        if($("#seeTaskName").val()==""||$("#feedTaskTest").val()==""){
+        if($("#feedTaskTest").val()==""){
             number=number+1;
         }
         if (number == 0) {
@@ -128,8 +142,8 @@
                 url: "feedback/addFeedback.action",
                 method: "POST",
                 data: {
-                    taskName: $("#seeTaskName").val(),
-                    info: $("#feedTaskTest").val()
+                    'taskId.id':  $("select[name='taskName.id']").val(),
+                    'info': $("#feedTaskTest").val()
                 },
                 success: function (data) {
                     if (data > 0) {
@@ -159,7 +173,7 @@
                     $("input[name = userid]").val(refuseData.id);
                     $("input[name = requestName]").val(refuseData.requestName);
                     $("input[name = requestDate]").val(refuseData.requestDate);
-                    $("input[name = taskName]").val(refuseData.taskName);
+                    $("input[name = taskName]").val(refuseData.taskId.taskTheme);
                     $("input[name = approver]").val(refuseData.approver);
                     $("input[name = overDate]").val(refuseData.overDate);
                     $("input[name = state]").val(refuseData.state);
