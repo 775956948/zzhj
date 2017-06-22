@@ -32,7 +32,7 @@ public class UrlIntercepter implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
 			Object arg2) throws Exception {
 		String url=request.getServletPath();
-		if(url.equals("/users/login.action")||url.equals("/users/save.action")||url.equals("/department/queryAll.action")||url.equals("/users/updateUser.action")){
+		if(url.equals("/users/login.action")||url.equals("/users/save.action")||url.equals("/department/queryAll.action")||url.equals("/users/updateUser.action")||url.equals("/securityQuestion/queryAll.action")){
 			return true;
 		}else{
 			HttpSession session = request.getSession();
