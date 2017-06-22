@@ -22,12 +22,10 @@ public class DepartmentAction {
 	private DepartmentService ds;
 	
 	@RequestMapping("/queryAll.action")
-	public ModelAndView queryAll(){
+	@ResponseBody
+	public List<Department> queryAll(){
 		List<Department> list= ds.queryAll();
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("department", list);
-		mv.setViewName("/registered.jsp");
-		return mv;
+		return list;
 	}
 	
 	@RequestMapping("/departmentInfo.action")

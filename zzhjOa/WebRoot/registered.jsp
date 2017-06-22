@@ -190,7 +190,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="nc SX">
     <div class="wz"><span style="margin-right: 10px">密保问题</span></div>
     <div class="Sr ">
-    <select name="securityQuestionId" style="width: 100%;height: 100%;border: none;background-color:
+    <select name="securityQuestionId.id" style="width: 100%;height: 100%;border: none;background-color:
     transparent"></select>
     </div>
     </div>
@@ -217,17 +217,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </form>
 <script type="text/javascript">
     $(function(){
-    $.ajax({
-    url: "securityQuestion/queryAll.action",
-    type: "post",
-    success: function (data) {
-    $("select[name='securityQuestionId']").empty();
-    for (var i = 0; i < data.length; i++) {
-    $("select[name='securityQuestionId']").append("<option value=" + data[i].id + " >" + data[i].name + "</option>")
-    }
-    }
-    })
-    });
+	    $.ajax({
+		    url: "securityQuestion/queryAll.action",
+		    type: "post",
+		    success: function (data) {
+			    $("select[name='securityQuestionId.id']").empty();
+				    for (var i = 0; i < data.length; i++) {
+				    	$("select[name='securityQuestionId.id']").append("<option value=" + data[i].id + " >" + data[i].name + "</option>")
+				    }
+			}
+		})
+	 });
     $('#birthdayChange').datebox({ required:true});
     function submits() {
         var cout = 0;
