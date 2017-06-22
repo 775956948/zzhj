@@ -45,7 +45,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         #ZT {
             margin: 30px auto;
             width: 762px;
-            height: 740px;
+            height: 810px;
             border: 1px solid #bfcfdc;
         }
 
@@ -187,6 +187,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <input type="text" name="phone" class="Sr2">
             </div>
         </div>
+    <div class="nc SX">
+    <div class="wz"><span style="margin-right: 10px">密保问题</span></div>
+    <div class="Sr ">
+    <select name="securityQuestionId" style="width: 100%;height: 100%;border: none;background-color:
+    transparent"></select>
+    </div>
+    </div>
+    <div class="nc SX">
+    <div class="wz"><span style="margin-right: 10px">密保答案</span></div>
+    <div class="Sr ">
+    <input type="text" name="securityAnswer" class="Sr2">
+    </div>
+    </div>
         <div class="nc SX" style="margin-top: 38px">
             <div class="wz"></div>
             <div class="Sr cc">
@@ -203,10 +216,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
 </form>
 <script type="text/javascript">
+    $(function(){
+    $.ajax({
+    url: "securityQuestion/queryAll.action",
+    type: "post",
+    success: function (data) {
+    $("select[name='securityQuestionId']").empty();
+    for (var i = 0; i < data.length; i++) {
+    $("select[name='securityQuestionId']").append("<option value=" + data[i].id + " >" + data[i].name + "</option>")
+    }
+    }
+    })
+    });
     $('#birthdayChange').datebox({ required:true});
     function submits() {
         var cout = 0;
-    if($("input[name = name]").val()==''||$("input[name = password]").val()==""||$("input[name = phone]").val()==""){
+    if($("input[name = name]").val()==''||$("input[name = password]").val()==""||$("input[name = phone]").val()==""||$("input[name = securityAnswer]").val()==""){
          cout=cout+1;
        }
         if (cout<1) {
