@@ -188,7 +188,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="nc SX">
     <div class="wz"><span style="margin-right: 10px">密保问题</span></div>
     <div class="Sr ">
-    <select name="securityQuestionId" style="width: 100%;height: 100%;border: none;background-color:
+    <select name="securityQuestionId.id" style="width: 100%;height: 100%;border: none;background-color:
     transparent"></select>
     </div>
     </div>
@@ -201,7 +201,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="nc SX" style="margin-top: 38px">
             <div class="wz"></div>
             <div class="Sr cc">
-                <input style="background-color: #69b946;color: white;height: 52px; width: 306px;text-align: center;font-family: 微软雅黑;font-size: 22px;border: none;"  value="立即注册" onclick="submits()"/>
+                <input type="button" style="background-color: #69b946;color: white;height: 52px; width: 306px;text-align: center;font-family: 微软雅黑;font-size: 22px;border: none;"  value="立即注册" onclick="submits()"/>
 	<sub><a href="login.jsp">返回首页</a></sub>
             </div>
         </div>
@@ -215,35 +215,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </form>
 <script type="text/javascript">
     $(function(){
+
     $.ajax({
     url: "securityQuestion/queryAll.action",
     type: "post",
     success: function (data) {
-    $("select[name='securityQuestionId']").empty();
+    $("select[name='securityQuestionId.id']").empty();
     for (var i = 0; i < data.length; i++) {
-    $("select[name='securityQuestionId']").append("<option value=" + data[i].id + " >" + data[i].name + "</option>")
+    $("select[name='securityQuestionId.id']").append("<option value=" + data[i].id + " >" + data[i].name + "</option>")
     }
     }
     });
 
     $.post("department/queryAll.action",function(data){
-    $("select[name='departmentId.id']").empty();
-    for (var i = 0; i < data.length; i++) {
-    $("select[name='securityQuestionId.id']").append("<option value=" + data[i].id + " >" + data[i].name + "</option>")
-    }
+	    $("select[name='departmentId.id']").empty();
+	    for (var i = 0; i < data.length; i++) {
+	    $("select[name='departmentId.id']").append("<option value=" + data[i].id + " >" + data[i].name + "</option>")
+	    }
     })
     });
-    $('#birthdayChange').datebox({ required:true});
+    $('#birthdayChange').datebox({ required:true,editable:false});
     function submits() {
         var cout = 0;
-    if($("input[name = name]").val()==''||$("input[name = password]").val()==""||$("input[name = phone]").val()==""||$("input[name = securityAnswer]").val()==""){
-         cout=cout+1;
+    if($("input[name = name]").val()!="" && $("input[name = password]").val()!="" && $("input[name = phone]").val()!="" && $("input[name = securityAnswer]").val()!=""){
+    	  $("#form").submit();
+    }else{
+    	 $.messager.alert("提示", "请填写完整信息", "info");  
        }
-        if (cout<1) {
-            $("#form").submit();
-        } else {
-            $.message.alert("信息填写不完整");
-        }
     }
 </script>
 </body>
