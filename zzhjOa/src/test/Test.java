@@ -23,6 +23,7 @@ import com.zzhj.po.Users;
 import com.zzhj.po.ZiZhiSeal;
 import com.zzhj.service.NoticeService;
 import com.zzhj.service.RequestSealService;
+import com.zzhj.service.SecurityQuestionService;
 import com.zzhj.service.TaskService;
 
 public class Test {
@@ -32,10 +33,8 @@ public class Test {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		 ApplicationContext ap =new ClassPathXmlApplicationContext(new String[]{"application_context.xml","application_dao.xml","application_mvc.xml"});
-		Map<String,Object> map= ts.queryOwn(1, 10, "утаЫ");
-		for (Object t : map.values()) {
-			System.out.println(t);
-		}
+		 SecurityQuestionService s = (SecurityQuestionService) ap.getBean("securityQuestionService");
+		 System.out.println(s.queryAll());
 
 	}
 

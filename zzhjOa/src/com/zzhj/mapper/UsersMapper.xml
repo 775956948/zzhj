@@ -33,7 +33,7 @@
   		SELECT u.id,u.name,d.name as d_name,u.password,u.image_name,r.id as r_id,r.name as r_name FROM users u INNER JOIN roles r ON r.id =u.role_id inner join department d on d.id=u.departmentId  WHERE u.name=#{name} AND u.password=#{password}
   	</select>
   	<insert id="save" parameterType="users" keyProperty="id" useGeneratedKeys="true">
-  		insert into users(name,password,sex,birthday,phone,departmentId)values(#{name},#{password},#{sex},#{birthday},#{phone},#{departmentId.id})
+  		insert into users(name,password,sex,birthday,phone,departmentId,security_question_id,security_answer)values(#{name},#{password},#{sex},#{birthday},#{phone},#{departmentId.id},#{securityQuestionId.id},#{securityAnswer})
   	</insert>
   	<select id="queryAll" parameterType="int" resultMap="ud">
   		select u.name,u.password,u.id ,d.name as d_name from users u inner join department d on u.departmentId=d.id  limit #{startPage},#{rows}
