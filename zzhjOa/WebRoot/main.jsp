@@ -40,9 +40,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                { 
                   var msg = evt.data;
                   var jsonObject =JSON.parse(msg);
+          
                   if(jsonObject.type=="seal"){
                 	  seal(jsonObject);
-                  }else if(jsonObject.type="notice"){
+                  }else if(jsonObject.type=="notice"){
                 	  noticeQuery();
                   }else if(jsonObject.type=="task"){
                 	  toTask(jsonObject);

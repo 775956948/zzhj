@@ -46,6 +46,7 @@ public class TaskService {
 			mes.setViewTarget("task/queryOwnTask.html");
 			mes.setType(MessageType.task);
 			mes.setContentId(t.getId());
+			mes.setTheme("您有未处理的任务消息");
 			send(mes,t.getRecipient());
 		}
 		return result;
@@ -71,6 +72,7 @@ public class TaskService {
 			mes.setViewTarget("task/OwnTask.html");
 			mes.setType(MessageType.task);
 			mes.setContentId(taskId);
+			mes.setTheme("您有未处理的任务消息");
 			send(mes,userName);
 		}
 		return result;
