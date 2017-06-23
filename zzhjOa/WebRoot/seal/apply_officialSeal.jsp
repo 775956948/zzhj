@@ -10,15 +10,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<head>
 		<meta charset="UTF-8">
 		<title>公章提交</title>
-		
 	</head>
 	<body>
 		<div id="requestSealTb">
 			<a  class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="addapply_official_Tb()" >创建申请</a>
 		</div>
-
-		<table id="apply_official_Dg"></table> 
-		
+		<table id="apply_official_Dg"></table>
 		<div id="apply_official_tanc"  class="easyui-dialog" closed=true  style="width: 650px">
 			<form action="" method="post" id="apply_official_form">
   	<!-- 		  	<input name="id" id="dis_none" style="display:none !important;"/> -->
@@ -37,9 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</li>
  					<li>
 						<span>章类型</span>
-						<select  name="sealId.id" id="apply_offcial_select" class="apply_offcial_select" >
-						</select>
-					
+						<select  name="sealId.id" id="apply_offcial_select" class="apply_offcial_select" ></select>
 					</li> 
 					<li>
 						<span>是否骑缝</span>
@@ -69,23 +64,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		 		singleSelect:true,
 		 		toolbar:'#requestSealTb',
 			   	columns:[[    
-			        {field:'id',checkbox:true,}, 
-			   		{field:'number',title:'编号',width:50,},    
+			        {field:'id',checkbox:true},
+			   		{field:'number',title:'编号',width:50},
 			   		{field:'userId',title:'申请人',width:70,formatter:function(value){return value.name}},
-		        	{field:'projectName',title:'项目名称',width:140,},
+		        	{field:'projectName',title:'项目名称',width:140},
 		        	{field:'requestDate',title:'申请日期',width:100,sortable:true},	
-		        	{field:'state',title:'审批状态',width:70,},
+		        	{field:'state',title:'审批状态',width:70},
 		        	{field:'approver',title:'审批人',width:70},
-		        	{field:'agent',title:'经办人',width:70,},
-		        	{field:'overDate',title:'盖章日期',width:100,},
-		        	{field:'text',title:'收文主题',width:200,},
+		        	{field:'agent',title:'经办人',width:70},
+		        	{field:'overDate',title:'盖章日期',width:100},
+		        	{field:'text',title:'收文主题',width:200},
 		        	{field:'why',title:'是否骑缝',width:70},	        		
-		        	{field:'pageNumber',title:'页数',width:70,},
-		        	{field:'copiesNumber',title:'份数',width:70,},	
-			    ]],
-			})
-			
-			
+		        	{field:'pageNumber',title:'页数',width:70},
+		        	{field:'copiesNumber',title:'份数',width:70}
+			    ]]
+			});
 			function addapply_official_Tb(){
 				$('#apply_official_tanc').dialog({
 					title : '公章审批提交单',
@@ -100,7 +93,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						$("#apply_offcial_select").append("<option value='"+data[i].id+"'>"+data[i].typeName+"</option>")
 					}
 				})
-				
 			}
 				
 			 function check(obj){
@@ -112,8 +104,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				  }
 			 }
 				 
-				 
-				 
 			function apply_official_Submit(){
   		 		$.ajax({
 				   url:"requestSeal/save.action",
@@ -122,21 +112,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 			   success:function(data){				
 						if(data == 1){
 							$('#apply_official_tanc').dialog({
-								closed : true,
+								closed : true
 							});
 							$('#apply_official_Dg').datagrid('reload');
-							alert("提交成功");
+							$.messager.alert("提示","提交成功","info");
 							$(".apply_official_val").val(" ");
 						}else{
-							
 							$(".apply_official_val").val(" ");
-							alert("提交失败");
+							$.messager.alert("提示","提交失败","info");
 						}
 					} 
 				});
   		 	}
-			
-			
 		</script>
 	</body>
 </html>

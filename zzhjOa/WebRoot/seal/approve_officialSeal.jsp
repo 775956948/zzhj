@@ -36,9 +36,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<li>
 					<li style="position: relative;">
 						<!--遮罩层-->
-						<div style="width: 100%; height: 40px; position: absolute;z-index: 10;">
-							
-						</div>
+						<div style="width: 100%; height: 40px; position: absolute;z-index: 10;"></div>
 						<span>是否骑缝</span>
 						
 						<span >是<input style="width: 50px;" type="radio" name="why" id="" value="是"/></span>
@@ -60,9 +58,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<input type="button" value="审批" onclick="approve_official_Submit()"/>				
 					</li>
 				</ul>
-  			   
   			</form>
-
 		</div>
 		<table id="approve_official_Dg"></table>
 		
@@ -74,29 +70,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			url:'requestSeal/queryOneself.action',
 		    singleSelect:true, 
 			pagination:true,
-	 		singleSelect:true,
 	 		fitColumns:false,
 		    toolbar:'#approve_official_Tb', 
 		   	columns:[[    
 		  	
-		        {field:'id',title:'id',checkbox:true,}, 
-				{field:'number',title:'编号',width:50,},   
-				{field:'projectName',title:'项目名称',width:140,},
+		        {field:'id',title:'id',checkbox:true},
+				{field:'number',title:'编号',width:50},
+				{field:'projectName',title:'项目名称',width:140},
 				{field:'sealId',title:'章类型',width:70,formatter:function(value){ return value.typeName}},				
 	       		{field:'userId',title:'申请人',width:70,formatter:function(value){
 	    			return value.name;
 	    		}},
 	    		{field:'requestDate',title:'申请日期',width:100,sortable:true},
-	    		{field:'state',title:'审批状态',width:70,},
-	    		{field:'approver',title:'审批人',width:70,},
-	    		{field:'agent',title:'经办人',width:70,},
-	    		{field:'overDate',title:'盖章日期',width:100,},
-				{field:'text',title:'收文主题',width:200,},  
-	       		{field:'pageNumber',title:'页数',width:70,},   
+	    		{field:'state',title:'审批状态',width:70},
+	    		{field:'approver',title:'审批人',width:70},
+	    		{field:'agent',title:'经办人',width:70},
+	    		{field:'overDate',title:'盖章日期',width:100},
+				{field:'text',title:'收文主题',width:200},
+	       		{field:'pageNumber',title:'页数',width:70},
 				{field:'copiesNumber',title:'份数',width:70},
-				{field:'why',title:'是否骑缝',width:70,}
+				{field:'why',title:'是否骑缝',width:70}
 			    ]]
-			})
+			});
 	
 		spprove_tanc2 = $('#approve_official_tanc').dialog({
 			title : '审批',
@@ -110,7 +105,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		function approve_official_Tb(){		
 			var row = $('#approve_official_Dg').datagrid('getSelected');
 			if(row == null){
-			   alert("请选择一条数据");
+			   $.messager.alert("提示","请选择一条数据","info");
 			}else{
 				var  aa = row.why;
 				if(aa == "是"){
@@ -129,12 +124,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				$("input[name = copiesNumber]").val(row.copiesNumber);
 				$("textarea[name = text]").val(row.text);
 				spprove_tanc2.dialog('open')
-				
 			}
-			
-		};
-		
-		
+		}
 
 		 function approve_official_Submit(){	
 			 var id=$("input[name='requestSealId']").val();
@@ -146,10 +137,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				   	
 					   if(data == 1){
 					   		$('#approve_official_tanc').dialog({
-								closed : true,
+								closed : true
 							});
 					   	$('#approve_official_Dg').datagrid('reload');
-					   	alert("审批完成");
+					   	$.messager.alert("提示","审批完成","info");
 					   	$("#listMes li").each(function(){
 					   		 var target=$(this).attr("id");
 					   		 if(target==id){
@@ -161,8 +152,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					   		 }
 					   	})
 					   }else{
-					   	alert("提交失败");
-					   	
+					   	$.messager.alert("提示","提交失败","info");
 					   }
 				   }
 			}) 

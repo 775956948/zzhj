@@ -65,23 +65,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 		singleSelect:true,
 		    toolbar:'#handling_Tb', 
 		   	columns:[[    
-		        {field:'id',title:'id',checkbox:true,}, 
-				{field:'number',title:'编号',width:50,},       
-				{field:'projectName',title:'项目名称',width:140,},
+		        {field:'id',title:'id',checkbox:true},
+				{field:'number',title:'编号',width:50},
+				{field:'projectName',title:'项目名称',width:140},
 				{field:'userId',title:'申请人',width:70,formatter:function(value){
 	    			return value.name;
 	    		}},
 	    		{field:'requestDate',title:'申请时间',width:100,sortable:true},
-	    		{field:'state',title:'状态',width:70,},
-	    		{field:'approver',title:'审批人',width:70,},
-	    		{field:'agent',title:'经办人',width:70,},
-	    		{field:'overDate',title:'盖章时间',width:100,},
-				{field:'text',title:'盖章内容',width:140,},  
-				{field:'why',title:'盖章事由',width:140,},				
-				{field:'pageNumber',title:'页数',width:70,},   
+	    		{field:'state',title:'状态',width:70},
+	    		{field:'approver',title:'审批人',width:70},
+	    		{field:'agent',title:'经办人',width:70},
+	    		{field:'overDate',title:'盖章时间',width:100},
+				{field:'text',title:'盖章内容',width:140},
+				{field:'why',title:'盖章事由',width:140},
+				{field:'pageNumber',title:'页数',width:70},
 				{field:'copiesNumber',title:'份数',width:70}
 		    ]]
-		})
+		});
 	
 		handling_tanc = $('#handling_tanc').dialog({
 			title : '经办',
@@ -97,16 +97,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 			var row = $('#handling_Dg').datagrid('getSelected');
 			if(row == null){
-			   alert("请选择一条数据");
+			   $.messager.alert("提示","请选择一条数据","info");
 			}else{
 				var  aa = row.why;
-				
 				if(aa == "是"){
 					$(".cmn_list li input[type = radio]").eq(0).click()
 				}else if(aa == "否"){
 					$(".cmn_list li input[type = radio]").eq(1).click()
 				}
-				
 				$("input[name = id]").val(row.id);
 				$("input[name = number]").val(row.number);
 				$("textarea[name = projectName]").val(row.projectName);
@@ -116,9 +114,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				$("textarea[name = why]").val(row.why);
 				handling_tanc.dialog('open') 
 			}
-		};
-		
-		
+		}
 
 		 function handling_Submit(){	 	
 			 var id = $("#dis_none").val();
@@ -131,11 +127,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					   		$('#handling_tanc').dialog({
 								closed : true
 							});
-					   	alert("经办完成");
+					   	$.messager.alert("提示","经办完成","info");
 					   	spprove_tanc.dialog('close');
 					   	$('#handling_Dg').datagrid('reload');
 					   }else{
-					   	alert("提交失败");
+					   	$.messager.alert("提示","提交失败","info");
 					   }
 				   }
 			})

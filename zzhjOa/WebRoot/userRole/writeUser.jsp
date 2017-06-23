@@ -83,9 +83,9 @@
 		</tr>
 		<tr>
 			<td>头像</td>
-			<td><input type="file" name="files" /><img id="userImage" src="image/${users.imageName }" width="50px;" style="border-radius:25px;"><input id="userInfoimg" type="button" value="跟换头像" onclick="userInfoImg()"/></td>
+			<td><input type="file" name="files" /><img id="userImage" src="image/${users.imageName }" width="50px;" style="border-radius:25px;"><input id="userInfoimg" type="button" value="更换头像" onclick="userInfoImg()"/></td>
 			<td>手机号</td>
-			<td><input type="number" name="phone" /></td>
+			<td><input type="number" name="phone" onkeyup="if(isNaN($(this).val())){$(this).val('')}" /></td>
 		</tr>
 		<tr>
 			<td>入职时间</td>

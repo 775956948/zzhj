@@ -38,14 +38,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<select id="type" name="sealId" class="approve_official_val">
 							<option value=""></option>
 						</select>
-					
 					<li style="position: relative;">
 						<!--遮罩层-->
-						<div style="width: 100%; height: 40px; position: absolute;z-index: 10;">
-							
-						</div>
+						<div style="width: 100%; height: 40px; position: absolute;z-index: 10;"></div>
 						<span>是否骑缝</span>
-						
 						<span>是<input style="width: 50px;" type="radio" name="why" id="" value="是"/></span>
 						<span>否<input style="width: 50px;" type="radio" name="why" id="" value="否"/></span>
 					<li>
@@ -80,24 +76,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 		fitColumns:false,
 		    toolbar:'#hanhling_official_Tb', 
 		   	columns:[[    
-	       	    {field:'id',title:'id',checkbox:true,}, 
-				{field:'number',title:'编号',width:50,},   
-				{field:'projectName',title:'项目名称',width:140,},
+	       	    {field:'id',title:'id',checkbox:true},
+				{field:'number',title:'编号',width:50},
+				{field:'projectName',title:'项目名称',width:140},
 				{field:'sealId',title:'章类型',width:70,formatter:function(value){ return value.typeName}},
 				{field:'userId',title:'申请人',width:70,formatter:function(value){
 	    			return value.name;
 	    		}},
 	    		{field:'requestDate',title:'申请日期',width:100,sortable:true},
-	    		{field:'state',title:'审批状态',width:70,},
-	    		{field:'approver',title:'审批人',width:70,},
-	    		{field:'agent',title:'经办人',width:70,},
-	    		{field:'overDate',title:'盖章日期',width:100,},
-				{field:'text',title:'收文主题',width:200,},  			
-	       		{field:'pageNumber',title:'页数',width:70,},   
-				{field:'copiesNumber',title:'份数',width:70,},
-				{field:'why',title:'是否骑缝',width:70,}
+	    		{field:'state',title:'审批状态',width:70},
+	    		{field:'approver',title:'审批人',width:70},
+	    		{field:'agent',title:'经办人',width:70},
+	    		{field:'overDate',title:'盖章日期',width:100},
+				{field:'text',title:'收文主题',width:200},
+	       		{field:'pageNumber',title:'页数',width:70},
+				{field:'copiesNumber',title:'份数',width:70},
+				{field:'why',title:'是否骑缝',width:70}
 		    ]]
-		})
+		});
 		handling_official_tanc = $('#hanhling_official_tanc').dialog({
 				title : '经办',
 				height : 400,
@@ -110,10 +106,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		function hanhling_official_Tb(){		
 			var row = $('#hanhling_official_Dg').datagrid('getSelected');
 			if(row == null){
-			   $.messager.alert("请选择一条数据");
+			   $.messager.alert("提示","请先选择一条数据","info");
 			}else{
 				var  aa = row.why;
-				
 				if(aa == "是"){
 					$(".cmn_list li input[type = radio]").eq(0).click()
 				}else if(aa == "否"){
@@ -130,9 +125,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				$("textarea[name = text]").val(row.text);
 				handling_official_tanc.dialog('open')
 			}
-		};
-		
-		
+		}
 
 		 function hanhling_official_Submit(){	
 			 var id=$("#dis_none").val();
@@ -146,10 +139,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					   		$('#hanhling_official_tanc').dialog({
 								closed : true
 							});
-					   	$.messager.alert("提交成功");
+					   	$.messager.alert("提示","提交成功","info");
 					   	spprove_tanc.dialog('close');	
 					   }else{
-	                    $.messager.alert("提交失败");
+	                    $.messager.alert("提示","提交失败","info");
 					   }
 				   }
 			})

@@ -259,7 +259,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		function addCar(){
 			$('#carDd').dialog({
 				title : '添加车辆信息',
-				width : 400,
 				height : 300,
 				closed : false,
 				cache : false,
