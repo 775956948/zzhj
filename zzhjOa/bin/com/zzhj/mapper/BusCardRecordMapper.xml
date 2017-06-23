@@ -32,4 +32,7 @@
   		update bus_card_record set over_date=#{overDate},start_money=#{startMoney},over_money=#{overMoney}
   		where id=#{id}
   	</update>
+  	<delete id="delete" parameterType="int">
+  		DELETE FROM bus_card_record WHERE id =#{value}
+  	</delete>
 </mapper>

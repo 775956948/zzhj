@@ -36,5 +36,9 @@ public class BusCardRecordService {
 		bcm.updateState(b.getBusCardId().getId(),"ø…”√");
 		return brm.update(b);
 	}
+	
+	public int delete(int id){
+		return brm.delete(id);
+	}
 
 }

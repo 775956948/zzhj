@@ -28,30 +28,30 @@ public class CarInfoService {
 		map.put("rows", list);
 		return map;
 	}
-	public void saveCarInfo(CarInfo carInfo){
+	public int saveCarInfo(CarInfo carInfo){
 		int id =carM.CarId(carInfo.getCarId().getCarNo());
 		carInfo.getCarId().setId(id);
 		Car car = carInfo.getCarId();
 		car.setState("不可用");
 		carM.updateState(car);
-		cm.saveCarInfo(carInfo);
+		return cm.saveCarInfo(carInfo);
 	}
 	
-	public void delCarInfo(CarInfo carInfo){
+	public int delCarInfo(CarInfo carInfo){
 		int id =carM.CarId(carInfo.getCarId().getCarNo());
 		Car car =carInfo.getCarId();
 		car.setId(id);
 		car.setState("可用");
 		carM.updateState(car);
-		cm.delCarInfo(carInfo);
+		return cm.delCarInfo(carInfo);
 	}
-	public void updateCarInfo(CarInfo carInfo){
+	public int  updateCarInfo(CarInfo carInfo){
 		int id =carM.CarId(carInfo.getCarId().getCarNo());
 		Car car =carInfo.getCarId();
 		car.setId(id);
 		car.setState("可用");
 		carM.updateState(car);
-		cm.updateCarInfo(carInfo);
+		return cm.updateCarInfo(carInfo);
 	}
 	public CarInfo carInfoId(int id){
 		CarInfo carInfo = cm.carInfoId(id);

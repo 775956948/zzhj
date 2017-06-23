@@ -5,6 +5,13 @@ import java.io.Serializable;
 public class BusCard implements Serializable{
 	private int id;
 	private String cardNumber;
+	private String state;
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
+	}
 	public int getId() {
 		return id;
 	}

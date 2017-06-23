@@ -25,7 +25,7 @@
 	<select id="totalCount" parameterType="string" resultType="int">
 		select count(id) from feedback where request_name=#{value} or approver=#{value}
 	</select>
-	<insert id="addFeedback" parameterType="Feedback">
+	<insert id="addFeedback" parameterType="Feedback" useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO feedback(request_name,request_date,task_id,info,state,approver)
 		values(#{requestName},#{requestDate},#{taskId.id},#{info},#{state},#{approver})
 	</insert>

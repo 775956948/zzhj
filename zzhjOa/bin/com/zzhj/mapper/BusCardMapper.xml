@@ -7,4 +7,12 @@
   	<update id="updateState" parameterType="object">
   		update bus_card set state=#{state} where id=#{busCardId}
   	</update>
+  	<insert id="save" parameterType="busCard">
+  		insert into bus_card(card_number,state)
+  		values(#{cardNumber},#{state})
+  	</insert>
+  	
+  	<delete id="delete" parameterType="int">
+  		delete from bus_card where id=#{value}
+  	</delete>
 </mapper>

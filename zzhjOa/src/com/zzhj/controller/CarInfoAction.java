@@ -25,17 +25,20 @@ public class CarInfoAction {
 		return cs.getCarInfo(page,rows);
 	}
 	@RequestMapping("/saveCarInfo.action")
-	public void saveCarInfo(CarInfo carInfo){
-		cs.saveCarInfo(carInfo);
+	@ResponseBody
+	public int saveCarInfo(CarInfo carInfo){
+		return cs.saveCarInfo(carInfo);
 	}
 	
 	@RequestMapping("/delCarInfo.action")
-	public void delCarInfo(CarInfo carInfo){
-		cs.delCarInfo(carInfo);
+	@ResponseBody
+	public int delCarInfo(CarInfo carInfo){
+		return cs.delCarInfo(carInfo);
 	}
 	@RequestMapping("/updateCarInfo.action")
-	public void updateCarInfo(CarInfo carInfo){
-		cs.updateCarInfo(carInfo);
+	@ResponseBody
+	public int  updateCarInfo(CarInfo carInfo){
+		return cs.updateCarInfo(carInfo);
 	}
 	@RequestMapping("/carInfoOne.action")
 	@ResponseBody

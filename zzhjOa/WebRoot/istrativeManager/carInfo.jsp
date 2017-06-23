@@ -22,15 +22,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-  		<div style="width: 100%; height: 300px; position: relative; background-color: white;">
-	   <iframe  src="http://cha.weiche.me/limit.php?channel=sm&city_name=北京" style="width: 100%; height: 1000px; position: absolute; top:-476px; " width="100%" height="250px" frameborder="0"   scrolling="no" >
+  		<div style="width: 100%; height: 300px; position: relative; background-color: white; overflow: hidden;">
+	   <iframe src="http://cha.weiche.me/limit.php?channel=sm&city_name=北京" style="width: 1150px; height: 1000px; position: absolute; top:-440px; left: 50%;  margin-left: -575px;"  frameborder="0"   scrolling="no" >
 	   </iframe>
 	   </div>
   	<div id="carInfoTb">
 		<a  class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="addCarInfo()">添加用车信息</a>
-		<a  class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="addCar()">添加车辆</a>
-<!-- 		<a  class="easyui-linkbutton" iconCls="icon-save" plain="true" onclick="deleteCarInfo()">刪除</a> -->
-		<a  class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="updateCarInfo()">还车</a>
+			<c:if test="${users.roleId.name=='行政' || users.roleId.name=='管理员'}">
+				<a  class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="addCar()">添加车辆</a>
+				 <a  class="easyui-linkbutton" iconCls="icon-save" plain="true" onclick="deleteCarInfo()">刪除</a> 
+			</c:if>
+		<a  class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="updateCarInfo('${users.name}')">还车</a>
 	</div>
 	
 	<div id="carInfoDd"  class="easyui-dialog" closed=true  style="width: 600px">
@@ -172,9 +174,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		function deleteCarInfo(){
 			var row = $('#carInfoDg').datagrid('getSelected');
 			 if (row){
-				$.post('carInfo/delCarInfo.action',{'id':row.id,'carId.carNo':row.carId.carNo}); 
-				$.messager.alert("提示","删除成功","info");
-				$('#carInfoDg').datagrid('reload');
+				$.post('carInfo/delCarInfo.action',{'id':row.id,'carId.carNo':row.carId.carNo},function(data){
+					$('#carInfoDg').datagrid('reload');
+					$.messager.alert("提示","删除成功","info");
+				}); 
 			}else{
 				 $.messager.alert("提示", "请选中一行记录", "info");  
 			} 
@@ -194,64 +197,74 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				if(carNo==''||requestName==''||requestText==''||departmentName==''||startDate==''||startNumber==''||overDate==''||overNumber==''||driver==''){
 				 	$.messager.alert("提示", "请填写完整信息", "info");  
 				}else{
-				 	$.post('carInfo/updateCarInfo.action',{'id':row.id,'carId.carNo':carNo,'requestName':requestName,'requestText':requestText,'startDate':startDate,'departmentName':departmentName,'startNumber':startNumber,'overDate':overDate,'overNumber':overNumber,'driver':driver});
-						$.messager.alert("提示","还车成功","info");
+				 	$.post('carInfo/updateCarInfo.action',{'id':row.id,'carId.carNo':carNo,'requestName':requestName,'requestText':requestText,'startDate':startDate,'departmentName':departmentName,'startNumber':startNumber,'overDate':overDate,'overNumber':overNumber,'driver':driver},function(data){
+				 		$('#carInfoDg').datagrid('reload');
+				 		$.messager.alert("提示","还车成功","info");
 						$('#carInfoDd').dialog({
 							closed : true
 						}); 
-						$('#carInfoDg').datagrid('reload');
+				 	});
+						
+					
 				} 
 				
 			}else{
 				if(carNo==''||requestName==''||requestText==''||departmentName==''||startDate==''||startNumber==''||driver==''){
 					 $.messager.alert("提示", "请填写完整信息", "info");  
 				}else{
-					 $.post('carInfo/saveCarInfo.action',{'carId.carNo':carNo,'requestName':requestName,'requestText':requestText,'startDate':startDate,'departmentName':departmentName,'startNumber':startNumber,'driver':driver});
-	                  $.messager.alert("提示","添加成功","info");
-						$('#carInfoDd').dialog({
-							closed : true
-						}); 
-						$('#carInfoDg').datagrid('reload'); 
+					 $.post('carInfo/saveCarInfo.action',{'carId.carNo':carNo,'requestName':requestName,'requestText':requestText,'startDate':startDate,'departmentName':departmentName,'startNumber':startNumber,'driver':driver},function(data){
+						 if(data>0){
+							 $('#carInfoDg').datagrid('reload');
+			                  $.messager.alert("提示","添加成功","info");
+								$('#carInfoDd').dialog({
+									closed : true
+								}); 
+						 }
+					 });	
 				} 
 			}
 			
 		}
 		//
-		function updateCarInfo(){
-			var row = $('#carInfoDg').datagrid('getSelected');
+		function updateCarInfo(user){
+	 		var row = $('#carInfoDg').datagrid('getSelected');
 			if (row){
-				$.post('carInfo/carInfoOne.action',{'id':row.id},function(data){
-						$('#carInfoDd').dialog({
-						title : '完善用车信息',
-						width : 500,
-						height : 400,
-						closed : false,
-						cache : false,
-						modal : true, 
-						onOpen:function(){
-							$("select[name='carId.carNo']").empty();
-							$("select[name='carId.carNo']").append("<option value="+data.carId.carNo+" >"+data.carId.carName+"--"+data.carId.carNo+"</option>");
-							$("tr[name='overDate']").show();
-							$("tr[name='overNumber']").show();
-							$("input[name='requestName']").val(data.requestName);
-							$("input[name='departmentName']").val(data.departmentName);
-							$("textarea[name='requestText']").val(data.requestText);
-	                        $("#CarstartDate").datetimebox({
-	                        value: data.startDate,
-	                        required: true,
-	                        showSeconds: false
-	                        });
-							$("input[name='startNumber']").val(data.startNumber);
-	                        $("#overReturnDate").datetimebox({
-	                        value: data.overDate,
-	                        required: true,
-	                        showSeconds: false
-	                        });
-							$("input[name='driver']").val(data.driver);
-							$("input[name='overNumber']").val(data.overNumber); 
-						}
-					}); 
-				});
+				if(row.requestName==user){
+					$.post('carInfo/carInfoOne.action',{'id':row.id},function(data){
+							$('#carInfoDd').dialog({
+							title : '完善用车信息',
+							width : 450,
+							height : 380,
+							closed : false,
+							cache : false,
+							modal : true, 
+							onOpen:function(){
+								$("select[name='carId.carNo']").empty();
+								$("select[name='carId.carNo']").append("<option value="+data.carId.carNo+" >"+data.carId.carName+"--"+data.carId.carNo+"</option>");
+								$("tr[name='overDate']").show();
+								$("tr[name='overNumber']").show();
+								$("input[name='requestName']").val(data.requestName);
+								$("input[name='departmentName']").val(data.departmentName);
+								$("textarea[name='requestText']").val(data.requestText);
+		                        $("#CarstartDate").datetimebox({
+		                        value: data.startDate,
+		                        required: true,
+		                        showSeconds: false
+		                        });
+								$("input[name='startNumber']").val(data.startNumber);
+		                        $("#overReturnDate").datetimebox({
+		                        value: data.overDate,
+		                        required: true,
+		                        showSeconds: false
+		                        });
+								$("input[name='driver']").val(data.driver);
+								$("input[name='overNumber']").val(data.overNumber); 
+							}
+						}); 
+					});
+				}else{
+					$.messager.alert("提示", "无权力操作他人信息", "info");  
+				}	
 			}else{
 				 $.messager.alert("提示", "请选中一行记录", "info");  
 			}

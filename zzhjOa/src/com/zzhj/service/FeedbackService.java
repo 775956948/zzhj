@@ -8,11 +8,14 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.zzhj.entityCustom.Message;
+import com.zzhj.entityCustom.MessageType;
 import com.zzhj.mapper.FeedbackMapper;
 import com.zzhj.mapper.TaskMapper;
 import com.zzhj.mapper.UsersMapper;
 import com.zzhj.po.Feedback;
 import com.zzhj.po.Users;
+import com.zzhj.webSocket.ServerHandler;
 
 import utils.DateFormater;
 
@@ -85,7 +88,18 @@ public class FeedbackService {
 		f.setRequestDate(requestDate);
 		f.setApprover(nextApprover);
 		f.setState("待审批");
-		return fm.addFeedback(f);
+		int result =fm.addFeedback(f);
+		if(result>0){
+			Message mes = new Message();
+			mes.setFrom(f.getRequestName());
+			mes.setTargetName("审批反馈信息");
+			mes.setViewTarget("task/feedbackApproval.html");
+			mes.setType(MessageType.feedback);
+			mes.setContentId(f.getId());
+			mes.setTheme("您有未处理的任务反馈消息");
+			send(mes,nextApprover);
+		}
+		return result;
 	}
 	/**
 	 * 
@@ -103,6 +117,14 @@ public class FeedbackService {
 		if(user.getRoleId().getName().equals("主管")||user.getRoleId().getName().equals("部门经理")){
 			Users f =um.userId(user.getDepartmentId().getName());
 			nextApprover=f.getName();
+			Message mes = new Message();
+			mes.setFrom(user.getName());
+			mes.setTargetName("审批反馈信息");
+			mes.setViewTarget("task/feedbackApproval.html");
+			mes.setType(MessageType.feedback);
+			mes.setContentId(id);
+			mes.setTheme("您有未处理的任务反馈消息");
+			send(mes,nextApprover);
 		}
 		return fm.approver(id,nextApprover );
 	}
@@ -136,4 +158,18 @@ public class FeedbackService {
 	public int deleteFeedback(int feedbackId){
 		return fm.deleteFeedback(feedbackId);
 	}
+	/**
+	 * 
+	 * @Description: 消息推送方法
+	 * @param @param mes
+	 * @param @param userName   
+	 * @return void  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年6月23日
+	 */
+	private void send(Message mes,String userName){
+		ServerHandler.send(userName, mes);
+	}
+	
 }

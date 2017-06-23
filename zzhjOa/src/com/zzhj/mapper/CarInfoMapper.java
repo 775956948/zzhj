@@ -8,9 +8,9 @@ import com.zzhj.po.CarInfo;
 
 public interface CarInfoMapper {
 	List<CarInfo> getCarInfo(@Param("start")int start,@Param("rows")int rows);
-	void saveCarInfo(CarInfo carInfo);
-	void delCarInfo(CarInfo carInfo);
-	void updateCarInfo(CarInfo carInfo);
+	int saveCarInfo(CarInfo carInfo);
+	int delCarInfo(CarInfo carInfo);
+	int updateCarInfo(CarInfo carInfo);
 	CarInfo carInfoId(int id);
 	int totalCount();
 }

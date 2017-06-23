@@ -38,4 +38,9 @@ public class BusCardRecordAction {
 	public int update(BusCardRecord b){
 		return bcrs.update(b);
 	}
+	@RequestMapping("/delete.action")
+	@ResponseBody
+	public int delete(int id){
+		return bcrs.delete(id);
+	}
 }

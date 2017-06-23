@@ -22,4 +22,14 @@ public class BusCardAction {
 	public List<BusCard> queryAll(){
 		return bs.queryAll();
 	}
+	@RequestMapping("/save.action")
+	@ResponseBody
+	public int save(BusCard b){
+		return bs.save(b);
+	}
+	@RequestMapping("delete.action")
+	@ResponseBody
+	public int delete(int cardId){
+		return bs.delete(cardId);
+	}
 }

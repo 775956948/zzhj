@@ -18,7 +18,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<body>
 		 <div id="sealTb">
 			<a  class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="addApply()" >创建申请</a>
-			<a  class="easyui-linkbutton" iconCls="icon-Remove" plain="true" onclick="deleteApply()">删除</a>
+<!-- 			<a  class="easyui-linkbutton" iconCls="icon-Remove" plain="true" onclick="deleteApply()">删除</a> -->
 		</div>
 		<div id="apply-tanc"  class="easyui-dialog" closed=true  style="width:600px">
   		<form action="" method="post" id="apply-form">

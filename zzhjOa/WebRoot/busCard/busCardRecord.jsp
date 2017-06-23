@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,8 +10,28 @@
 <body>
 	  <div id="busCardTb">
 		<a  class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="addBusCardRecord()">添加</a>
-<!-- 		<a  class="easyui-linkbutton" iconCls="icon-save" plain="true" onclick="deleteBusCardRecord()">刪除</a> -->
+		<c:if test="${users.roleId.name=='行政'|| users.roleId.name=='管理员'}">
+			<a  class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="addBusCard()">添加公交卡</a>
+	 		<a  class="easyui-linkbutton" iconCls="icon-save" plain="true" onclick="deleteBusCard()">刪除</a>
+ 		</c:if>
 		<a  class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="updateBusCardRecord()">还卡</a>
+	</div>
+	
+		<div id="card"  class="easyui-dialog" closed=true >
+		<form action="" method="post">
+			<table>
+				<tr>
+					<td colspan="2" align="center"><h5>新增一卡通</h5></td>
+				</tr>
+				<tr>
+					<td>卡号：</td>
+					<td><input type="text" name="cardNumber" /></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center"><input type="button" value="提 交" onclick="AddCard()"/></td>
+				</tr>
+			</table>
+		</form>
 	</div>
 	
 	<div id="busCardDd"  class="easyui-dialog" closed=true >
@@ -236,6 +257,40 @@
 			}else{
 				 $.messager.alert("提示", "请选中一行信息", "info");  
 			}
+		}
+		//删除一条信息
+		function deleteBusCard(){
+			var row = $("#busCardRecordDg").datagrid("getSelected");
+			if(row){
+				$.post('busCardRecord/delete.action',{'id':row.id},function(data){
+					if(data>0){
+						 $.messager.alert("提示", "删除成功", "info");  
+						 $('#busCardRecordDg').datagrid('reload');
+					}
+				})
+			}else{
+				 $.messager.alert("提示", "请选中一行信息", "info");  
+			}
+		}
+		//打开添加窗口
+		function addBusCard(){
+			$("#card").dialog({
+				title:'添加一卡通',
+				width : 200,
+				closed:false,
+			})
+		}
+		//添加一卡通
+		function AddCard(){
+		 	var cardNumber = $("input[name='cardNumber']").val();
+			 $.post('busCard/save.action',{'cardNumber':cardNumber},function(data){
+				if(data>0){
+					 $.messager.alert("提示", "添加成功", "info");  
+					 $("#card").dialog({
+							closed:true,
+						})
+				}
+			})  
 		}
 	</script>
 </body>
