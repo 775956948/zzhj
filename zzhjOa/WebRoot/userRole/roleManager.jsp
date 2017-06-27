@@ -33,7 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<input type="button" value="分配" onclick="roleChecked()">
 		</div>
 		<div id="addRole"  class="easyui-dialog" closed=true >
-			请输入角色名称:<input name="name" type="text" /><br/>
+			请输入角色名称:<input name="roleName" type="text" /><br/>
 			<input type="button" value="添加" onclick="saveRole()">
 		</div>
     <table id="roleDg"></table>  
@@ -159,13 +159,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			);		
 		}
 		function saveRole(){
-			var name=$("input[name='name']").val();
-			if(name!=''){
-				$.post('role/saveRole.action',{'name':name},function(data){
+			var roleName=$("input[name='roleName']").val();
+			if(roleName!=''){
+				$.post('role/saveRole.action',{'name':roleName},function(data){
 					if(data>0){
 						$('#roleDg').datagrid('reload');
 						$.messager.alert("信息","添加成功","info");
-						$('#addRole').dialog({closed : ture});
+						$('#addRole').dialog({
+							closed : true,
+							}
+						);	
 					}
 				});
 			}else{
