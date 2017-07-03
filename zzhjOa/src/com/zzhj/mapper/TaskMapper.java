@@ -36,7 +36,7 @@ public interface TaskMapper {
 	 * @author 小白
 	 * @date 2017年6月12日
 	 */
-	int transmitTask(@Param("taskId")int taskId,@Param("userName")String userName);
+	int transmitTask(@Param("taskId")int taskId,@Param("userName")String userName,@Param("successDate")String successDate,@Param("implementDate")String implementDate);
 	 /**
 	  * 
 	  * @Description: 开始执行一个任务

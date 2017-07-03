@@ -21,11 +21,11 @@
 		<result property="state" column="state"/>
 	</resultMap>
   <insert id="addTask" parameterType="task" useGeneratedKeys="true" keyProperty="id">
-  	INSERT INTO tasks(task_theme,task_text,user_name,task_date,recipient,state,success_date)
-  	values(#{taskTheme},#{taskText},#{userName},#{taskDate},#{recipient},"已发布",#{successDate})
+  	INSERT INTO tasks(task_theme,task_text,user_name,task_date,recipient,state,success_date,task_address,entrusted_unit,client,client_phone)
+  	values(#{taskTheme},#{taskText},#{userName},#{taskDate},#{recipient},"已发布",#{successDate},#{taskAddress},#{entrustedUnit},#{client},#{clientPhone})
   </insert>
   <update id="transmitTask" parameterType="object">
-  	update tasks set implement=#{userName},state="已下达" where id=#{taskId}
+  	update tasks set implement=#{userName},state="已下达",success_date=#{successDate},implement_date=#{implementDate} where id=#{taskId}
   </update>
   <update id="acceptTask" parameterType="object">
   	update tasks set implement_date=#{startDate},state="已接收" where id=#{taskId}
@@ -38,14 +38,10 @@
   </update>
   
   <select id="queryAll" parameterType="int" resultMap="tk">
-  	select t.id,t.task_theme,t.task_text ,t.user_name,t.task_day,t.task_date,
-  	t.implement_date,t.success_date,t.recipient,t.implement,t.speed,t.state
-  	from tasks t limit #{startPage},#{rows}
+  	select * from tasks limit #{startPage},#{rows}
   </select>
   <select id="queryOwn" parameterType="object" resultMap="tk">
-  	select t.id,t.task_theme ,t.task_text,t.user_name,t.task_day,t.task_date,
-  	t.implement_date,t.success_date,t.recipient,t.implement,t.speed,t.state
-  	 from tasks t where t.implement=#{userName} or t.recipient=#{userName} LIMIT #{startPage},#{rows}
+  	select * from tasks t where t.implement=#{userName} or t.recipient=#{userName} LIMIT #{startPage},#{rows}
   </select>
   <select id="totalCount" resultType="int">
   	select count(id) from tasks

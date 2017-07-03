@@ -50,8 +50,8 @@ public class TaskAction {
 	 */
 	@RequestMapping("/transmitTask.action")
 	@ResponseBody
-	public int transmitTask(int taskId,String implement){
-		return ts.transmitTask(taskId, implement);
+	public int transmitTask(int taskId,String implement,String successDate,String implementDate){
+		return ts.transmitTask(taskId, implement,successDate,implementDate);
 	}
 	/**
 	 * 

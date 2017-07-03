@@ -157,9 +157,11 @@
             $("#implementDate").datebox('setValue',row.implementDate);
         }else {
             if (number == 0) {
+            	var  implementDate= $("input[name=implementDate]").val();
+            	var successDate = $("#successDate").val();
                 var id = $("input[name='taskId']").val();
                 var implement = $("select[name='implement']").find("option:selected").text();
-                $.post('task/transmitTask.action', {'taskId': id, 'implement': implement}, function (data) {
+                $.post('task/transmitTask.action', {'taskId': id, 'implement': implement,'implementDate':implementDate,'successDate':successDate}, function (data) {
                     if (data > 0) {
                         $.messager.alert("提示", "下达成功", "info");
                         $("#taskDd").dialog({

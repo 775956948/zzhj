@@ -8,10 +8,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE html>
 <html>
 <head>
-
+	
     <base href="<%=basePath%>">
 
     <title>中兆恒基Oa登陆</title>
+    <link rel="shortcut icon" type="image/x-icon" href="image/oa.ico" media="screen" /> 
 	<link rel="stylesheet" href="css/basic.css" />
 	<link rel="stylesheet" href="css/login.css" />
 	<script type="text/javascript" src="easyui/jquery.min.js"></script>

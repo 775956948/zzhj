@@ -62,8 +62,8 @@ public class TaskService {
 	 * @author 小白
 	 * @date 2017年6月12日
 	 */
-	public int transmitTask(int taskId,String userName){
-		int result=tm.transmitTask(taskId, userName);
+	public int transmitTask(int taskId,String userName,String successDate,String implementDate){
+		int result=tm.transmitTask(taskId, userName,successDate,implementDate);
 		String recipient=tm.queryRecipient(taskId);
 		if(result>0){
 			Message mes = new Message();
