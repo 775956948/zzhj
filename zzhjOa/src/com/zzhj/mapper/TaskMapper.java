@@ -96,7 +96,7 @@ public interface TaskMapper {
 	 * @author 小白
 	 * @date 2017年6月12日
 	 */
-	List<Task> queryOwn(@Param("startpage")int startPage,@Param("rows")int rows,@Param("userName")String userName);
+	List<Task> queryOwn(@Param("startPage")int startPage,@Param("rows")int rows,@Param("userName")String userName);
 	/**
 	 * 
 	 * @Description: 返回任务条数
