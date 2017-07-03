@@ -11,6 +11,7 @@
     <div class="buttonBar" id="buttonBar">
         <a class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="changeTask()">修改</a>
         <a class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="deleteTask()">删除</a>
+        <a class="easyui-linkbutton" iconCls="icon-gr" plain="true" onclick="viewTaskX()">查看任务</a>
     </div>
     <div id="changeTask" class="easyui-dialog" title="修改任务" closed=true>
         <ul>
@@ -55,7 +56,93 @@
         </ul>
     </div>
     <!--表格-->
-   
+</div>
+<div id="viewTask" class="easyui-dialog" title="查看任务" closed=true>
+    <ul>
+        <li style="height: 40px">
+            <div class="splitLi">
+                <span>任 务 主 题：</span>
+                <input type="text" name="CtaskTheme" readonly="readonly" >
+            </div>
+            <div class="splitLi">
+                <span>发 &nbsp 布 &nbsp 人：</span>
+                <input type="text" name="CuserName" readonly>
+            </div>
+        </li>
+        <li style="height: 40px">
+            <div class="splitLi">
+                <span>发 布 日 期：</span>
+                <input type="text" name="CtaskDate" readonly>
+            </div>
+            <div class="splitLi">
+                <span>项 目 地 址：</span>
+                <input type="text" name="CtaskAddress" readonly>
+            </div>
+        </li>
+        <li style="height: 40px">
+            <div class="splitLi">
+                <span>委 托 单 位 ：</span>
+                <input type="text" name="CentrustedUnit" readonly>
+            </div>
+            <div class="splitLi">
+            </div>
+        </li>
+        <li style="height: 40px">
+            <div class="splitLi">
+                <span>委 &nbsp 托 &nbsp 人：</span>
+                <input type="text" name="Cclient" readonly>
+            </div>
+            <div class="splitLi">
+                <span>委托人电话 ：</span>
+                <input type="text" name="CclientPhone" readonly>
+            </div>
+        </li>
+        <li style="height: 40px">
+            <div class="splitLi">
+                <span>任务接收人：</span>
+                <input type="text" name="Crecipient" readonly>
+            </div>
+            <div class="splitLi">
+                <span>任务执行人：</span>
+                <input type="text" name="Cimplement" readonly>
+            </div>
+        </li>
+        <li style="height: 40px">
+            <div class="splitLi">
+                <span>任务开始时间：</span>
+                <input type="text" name="CimplementDate" readonly>
+            </div>
+            <div class="splitLi">
+                <span>任务完成时间：</span>
+                <input type="text" name="CsuccessDate" readonly>
+            </div>
+        </li>
+        <li>
+            <span style="float: left">任 务 进 度：</span>
+            <div id="CspeedTask" class="easyui-progressbar" style="width:71%; height:38px"></div>
+        </li>
+        <li>
+            <div class="splitLi">
+                <span>任 务 状 态：</span>
+                <input type="text" name="Cstate" readonly >
+            </div>
+        </li>
+        <li style="height: 40px">
+            <div class="splitLi">
+                <span>任 务 阶 段：</span>
+                <input type="text" name="CtaskPhase" readonly>
+            </div>
+            <div class="splitLi">
+                <span>质 量 检 测：</span>
+                <input type="text" name="Cinspection" readonly>
+            </div>
+        </li>
+        <li>
+            <span style="position: absolute;top: 29%;">任 务 内 容：</span>
+            <textarea name="CtaskText" rows="7" cols="30" style="width: 70%;margin-left: 95px" readonly></textarea>
+        </li>
+
+    </ul>
 </div>
  <table id="allTeskDg"></table>
 
@@ -64,6 +151,40 @@
         required:true,
         editable:false
     });
+    function viewTaskX() {
+        var viewTask = $('#allTeskDg').datagrid('getSelected');
+        if (viewTask) {
+            $('#viewTask').dialog({
+                width: 800,
+                height:550,
+                top:70,
+                closed: false, //更改 显示隐藏
+                cache: false,//是否缓存
+                onOpen: function () {
+                    $("input[name = CuserName]").val(viewTask.userName);
+                    $("input[name = Crecipient]").val(viewTask.recipient);
+                    $("input[name = Cimplement]").val(viewTask.implement);
+                    $("input[name = CtaskAddress]").val(viewTask.taskAddress);
+                    $("input[name = CentrustedUnit]").val(viewTask.entrustedUnit);
+                    $("input[name = Cclient]").val(viewTask.client);
+                    $("input[name = CclientPhone]").val(viewTask.clientPhone);
+                    $("input[name = CtaskPhase]").val(viewTask.taskPhase);
+                    $("input[name = Cinspection]").val(viewTask.inspection);
+                    $("input[name = CimplementDate]").val(viewTask.implementDate);
+                    $("input[name = CsuccessDate]").val(viewTask.successDate);
+                    $("input[name = CtaskDate]").val(viewTask.taskDate);
+                    $("input[name = CtaskTheme]").val(viewTask.taskTheme);
+                    $("input[name = Cstate]").val(viewTask.state);
+                    $("textarea[name = CtaskText]").val(viewTask.taskText);
+                    $('#CspeedTask').progressbar({
+                        value: viewTask.speed
+                    });
+                }
+            });
+        } else {
+            $.messager.alert("提示", "请选择一条数据", "info");
+        }
+    }
     //初始化弹窗 修改任务
     function changeTask() {
     	var checkTask = $('#allTeskDg').datagrid('getSelected');
@@ -71,7 +192,8 @@
 	        $('#changeTask').dialog({
 	            closed: false, //更改 显示隐藏
 	            cache: false,//是否缓存
-                height:600,
+                height:550,
+                top:70,
 	            onOpen:function(){
 	            	 $("input[name = userid]").val(checkTask.id);
 	                 $("input[name = taskTheme]").val(checkTask.taskTheme);
@@ -95,22 +217,21 @@
         method: 'POST',
         pagination: true,
         singleSelect:true,  //仅可以选中一行
-
         toolbar: "#buttonBar",  //使上方控制器和表格融为一体
         columns: [[
             {field: 'id', title: '编号', checkbox: true},
-            {field: 'taskTheme', title: '任务主题'},
-            {field: 'taskText', title: '任务内容'},
-            {field: 'userName', title: '发布人'},
-            {field: 'taskAddress; ', title: '项目地址'},
-            {field: 'entrustedUnit; ', title: '委托单位'},
-            {field: 'client ', title: '委托人'},
-            {field: 'clientPhone; ', title: '委托人联系电话'},
-            {field: 'taskDate', title: '任务发布日期'},
-            {field: 'recipient', title: '接收人'},
-            {field: 'implement', title: '执行人'},
-            {field: 'implementDate', title: '任务开始时间'},
-            {field: 'successDate', title: '任务完成时间'},
+            {field: 'taskTheme',title: '任务主题'},
+            {field: 'taskText',title: '任务内容',width:200},
+            {field: 'userName',title: '发布人'},
+            {field: 'taskAddress',title: '项目地址',hidden:true},
+            {field: 'entrustedUnit',title: '委托单位',hidden:true},
+            {field: 'client',title: '委托人',hidden:true},
+            {field: 'clientPhone',title: '委托人联系电话',hidden:true},
+            {field: 'taskDate',title: '任务发布日期',width:100},
+            {field: 'recipient',title: '接收人',width:100},
+            {field: 'implement', title: '执行人',width:100},
+            {field: 'implementDate', title: '任务开始时间',width:100},
+            {field: 'successDate', title: '任务完成时间',width:100},
             {field: 'speed', title: '任务进度', formatter:function (value) {
                 var htmlstr = '<div class="easyui-progressbar progressbar" style="width: 300px; height: 20px;" value="' + value + '" text="' + value + '%">' +
                         '<div class="progressbar-text" style="width: 300px; height: 20px; line-height: 20px;">' + value + '%</div>' +
@@ -119,7 +240,7 @@
                         '</div>' +
                         '</div>';
                 return htmlstr;
-            }, width: 300
+            }, width: 330
             },
             {field: 'taskPhase', title: '任务阶段'},
             {field: 'inspection', title: '质检检测'},
