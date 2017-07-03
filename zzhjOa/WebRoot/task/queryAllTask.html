@@ -11,7 +11,7 @@
     <div class="buttonBar" id="buttonBar">
         <a class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="changeTask()">修改</a>
         <a class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="deleteTask()">删除</a>
-        <a class="easyui-linkbutton" iconCls="icon-gr" plain="true" onclick="viewTaskX()">查看任务</a>
+        <a class="easyui-linkbutton" iconCls="icon-gr" plain="true" onclick="viewTaskXall()">查看任务</a>
     </div>
     <div id="changeTask" class="easyui-dialog" title="修改任务" closed=true>
         <ul>
@@ -56,7 +56,9 @@
         </ul>
     </div>
     <!--表格-->
-    <div id="viewTask" class="easyui-dialog" title="查看任务" closed=true>
+</div>
+<div id="viewTaskAll" class="easyui-dialog" title="查看任务" closed=true>
+
     <ul>
         <li style="height: 40px">
             <div class="splitLi">
@@ -152,7 +154,7 @@
         required:true,
         editable:false
     });
-    function viewTaskX() {
+    function viewTaskXall() {
         var viewTask = $('#allTeskDg').datagrid('getSelected');
         if (viewTask) {
             $('#viewTask').dialog({
