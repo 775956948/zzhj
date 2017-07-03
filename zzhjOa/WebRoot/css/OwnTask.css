@@ -1,4 +1,4 @@
-#viewTask ul,#seeMessage ul,#transmitForm ul,#addRest ul{
+#viewTask ul,#seeMessage ul,#transmitForm ul,#addRest ul,#viewTaskAll ul,#viewTaskOWN ul{
     width: 700px;
     margin: 0 auto;
     height: auto;
@@ -11,7 +11,7 @@
     overflow: hidden;
     padding: 0;
 }
-#viewTask li,#changeSpeed li,#seeMessage li,#transmitForm li,#addRest li{
+#viewTask li,#changeSpeed li,#seeMessage li,#transmitForm li,#addRest li,#viewTaskAll li,#viewTaskOWN li{
     width: 100%;
     min-height: 40px;
     font-size: 16px;
@@ -27,12 +27,12 @@
     height: 35px;
     text-align: center
 }
-#viewTask .splitLi ,#seeMessage .splitLi ,#transmitForm .splitLi{
+#viewTask .splitLi ,#seeMessage .splitLi ,#transmitForm .splitLi,#viewTaskAll .splitLi,#viewTaskOWN .splitLi{
     width: 50%;
     float: left;
     overflow: hidden;
 }
-#viewTask  span,#changeSpeed span ,#seeMessage span,#transmitForm span,#addRest span{
+#viewTask  span,#changeSpeed span ,#seeMessage span,#transmitForm span,#addRest span,#viewTaskAll span,#viewTaskOWN span{
     float: left;
     box-sizing: border-box;
 }
@@ -61,18 +61,18 @@
 #addRest input{
     width: 350px;
 }
-#viewTask .splitLi input ,#seeMessage .splitLi input,#transmitForm .splitLi input{
+#viewTask .splitLi input ,#seeMessage .splitLi input,#transmitForm .splitLi input,#viewTaskAll .splitLi input,#viewTaskOWN .splitLi input{
     text-align: center;
     font-size: 16px;
     font-family: 宋体;
     font-weight: 700;
 }
-#viewTask ,#speedTask {
+#viewTask ,#speedTask ,#viewTaskAll,#viewTaskOWN{
     display: inline-block;
     margin-top: 3px;
     float: left;
 }
-#viewTask li .button-task,#changeSpeed li .button-task ,#seeMessage li .button-task,#transmitForm li .button-task,#addRest li .button-task{
+#viewTask li .button-task,#changeSpeed li .button-task ,#seeMessage li .button-task,#transmitForm li .button-task,#addRest li .button-task,#viewTaskAll li .button-task ,#viewTaskOWN li .button-task{
     float: none;
     display: block;
     height: 40px;

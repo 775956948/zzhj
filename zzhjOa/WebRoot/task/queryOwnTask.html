@@ -10,7 +10,7 @@
 </div>
 <div id="taskTb">
     <a class="easyui-linkbutton" iconCls="icon-xd" plain="true" onclick="transmitTaskOpen()">下达任务</a>
-    <a class="easyui-linkbutton" iconCls="icon-gr" plain="true" onclick="viewTaskX()">查看任务</a>
+    <a class="easyui-linkbutton" iconCls="icon-gr" plain="true" onclick="viewTaskXOWN()">查看任务</a>
 </div>
 <div id="taskDd" class="easyui-dialog" closed=true>
     <form id="transmitForm">
@@ -57,7 +57,7 @@
         </ul>
     </form>
 </div>
-<div id="viewTask" class="easyui-dialog" title="查看任务" closed=true>
+<div id="viewTaskOWN" class="easyui-dialog" title="查看任务" closed=true>
     <ul>
         <li style="height: 40px">
             <div class="splitLi">
@@ -146,7 +146,7 @@
 <table id="teskDg"></table>
 
 <script type="text/javascript">
-    function viewTaskX() {
+    function viewTaskXOWN() {
         var viewTask = $('#teskDg').datagrid('getSelected');
         if (viewTask) {
             $('#viewTask').dialog({
