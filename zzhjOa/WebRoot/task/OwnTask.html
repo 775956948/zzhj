@@ -265,7 +265,7 @@
             url: "task/updateTaskSpeed.action",
             method: "POST",
             data: {
-            	taskId: $("input[name = userid]").val(),
+            	taskId: row.id,
                 speed: $("input[name = changeSpeed]").val()
             },
             success: function (data) {
