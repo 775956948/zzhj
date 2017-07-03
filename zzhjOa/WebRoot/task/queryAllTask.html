@@ -17,18 +17,37 @@
             <li>
                 <input type="hidden" name="userid">
             </li>
-            <li style="height=40px">
+            <li style="height:40px">
                 <span>任务主题：</span>
                 <input type="text" name="taskTheme">
             </li>
-
             <li>
-                <span>任务天数：</span>
-                <input type="number" name="taskDay">
+                <span>项目地址:</span>
+                <input type="text" name="taskAddress" >
+            </li>
+            <li>
+                <span>委托单位:</span>
+                <input type="text" name="entrustedUnit" >
+            </li>
+            <li>
+                <span>联 系 人:</span>
+                <input type="text" name="client" >
+            </li>
+            <li>
+                <span>联系人电话:</span>
+                <input type="text" name="clientPhone" onblur="if(!(/^1(3|4|5|7|8)\d{9}$/.test($(this).val()))){$(this).val('')}">
+            </li>
+            <li>
+                <span>任务结束时间:</span>
+                <input type="text" name="successDate" id="JsDate2">
             </li>
             <li>
                 <span>任务内容：</span>
-                <textarea type="text" name="taskText" rows="7" cols="30"></textarea>
+                <textarea  name="taskText" rows="7" cols="30"></textarea>
+            </li>
+            <li>
+                <span>任务接收人:</span>
+                <input name="taskReceive" readonly="readonly">
             </li>
             <li>
                 <input type="button" class="button-task"  onclick="submitTask()" value="确 认 修 改">
@@ -41,7 +60,10 @@
  <table id="allTeskDg"></table>
 
 <script type="text/javascript">
-
+    $('#JsDate2').datebox({
+        required:true,
+        editable:false
+    });
     //初始化弹窗 修改任务
     function changeTask() {
     	var checkTask = $('#allTeskDg').datagrid('getSelected');
@@ -49,11 +71,17 @@
 	        $('#changeTask').dialog({
 	            closed: false, //更改 显示隐藏
 	            cache: false,//是否缓存
+                height:600,
 	            onOpen:function(){
 	            	 $("input[name = userid]").val(checkTask.id);
 	                 $("input[name = taskTheme]").val(checkTask.taskTheme);
-	                 $("input[name = taskDay]").val(checkTask.taskDay);
 	                 $("textarea[name = taskText]").val(checkTask.taskText);
+                    $("input[name = taskAddress]").val(checkTask.taskAddress);
+                    $("input[name = entrustedUnit]").val(checkTask.entrustedUnit);
+                    $("input[name = client]").val(checkTask.client);
+                    $("input[name = clientPhone]").val(checkTask.clientPhone);
+                    $("input[name = taskReceive]").val(checkTask.recipient);
+                    $("#JsDate2").datebox('setValue',checkTask.successDate)
 	            }
 	        });
 	        } else {
@@ -74,7 +102,10 @@
             {field: 'taskTheme', title: '任务主题'},
             {field: 'taskText', title: '任务内容'},
             {field: 'userName', title: '发布人'},
-            {field: 'taskDay', title: '任务天数'},
+            {field: 'taskAddress; ', title: '项目地址'},
+            {field: 'entrustedUnit; ', title: '委托单位'},
+            {field: 'client ', title: '委托人'},
+            {field: 'clientPhone; ', title: '委托人联系电话'},
             {field: 'taskDate', title: '任务发布日期', width: 100},
             {field: 'recipient', title: '接收人'},
             {field: 'implement', title: '执行人'},
@@ -90,6 +121,8 @@
                 return htmlstr;
             }, width: 300
             },
+            {field: 'taskPhase', title: '任务阶段'},
+            {field: 'inspection', title: '质检检测'},
             {field: 'state', title: '任务状态'}
         ]]
     });
@@ -97,7 +130,13 @@
     //提交
     function submitTask() {
         var number = 0;
-        if($("input[name=taskTheme]").val()==""||$("input[name=taskDay]").val()==""||$("textarea[name=taskText]").val()==""){
+        if($("input[name=taskTheme]").val()==""||
+                $("input[name=taskAddress]").val()==""||
+                $("input[name=entrustedUnit]").val()==""||
+                $("input[name=client]").val()==""||
+                $("input[name=clientPhone]").val()==""||
+                $("input[name=successDate]").val()==""||
+                $("textarea[name=taskText]").val()==""){
             number=number+1;
         }
         if (number == 0) {
@@ -107,8 +146,12 @@
                 data: {
                     id: $("input[name = userid]").val(),
                     taskTheme: $("input[name = taskTheme]").val(),
-                    taskDay: $("input[name = taskDay]").val(),
-                    taskText: $("textarea[name = taskText]").val()
+                    taskText: $("textarea[name = taskText]").val(),
+                    taskAddress: $("input[name =taskAddress ]").val(),
+                    entrustedUnit: $("input[name =entrustedUnit ]").val(),
+                    client: $("input[name =client ]").val(),
+                    clientPhone: $("input[name =clientPhone ]").val(),
+                    successDate: $("input[name =successDate ]").val()
                 },
                 success: function (data) {
                     if(data>0){
