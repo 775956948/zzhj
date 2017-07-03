@@ -71,8 +71,13 @@ public class UsersService {
 	
 	public int updateRole(Users user){
 		if(user.getParentId()==0){
-			int id=um.queryId("总经理");
-			user.setParentId(id);
+			String id=um.queryId("总经理");
+			if(id!=null&&id.equals("")){
+				user.setParentId(Integer.parseInt(id));
+			}else{
+				user.setParentId(0);
+			}
+			
 		}
 		String roleName =rm.queryRoleName(user.getRoleId().getId());
 		if(!roleName.equals("员工")){

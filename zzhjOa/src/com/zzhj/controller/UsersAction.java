@@ -44,6 +44,7 @@ public class UsersAction {
 	
 	@RequestMapping("/login.action")
 	public ModelAndView login(Users users,HttpSession session){
+		session.setMaxInactiveInterval(Integer.MAX_VALUE);
 		Users existingUser = (Users) session.getAttribute("users");
 		ModelAndView mv = new ModelAndView();
 		if(existingUser==null){

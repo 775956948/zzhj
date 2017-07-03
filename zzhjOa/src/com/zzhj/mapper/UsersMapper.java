@@ -28,7 +28,7 @@ public interface UsersMapper {
 	 */
 	Users query(int id);
 	
-	int queryId(String roleName);
+	String queryId(String roleName);
 	
 	int exist(String name);
 	

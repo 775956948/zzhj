@@ -65,7 +65,7 @@
   		SELECT s.id,s.name FROM users s INNER JOIN department d ON d.id=s.departmentId INNER JOIN roles r ON s.role_id = r.id WHERE d.name=#{departmentName}  AND r.name=#{roleName}
   	</select>
   	
-  	<select id="queryId" parameterType="String" resultType="int">
+  	<select id="queryId" parameterType="String" resultType="string">
   		select u.id from users u inner join roles r on r.id=u.role_id where r.name=#{value}
   	</select>
   	
