@@ -1,16 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "http://mybatis.org/dtd/mybatis-3-mapper.dtd" "mybatis-3-mapper.dtd" >
 <mapper namespace="com.zzhj.mapper.TaskMapper">
-
+	<resultMap type="task" id="tk">
+		<id property="id" column="id"/>
+		<result property="userName" column="user_name"/>
+		<result property="taskTheme" column="task_theme"/>
+		<result property="taskText" column="task_text"/>
+		<result property="taskAddress" column="task_address"/>
+		<result property="entrustedUnit" column="entrusted_unit"/>
+		<result property="client" column="client"/>
+		<result property="clientPhone" column="client_phone"/>
+		<result property="taskDate" column="task_date"/>
+		<result property="recipient" column="recipient"/>
+		<result property="implement" column="implement"/>
+		<result property="implementDate" column="implement_date"/>
+		<result property="speed" column="Speed"/>
+		<result property="taskPhase" column="task_phase"/>
+		<result property="inspection" column="inspection"/>
+		<result property="successDate" column="success_date"/>
+		<result property="state" column="state"/>
+	</resultMap>
   <insert id="addTask" parameterType="task" useGeneratedKeys="true" keyProperty="id">
-  	INSERT INTO tasks(task_theme,task_text,user_name,task_day,task_date,recipient,state)
-  	values(#{taskTheme},#{taskText},#{userName},#{taskDay},#{taskDate},#{recipient},"已发布")
+  	INSERT INTO tasks(task_theme,task_text,user_name,task_date,recipient,state,success_date)
+  	values(#{taskTheme},#{taskText},#{userName},#{taskDate},#{recipient},"已发布",#{successDate})
   </insert>
   <update id="transmitTask" parameterType="object">
   	update tasks set implement=#{userName},state="已下达" where id=#{taskId}
   </update>
   <update id="acceptTask" parameterType="object">
-  	update tasks set implement_date=#{startDate},state="以执行" where id=#{taskId}
+  	update tasks set implement_date=#{startDate},state="已接收" where id=#{taskId}
   </update>
   <update id="successTask" parameterType="object">
   	update tasks set success_date=#{successDate},state="已完成" where id=#{taskId}
@@ -19,15 +37,15 @@
   	update tasks set speed=#{speed} where id=#{taskId}
   </update>
   
-  <select id="queryAll" parameterType="int" resultType="task">
-  	select t.id,t.task_theme as taskTheme,t.task_text as taskText,t.user_name as userName,t.task_day as taskDay,t.task_date as taskDate,
-  	t.implement_date as implementDate,t.success_date as successDate,t.recipient,t.implement,t.speed,t.state
+  <select id="queryAll" parameterType="int" resultMap="tk">
+  	select t.id,t.task_theme,t.task_text ,t.user_name,t.task_day,t.task_date,
+  	t.implement_date,t.success_date,t.recipient,t.implement,t.speed,t.state
   	from tasks t limit #{startPage},#{rows}
   </select>
-  <select id="queryOwn" parameterType="object" resultType="task">
-  	select t.id,t.task_theme as taskTheme,t.task_text as taskText,t.user_name as userName,t.task_day as taskDay,t.task_date as taskDate,
-  	t.implement_date as implementDate,t.success_date as successDate,t.recipient,t.implement,t.speed,t.state
-  	 from tasks t where t.implement=#{userName} or t.recipient=#{userName} LIMIT #{startpage},#{rows}
+  <select id="queryOwn" parameterType="object" resultMap="tk">
+  	select t.id,t.task_theme ,t.task_text,t.user_name,t.task_day,t.task_date,
+  	t.implement_date,t.success_date,t.recipient,t.implement,t.speed,t.state
+  	 from tasks t where t.implement=#{userName} or t.recipient=#{userName} LIMIT #{startPage},#{rows}
   </select>
   <select id="totalCount" resultType="int">
   	select count(id) from tasks
