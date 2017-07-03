@@ -164,22 +164,21 @@
         method: 'POST',
         pagination: true,
         singleSelect: true,  //仅可以选中一行
-        fitColumns: true, //自动展开 铺满横向
         toolbar: "#buttonBarOwn",  //使上方控制器和表格融为一体
         columns: [[
-            {field: 'id', title: '编号', checkbox: true, width: 200},
-            {field: 'taskTheme', title: '任务主题'},
-            {field: 'taskText', title: '任务内容'},
-            {field: 'userName', title: '发布人'},
-            {field: 'taskAddress; ', title: '项目地址'},
-            {field: 'entrustedUnit; ', title: '委托单位'},
-            {field: 'client ', title: '委托人'},
-            {field: 'clientPhone; ', title: '委托人联系电话'},
-            {field: 'taskDate', title: '任务发布日期'},
-            {field: 'recipient', title: '接收人'},
-            {field: 'implement', title: '执行人'},
-            {field: 'implementDate', title: '任务开始时间'},
-            {field: 'successDate', title: '任务完成时间', width: 100},
+            {field: 'id', title: '编号', checkbox: true},
+            {field: 'taskTheme',title: '任务主题'},
+            {field: 'taskText',title: '任务内容',width:200},
+            {field: 'userName',title: '发布人'},
+            {field: 'taskAddress',title: '项目地址',hidden:true},
+            {field: 'entrustedUnit',title: '委托单位',hidden:true},
+            {field: 'client',title: '委托人',hidden:true},
+            {field: 'clientPhone',title: '委托人联系电话',hidden:true},
+            {field: 'taskDate',title: '任务发布日期',width:100},
+            {field: 'recipient',title: '接收人',width:100},
+            {field: 'implement', title: '执行人',width:100}, 
+            {field: 'implementDate', title: '任务开始时间',width:100},
+            {field: 'successDate', title: '任务完成时间',width:100},
             {
                 field: 'speed', title: '任务进度', formatter: function (value) {
                 var htmlstr = '<div class="easyui-progressbar progressbar" style="width: 300px; height: 20px;" value="' + value + '" text="' + value + '%">' +
@@ -190,11 +189,11 @@
                         '</div>';
                 return htmlstr;
 
-            }, width: 300
+            	}, width:330
             },
-            {field: 'taskPhase', title: '任务阶段'},
-            {field: 'inspection', title: '质检检测'},
-            {field: 'state', title: '任务状态'}
+            {field: 'taskPhase', title: '任务阶段',width:100},
+            {field: 'inspection', title: '质检检测',width:100},
+            {field: 'state', title: '任务状态',width:100}
         ]]
     });
 
