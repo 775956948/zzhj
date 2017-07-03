@@ -56,8 +56,7 @@
         </ul>
     </div>
     <!--表格-->
-</div>
-<div id="viewTask" class="easyui-dialog" title="查看任务" closed=true>
+    <div id="viewTask" class="easyui-dialog" title="查看任务" closed=true>
     <ul>
         <li style="height: 40px">
             <div class="splitLi">
@@ -144,6 +143,8 @@
 
     </ul>
 </div>
+</div>
+
  <table id="allTeskDg"></table>
 
 <script type="text/javascript">
@@ -215,7 +216,7 @@
     $('#allTeskDg').datagrid({
         url: 'task/queryAll.action',
         method: 'POST',
-        pagination: true,
+        pagination: true, 
         singleSelect:true,  //仅可以选中一行
         toolbar: "#buttonBar",  //使上方控制器和表格融为一体
         columns: [[
