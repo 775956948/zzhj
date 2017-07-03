@@ -42,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<select name="restTypeId"></select>
 					<li >
 						<span>请假天数</span>
-						<input type="number" name="restDate" min="0" onchange="if(!/^\d+(\.5)?$/.test(this.value)){$.messager.alert('请输入请假天数','只能输入0.5的倍数！','info');this.value='';}" />
+						<input type="text" name="restDate" min="0" onchange="if(!/^\d+(\.5)?$/.test(this.value)){$.messager.alert('请输入请假天数','只能输入0.5的倍数！','info');this.value='';}" />
 					</li>
 					<li>
 						<span>请假起始时间</span>

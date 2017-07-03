@@ -283,6 +283,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<ul id="listMes"></ul>
 			</div> 
     	</div>   
-		</div>  
+		</div>
 	</body>  
 </html>
