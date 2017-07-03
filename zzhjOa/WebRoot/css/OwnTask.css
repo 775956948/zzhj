@@ -34,8 +34,10 @@
 }
 #viewTask  span,#changeSpeed span ,#seeMessage span,#transmitForm span,#addRest span{
     float: left;
-    border: none;
     box-sizing: border-box;
+}
+#transmitForm span{
+    border-radius: 0;
 }
 #addRest li span{
     width: 210px;

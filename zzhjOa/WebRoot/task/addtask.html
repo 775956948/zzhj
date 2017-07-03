@@ -11,14 +11,23 @@
     <div class="inputDivZT">
         <div class="inputDiv">
             <span>任务主题:</span>
-            <input type="text" name="taskTheme" title="任务主题">
+            <input type="text" name="taskTheme"  id="taskTheme1" title="任务主题">
             <span>任务内容:</span>
-            <textarea rows="8" cols="30"  name="taskContent" id="taskContent" ></textarea>
-            <span>任务天数:</span>
-            <input type="number" name="taskDays">
+            <textarea rows="8" cols="30"  name="taskText" id="taskContent" ></textarea>
+            <span>项目地址:</span>
+            <input type="text" name="taskAddress" id="taskAddress1">
+            <span>委托单位:</span>
+            <input type="text" name="entrustedUnit" id="taskCompany1">
+            <span>联 系 人:</span>
+            <input type="text" name="client" id="taskContacts1">
+            <span>联系人电话:</span>
+            <input type="text" name="clientPhone"  id="AddressNumber1" min="0" onblur="if(isNaN($(this).val())){$(this).val('')}">
+            <span>任务结束时间:</span>
+            <input type="text" name="successDate"  id="JsDate">
             <span>任务接收人:</span>
-            <select name="taskReceive" style="margin: 0 auto;display: block"></select>
+            <select name="taskReceive" style="margin: 0 auto;display: block" id="taskReceive1"></select>
             <button id="submitTask">确  认  发  布</button>
+            <button id="printTask" onclick="PrintTask()">打  印  任  务</button>
         </div>
     </div>
    
@@ -44,9 +53,13 @@
         submitTask.click(function(){
             var taskTheme=$("input[name='taskTheme']").val();
             var taskContent=$("#taskContent").val();
-            var taskDays=$("input[name='taskDays']").val();
             var taskReceive=$("select[name='taskReceive']").find("option:selected").text();
-            if(taskDays!=""&&taskContent!=""&&taskTheme!=""){
+            var taskAddress=$("input[name='taskAddress']").val();
+            var entrustedUnit=$("input[name='entrustedUnit']").val();
+            var client=$("input[name='client']").val();
+            var clientPhone=$("input[name='clientPhone']").val();
+            var successDate=$("input[name='successDate']").val();
+            if(taskContent!=""&&taskTheme!=""&&taskAddress!=""&&taskReceive!=""&&entrustedUnit!=""&&client!=""&&clientPhone!=""&&successDate!=""){
                 $.ajax({
                     url:'task/addTask.action',
                     type:'POST',
@@ -54,14 +67,18 @@
                     data:{
                         taskTheme:taskTheme,
                         taskText:taskContent,
-                        taskDay:taskDays,
-                        recipient:taskReceive
+                        recipient:taskReceive,
+                        taskAddress:taskAddress,
+                        entrustedUnit:entrustedUnit,
+                        client:client,
+                        clientPhone:clientPhone,
+                        successDate:successDate
                     },
                     success:function(data){
                     	if(data>0){
                     		 $.messager.alert("提示","发布成功","info")
                     	}
-                    	$(".inputDiv input,textarea").val("");
+                        $(".inputDiv input,.inputDiv textarea").val("");
                        
                     },
                     error:function(){

@@ -17,7 +17,7 @@
             <li>
                 <input type="hidden" name="taskId">
             </li>
-            <li style="height: 40px">
+            <li style="">
                 <div class="splitLi">
                     <span>任 务 主 题：</span>
                     <input type="text" name="taskTheme" readonly="readonly">
@@ -32,16 +32,22 @@
                     <input type="text" name="userName" readonly>
                 </div>
             </li>
-            <li style="height: 40px">
+            <li style="">
                 <div class="splitLi">
-                    <span>任 务 天 数：</span>
-                    <input type="text" name="taskDay" readonly>
+                    <span>任务开始时间：</span>
+                    <input type="text" name="implementDate" class="easyui-datebox" id="implementDate" >
+                </div>
+            </li>
+            <li style="">
+                <div class="splitLi">
+                    <span>任务结束时间：</span>
+                    <input type="text" name="successDate" class="easyui-datebox" id="successDate">
                 </div>
             </li>
             <li style="height: 40px">
                 <div class="splitLi">
                     <span>任务执行人：</span>
-                    <select name="implement"></select>
+                    <select name="implement" style="font-size: 18px"></select>
                 </div>
             </li>
             <li style="margin: 20px auto">
@@ -53,6 +59,15 @@
 <table id="teskDg"></table>
 
 <script type="text/javascript">
+    $('#successDate').datebox({
+        required:true,
+        editable:false
+    });
+    $('#implementDate').datebox({
+        required:true,
+        editable:false
+    });
+
     $('#teskDg').datagrid({
         url: 'task/queryOwn.action',
         fitColumns: true,
@@ -60,16 +75,19 @@
         pagination: true,
         singleSelect: true,
         columns: [[
-            {field: 'id', title: '编号', checkbox: true, width: 200},
-            {field: 'taskTheme', title: '任务主题', width: 200},
+            {field: 'id', title: '编号', checkbox: true},
+            {field: 'taskTheme', title: '任务主题'},
             {field: 'taskText', title: '任务内容'},
             {field: 'userName', title: '发布人'},
-            {field: 'taskDay', title: '任务天数'},
-            {field: 'taskDate', title: '任务发布日期', width: 100},
+            {field: 'taskAddress; ', title: '项目地址'},
+            {field: 'entrustedUnit; ', title: '委托单位'},
+            {field: 'client', title: '委托人'},
+            {field: 'clientPhone; ', title: '委托人电话'},
+            {field: 'taskDate', title: '任务发布日期'},
             {field: 'recipient', title: '接收人'},
             {field: 'implement', title: '执行人'},
-            {field: 'implementDate', title: '任务开始时间', width: 100},
-            {field: 'successDate', title: '任务完成时间', width: 100},
+            {field: 'implementDate', title: '任务开始时间'},
+            {field: 'successDate', title: '任务完成时间'},
             {
                 field: 'speed', title: '任务进度', formatter: function (value) {
                 var htmlstr = '<div class="easyui-progressbar progressbar" style="width: 300px; height: 20px;" value="' + value + '" text="' + value + '%">' +
@@ -81,6 +99,8 @@
                 return htmlstr;
             }, width: 400
             },
+            {field: 'taskPhase', title: '任务阶段'},
+            {field: 'inspection', title: '质检检测'},
             {field: 'state', title: '任务状态'}
         ]]
     });
@@ -100,11 +120,12 @@
 	                            $("#transmitForm select[name='implement']").append("<option>" + data[i] + "</option>")
 	                        }
 	                    })
-	                    $("input[name='taskId']").val(row.id);
-	                    $("input[name='taskTheme']").val(row.taskTheme);
-	                    $("input[name='userName']").val(row.userName);
-	                    $("input[name='taskDay']").val(row.taskDay);
-	                    $("textarea[name='taskText']").val(row.taskText);
+                        $("input[name='taskId']").val(row.id);
+                        $("input[name='taskTheme']").val(row.taskTheme);
+                        $("input[name='userName']").val(row.userName);
+                        $("#successDate").datebox('setValue',row.successDate);
+                        $("#implementDate").datebox('setValue',row.implementDate);
+                        $("textarea[name='taskText']").val(row.taskText);
 	                }
 	            })
         	}else{
@@ -118,35 +139,50 @@
     function transmitTask() {
     	
         var number = 0;
-        if($("input[name=taskTheme]").val()==""||$("input[name=taskDay]").val()==""||$("textarea[name=taskText]").val()==""||$("select[name=implement]").val()==""||$("input[name=userName]").val()==""){
+        if($("input[name=taskTheme]").val()==""||
+                $("input[name=implementDate]").val()==""||
+                $("textarea[name=taskText]").val()==""||
+                $("select[name=implement]").val()==""||
+                $("input[name=userName]").val()==""){
             number=number+1;
         }
-        if (number == 0) {
-            var id = $("input[name='taskId']").val();
-            var implement = $("select[name='implement']").find("option:selected").text();
-            $.post('task/transmitTask.action', {'taskId': id, 'implement': implement}, function (data) {
-                if (data > 0) {
-                    $.messager.alert("提示", "下达成功", "info");
-                    $("#taskDd").dialog({
-                        closed: true
-                    })
-                    $('#teskDg').datagrid('reload');
-                    //
-				   	$("#listMes li").each(function(){
-				   		 var target=$(this).attr("id");
-				   		 if(target==id){
-				   		 	 $(this).remove(); 
-				   		 	var number =$("#listMes").children('li').length;
-				   		 	if(number==0){
-				   		 	 $("#message").hide();  
-				   		 	}
-				   		 }
-				   	})
-                }
-            })
+        var row = $('#teskDg').datagrid('getSelected');
+        var YsuccesDate=row.successDate.split("-").join("");
+        var YimplementDate=row.implementDate.split("-").join("");
+        var NsuccessDate=$("#successDate").val().split("-").join("");
+        var NimplementDate=$("#implementDate").val().split("-").join("");
+        if(NsuccessDate>YsuccesDate||NimplementDate<YimplementDate){
+            $.messager.alert("提示","请在原有时间范围内修改","info");
+            $("#successDate").datebox('setValue',row.successDate);
+            $("#implementDate").datebox('setValue',row.implementDate);
+        }else {
+            if (number == 0) {
+                var id = $("input[name='taskId']").val();
+                var implement = $("select[name='implement']").find("option:selected").text();
+                $.post('task/transmitTask.action', {'taskId': id, 'implement': implement}, function (data) {
+                    if (data > 0) {
+                        $.messager.alert("提示", "下达成功", "info");
+                        $("#taskDd").dialog({
+                            closed: true
+                        })
+                        $('#teskDg').datagrid('reload');
+                        //
+                        $("#listMes li").each(function () {
+                            var target = $(this).attr("id");
+                            if (target == id) {
+                                $(this).remove();
+                                var number = $("#listMes").children('li').length;
+                                if (number == 0) {
+                                    $("#message").hide();
+                                }
+                            }
+                        })
+                    }
+                })
 
-        } else {
-            $.messager.alert("提示", "信息不完整", "info");
+            } else {
+                $.messager.alert("提示", "信息不完整", "info");
+            }
         }
     }
 
