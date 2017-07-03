@@ -148,13 +148,10 @@
         }
         var row = $('#teskDg').datagrid('getSelected');
         var YsuccesDate=row.successDate.split("-").join("");
-        var YimplementDate=row.implementDate.split("-").join("");
         var NsuccessDate=$("#successDate").val().split("-").join("");
-        var NimplementDate=$("#implementDate").val().split("-").join("");
-        if(NsuccessDate>YsuccesDate||NimplementDate<YimplementDate){
+        if(NsuccessDate>YsuccesDate){
             $.messager.alert("提示","请在原有时间范围内修改","info");
             $("#successDate").datebox('setValue',row.successDate);
-            $("#implementDate").datebox('setValue',row.implementDate);
         }else {
             if (number == 0) {
             	var  implementDate= $("input[name=implementDate]").val();

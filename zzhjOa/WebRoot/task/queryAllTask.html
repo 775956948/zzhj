@@ -95,10 +95,10 @@
         method: 'POST',
         pagination: true,
         singleSelect:true,  //仅可以选中一行
-        fitColumns: true, //自动展开 铺满横向
+
         toolbar: "#buttonBar",  //使上方控制器和表格融为一体
         columns: [[
-            {field: 'id', title: '编号', checkbox: true, width: 200},
+            {field: 'id', title: '编号', checkbox: true},
             {field: 'taskTheme', title: '任务主题'},
             {field: 'taskText', title: '任务内容'},
             {field: 'userName', title: '发布人'},
@@ -106,11 +106,11 @@
             {field: 'entrustedUnit; ', title: '委托单位'},
             {field: 'client ', title: '委托人'},
             {field: 'clientPhone; ', title: '委托人联系电话'},
-            {field: 'taskDate', title: '任务发布日期', width: 100},
+            {field: 'taskDate', title: '任务发布日期'},
             {field: 'recipient', title: '接收人'},
             {field: 'implement', title: '执行人'},
-            {field: 'implementDate', title: '任务开始时间', width: 100},
-            {field: 'successDate', title: '任务完成时间', width: 100},
+            {field: 'implementDate', title: '任务开始时间'},
+            {field: 'successDate', title: '任务完成时间'},
             {field: 'speed', title: '任务进度', formatter:function (value) {
                 var htmlstr = '<div class="easyui-progressbar progressbar" style="width: 300px; height: 20px;" value="' + value + '" text="' + value + '%">' +
                         '<div class="progressbar-text" style="width: 300px; height: 20px; line-height: 20px;">' + value + '%</div>' +

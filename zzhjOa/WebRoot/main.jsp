@@ -4,7 +4,7 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <%@ include file="common.jsp" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE HTML">
 <html>
   <head>
@@ -246,7 +246,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		</div>
 			<div id="user">
 				<ul style="position: relative;">
-				<p style=" position: absolute; left:-20px; top:-15px;"> <img alt="" src="image/${users.imageName}" width="50px;" style="border-radius:25px;"></p>
+				<c:if test="${users.imageName !=null}&& ${users.imageName !='' } ">
+					<p style=" position: absolute; left:-20px; top:-15px;"> <img alt="" src="image/${users.imageName}" width="50px;" style="border-radius:25px;"></p>
+				</c:if>
 					<li><h3>当前用户:${users.name }</h3></li>
 					<li><h4>${message }</h4></li>
 					<li><h4 onclick="exit()" style="cursor:pointer">退出登陆</h4></li>

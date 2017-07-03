@@ -135,7 +135,7 @@ public class TaskAction {
 	}
 	/**
 	 * 
-	 * @Description: 修改任务某个信息（天数，项目主题，项目内容）
+	 * @Description: 修改任务某个信息
 	 * @param @param t
 	 * @param @return   
 	 * @return int  
