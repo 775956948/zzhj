@@ -246,7 +246,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		</div>
 			<div id="user">
 				<ul style="position: relative;">
-				<c:if test="${users.imageName !=null}&& ${users.imageName !='' } ">
+				<c:if test="${users.imageName !=null}">
 					<p style=" position: absolute; left:-20px; top:-15px;"> <img alt="" src="image/${users.imageName}" width="50px;" style="border-radius:25px;"></p>
 				</c:if>
 					<li><h3>当前用户:${users.name }</h3></li>
