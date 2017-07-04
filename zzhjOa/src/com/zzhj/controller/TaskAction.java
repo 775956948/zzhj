@@ -96,8 +96,8 @@ public class TaskAction {
 	 */
 	@RequestMapping("/updateTaskSpeed.action")
 	@ResponseBody
-	public int updateTaskSpeed(int taskId,int speed){
-		return ts.updateTaskSpeed(taskId, speed);
+	public int updateTaskSpeed(int taskId,int speed,String taskPhase){
+		return ts.updateTaskSpeed(taskId, speed,taskPhase);
 	}
 	/**
 	 * 

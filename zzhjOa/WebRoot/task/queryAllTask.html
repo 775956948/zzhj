@@ -55,6 +55,8 @@
             </li>
         </ul>
     </div>
+</div>
+    <table id="allTeskDg"></table>
     <!--表格-->
     <div id="viewTaskAll" class="easyui-dialog" title="查看任务" closed=true>
         <ul>
@@ -146,9 +148,6 @@
             </li>
         </ul>
     </div>
-</div>
-<table id="allTeskDg"></table>
-
 <script type="text/javascript">
     $('#JsDateAll').datebox({
         required:true,
@@ -163,6 +162,7 @@
 	            closed: false, //更改 显示隐藏
 	            cache: false,//是否缓存
                 height:550,
+                width:680,
                 top:50,
 	            onOpen:function(){
 	            	 $("input[name = userid]").val(checkTask.id);
@@ -173,7 +173,7 @@
                     $("input[name = client]").val(checkTask.client);
                     $("input[name = clientPhone]").val(checkTask.clientPhone);
                     $("input[name = taskReceive]").val(checkTask.recipient);
-                    $("#JsDateAll").datebox('setValue',checkTask.successDate)
+                    $("#JsDateAll").datebox('setValue',checkTask.successDate);
 	            }
 	        });
 	        } else {
@@ -184,7 +184,6 @@
     //初始化表格  查看任务
     $('#allTeskDg').datagrid({
         url: 'task/queryAll.action',
-        method: 'POST',
         pagination: true, 
         singleSelect:true,  //仅可以选中一行
         toolbar:"#buttonBarAll",  //使上方控制器和表格融为一体

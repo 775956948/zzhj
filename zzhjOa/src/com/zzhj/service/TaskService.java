@@ -120,8 +120,8 @@ public class TaskService {
 	 * @author 小白
 	 * @date 2017年6月12日
 	 */
-	public int updateTaskSpeed(int taskId,int speed){
-		return tm.updateTaskSpeed(taskId, speed);
+	public int updateTaskSpeed(int taskId,int speed,String taskPhase){
+		return tm.updateTaskSpeed(taskId, speed,taskPhase);
 	}
 	/**
 	 * 

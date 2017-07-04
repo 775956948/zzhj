@@ -24,6 +24,7 @@ public class Task implements Serializable{
 	private int speed;			 //任务进度
 	private String taskPhase;   //任务阶段
 	private String inspection;   //质量检测
+	private String inspectionUser;//质检人
 	private String successDate;	 //任务结束时间
 	private String state;		//任务状态
 	
@@ -129,6 +130,13 @@ public class Task implements Serializable{
 	public void setState(String state) {
 		this.state = state;
 	}
+	public String getInspectionUser() {
+		return inspectionUser;
+	}
+	public void setInspectionUser(String inspectionUser) {
+		this.inspectionUser = inspectionUser;
+	}
+	
 	
 
 }

@@ -33,8 +33,8 @@
   <update id="successTask" parameterType="object">
   	update tasks set success_date=#{successDate},state="已完成" where id=#{taskId}
   </update>
-  <update id="updateTaskSpeed" parameterType="int">
-  	update tasks set speed=#{speed} where id=#{taskId}
+  <update id="updateTaskSpeed" parameterType="object">
+  	update tasks set speed=#{speed},task_phase=#{taskPhase} where id=#{taskId}
   </update>
   
   <select id="queryAll" parameterType="int" resultMap="tk">

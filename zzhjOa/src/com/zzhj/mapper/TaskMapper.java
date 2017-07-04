@@ -72,7 +72,7 @@ public interface TaskMapper {
 	 * @author 小白
 	 * @date 2017年6月12日
 	 */
-	int updateTaskSpeed(@Param("taskId")int taskId,@Param("speed")int speed);
+	int updateTaskSpeed(@Param("taskId")int taskId,@Param("speed")int speed,@Param("taskPhase")String taskPhase);
 	/**
 	 * 
 	 * @Description: 查看所有工作任务信息
