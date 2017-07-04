@@ -256,16 +256,16 @@
 
     //    提交修改任务进度
     function changeSpeed() {
-    	var row= $('#viewTeskDg').datagrid('getSelected');
+    	var row2= $('#viewTeskDg').datagrid('getSelected');
     	var speed=$("input[name='changeSpeed']").val();
 	 	if(speed>=100){
-    		$.post('task/successTask.action',{'taskId':row.id}); 
+    		$.post('task/successTask.action',{'taskId':row2.id});
     	}  
         $.ajax({
             url: "task/updateTaskSpeed.action",
             method: "POST",
             data: {
-            	taskId: row.id,
+            	taskId: row2.id,
                 speed: $("input[name = changeSpeed]").val()
             },
             success: function (data) {

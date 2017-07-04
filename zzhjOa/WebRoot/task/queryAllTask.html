@@ -40,7 +40,7 @@
             </li>
             <li>
                 <span>任务结束时间:</span>
-                <input type="text" name="successDate" id="JsDate2">
+                <input type="text" name="successDate" id="JsDateAll">
             </li>
             <li>
                 <span>任务内容：</span>
@@ -56,131 +56,127 @@
         </ul>
     </div>
     <!--表格-->
+    <div id="viewTaskAll" class="easyui-dialog" title="查看任务" closed=true>
+        <ul>
+            <li style="height: 40px">
+                <div class="splitLi">
+                    <span>任 务 主 题：</span>
+                    <input type="text" name="CtaskTheme" readonly="readonly" >
+                </div>
+                <div class="splitLi">
+                    <span>发 &nbsp 布 &nbsp 人：</span>
+                    <input type="text" name="CuserName" readonly>
+                </div>
+            </li>
+            <li style="height: 40px">
+                <div class="splitLi">
+                    <span>发 布 日 期：</span>
+                    <input type="text" name="CtaskDate" readonly>
+                </div>
+                <div class="splitLi">
+                    <span>项 目 地 址：</span>
+                    <input type="text" name="CtaskAddress" readonly>
+                </div>
+            </li>
+            <li style="height: 40px">
+                <div class="splitLi">
+                    <span>委 托 单 位 ：</span>
+                    <input type="text" name="CentrustedUnit" readonly>
+                </div>
+                <div class="splitLi">
+                </div>
+            </li>
+            <li style="height: 40px">
+                <div class="splitLi">
+                    <span>委 &nbsp 托 &nbsp 人：</span>
+                    <input type="text" name="Cclient" readonly>
+                </div>
+                <div class="splitLi">
+                    <span>委托人电话 ：</span>
+                    <input type="text" name="CclientPhone" readonly>
+                </div>
+            </li>
+            <li style="height: 40px">
+                <div class="splitLi">
+                    <span>任务接收人：</span>
+                    <input type="text" name="Crecipient" readonly>
+                </div>
+                <div class="splitLi">
+                    <span>任务执行人：</span>
+                    <input type="text" name="Cimplement" readonly>
+                </div>
+            </li>
+            <li style="height: 40px">
+                <div class="splitLi">
+                    <span>任务开始时间：</span>
+                    <input type="text" name="CimplementDate" readonly>
+                </div>
+                <div class="splitLi">
+                    <span>任务完成时间：</span>
+                    <input type="text" name="CsuccessDate" readonly>
+                </div>
+            </li>
+            <li>
+                <span style="float: left">任 务 进 度：</span>
+                <div id="CspeedTask" class="easyui-progressbar" style="width:71%; height:38px"></div>
+            </li>
+            <li>
+                <div class="splitLi">
+                    <span>任 务 状 态：</span>
+                    <input type="text" name="Cstate" readonly >
+                </div>
+            </li>
+            <li style="height: 40px">
+                <div class="splitLi">
+                    <span>任 务 阶 段：</span>
+                    <input type="text" name="CtaskPhase" readonly>
+                </div>
+                <div class="splitLi">
+                    <span>质 量 检 测：</span>
+                    <input type="text" name="Cinspection" readonly>
+                </div>
+            </li>
+            <li>
+                <span style="position: absolute;top: 29%;">任 务 内 容：</span>
+                <textarea name="CtaskText" rows="7" cols="30" style="width: 70%;margin-left: 95px" readonly></textarea>
+            </li>
+        </ul>
+    </div>
 </div>
-<div id="viewTaskAll" class="easyui-dialog" title="查看任务" closed=true>
-
-    <ul>
-        <li style="height: 40px">
-            <div class="splitLi">
-                <span>任 务 主 题：</span>
-                <input type="text" name="CtaskTheme" readonly="readonly" >
-            </div>
-            <div class="splitLi">
-                <span>发 &nbsp 布 &nbsp 人：</span>
-                <input type="text" name="CuserName" readonly>
-            </div>
-        </li>
-        <li style="height: 40px">
-            <div class="splitLi">
-                <span>发 布 日 期：</span>
-                <input type="text" name="CtaskDate" readonly>
-            </div>
-            <div class="splitLi">
-                <span>项 目 地 址：</span>
-                <input type="text" name="CtaskAddress" readonly>
-            </div>
-        </li>
-        <li style="height: 40px">
-            <div class="splitLi">
-                <span>委 托 单 位 ：</span>
-                <input type="text" name="CentrustedUnit" readonly>
-            </div>
-            <div class="splitLi">
-            </div>
-        </li>
-        <li style="height: 40px">
-            <div class="splitLi">
-                <span>委 &nbsp 托 &nbsp 人：</span>
-                <input type="text" name="Cclient" readonly>
-            </div>
-            <div class="splitLi">
-                <span>委托人电话 ：</span>
-                <input type="text" name="CclientPhone" readonly>
-            </div>
-        </li>
-        <li style="height: 40px">
-            <div class="splitLi">
-                <span>任务接收人：</span>
-                <input type="text" name="Crecipient" readonly>
-            </div>
-            <div class="splitLi">
-                <span>任务执行人：</span>
-                <input type="text" name="Cimplement" readonly>
-            </div>
-        </li>
-        <li style="height: 40px">
-            <div class="splitLi">
-                <span>任务开始时间：</span>
-                <input type="text" name="CimplementDate" readonly>
-            </div>
-            <div class="splitLi">
-                <span>任务完成时间：</span>
-                <input type="text" name="CsuccessDate" readonly>
-            </div>
-        </li>
-        <li>
-            <span style="float: left">任 务 进 度：</span>
-            <div id="CspeedTask" class="easyui-progressbar" style="width:71%; height:38px"></div>
-        </li>
-        <li>
-            <div class="splitLi">
-                <span>任 务 状 态：</span>
-                <input type="text" name="Cstate" readonly >
-            </div>
-        </li>
-        <li style="height: 40px">
-            <div class="splitLi">
-                <span>任 务 阶 段：</span>
-                <input type="text" name="CtaskPhase" readonly>
-            </div>
-            <div class="splitLi">
-                <span>质 量 检 测：</span>
-                <input type="text" name="Cinspection" readonly>
-            </div>
-        </li>
-        <li>
-            <span style="position: absolute;top: 29%;">任 务 内 容：</span>
-            <textarea name="CtaskText" rows="7" cols="30" style="width: 70%;margin-left: 95px" readonly></textarea>
-        </li>
-
-    </ul>
-</div>
-</div>
-
- <table id="allTeskDg"></table>
+<table id="allTeskDg"></table>
 
 <script type="text/javascript">
-    $('#JsDate2').datebox({
+    $('#JsDateAll').datebox({
         required:true,
         editable:false
     });
     function viewTaskXall() {
-        var viewTask = $('#allTeskDg').datagrid('getSelected');
-        if (viewTask) {
+        var viewTaskAll = $('#allTeskDg').datagrid('getSelected');
+        if (viewTaskAll) {
             $('#viewTask').dialog({
                 width: 800,
                 height:550,
-                top:70,
+                top:50,
                 closed: false, //更改 显示隐藏
                 cache: false,//是否缓存
                 onOpen: function () {
-                    $("input[name = CuserName]").val(viewTask.userName);
-                    $("input[name = Crecipient]").val(viewTask.recipient);
-                    $("input[name = Cimplement]").val(viewTask.implement);
-                    $("input[name = CtaskAddress]").val(viewTask.taskAddress);
-                    $("input[name = CentrustedUnit]").val(viewTask.entrustedUnit);
-                    $("input[name = Cclient]").val(viewTask.client);
-                    $("input[name = CclientPhone]").val(viewTask.clientPhone);
-                    $("input[name = CtaskPhase]").val(viewTask.taskPhase);
-                    $("input[name = Cinspection]").val(viewTask.inspection);
-                    $("input[name = CimplementDate]").val(viewTask.implementDate);
-                    $("input[name = CsuccessDate]").val(viewTask.successDate);
-                    $("input[name = CtaskDate]").val(viewTask.taskDate);
-                    $("input[name = CtaskTheme]").val(viewTask.taskTheme);
-                    $("input[name = Cstate]").val(viewTask.state);
-                    $("textarea[name = CtaskText]").val(viewTask.taskText);
+                    $("input[name = CuserName]").val(viewTaskAll.userName);
+                    $("input[name = Crecipient]").val(viewTaskAll.recipient);
+                    $("input[name = Cimplement]").val(viewTaskAll.implement);
+                    $("input[name = CtaskAddress]").val(viewTaskAll.taskAddress);
+                    $("input[name = CentrustedUnit]").val(viewTaskAll.entrustedUnit);
+                    $("input[name = Cclient]").val(viewTaskAll.client);
+                    $("input[name = CclientPhone]").val(viewTaskAll.clientPhone);
+                    $("input[name = CtaskPhase]").val(viewTaskAll.taskPhase);
+                    $("input[name = Cinspection]").val(viewTaskAll.inspection);
+                    $("input[name = CimplementDate]").val(viewTaskAll.implementDate);
+                    $("input[name = CsuccessDate]").val(viewTaskAll.successDate);
+                    $("input[name = CtaskDate]").val(viewTaskAll.taskDate);
+                    $("input[name = CtaskTheme]").val(viewTaskAll.taskTheme);
+                    $("input[name = Cstate]").val(viewTaskAll.state);
+                    $("textarea[name = CtaskText]").val(viewTaskAll.taskText);
                     $('#CspeedTask').progressbar({
-                        value: viewTask.speed
+                        value: viewTaskAll.speed
                     });
                 }
             });
@@ -196,7 +192,7 @@
 	            closed: false, //更改 显示隐藏
 	            cache: false,//是否缓存
                 height:550,
-                top:70,
+                top:50,
 	            onOpen:function(){
 	            	 $("input[name = userid]").val(checkTask.id);
 	                 $("input[name = taskTheme]").val(checkTask.taskTheme);
@@ -206,7 +202,7 @@
                     $("input[name = client]").val(checkTask.client);
                     $("input[name = clientPhone]").val(checkTask.clientPhone);
                     $("input[name = taskReceive]").val(checkTask.recipient);
-                    $("#JsDate2").datebox('setValue',checkTask.successDate)
+                    $("#JsDateAll").datebox('setValue',checkTask.successDate)
 	            }
 	        });
 	        } else {
