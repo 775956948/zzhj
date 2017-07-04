@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>查看所有任务</title>
-
 </head>
 <body>
 <div class="PagingBody">
@@ -18,40 +17,41 @@
             <li>
                 <input type="hidden" name="userid">
             </li>
-            <li style="height:40px">
-                <span>任务主题：</span>
+            <li>
+                <span>任 务 主 题：</span>
                 <input type="text" name="taskTheme">
             </li>
             <li>
-                <span>项目地址:</span>
+                <span>项 目 地 址：</span>
                 <input type="text" name="taskAddress" >
             </li>
             <li>
-                <span>委托单位:</span>
+                <span>委 托 单 位：</span>
                 <input type="text" name="entrustedUnit" >
             </li>
             <li>
-                <span>联 系 人:</span>
+                <span>联 &nbsp 系 &nbsp 人：</span>
                 <input type="text" name="client" >
             </li>
             <li>
-                <span>联系人电话:</span>
+                <span>联系人电话：</span>
                 <input type="text" name="clientPhone" onblur="if(!(/^1(3|4|5|7|8)\d{9}$/.test($(this).val()))){$(this).val('')}">
             </li>
             <li>
-                <span>任务结束时间:</span>
-                <input type="text" name="successDate" id="JsDateAll">
-            </li>
-            <li>
-                <span>任务内容：</span>
+                <span style="margin-top: -10px;display: inline-block">任 务 内 容：</span>
                 <textarea  name="taskText" rows="7" cols="30"></textarea>
             </li>
+
             <li>
-                <span>任务接收人:</span>
+                <span>任务接收人：</span>
                 <input name="taskReceive" readonly="readonly">
             </li>
             <li>
-                <input type="button" class="button-task"  onclick="submitTask()" value="确 认 修 改">
+                <span>任务结束时间：</span>
+                <input type="text" name="successDate" id="JsDateAll">
+            </li>
+            <li style="margin-top: 120px">
+                <button onclick="submitTask()">确 认 修 改</button>
             </li>
         </ul>
     </div>
@@ -150,40 +150,7 @@
         required:true,
         editable:false
     });
-    function viewTaskXall() {
-        var viewTaskAll = $('#allTeskDg').datagrid('getSelected');
-        if (viewTaskAll) {
-            $('#viewTask').dialog({
-                width: 800,
-                height:550,
-                top:50,
-                closed: false, //更改 显示隐藏
-                cache: false,//是否缓存
-                onOpen: function () {
-                    $("input[name = CuserName]").val(viewTaskAll.userName);
-                    $("input[name = Crecipient]").val(viewTaskAll.recipient);
-                    $("input[name = Cimplement]").val(viewTaskAll.implement);
-                    $("input[name = CtaskAddress]").val(viewTaskAll.taskAddress);
-                    $("input[name = CentrustedUnit]").val(viewTaskAll.entrustedUnit);
-                    $("input[name = Cclient]").val(viewTaskAll.client);
-                    $("input[name = CclientPhone]").val(viewTaskAll.clientPhone);
-                    $("input[name = CtaskPhase]").val(viewTaskAll.taskPhase);
-                    $("input[name = Cinspection]").val(viewTaskAll.inspection);
-                    $("input[name = CimplementDate]").val(viewTaskAll.implementDate);
-                    $("input[name = CsuccessDate]").val(viewTaskAll.successDate);
-                    $("input[name = CtaskDate]").val(viewTaskAll.taskDate);
-                    $("input[name = CtaskTheme]").val(viewTaskAll.taskTheme);
-                    $("input[name = Cstate]").val(viewTaskAll.state);
-                    $("textarea[name = CtaskText]").val(viewTaskAll.taskText);
-                    $('#CspeedTask').progressbar({
-                        value: viewTaskAll.speed
-                    });
-                }
-            });
-        } else {
-            $.messager.alert("提示", "请选择一条数据", "info");
-        }
-    }
+
     //初始化弹窗 修改任务
     function changeTask() {
     	var checkTask = $('#allTeskDg').datagrid('getSelected');
@@ -216,7 +183,7 @@
         method: 'POST',
         pagination: true, 
         singleSelect:true,  //仅可以选中一行
-        toolbar: "#buttonBar",  //使上方控制器和表格融为一体
+        toolbar:"#buttonBar",  //使上方控制器和表格融为一体
         columns: [[
             {field: 'id', title: '编号', checkbox: true},
             {field: 'taskTheme',title: '任务主题'},
@@ -246,7 +213,40 @@
             {field: 'state', title: '任务状态'}
         ]]
     });
-
+    function viewTaskXall() {
+        var viewTaskAll = $('#allTeskDg').datagrid('getSelected');
+        if (viewTaskAll) {
+            $('#viewTaskAll').dialog({
+                width: 800,
+                height:550,
+                top:50,
+                closed: false, //更改 显示隐藏
+                cache: false,//是否缓存
+                onOpen: function () {
+                    $("input[name = CuserName]").val(viewTaskAll.userName);
+                    $("input[name = Crecipient]").val(viewTaskAll.recipient);
+                    $("input[name = Cimplement]").val(viewTaskAll.implement);
+                    $("input[name = CtaskAddress]").val(viewTaskAll.taskAddress);
+                    $("input[name = CentrustedUnit]").val(viewTaskAll.entrustedUnit);
+                    $("input[name = Cclient]").val(viewTaskAll.client);
+                    $("input[name = CclientPhone]").val(viewTaskAll.clientPhone);
+                    $("input[name = CtaskPhase]").val(viewTaskAll.taskPhase);
+                    $("input[name = Cinspection]").val(viewTaskAll.inspection);
+                    $("input[name = CimplementDate]").val(viewTaskAll.implementDate);
+                    $("input[name = CsuccessDate]").val(viewTaskAll.successDate);
+                    $("input[name = CtaskDate]").val(viewTaskAll.taskDate);
+                    $("input[name = CtaskTheme]").val(viewTaskAll.taskTheme);
+                    $("input[name = Cstate]").val(viewTaskAll.state);
+                    $("textarea[name = CtaskText]").val(viewTaskAll.taskText);
+                    $('#CspeedTask').progressbar({
+                        value: viewTaskAll.speed
+                    });
+                }
+            });
+        } else {
+            $.messager.alert("提示","请选择一条数据","info");
+        }
+    }
     //提交
     function submitTask() {
         var number = 0;
@@ -264,21 +264,21 @@
                 url: "task/updateTask.action",
                 method: "POST",
                 data: {
-                    id: $("input[name = userid]").val(),
-                    taskTheme: $("input[name = taskTheme]").val(),
-                    taskText: $("textarea[name = taskText]").val(),
-                    taskAddress: $("input[name =taskAddress ]").val(),
-                    entrustedUnit: $("input[name =entrustedUnit ]").val(),
-                    client: $("input[name =client ]").val(),
-                    clientPhone: $("input[name =clientPhone ]").val(),
-                    successDate: $("input[name =successDate ]").val()
+                    id: $("input[name=userid]").val(),
+                    taskTheme: $("input[name=taskTheme]").val(),
+                    taskText: $("textarea[name=taskText]").val(),
+                    taskAddress: $("input[name=taskAddress]").val(),
+                    entrustedUnit: $("input[name=entrustedUnit]").val(),
+                    client: $("input[name=client]").val(),
+                    clientPhone: $("input[name=clientPhone]").val(),
+                    successDate: $("input[name=successDate]").val()
                 },
                 success: function (data) {
                     if(data>0){
                         $.messager.alert("提示", "修改成功", "info");
                          $('#changeTask').dialog({
 	            				closed: true //更改 显示隐藏
-                         })
+                         });
                           $('#allTeskDg').datagrid("reload");
 	          
                     }else{
