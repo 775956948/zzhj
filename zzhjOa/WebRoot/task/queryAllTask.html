@@ -7,7 +7,7 @@
 <body>
 <div class="PagingBody">
     <h3>查 看 所 有 任 务</h3>
-    <div class="buttonBar" id="buttonBar">
+    <div class="buttonBar" id="buttonBarAll">
         <a class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="changeTask()">修改</a>
         <a class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="deleteTask()">删除</a>
         <a class="easyui-linkbutton" iconCls="icon-gr" plain="true" onclick="viewTaskXall()">查看任务</a>
@@ -50,7 +50,7 @@
                 <span>任务结束时间：</span>
                 <input type="text" name="successDate" id="JsDateAll">
             </li>
-            <li style="margin-top: 120px">
+            <li style="margin-top: 30px">
                 <button onclick="submitTask()">确 认 修 改</button>
             </li>
         </ul>
@@ -58,7 +58,7 @@
     <!--表格-->
     <div id="viewTaskAll" class="easyui-dialog" title="查看任务" closed=true>
         <ul>
-            <li style="height: 40px">
+            <li style="height: 40px;margin-top: 20px">
                 <div class="splitLi">
                     <span>任 务 主 题：</span>
                     <input type="text" name="CtaskTheme" readonly="readonly" >
@@ -80,7 +80,7 @@
             </li>
             <li style="height: 40px">
                 <div class="splitLi">
-                    <span>委 托 单 位 ：</span>
+                    <span>委 托 单 位：</span>
                     <input type="text" name="CentrustedUnit" readonly>
                 </div>
                 <div class="splitLi">
@@ -92,7 +92,7 @@
                     <input type="text" name="Cclient" readonly>
                 </div>
                 <div class="splitLi">
-                    <span>委托人电话 ：</span>
+                    <span>委托人电话：</span>
                     <input type="text" name="CclientPhone" readonly>
                 </div>
             </li>
@@ -124,6 +124,10 @@
                 <div class="splitLi">
                     <span>任 务 状 态：</span>
                     <input type="text" name="Cstate" readonly >
+                </div>
+                <div class="splitLi">
+                    <span>质 &nbsp 检 &nbsp 人：</span>
+                    <input type="text" name="CinspectionUser" readonly >
                 </div>
             </li>
             <li style="height: 40px">
@@ -183,7 +187,7 @@
         method: 'POST',
         pagination: true, 
         singleSelect:true,  //仅可以选中一行
-        toolbar:"#buttonBar",  //使上方控制器和表格融为一体
+        toolbar:"#buttonBarAll",  //使上方控制器和表格融为一体
         columns: [[
             {field: 'id', title: '编号', checkbox: true},
             {field: 'taskTheme',title: '任务主题'},
@@ -196,6 +200,7 @@
             {field: 'taskDate',title: '任务发布日期',width:100},
             {field: 'recipient',title: '接收人',width:100},
             {field: 'implement', title: '执行人',width:100},
+            {field: 'inspectionUser', title: '质检人',width:100},
             {field: 'implementDate', title: '任务开始时间',width:100},
             {field: 'successDate', title: '任务完成时间',width:100},
             {field: 'speed', title: '任务进度', formatter:function (value) {
@@ -237,6 +242,7 @@
                     $("input[name = CtaskDate]").val(viewTaskAll.taskDate);
                     $("input[name = CtaskTheme]").val(viewTaskAll.taskTheme);
                     $("input[name = Cstate]").val(viewTaskAll.state);
+                    $("input[name = CinspectionUser]").val(viewTaskAll.inspectionUser);
                     $("textarea[name = CtaskText]").val(viewTaskAll.taskText);
                     $('#CspeedTask').progressbar({
                         value: viewTaskAll.speed

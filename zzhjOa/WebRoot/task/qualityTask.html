@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>质量检测</title>
+</head>
+<body>
+<div class="PagingBody">
+    <h3>质 量 检 测</h3>
+    <div class="buttonBar" id="buttonBarQua">
+        <a class="easyui-linkbutton" iconCls="icon-gr" plain="true" onclick="qualityTask()">质量检测</a>
+    </div>
+    <div id="viewTaskQua" class="easyui-dialog" title="查看任务详情" closed=false>
+        <ul>
+            <li>
+                <input type="hidden" name="Quserid">
+            </li>
+            <li style="height: 40px;margin-top: 20px">
+                <div class="splitLi">
+                    <span>任 务 主 题：</span>
+                    <input type="text" name="QtaskTheme" readonly="readonly">
+                </div>
+                <div class="splitLi">
+                    <span>发 &nbsp 布 &nbsp 人：</span>
+                    <input type="text" name="QuserName" readonly>
+                </div>
+            </li>
+            <li style="height: 40px">
+                <div class="splitLi">
+                    <span>发 布 日 期：</span>
+                    <input type="text" name="QtaskDate" readonly>
+                </div>
+                <div class="splitLi">
+                    <span>项 目 地 址：</span>
+                    <input type="text" name="QtaskAddress" readonly>
+                </div>
+            </li>
+            <li style="height: 40px">
+                <div class="splitLi">
+                    <span>委 托 单 位：</span>
+                    <input type="text" name="QentrustedUnit" readonly>
+                </div>
+                <div class="splitLi">
+                </div>
+            </li>
+            <li style="height: 40px">
+                <div class="splitLi">
+                    <span>委 &nbsp 托 &nbsp 人 ：</span>
+                    <input type="text" name="Qclient" readonly>
+                </div>
+                <div class="splitLi">
+                    <span>委托人电话：</span>
+                    <input type="text" name="QclientPhone" readonly>
+                </div>
+            </li>
+            <li style="height: 40px">
+                <div class="splitLi">
+                    <span>任务接收人：</span>
+                    <input type="text" name="Qrecipient" readonly>
+                </div>
+                <div class="splitLi">
+                    <span>任务执行人：</span>
+                    <input type="text" name="Qimplement" readonly>
+                </div>
+            </li>
+            <li style="height: 40px">
+                <div class="splitLi">
+                    <span>任务开始时间：</span>
+                    <input type="text" name="QimplementDate" readonly>
+                </div>
+                <div class="splitLi">
+                    <span>任务完成时间：</span>
+                    <input type="text" name="QsuccessDate" readonly>
+                </div>
+            </li>
+            <li>
+                <span style="float: left">任 务 进 度：</span>
+                <div id="QspeedTask" class="easyui-progressbar" style="width:71%; height:38px"></div>
+            </li>
+            <li>
+                <div class="splitLi">
+                    <span>任 务 状 态：</span>
+                    <input type="text" name="Qstate" readonly >
+                </div>
+                <div class="splitLi">
+                    <span>质 &nbsp 检 &nbsp 人：</span>
+                    <input type="text" name="QinspectionUser" readonly >
+                </div>
+            </li>
+            <li style="height: 40px">
+                <div class="splitLi">
+                    <span>任 务 阶 段：</span>
+                    <input type="text" name="QtaskPhase" readonly>
+                </div>
+                <div class="splitLi">
+                    <span>质 量 检 测：</span>
+                    <input type="text" name="Qinspection" readonly>
+                </div>
+            </li>
+            <li>
+                <span style="position: absolute;top: 29%;">任 务 内 容：</span>
+                <textarea name="QtaskText" rows="7" cols="30" style="width: 70%;margin-left: 95px" readonly></textarea>
+            </li>
+            <li style="margin: 20px auto">
+                <div class="splitLi">
+                    <input type="button" class="button-task" value="合 格" onclick="qualified()">
+                </div>
+                <div class="splitLi">
+                    <input type="button" class="button-task" value="不合格" onclick="Unqualified()">
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!--表格-->
+<table id="viewTaskDgQua"></table>
+
+<script type="text/javascript">
+
+    //初始化弹窗 查看任务
+    function qualityTask() {
+        var quaTask = $('#viewTaskDgQua').datagrid('getSelected');
+        if (quaTask) {
+            $('#viewTaskQua').dialog({
+                width: 800,
+                height:500,
+                top:50,
+                closed: false, //更改 显示隐藏
+                cache: false,//是否缓存
+                onOpen: function () {
+                    $("input[name = Quserid]").val(quaTask.id);
+                    $("input[name = QuserName]").val(quaTask.userName);
+                    $("input[name = Qrecipient]").val(quaTask.recipient);
+                    $("input[name = Qimplement]").val(quaTask.implement);
+                    $("input[name = QtaskAddress]").val(quaTask.taskAddress);
+                    $("input[name = QentrustedUnit]").val(quaTask.entrustedUnit);
+                    $("input[name = Qclient]").val(quaTask.client);
+                    $("input[name = QclientPhone]").val(quaTask.clientPhone);
+                    $("input[name = QtaskPhase]").val(quaTask.taskPhase);
+                    $("input[name = Qinspection]").val(quaTask.inspection);
+                    $("input[name = QimplementDate]").val(quaTask.implementDate);
+                    $("input[name = QsuccessDate]").val(quaTask.successDate);
+                    $("input[name = QtaskDate]").val(quaTask.taskDate);
+                    $("input[name = QtaskTheme]").val(quaTask.taskTheme);
+                    $("input[name = Qstate]").val(quaTask.state);
+                    $("input[name = QinspectionUser]").val(quaTask.inspectionUser);
+                    $("textarea[name = QtaskText]").val(quaTask.taskText);
+                    $('#QspeedTask').progressbar({
+                        value: quaTask.speed
+                    });
+                }
+            });
+        } else {
+            $.messager.alert("提示", "请选择一条数据", "info");
+        }
+    }
+
+    //初始化表格  任务表格
+    $('#viewTaskDgQua').datagrid({
+        url: '',
+        method: 'POST',
+        pagination: true,
+        singleSelect: true,  //仅可以选中一行
+//        fitColumns: true, //自动展开 铺满横向
+        toolbar: "#buttonBarQua",  //使上方控制器和表格融为一体
+        columns: [[
+            {field: 'id', title: '编号', checkbox: true},
+            {field: 'taskTheme',title: '任务主题'},
+            {field: 'taskText',title: '任务内容',width:200},
+            {field: 'userName',title: '发布人'},
+            {field: 'taskAddress',title: '项目地址',hidden:true},
+            {field: 'entrustedUnit',title: '委托单位',hidden:true},
+            {field: 'client',title: '委托人',hidden:true},
+            {field: 'clientPhone',title: '委托人联系电话',hidden:true},
+            {field: 'taskDate',title: '任务发布日期',width:100},
+            {field: 'recipient',title: '接收人',width:100},
+            {field: 'implement', title: '执行人',width:100},
+            {field: 'inspectionUser', title: '质检人',width:100},
+            {field: 'implementDate', title: '任务开始时间',width:100},
+            {field: 'successDate', title: '任务完成时间',width:100},
+            {
+                field: 'speed', title: '任务进度', formatter: function (value) {
+                var htmlstr = '<div class="easyui-progressbar progressbar" style="width: 30z0px; height: 20px;" value="' + value + '" text="' + value + '%">' +
+                        '<div class="progressbar-text" style="width: 300px; height: 20px; line-height: 20px;">' + value + '%</div>' +
+                        '<div class="progressbar-value" style="width: ' + value + '%; height: 20px; line-height: 20px;">' +
+                        '<div class="progressbar-text" style="width: 300px; height: 20px; line-height: 20px;">' + value + '%</div>' +
+                        '</div>' +
+                        '</div>';
+                return htmlstr;
+            }, width: 330
+            },
+            {field: 'taskPhase', title: '任务阶段'},
+            {field: 'inspection', title: '质检检测'},
+            {field: 'state', title: '任务状态'}
+        ]]
+    });
+
+    //提交
+    function qualified() {
+        $.ajax({
+            url: "",
+            method: "POST",
+            data: {
+                id: $("input[name = Quserid]").val()
+            },
+            success: function (data) {
+                if (data > 0) {
+                    $.messager.alert("提示", "修改质检成功", "info");
+                    $('#viewTaskQua').dialog({
+                        closed: true //更改 显示隐藏
+                    });
+                    $('#viewTaskDgQua').datagrid("reload");
+                } else {
+                    $.messager.alert("提示", "修改质检失败", "info")
+                }
+            }
+        })
+    }
+
+    function Unqualified() {
+        $.ajax({
+            url: "",
+            method: "POST",
+            data: {
+                id: $("input[name = Quserid]").val()
+            },
+            success: function (data) {
+                if (data > 0) {
+                    $.messager.alert("提示", "修改质检成功", "info");
+                    $('#viewTaskQua').dialog({
+                        closed: true //更改 显示隐藏
+                    });
+                    $('#viewTaskDgQua').datagrid("reload");
+                } else {
+                    $.messager.alert("提示", "修改质检失败", "info")
+                }
+            }
+        })
+    }
+
+</script>
+</body>
+</html>

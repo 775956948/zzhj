@@ -9,7 +9,7 @@
     <h3>下 达 任 务</h3>
     <div id="viewTaskOWN" class="easyui-dialog" title="查看任务" closed=true>
         <ul>
-            <li style="height: 40px">
+            <li style="height: 40px;margin-top: 20px">
                 <div class="splitLi">
                     <span>任 务 主 题：</span>
                     <input type="text" name="CotaskTheme" readonly="readonly" >
@@ -31,7 +31,7 @@
             </li>
             <li style="height: 40px">
                 <div class="splitLi">
-                    <span>委 托 单 位 ：</span>
+                    <span>委 托 单 位：</span>
                     <input type="text" name="CoentrustedUnit" readonly>
                 </div>
                 <div class="splitLi">
@@ -43,7 +43,7 @@
                     <input type="text" name="Coclient" readonly>
                 </div>
                 <div class="splitLi">
-                    <span>委托人电话 ：</span>
+                    <span>委托人电话：</span>
                     <input type="text" name="CoclientPhone" readonly>
                 </div>
             </li>
@@ -75,6 +75,10 @@
                 <div class="splitLi">
                     <span>任 务 状 态：</span>
                     <input type="text" name="Costate" readonly >
+                </div>
+                <div class="splitLi">
+                    <span>质 &nbsp 检 &nbsp 人：</span>
+                    <input type="text" name="CoinspectionUser" readonly >
                 </div>
             </li>
             <li style="height: 40px">
@@ -171,6 +175,7 @@
                     $("input[name = CotaskDate]").val(viewTaskOwn.taskDate);
                     $("input[name = CotaskTheme]").val(viewTaskOwn.taskTheme);
                     $("input[name = Costate]").val(viewTaskOwn.state);
+                    $("input[name = CoinspectionUser]").val(viewTaskOwn.inspectionUser);
                     $("textarea[name = CotaskText]").val(viewTaskOwn.taskText);
                     $('#CospeedTask').progressbar({
                         value: viewTaskOwn.speed
@@ -208,6 +213,7 @@
             {field: 'taskDate',title: '任务发布日期',width:100},
             {field: 'recipient',title: '接收人',width:100},
             {field: 'implement', title: '执行人',width:100},
+            {field: 'inspectionUser', title: '质检人',width:100},
             {field: 'implementDate', title: '任务开始时间',width:100},
             {field: 'successDate', title: '任务完成时间',width:100},
             {
