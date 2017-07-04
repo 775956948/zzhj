@@ -24,9 +24,10 @@
    			</mvc:message-converters>
 		</mvc:annotation-driven>
 					<!-- 文件上传 -->
-<bean id="multipartResolver"
+<!-- <bean id="multipartResolver"
     class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
-</bean>
+</bean> -->
+
 	
 		<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"></bean>
 	
