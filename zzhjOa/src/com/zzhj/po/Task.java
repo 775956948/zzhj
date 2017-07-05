@@ -26,6 +26,7 @@ public class Task implements Serializable{
 	private String inspection;   //质量检测
 	private String inspectionUser;//质检人
 	private String successDate;	 //任务结束时间
+	private String overDate;	//指定结束时间
 	private String state;		//任务状态
 	
 	public int getId() {
@@ -136,7 +137,13 @@ public class Task implements Serializable{
 	public void setInspectionUser(String inspectionUser) {
 		this.inspectionUser = inspectionUser;
 	}
-	
+	public String getOverDate() {
+		return overDate;
+	}
+	public void setOverDate(String overDate) {
+		this.overDate = overDate;
+	}
+	 
 	
 
 }

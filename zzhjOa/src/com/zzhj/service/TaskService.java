@@ -203,6 +203,10 @@ public class TaskService {
 	public List<Task> queryImplementOwn(String userName){
 		return tm.queryImplementOwn(userName);
 	}
+	public int updateTaskTime(Task t){
+		return tm.updateTaskTime(t);
+	}
+	
 	
 	/**
 	 * 

@@ -238,7 +238,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     function submits() {
         var cout = 0;
     if($("input[name = name]").val()!="" && $("input[name = password]").val()!="" && $("input[name = phone]").val()!="" && $("input[name = securityAnswer]").val()!=""){
-    	  $("#form").submit();
+    	  $.messager.confirm('确认','注册成功将返回登陆界面',function(r){    
+			    if (r){    
+			    	 $("#form").submit();
+			    }    
+			}); 
     }else{
     	 $.messager.alert("提示", "请填写完整信息", "info");  
        }

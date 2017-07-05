@@ -72,9 +72,9 @@ public class UsersAction {
 		Matcher isNum = pattern.matcher(message);
 		if(!message.equals("")&&!isNum.matches()){
 			mv.addObject("message", message);
-			mv.setViewName("/department/queryAll.action");
+			mv.setViewName("/registered.jsp");
 		}else{
-			mv.setViewName("/login.jsp");
+			mv.setViewName("redirect: ../login.jsp");
 		}
 		return mv;
 	}

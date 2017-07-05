@@ -122,7 +122,7 @@
             <input type="text" name="overDate" readonly id="overDateChange" style="height: 90%;text-align: center">
         </li>
         <li style="margin: 20px auto">
-            <input type="button" class="button-task" onclick="changeTime()" value="确 认 更 改">
+            <input type="button" class="button-task"  onclick="changeTime()" value="确 认 更 改">
         </li>
     </ul>
 </div>
@@ -334,7 +334,7 @@
         if (Changetime > ZDtime || $("#implementDateChange").val() == "") {
             $.messager.alert("提示", "请正确填写时间范围！", "info")
         } else {
-            $.post('', {
+            $.post('task/updateTaskTime.action', {
                 'id': row.id,
                 'successDate': $("#successDateChange").val(),
                 'implementDate': $("#implementDateChange").val()
@@ -353,11 +353,7 @@
     function transmitTask() {
     	
         var number = 0;
-        if($("input[name=taskTheme]").val()==""||
-                $("input[name=implementDate]").val()==""||
-                $("textarea[name=taskText]").val()==""||
-                $("select[name=implement]").val()==""||
-                $("input[name=userName]").val()==""){
+        if($("#implementDate").val()==""||$("#successDate").val()==""){
             number=number+1;
         }
         var row = $('#teskDg').datagrid('getSelected');

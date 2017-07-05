@@ -19,10 +19,12 @@
 		<result property="inspection" column="inspection"/>
 		<result property="successDate" column="success_date"/>
 		<result property="state" column="state"/>
+		<result property="overDate" column="over_date"/>
+		<result property="inspectionUser" column="inspection_user"/>
 	</resultMap>
   <insert id="addTask" parameterType="task" useGeneratedKeys="true" keyProperty="id">
-  	INSERT INTO tasks(task_theme,task_text,user_name,task_date,recipient,state,success_date,task_address,entrusted_unit,client,client_phone)
-  	values(#{taskTheme},#{taskText},#{userName},#{taskDate},#{recipient},"已发布",#{successDate},#{taskAddress},#{entrustedUnit},#{client},#{clientPhone})
+  	INSERT INTO tasks(task_theme,task_text,user_name,task_date,recipient,state,over_date,task_address,entrusted_unit,client,client_phone)
+  	values(#{taskTheme},#{taskText},#{userName},#{taskDate},#{recipient},"已发布",#{overDate},#{taskAddress},#{entrustedUnit},#{client},#{clientPhone})
   </insert>
   <update id="transmitTask" parameterType="object">
   	update tasks set implement=#{userName},state="已下达",success_date=#{successDate},implement_date=#{implementDate} where id=#{taskId}
@@ -64,4 +66,8 @@
   <select id="queryImplementOwn" parameterType="string" resultType="task">
   	select id,task_theme as taskTheme from tasks where implement=#{value} 
   </select>
+  
+  <update id="updateTaskTime" parameterType="task">
+  	update tasks set success_date=#{successDate},implement_date=#{implementDate} where id=#{id}
+  </update>
 </mapper>

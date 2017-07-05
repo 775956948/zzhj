@@ -75,7 +75,7 @@
     margin-top: 3px;
     float: left;
 }
-#viewTask li .button-task,#changeSpeed li .button-task ,#seeMessage li .button-task,#transmitForm li .button-task,#addRest li .button-task,#viewTaskAll li .button-task ,#viewTaskOWN li .button-task,#viewTaskQua li .button-task{
+#viewTask li .button-task,#changeSpeed li .button-task ,#seeMessage li .button-task,#transmitForm li .button-task,#addRest li .button-task,#viewTaskAll li .button-task ,#viewTaskOWN li .button-task,#viewTaskQua li .button-task,#changeTime li .button-task{
     float: none;
     display: block;
     height: 40px;
