@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+	<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 String path = request.getContextPath();
@@ -105,25 +105,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			 }
 				 
 			function apply_official_Submit(){
-  		 		$.ajax({
-				   url:"requestSeal/save.action",
-				   type:"post",
-				   data:$("#apply_official_form").serialize(),	   
-	 			   success:function(data){				
-						if(data == 1){
-							$('#apply_official_tanc').dialog({
-								closed : true
-							});
-							$('#apply_official_Dg').datagrid('reload');
-							$.messager.alert("提示","提交成功","info");
-							$(".apply_official_val").val(" ");
-						}else{
-							$(".apply_official_val").val(" ");
-							$.messager.alert("提示","提交失败","info");
-						}
-					} 
-				});
-  		 	}
+	        if($("input[name=number]").val()!=""&&$("input[name=projectName]").val()!=""&&$("input[name=pageNumber]").val()!=""&&$("input[name=copiesNumber]").val()!=""&&$("textarea[name=text]").val()!=""){
+		         $.ajax({
+		             url:"requestSeal/save.action",
+		             type:"post",
+		             data:$("#apply_official_form").serialize(),
+	                	success:function(data){
+		                    if(data == 1){
+	                           	$('#apply_official_tanc').dialog({
+	                                   	closed : true
+		                    });
+	                    	$('#apply_official_Dg').datagrid('reload');
+		                    $.messager.alert("提示","提交成功","info");
+		                    $(".apply_official_val").val(" ");
+		                               }else{
+		                   $(".apply_official_val").val(" ");
+		                   $.messager.alert("提示","提交失败","info");
+		                         }
+		                }
+		            });
+		}else{
+		            $.messager.alert("提示","请完整填写！","info");
+		    }
+
+		}
 		</script>
 	</body>
 </html>

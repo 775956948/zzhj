@@ -27,7 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<li><span>盖章内容</span><textarea name="text2"  rows="" cols="" readonly="readonly" class="apply-val"></textarea></li>
 					<li><span>盖章事由</span><textarea name="why2" rows="" cols="" readonly="readonly" class="apply-val"></textarea></li>
 					<li class="txt_ctr">
-					<input type="button" value="审批" onclick="applySubmit()"/>
+					<input type="button" value="审批" onclick="applySubmit2()"/>
 					</li>
 				</ul>
   			</form>
@@ -65,7 +65,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    ]]
 		});
 	
-		spprove_tanc = $('#spprove-tanc').dialog({
+		var spprove_tanc = $('#spprove-tanc').dialog({
 			title : '审批',
 			height : 400,
 			closed : true,
@@ -107,7 +107,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		}
 		
 
-  		 function applySubmit(){	 		
+  		 function applySubmit2(){
   			 var id=$("#dis_none").val();
 			$.ajax({
 				   url:"ziZhiSeal/approver.action",

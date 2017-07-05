@@ -69,28 +69,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		 <script type="text/javascript">
 
   		 	function applySubmit(){
-  		 		$.ajax({
-				   url:"ziZhiSeal/save.action",
-				   type:"post",
-				   data:$("#apply-form").serialize(),	
-				   dataType:"",			   
-				   success:function(data){				
-						if(data == 1){
-							$('#apply-tanc').dialog({
-								closed : true,
-							});
-							$('#applyDg').datagrid('reload');
-							alert("提交成功");
-							$(".apply-val").val(" ");
-						}else{
-							
-							$(".apply-val").val(" ");
-							alert("提交失败");
-						
-						
-						}
-					}
-				});
+	         if($("input[name=number]").val()!=""&&$("input[name=projectName]").val()!=""&&$("input[name=pageNumber]").val()!=""&&$("input[name=copiesNumber]").val()!=""&&$("textarea[name=text]").val()!=""&&$("textarea[name=why]").val()!=""){
+	              $.ajax({
+	                url:"ziZhiSeal/save.action",
+                   	type:"post",
+	                data:$("#apply-form").serialize(),
+	                dataType:"",
+	                success:function(data){
+                      	if(data == 1){
+	                        $('#apply-tanc').dialog({
+	                             closed : true
+	                               });
+	                            $('#applyDg').datagrid('reload');
+	                            $.messager.alert("提示","提交成功","info");
+                         	$(".apply-val").val(" ");
+	                               }else{
+	                          $(".apply-val").val(" ");
+	                        $.messager.alert("提示","提交失败","info");
+	                     }
+	                  }
+              	});
+	          }else{
+	              $.messager.alert("提示","请完整填写申请！","info")
+	                 }
+
   		 	}
   		 	
   		 	 		 	
