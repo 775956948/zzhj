@@ -8,10 +8,15 @@
 <body>
 <div class="PagingBody">
     <h3>个 人 任 务</h3>
+    
+	
     <div class="buttonBar" id="buttonBarOwn">
         <a class="easyui-linkbutton" iconCls="icon-bg" plain="true" onclick="viewTask()">查看任务</a>
         <a class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="changeSpeedDig()">修改任务进度</a>
     </div>
+    </div>
+    <!--表格-->
+	<table id="viewTeskDg"></table>
     <div id="viewTask" class="easyui-dialog" title="查看个人任务" closed=true>
         <ul>
             <li>
@@ -108,7 +113,7 @@
             </li>
         </ul>
     </div>
-</div>
+
 <div id="changeSpeed" class="easyui-dialog" title="修改进度" closed=true >
     <ul style="width:370px">
         <li>
@@ -129,8 +134,7 @@
         </li>
     </ul>
 </div>
-<!--表格-->
-<table id="viewTeskDg"></table>
+
 
 <script type="text/javascript">
 

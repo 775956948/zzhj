@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
+import org.apache.tomcat.util.collections.SynchronizedQueue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +23,7 @@ public class TaskService {
 		
 	
 	@Autowired
-	private TaskMapper tm;
+	private  TaskMapper tm;
 	
 	/**
 	 * 
@@ -49,6 +50,7 @@ public class TaskService {
 			mes.setTheme("您有未处理的任务消息");
 			send(mes,t.getRecipient());
 		}
+
 		return result;
 	}
 	/**
@@ -227,6 +229,35 @@ public class TaskService {
 		return map;
 	}
 	
+	public int qualifiedTask(int id,String userName){
+		String date =DateFormater.format(new Date());
+		String overDate=tm.queryOverDate(id);
+		int resoult =date.compareTo(overDate);
+		String message="";
+		if(resoult>0){
+			message="延期完成";
+		}else if(resoult==0){
+			message="按时完成";
+		}else{
+			message="提前完成";
+		}
+		return tm.qualifiedTask(id, userName, message);
+	}
+	
+	/**
+	 * 
+	 * @Description: 质检不合格
+	 * @param @param userName
+	 * @param @param id
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年7月5日
+	 */
+	public int UnqualifiedTask(String userName,int id){
+		return tm.UnqualifiedTask(id, userName);
+	}
 	
 	/**
 	 * 

@@ -207,7 +207,7 @@
     //提交
     function qualified() {
         $.ajax({
-            url: "",
+            url: "task/qualifiedTask.action",
             method: "POST",
             data: {
                 id: $("input[name = Quserid]").val()
@@ -228,7 +228,7 @@
 
     function Unqualified() {
         $.ajax({
-            url: "",
+            url: "task/UnqualifiedTask.action",
             method: "POST",
             data: {
                 id: $("input[name = Quserid]").val()

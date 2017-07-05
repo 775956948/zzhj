@@ -32,7 +32,7 @@ public class TaskAction {
 	 */
 	@RequestMapping("/addTask.action")
 	@ResponseBody
-	public int addTask(Task t,HttpSession session){
+	public  int addTask(Task t,HttpSession session){
 		Users user = (Users) session.getAttribute("users");
 		t.setUserName(user.getName());
 		return ts.addTask(t);
@@ -188,10 +188,44 @@ public class TaskAction {
 		return ts.updateTaskTime(t);
 	}
 	
-	
+	/**
+	 * 
+	 * @Description: 返回任务进度100%的数据
+	 * @param @param page
+	 * @param @param rows
+	 * @param @return   
+	 * @return Map<String,Object>  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年7月5日
+	 */
 	@RequestMapping("/querySuccessTask.action")
 	@ResponseBody
 	public Map<String,Object> querySuccessTask(int page,int rows){
 		return ts.querySuccessTask(page, rows);
+	}
+	/**
+	 * 
+	 * @Description: 质检合格
+	 * @param @param id
+	 * @param @param session
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年7月5日
+	 */
+	@RequestMapping("/qualifiedTask.action")
+	@ResponseBody
+	public int qualifiedTask(int id,HttpSession session){
+		Users user = (Users) session.getAttribute("users");
+		return ts.qualifiedTask(id, user.getName());
+	}
+	
+	@RequestMapping("/UnqualifiedTask.action")
+	@ResponseBody
+	public int UnqualifiedTask(int id,HttpSession session){
+		Users user = (Users) session.getAttribute("users");
+		return ts.UnqualifiedTask(user.getName(),id);
 	}
 }

@@ -66,7 +66,7 @@ public class ServerHandler {
 	public static void send(String name,Message mes){
 		ServerHandler sh =users.get(name);
 		try {
-			if(sh.session.isOpen()){
+			if(sh!=null&&sh.session.isOpen()){
 				sh.session.getBasicRemote().sendObject(mes);
 			}else{
 				offlineUser.put(name, mes);

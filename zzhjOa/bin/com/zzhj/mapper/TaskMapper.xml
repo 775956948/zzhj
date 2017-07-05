@@ -77,4 +77,15 @@
   <select id="totalCountSuccess" resultType="int">
   	select count(id) from tasks where speed=100
   </select>
+  
+  <update id="qualifiedTask" parameterType="object">
+  	update tasks set inspection="合格",inspection_user=#{userName},state=#{message} where id=#{id}
+  </update>
+  <update id="UnqualifiedTask" parameterType="object">
+  	update tasks set inspection="不合格",inspection_user=#{userName} where id=#{id}
+  </update>
+  
+  <select id="queryOverDate" resultType="string">
+  	select over_date from tasks where id=#{value}
+  </select>
 </mapper>

@@ -194,5 +194,39 @@ public interface TaskMapper {
 	 * @date 2017年7月5日
 	 */
 	int totalCountSuccess();
-
+	/**
+	 * 
+	 * @Description: 质量检测合格
+	 * @param @param id
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年7月5日
+	 */
+	int qualifiedTask(@Param("id")int id,@Param("userName")String userName,@Param("message")String message);
+	/**
+	 * 
+	 * @Description: 质量检测不合格
+	 * @param @param id
+	 * @param @param userName
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年7月5日
+	 */
+	int UnqualifiedTask(@Param("id")int id,@Param("userName")String userName);
+	
+	/**
+	 * 
+	 * @Description: 根据id返回任务指定结束时间
+	 * @param @param id
+	 * @param @return   
+	 * @return String  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年7月5日
+	 */
+	String queryOverDate(int id);
 }

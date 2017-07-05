@@ -32,9 +32,21 @@ public class Test {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		 ApplicationContext ap =new ClassPathXmlApplicationContext(new String[]{"application_context.xml","application_dao.xml","application_mvc.xml"});
+		 /*ApplicationContext ap =new ClassPathXmlApplicationContext(new String[]{"application_context.xml","application_dao.xml","application_mvc.xml"});
 		 NoticeService s = (NoticeService) ap.getBean("noticeService");
-		 System.out.println(s.queryAllList(1, 10));
+		 System.out.println(s.queryAllList(1, 10));*/
+
+	       String str1="2015-01-07";
+	        String str2="2015-01-08";
+	        int res=str1.compareTo(str2);
+	        if(res>0)
+	            System.out.println("str1>str2");
+	        else if(res==0)
+	            System.out.println("str1=str2");
+	        else
+	            System.out.println("str1<str2");
+		
+		
 
 	}
 

@@ -17,6 +17,12 @@
     font-size: 16px;
     font-weight: 800;
 }
+.addtaskZT  .inputDiv .datebox{
+	margin: 0 auto;
+}
+.addtaskZT  .inputDiv .textbox-addon-right{
+	margin-top:0;
+}
 .inputDiv input{
     height: 40px;
     text-align: center;
