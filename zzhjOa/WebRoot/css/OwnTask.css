@@ -36,6 +36,9 @@
     float: left;
     box-sizing: border-box;
 }
+#viewTask li>span,#viewTaskAll li>span,#viewTaskOWN li>span,#viewTaskQua li>span,#transmitForm li>span,.splitLi>span{
+    width: 118px;
+}
 #transmitForm span{
     border-radius: 0;
 }

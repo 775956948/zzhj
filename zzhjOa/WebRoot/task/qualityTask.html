@@ -73,6 +73,12 @@
                     <input type="text" name="QsuccessDate" readonly>
                 </div>
             </li>
+            <li style="">
+                <div class="splitLi">
+                    <span>指定结束时间：</span>
+                    <input type="text" name="QoverDate" readonly  >
+                </div>
+            </li>
             <li>
                 <span style="float: left">任 务 进 度：</span>
                 <div id="QspeedTask" class="easyui-progressbar" style="width:71%; height:38px"></div>
@@ -99,7 +105,7 @@
             </li>
             <li>
                 <span style="position: absolute;top: 29%;">任 务 内 容：</span>
-                <textarea name="QtaskText" rows="7" cols="30" style="width: 70%;margin-left: 95px" readonly></textarea>
+                <textarea name="QtaskText" rows="7" cols="30" style="width: 70%;margin-left: 118px" readonly></textarea>
             </li>
             <li style="margin: 20px auto">
                 <div class="splitLi">
@@ -141,6 +147,7 @@
                     $("input[name = Qinspection]").val(quaTask.inspection);
                     $("input[name = QimplementDate]").val(quaTask.implementDate);
                     $("input[name = QsuccessDate]").val(quaTask.successDate);
+                    $("input[name = QoverDate]").val(quaTask.overDate);
                     $("input[name = QtaskDate]").val(quaTask.taskDate);
                     $("input[name = QtaskTheme]").val(quaTask.taskTheme);
                     $("input[name = Qstate]").val(quaTask.state);
@@ -178,7 +185,8 @@
             {field: 'implement', title: '执行人',width:100},
             {field: 'inspectionUser', title: '质检人',width:100},
             {field: 'implementDate', title: '任务开始时间',width:100},
-            {field: 'successDate', title: '任务完成时间',width:100},
+            {field: 'successDate', title: '任务结束时间',width:100},
+            {field: 'overDate', title: '指定结束时间',width:100},
             {
                 field: 'speed', title: '任务进度', formatter: function (value) {
                 var htmlstr = '<div class="easyui-progressbar progressbar" style="width: 30z0px; height: 20px;" value="' + value + '" text="' + value + '%">' +
