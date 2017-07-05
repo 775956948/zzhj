@@ -172,6 +172,27 @@ public interface TaskMapper {
 	 * @date 2017年7月5日
 	 */
 	int updateTaskTime(Task t);
-	
+	/**
+	 * 
+	 * @Description: 返回任务进度为100%的数据
+	 * @param @param startPage
+	 * @param @param rows
+	 * @param @return   
+	 * @return List<Task>  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年7月5日
+	 */
+	List<Task> querySuccessTask(@Param("startPage")int startPage,@Param("rows")int rows);
+	/**
+	 * 
+	 * @Description: 返回完成任务的总条数
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年7月5日
+	 */
+	int totalCountSuccess();
 
 }

@@ -187,4 +187,11 @@ public class TaskAction {
 	public int updateTaskTime(Task t){
 		return ts.updateTaskTime(t);
 	}
+	
+	
+	@RequestMapping("/querySuccessTask.action")
+	@ResponseBody
+	public Map<String,Object> querySuccessTask(int page,int rows){
+		return ts.querySuccessTask(page, rows);
+	}
 }

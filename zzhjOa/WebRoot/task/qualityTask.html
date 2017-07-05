@@ -10,7 +10,7 @@
     <div class="buttonBar" id="buttonBarQua">
         <a class="easyui-linkbutton" iconCls="icon-gr" plain="true" onclick="qualityTask()">质量检测</a>
     </div>
-    <div id="viewTaskQua" class="easyui-dialog" title="查看任务详情" closed=false>
+    <div id="viewTaskQua" class="easyui-dialog" title="查看任务详情" closed=true>
         <ul>
             <li>
                 <input type="hidden" name="Quserid">
@@ -165,7 +165,7 @@
 
     //初始化表格  任务表格
     $('#viewTaskDgQua').datagrid({
-        url: '',
+        url: 'task/querySuccessTask.action',
         method: 'POST',
         pagination: true,
         singleSelect: true,  //仅可以选中一行

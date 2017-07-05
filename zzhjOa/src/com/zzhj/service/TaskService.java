@@ -206,6 +206,26 @@ public class TaskService {
 	public int updateTaskTime(Task t){
 		return tm.updateTaskTime(t);
 	}
+	/**
+	 * 
+	 * @Description: 返回任务进度为100%的数据
+	 * @param @param page
+	 * @param @param rows
+	 * @param @return   
+	 * @return Map<String,Object>  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年7月5日
+	 */
+	public Map<String,Object> querySuccessTask(int page,int rows){
+		int startPage=(page-1)*rows;
+		List<Task> list= tm.querySuccessTask(startPage, rows);
+		int total=tm.totalCountSuccess();
+		Map<String,Object> map = new HashMap();
+		map.put("rows", list);
+		map.put("total", total);
+		return map;
+	}
 	
 	
 	/**

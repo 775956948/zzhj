@@ -70,4 +70,11 @@
   <update id="updateTaskTime" parameterType="task">
   	update tasks set success_date=#{successDate},implement_date=#{implementDate} where id=#{id}
   </update>
+  <select id="querySuccessTask" parameterType="int" resultMap="tk">
+  	select * from tasks where speed=100 limit #{startPage},#{rows}
+  </select>
+  
+  <select id="totalCountSuccess" resultType="int">
+  	select count(id) from tasks where speed=100
+  </select>
 </mapper>
