@@ -219,6 +219,16 @@
                         closed: true //更改 显示隐藏
                     });
                     $('#viewTaskDgQua').datagrid("reload");
+				   	$("#listMes li").each(function(){
+				   		 var target=$(this).attr("id");
+				   		 if(target==taskId){
+				   		 	 $(this).remove(); 
+				   		 	var number =$("#listMes").children('li').length;
+				   		 	if(number==0){
+				   		 	 $("#message").hide();  
+				   		 	}
+				   		 }
+				   	})
                 } else {
                     $.messager.alert("提示", "修改质检失败", "info")
                 }
@@ -240,6 +250,16 @@
                         closed: true //更改 显示隐藏
                     });
                     $('#viewTaskDgQua').datagrid("reload");
+				   	$("#listMes li").each(function(){
+				   		 var target=$(this).attr("id");
+				   		 if(target==taskId){
+				   		 	 $(this).remove(); 
+				   		 	var number =$("#listMes").children('li').length;
+				   		 	if(number==0){
+				   		 	 $("#message").hide();  
+				   		 	}
+				   		 }
+				   	})
                 } else {
                     $.messager.alert("提示", "修改质检失败", "info")
                 }

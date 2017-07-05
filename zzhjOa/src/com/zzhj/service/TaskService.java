@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.zzhj.entityCustom.Message;
 import com.zzhj.entityCustom.MessageType;
 import com.zzhj.mapper.TaskMapper;
+import com.zzhj.mapper.UsersMapper;
 import com.zzhj.po.Task;
 import com.zzhj.webSocket.ServerHandler;
 
@@ -24,6 +25,9 @@ public class TaskService {
 	
 	@Autowired
 	private  TaskMapper tm;
+	
+	@Autowired
+	private UsersMapper um;
 	
 	/**
 	 * 
@@ -122,8 +126,24 @@ public class TaskService {
 	 * @author 小白
 	 * @date 2017年6月12日
 	 */
-	public int updateTaskSpeed(int taskId,int speed,String taskPhase){
-		return tm.updateTaskSpeed(taskId, speed,taskPhase);
+	public int updateTaskSpeed(int taskId,int speed,String taskPhase,String userName){
+		
+		int resoult =tm.updateTaskSpeed(taskId, speed,taskPhase);
+		if(resoult>0&&speed>=100){
+			Message mes = new Message();
+			mes.setFrom(userName);
+			mes.setTargetName("工作质量检测");
+			mes.setViewTarget("task/qualityTask.html");
+			mes.setType(MessageType.task);
+			mes.setContentId(taskId);
+			mes.setTheme("您有未处理的任务消息");
+			List<String> list =um.queryDepartmentAndRole("测绘部","质检");
+			for(String name : list){
+				send(mes,name);
+			}
+			
+		}		
+		return resoult; 
 	}
 	/**
 	 * 

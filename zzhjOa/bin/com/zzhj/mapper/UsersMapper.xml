@@ -124,10 +124,14 @@
 	</select>
 	
 	<select id="querySubZhuGuan" parameterType="string" resultType="string">
-		SELECT u.NAME FROM users u INNER JOIN department d ON u.departmentId=d.id INNER JOIN roles r ON r.id=u.role_id WHERE r.name='主管' or r.name='部门经理' and d.name=#{value}
+		SELECT u.NAME FROM users u INNER JOIN department d ON u.departmentId=d.id INNER JOIN roles r ON r.id=u.role_id WHERE  r.name='部门经理' and d.name=#{value}
 	</select>
 	
 	<select id="userExist" parameterType="string" resultType="string">
 		SELECT s.name FROM users u INNER JOIN security_question s ON s.id =u.security_question_id where u.name=#{value}
+	</select>
+	
+	<select id="queryDepartmentAndRole" parameterType="string" resultType="string">
+		SELECT u.name FROM users u INNER JOIN department d ON d.`id`=u.`departmentId` INNER JOIN roles r ON r.`id`=u.`role_id` WHERE d.name=#{departmentName} AND r.name=#{roleName} 
 	</select>
 </mapper>

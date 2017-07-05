@@ -96,8 +96,9 @@ public class TaskAction {
 	 */
 	@RequestMapping("/updateTaskSpeed.action")
 	@ResponseBody
-	public int updateTaskSpeed(int taskId,int speed,String taskPhase){
-		return ts.updateTaskSpeed(taskId, speed,taskPhase);
+	public int updateTaskSpeed(int taskId,int speed,String taskPhase,HttpSession session){
+		Users user = (Users) session.getAttribute("users");
+		return ts.updateTaskSpeed(taskId, speed,taskPhase,user.getName());
 	}
 	/**
 	 * 

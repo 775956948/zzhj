@@ -160,7 +160,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					}
 					$("#manager").show();
 				});
-			}else if(name=="主管"){
+			}else if(name=="主管"||name=="质检"){
 				$("#zhuGuan").hide();
 				$("#manager").hide();		
 				$.post('users/queryUser.action',{'departmentName':row.departmentId.name,'roleName':'部门经理'},function(data){
