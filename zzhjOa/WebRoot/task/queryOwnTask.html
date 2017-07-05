@@ -24,17 +24,17 @@
                     <span>发 布 日 期：</span>
                     <input type="text" name="CotaskDate" readonly>
                 </div>
-                <div class="splitLi">
+            </li>
+            <li>
+                <div class="splitLi" style="width: 85%">
                     <span>项 目 地 址：</span>
-                    <input type="text" name="CotaskAddress" readonly>
+                    <input type="text" name="CotaskAddress" readonly style="width: 70%">
                 </div>
             </li>
-            <li style="height: 40px">
-                <div class="splitLi">
+            <li style="height: 40px" >
+                <div class="splitLi" style="width: 85%">
                     <span>委 托 单 位：</span>
-                    <input type="text" name="CoentrustedUnit" readonly>
-                </div>
-                <div class="splitLi">
+                    <input type="text" name="CoentrustedUnit" readonly style="width: 70%">
                 </div>
             </li>
             <li style="height: 40px">
@@ -63,8 +63,14 @@
                     <input type="text" name="CoimplementDate" readonly>
                 </div>
                 <div class="splitLi">
-                    <span>任务完成时间：</span>
+                    <span>任务结束时间：</span>
                     <input type="text" name="CosuccessDate" readonly>
+                </div>
+            </li>
+            <li>
+                <div class="splitLi">
+                    <span>指定结束时间：</span>
+                    <input type="text" name="CooverDate" readonly>
                 </div>
             </li>
             <li>
@@ -98,9 +104,33 @@
         </ul>
     </div>
 </div>
+<div id="changeTime" class="easyui-dialog" title="修改任务周期" closed=true>
+    <ul style="width: 300px;margin: 20px auto">
+        <li>
+            <input type="hidden" name="taskIdtime">
+        </li>
+        <li style="margin: 20px auto;height: 40px" >
+            <span>任务开始时间：</span>
+            <input type="text" name="implementDate" class="easyui-datebox" id="implementDateChange" style="height: 90%;text-align: center" >
+        </li>
+        <li style="margin: 20px auto;height: 40px" >
+            <span>任务结束时间：</span>
+            <input type="text" name="successDate" class="easyui-datebox" id="successDateChange" style="height: 90%;text-align: center">
+        </li>
+        <li style="margin: 20px auto;height: 40px" >
+            <span>指定结束时间：</span>
+            <input type="text" name="overDate" readonly id="overDateChange" style="height: 90%;text-align: center">
+        </li>
+        <li style="margin: 20px auto">
+            <input type="button" class="button-task" onclick="changeTime()" value="确 认 更 改">
+        </li>
+    </ul>
+</div>
+
 <div id="taskTb">
     <a class="easyui-linkbutton" iconCls="icon-xd" plain="true" onclick="transmitTaskOpen()">下达任务</a>
     <a class="easyui-linkbutton" iconCls="icon-gr" plain="true" onclick="viewTaskXOWN()">查看任务</a>
+    <a class="easyui-linkbutton" iconCls="icon-xg" plain="true" onclick="changeTimeDg()">修改时间</a>
 </div>
 <div id="taskDd" class="easyui-dialog" closed=true>
     <form id="transmitForm">
@@ -133,6 +163,12 @@
                 <div class="splitLi">
                     <span>任务结束时间：</span>
                     <input type="text" name="successDate" class="easyui-datebox" id="successDate">
+                </div>
+            </li>
+            <li style="">
+                <div class="splitLi">
+                    <span>指定结束时间：</span>
+                    <input type="text" name="overDate" readonly  id="overDate">
                 </div>
             </li>
             <li style="height: 40px">
@@ -172,6 +208,7 @@
                     $("input[name = Coinspection]").val(viewTaskOwn.inspection);
                     $("input[name = CoimplementDate]").val(viewTaskOwn.implementDate);
                     $("input[name = CosuccessDate]").val(viewTaskOwn.successDate);
+                    $("input[name = CooverDate]").val(viewTaskOwn.overDate);
                     $("input[name = CotaskDate]").val(viewTaskOwn.taskDate);
                     $("input[name = CotaskTheme]").val(viewTaskOwn.taskTheme);
                     $("input[name = Costate]").val(viewTaskOwn.state);
@@ -195,6 +232,14 @@
         required:true,
         editable:false
     });
+    $('#successDateChange').datebox({
+        required:true,
+        editable:false
+    });
+    $('#implementDateChange').datebox({
+        required:true,
+        editable:false
+    });
 
     $('#teskDg').datagrid({
         url: 'task/queryOwn.action',
@@ -215,7 +260,8 @@
             {field: 'implement', title: '执行人',width:100},
             {field: 'inspectionUser', title: '质检人',width:100},
             {field: 'implementDate', title: '任务开始时间',width:100},
-            {field: 'successDate', title: '任务完成时间',width:100},
+            {field: 'successDate', title: '任务结束时间',width:100},
+            {field: 'overDate', title: '指定结束时间',width:100},
             {
                 field: 'speed', title: '任务进度', formatter: function (value) {
                 var htmlstr = '<div class="easyui-progressbar progressbar" style="width: 300px; height: 20px;" value="' + value + '" text="' + value + '%">' +
@@ -254,6 +300,7 @@
                         $("input[name='userName']").val(row.userName);
                         $("#successDate").datebox('setValue',row.successDate);
                         $("#implementDate").datebox('setValue',row.implementDate);
+                        $("#overDate").val(row.overDate);
                         $("textarea[name='taskText']").val(row.taskText);
 	                }
 	            })
@@ -262,6 +309,44 @@
         	}
         } else {
             $.messager.alert("提示", "请选中一条信息", "info");
+        }
+    }
+    function changeTimeDg() {
+        var row = $('#teskDg').datagrid('getSelected');
+        if (row) {
+                $("#changeTime").dialog({
+                    top:50,
+                    closed: false,
+                    onOpen: function () {
+                        $("#successDateChange").datebox('setValue',row.successDate);
+                        $("#implementDateChange").datebox('setValue',row.implementDate);
+                        $("#overDateChange").val(row.overDate);
+                    }
+                })
+        } else {
+            $.messager.alert("提示", "请选中一条已发布任务", "info");
+        }
+    }
+    function changeTime() {
+        var row = $('#teskDg').datagrid('getSelected');
+        var ZDtime = $("#overDateChange").val().split("-").join("");
+        var Changetime = $("#successDateChange").val().split("-").join("");
+        if (Changetime > ZDtime || $("#implementDateChange").val() == "") {
+            $.messager.alert("提示", "请正确填写时间范围！", "info")
+        } else {
+            $.post('', {
+                'id': row.id,
+                'successDate': $("#successDateChange").val(),
+                'implementDate': $("#implementDateChange").val()
+            }, function (data) {
+                if (data > 0) {
+                    $.messager.alert("提示", "任务周期更改成功！", "info");
+                    $("#changeTime").dialog({
+                        closed: true
+                    });
+                    $('#teskDg').datagrid('reload');
+                }
+            })
         }
     }
 
@@ -276,9 +361,9 @@
             number=number+1;
         }
         var row = $('#teskDg').datagrid('getSelected');
-        var YsuccesDate=row.successDate.split("-").join("");
         var NsuccessDate=$("#successDate").val().split("-").join("");
-        if(NsuccessDate>YsuccesDate){
+        var ZDoverDate=$("#overDate").val().split("-").join("");
+        if(NsuccessDate>ZDoverDate){
             $.messager.alert("提示","请在原有时间范围内修改","info");
             $("#successDate").datebox('setValue',row.successDate);
         }else {
