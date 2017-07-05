@@ -161,6 +161,17 @@ public interface TaskMapper {
 	 * @date 2017年6月22日
 	 */
 	List<Task> queryImplementOwn(String userName);
+	/**
+	 * 
+	 * @Description: 修改任务时间
+	 * @param @param t
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年7月5日
+	 */
+	int updateTaskTime(Task t);
 	
 
 }

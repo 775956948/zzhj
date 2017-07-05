@@ -172,4 +172,19 @@ public class TaskAction {
 		Users user = (Users) session.getAttribute("users");
 		return ts.queryImplementOwn(user.getName());
 	}
+	/**
+	 * 
+	 * @Description: 修改任务时间
+	 * @param @param t
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年7月5日
+	 */
+	@RequestMapping("/updateTaskTime.action")
+	@ResponseBody
+	public int updateTaskTime(Task t){
+		return ts.updateTaskTime(t);
+	}
 }

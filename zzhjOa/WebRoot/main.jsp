@@ -29,9 +29,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			//--------webSocket----------
             if ("WebSocket" in window){
                // 打开一个 web socket
-                ws = new WebSocket("ws:/192.168.0.17:8080/zzhjOa/serverHandler");
+                ws = new WebSocket("ws:/localhost:8080/zzhjOa/serverHandler");
 				
-               ws.onopen = function()
+               ws.onopen = function() 
                {
                   // Web Socket 已连接上，使用 send() 方法发送数据
                /*    ws.send("发送数据"); */

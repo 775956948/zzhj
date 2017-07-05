@@ -71,7 +71,7 @@
                     <input type="text" name="implementDate" readonly>
                 </div>
                 <div class="splitLi">
-                    <span>任务完成时间：</span>
+                    <span>任务结束时间：</span>
                     <input type="text" name="successDate" readonly>
                 </div>
             </li>
@@ -109,8 +109,8 @@
         </ul>
     </div>
 </div>
-<div id="changeSpeed" class="easyui-dialog" title="修改进度" closed=true>
-    <ul>
+<div id="changeSpeed" class="easyui-dialog" title="修改进度" closed=true >
+    <ul style="width:370px">
         <li>
             <span>修 改 进 度：</span>
             <input type="text" name="changeSpeed" title="请输入1-100数字" min="1" max="100" value="1"
@@ -193,7 +193,7 @@
             {field: 'implement', title: '执行人',width:100},
             {field: 'inspectionUser', title: '质检人',width:100},
             {field: 'implementDate', title: '任务开始时间',width:100},
-            {field: 'successDate', title: '任务完成时间',width:100},
+            {field: 'successDate', title: '任务结束时间',width:100},
             {
                 field: 'speed', title: '任务进度', formatter: function (value) {
                 var htmlstr = '<div class="easyui-progressbar progressbar" style="width: 300px; height: 20px;" value="' + value + '" text="' + value + '%">' +
@@ -257,7 +257,8 @@
         if(SpeedData){
             if (SpeedData.state=="已接收") {
                 $('#changeSpeed').dialog({
-                    closed: false
+                    closed: false,
+                    width:500
                 })
             } else {
                 $.messager.alert("提示", "请先接收任务", "info");
@@ -272,9 +273,6 @@
     function changeSpeed() {
     	var row2= $('#viewTeskDg').datagrid('getSelected');
     	var speed=$("input[name='changeSpeed']").val();
-	 	if(speed>=100){
-    		$.post('task/successTask.action',{'taskId':row2.id});
-    	}  
         $.ajax({
             url: "task/updateTaskSpeed.action",
             method: "POST",

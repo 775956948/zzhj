@@ -22,12 +22,11 @@
             <input type="text" name="client" id="taskContacts1">
             <span>联系人电话:</span>
             <input type="text" name="clientPhone"  id="AddressNumber1" min="0" placeholder="请输入正确格式手机号" onblur="if(!(/^1(3|4|5|7|8)\d{9}$/.test($(this).val()))){$(this).val('')}">
-            <span>任务结束时间:</span>
-            <input type="text" name="successDate"  id="JsDate">
+            <span>指定结束时间:</span>
+            <input type="text" name="overDate"  id="JsDate">
             <span>任务接收人:</span>
             <select name="taskReceive" style="margin: 0 auto;display: block" id="taskReceive1"></select>
             <button id="submitTask">确  认  发  布</button>
-            <button id="printTask" onclick="PrintTask()">打  印  任  务</button>
         </div>
     </div>
    
@@ -62,8 +61,8 @@
             var entrustedUnit=$("input[name='entrustedUnit']").val();
             var client=$("input[name='client']").val();
             var clientPhone=$("input[name='clientPhone']").val();
-            var successDate=$("input[name='successDate']").val();
-            if(taskContent!=""&&taskTheme!=""&&taskAddress!=""&&taskReceive!=""&&entrustedUnit!=""&&client!=""&&clientPhone!=""&&successDate!=""){
+            var overDate=$("input[name='overDate']").val();
+            if(taskContent!=""&&taskTheme!=""&&taskAddress!=""&&taskReceive!=""&&entrustedUnit!=""&&client!=""&&clientPhone!=""&&overDate!=""){
                 $.ajax({
                     url:'task/addTask.action',
                     type:'POST',
@@ -76,7 +75,7 @@
                         entrustedUnit:entrustedUnit,
                         client:client,
                         clientPhone:clientPhone,
-                        successDate:successDate
+                        overDate:overDate
                     },
                     success:function(data){
                     	if(data>0){
