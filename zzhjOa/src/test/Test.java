@@ -1,7 +1,10 @@
 package test;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.Executors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -35,16 +38,21 @@ public class Test {
 		 /*ApplicationContext ap =new ClassPathXmlApplicationContext(new String[]{"application_context.xml","application_dao.xml","application_mvc.xml"});
 		 NoticeService s = (NoticeService) ap.getBean("noticeService");
 		 System.out.println(s.queryAllList(1, 10));*/
-
-	       String str1="2015-01-07";
-	        String str2="2015-01-08";
-	        int res=str1.compareTo(str2);
-	        if(res>0)
-	            System.out.println("str1>str2");
-	        else if(res==0)
-	            System.out.println("str1=str2");
-	        else
-	            System.out.println("str1<str2");
+		 int[] a ={1,3,5,7,8};
+		 int max=a[4];
+		 int min=a[3];
+		 int sum=0;
+		 for (int i = 0; i < a.length; i++) {
+			if(max<a[i])
+				max=a[i];
+			
+			if(min>a[i])
+				min=a[i];
+			
+			sum=sum+a[i];
+		}
+		 
+		 System.out.println(max+"----"+min+"-----"+sum);
 		
 		
 

@@ -39,8 +39,8 @@
   	update tasks set speed=#{speed},task_phase=#{taskPhase} where id=#{taskId}
   </update>
   
-  <select id="queryAll" parameterType="int" resultMap="tk">
-  	select * from tasks limit #{startPage},#{rows}
+  <select id="queryAll" parameterType="object" resultMap="tk">
+  	select * from tasks where user_name=#{userName} limit #{startPage},#{rows}
   </select>
   <select id="queryOwn" parameterType="object" resultMap="tk">
   	select * from tasks t where t.implement=#{userName} or t.recipient=#{userName} LIMIT #{startPage},#{rows}

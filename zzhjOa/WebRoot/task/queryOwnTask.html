@@ -351,9 +351,8 @@
     }
 
     function transmitTask() {
-    	
         var number = 0;
-        if($("#implementDate").val()==""||$("#successDate").val()==""){
+        if($("#implementDate").val()==""||$("#successDate").val()==""||$("select[name=implement]").find("option:selected").text()==""){
             number=number+1;
         }
         var row = $('#teskDg').datagrid('getSelected');

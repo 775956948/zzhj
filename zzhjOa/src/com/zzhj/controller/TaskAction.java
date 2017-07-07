@@ -113,8 +113,9 @@ public class TaskAction {
 	 */
 	@RequestMapping("/queryAll.action")
 	@ResponseBody
-	public Map<String,Object> queryAll(int page,int rows){
-		return ts.queryAll(page, rows);
+	public Map<String,Object> queryAll(int page,int rows,HttpSession session){
+		Users user = (Users) session.getAttribute("users");
+		return ts.queryAll(page, rows,user.getName());
 	}
 	/**
 	 * 

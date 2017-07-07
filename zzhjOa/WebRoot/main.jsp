@@ -26,92 +26,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			//查询公告
 			noticeQuery();
 			 
-			//--------webSocket----------
-            if ("WebSocket" in window){
-               // 打开一个 web socket
-                ws = new WebSocket("ws:/192.168.0.17:8080/zzhjOa/serverHandler");
-				
-               ws.onopen = function() 
-               {
-                  // Web Socket 已连接上，使用 send() 方法发送数据
-               /*    ws.send("发送数据"); */
-               };
-				
-               ws.onmessage = function (evt) 
-               { 
-                  var msg = evt.data;
-                  var jsonObject =JSON.parse(msg);
-          
-                  if(jsonObject.type=="seal"){
-                	  seal(jsonObject);
-                  }else if(jsonObject.type=="notice"){
-                	  noticeQuery();
-                  }else if(jsonObject.type=="task"){
-                	  toTask(jsonObject);
-                  }else if(jsonObject.type=="feedback"){
-                	  toFeedback(jsonObject)
-                  }
-
-               };
-				
-               ws.onclose = function()
-               { 
-                  // 关闭 websocket
-               };
-            }
-            
-            else
-            {
-               // 浏览器不支持 WebSocket
-               alert("您的浏览器不支持 WebSocket!");
-            }
-			
-			
-			/* --echats */
-			 var myChart = echarts.init(document.getElementById('zhu'));
-		        var option = {
-		                title: {
-		                    text: '数据展示'
-		                },
-		                tooltip: {},
-		                legend: {
-		                    data:['销量']
-		                },
-		                xAxis: {
-		                    data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
-		                },
-		                yAxis: {},
-		                series: [{
-		                    name: '销量',
-		                    type: 'bar',
-		                    data: [5, 20, 36, 10, 10, 20]
-		                }]
-		            };
-
-		            // 使用刚指定的配置项和数据显示图表。
-		            myChart.setOption(option);
-		            //
-		            var bing = echarts.init(document.getElementById('bing'));
-		           var bingOption = {
-		            	    series : [
-		            	        {
-		            	            name: '访问来源',
-		            	            type: 'pie',
-		            	            radius: '55%',
-		            	            roseType: 'angle',
-		            	            data:[
-		            	                {value:235, name:'视频广告 '},
-		            	                {value:274, name:'联盟广告'},
-		            	                {value:310, name:'邮件营销'},
-		            	                {value:335, name:'直接访问'},
-		            	                {value:400, name:'搜索引擎'}
-		            	            ]
-		            	        }
-		            	    ]
-		            	};
-		           bing.setOption(bingOption);
-			//end  -----
-			
 			//手风琴开始
 			$.post('function/getNode.action',function(data){
 					for(var i = 0; i < data.length;i++){
@@ -144,6 +58,92 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           	}
           }); 
           //手风琴结束
+          
+		//--------webSocket----------
+        if ("WebSocket" in window){
+           // 打开一个 web socket
+            ws = new WebSocket("ws:/192.168.0.17:8080/zzhjOa/serverHandler");
+			
+           ws.onopen = function() 
+           {
+              // Web Socket 已连接上，使用 send() 方法发送数据
+           /*    ws.send("发送数据"); */
+           };
+			
+           ws.onmessage = function (evt) 
+           { 
+              var msg = evt.data;
+              var jsonObject =JSON.parse(msg);
+      
+              if(jsonObject.type=="seal"){
+            	  seal(jsonObject);
+              }else if(jsonObject.type=="notice"){
+            	  noticeQuery();
+              }else if(jsonObject.type=="task"){
+            	  toTask(jsonObject);
+              }else if(jsonObject.type=="feedback"){
+            	  toFeedback(jsonObject)
+              }
+
+           };
+			
+           ws.onclose = function()
+           { 
+              // 关闭 websocket
+           };
+        }
+        
+        else
+        {
+           // 浏览器不支持 WebSocket
+           alert("您的浏览器不支持 WebSocket!");
+        }
+		
+		
+		/* --echats */
+		 var myChart = echarts.init(document.getElementById('zhu'));
+	        var option = {
+	                title: {
+	                    text: '数据展示'
+	                },
+	                tooltip: {},
+	                legend: {
+	                    data:['销量']
+	                },
+	                xAxis: {
+	                    data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+	                },
+	                yAxis: {},
+	                series: [{
+	                    name: '销量',
+	                    type: 'bar',
+	                    data: [5, 20, 36, 10, 10, 20]
+	                }]
+	            };
+
+	            // 使用刚指定的配置项和数据显示图表。
+	            myChart.setOption(option);
+	            //
+	            var bing = echarts.init(document.getElementById('bing'));
+	           var bingOption = {
+	            	    series : [
+	            	        {
+	            	            name: '访问来源',
+	            	            type: 'pie',
+	            	            radius: '55%',
+	            	            roseType: 'angle',
+	            	            data:[
+	            	                {value:235, name:'视频广告 '},
+	            	                {value:274, name:'联盟广告'},
+	            	                {value:310, name:'邮件营销'},
+	            	                {value:335, name:'直接访问'},
+	            	                {value:400, name:'搜索引擎'}
+	            	            ]
+	            	        }
+	            	    ]
+	            	};
+	           bing.setOption(bingOption);
+		//end  -----
 
 		});
 		///
@@ -271,15 +271,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				   		<div id="bing" style="width: 400px; height: 220px; padding: 10px; margin-left: 20px; "></div>
 				   	</div>
 				   	<div id="notice">
+				   		<img src="image/gg.png" width="101%"/>
 				   		 <div id="north" style="overflow: auto;">
-				   			<img src="image/gg.png" width="100%"/>
 				   		</div> 
 				   		<div id="south">
 				   			 <iframe src="date.html" width="100%" height="100%" frameborder="0" ></iframe> 
 				   		</div>
 				   		
 				   	</div>
-				    	<iframe src="http://www.cehui8.com/" width="100%" height="100%" frameborder="0" ></iframe> 
+				    	<!-- <iframe src="http://www.cehui8.com/" width="100%" height="100%" frameborder="0" ></iframe>  -->
 				   </div>    
 			</div> 
 			<div id="mesDd"  class="easyui-dialog" closed=true >

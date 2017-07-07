@@ -156,9 +156,9 @@ public class TaskService {
 	 * @author 小白
 	 * @date 2017年6月12日
 	 */
-	public Map<String,Object> queryAll(int page,int rows){
+	public Map<String,Object> queryAll(int page,int rows,String userName){
 		int startPage=(page-1)*rows;
-		List<Task> list= tm.queryAll(startPage, rows);
+		List<Task> list= tm.queryAll(startPage, rows,userName);
 		int total=tm.totalCount();
 		Map<String,Object> map = new HashMap();
 		map.put("rows", list);
