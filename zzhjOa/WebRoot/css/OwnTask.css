@@ -1,8 +1,11 @@
-#viewTask ul,#seeMessage ul,#transmitForm ul,#addRest ul,#viewTaskAll ul,#viewTaskOWN ul,#viewTaskQua ul{
+#viewTask ul,#seeMessage ul,#transmitForm ul,#addRest ul,#viewTaskAll ul,#viewTaskOWN ul,#viewTaskQua ul,.TGK ul{
     width: 700px;
     margin: 0 auto;
     height: auto;
     overflow: hidden;
+}
+#addNewDiG ul,#changeItemsDiG ul,#applyItemsDiG ul,#SPxq ul,#viewDetailsDiG ul{
+    width: 500px;
 }
 #changeSpeed ul{
     width: 100%;
@@ -11,13 +14,16 @@
     overflow: hidden;
     padding: 0;
 }
-#viewTask li,#changeSpeed li,#seeMessage li,#transmitForm li,#addRest li,#viewTaskAll li,#viewTaskOWN li,#viewTaskQua li{
+#viewTask li,#changeSpeed li,#seeMessage li,#transmitForm li,#addRest li,#viewTaskAll li,#viewTaskOWN li,#viewTaskQua li,.TGK li{
     width: 100%;
     min-height: 40px;
     font-size: 16px;
     line-height: 40px;
     overflow: hidden;
     position: relative;
+}
+.TGK li{
+    margin-top: 10px;
 }
 #addRest li{
     margin: 10px auto;
@@ -32,11 +38,11 @@
     float: left;
     overflow: hidden;
 }
-#viewTask  span,#changeSpeed span ,#seeMessage span,#transmitForm span,#addRest span,#viewTaskAll span,#viewTaskOWN span,#viewTaskQua span{
+#viewTask  span,#changeSpeed span ,#seeMessage span,#transmitForm span,#addRest span,#viewTaskAll span,#viewTaskOWN span,#viewTaskQua span,.TGK span{
     float: left;
     box-sizing: border-box;
 }
-#viewTask li>span,#viewTaskAll li>span,#viewTaskOWN li>span,#viewTaskQua li>span,#transmitForm li>span,.splitLi>span{
+#viewTask li>span,.TGK li>span,#viewTaskAll li>span,#viewTaskOWN li>span,#viewTaskQua li>span,#transmitForm li>span,.splitLi>span{
     width: 118px;
 }
 #transmitForm span{
@@ -54,14 +60,14 @@
     border: 1px solid #d2d2d2;
     border-radius: 0;
 }
-#changeSpeed input,#seeMessage input,#transmitForm input ,#addRest input{
+#changeSpeed input,#seeMessage input,#transmitForm input ,#addRest input,.TGK input{
     float: left;
     height: 40px;
     line-height: 40px;
     font-size: 20px;
     text-align: center;
 }
-#addRest input{
+#addRest input,#addNewDiG li input,#changeItemsDiG li input,#applyItemsDiG  li input,#SPxq li input,#viewDetailsDiG li input{
     width: 350px;
 }
 #viewTask .splitLi input ,#seeMessage .splitLi input,#transmitForm .splitLi input,#viewTaskAll .splitLi input,#viewTaskOWN .splitLi input,#viewTaskQua .splitLi input{
@@ -75,7 +81,7 @@
     margin-top: 3px;
     float: left;
 }
-#viewTask li .button-task,#changeSpeed li .button-task ,#seeMessage li .button-task,#transmitForm li .button-task,#addRest li .button-task,#viewTaskAll li .button-task ,#viewTaskOWN li .button-task,#viewTaskQua li .button-task,#changeTime li .button-task{
+#viewTask li .button-task,#changeSpeed li .button-task ,#seeMessage li .button-task,#transmitForm li .button-task,#addRest li .button-task,#viewTaskAll li .button-task ,#viewTaskOWN li .button-task,#viewTaskQua li .button-task,#changeTime li .button-task,.TGK li .button-task{
     float: none;
     display: block;
     height: 40px;

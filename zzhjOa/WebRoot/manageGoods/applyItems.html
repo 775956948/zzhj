@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>办公用品申请</title>
+</head>
+<body>
+<div class="PagingBody">
+    <h3>办 公 用 品 申 请</h3>
+</div>
+<div class="buttonBar" id="buttonBarSQall">
+    <a class="easyui-linkbutton" iconCls="icon-xg" plain="true" onclick="applyItems()">物品申请</a>
+    <br>
+    <span style="margin-left: 6px">关键字：</span><input type="text" id="ScxName">
+    <a class="easyui-linkbutton" iconCls="icon-cz" plain="true" onclick="SitemQuery()">物品查询</a>
+</div>
+<table id="SQSYWPDg"></table>
+<div class=" TGK easyui-dialog" title="申请物品数量" closed=true id="applyItemsDiG" >
+    <ul>
+        <li style="height: 0;min-height: 0">
+            <input type="text" name="SQwpId" hidden>
+        </li>
+        <li>
+            <span>物品名称：</span>
+            <input type="text" name="SQwpName"  readonly>
+        </li>
+        <li>
+            <span>物品数量：</span>
+            <input type="text" name="SQwpMath" placeholder="请输入整数"  onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}">
+        </li>
+        <li>
+            <input type="button" class="button-task" value="确 定 申 请" onclick="applyWp()">
+        </li>
+    </ul>
+</div>
+<script type="text/javascript">
+    //初始化所有物品表格
+    $('#SQSYWPDg').datagrid({
+        url: '',
+        pagination: true,
+        singleSelect: true,  //仅可以选中一行
+        fitColumns: true, //自动展开 铺满横向
+        toolbar: "#buttonBarSQall",  //使上方控制器和表格融为一体
+        columns: [[
+            {field: 'id', title: '编号', checkbox: true,order:'desc'},
+            {field: 'goodsName', title: '物品名称',width:300},
+            {field: 'goodsMoney', title: '物品价格',width:200},
+            {field: 'goodsNumber', title: '物品数量',width:200},
+            {field: 'goodsDate', title: '入库日期',width:200}
+        ]]
+    });
+    //申请物品弹窗
+    function applyItems(){
+        var row=$('#SQSYWPDg').datagrid('getSelected');
+        if(row){
+            $('#applyItemsDiG').dialog({
+                height:240,
+                closed: false, //更改 显示隐藏
+                cache: false,//是否缓存
+                onOpen: function () {
+                    $("input[name=SQwpId]").val(row.id);
+                    $("input[name=SQwpName]").val(row.goodsName);
+                }
+            });
+        }else{
+            $.messager.alert("提示","请选中一条物品信息！","info")
+        }
+    }
+    //申请物品
+    function applyWp(){
+        var row=$('#SQSYWPDg').datagrid('getSelected');
+        var SQmath=$("input[name=SQwpMath]").val();
+        var YwpMath=row.goodsNumber;
+        if( SQmath!=""&&SQmath<=YwpMath&&SQmath>0){
+            $.post('  ',{'id':$("input[name=SQwpId]").val(),'goodsNumber':SQmath},function(data){
+                if(data>0){
+                    $.messager.alert("提示", "申请成功！", "info");
+                    $('#SQSYWPDg').datagrid('reload');
+                    $('#applyItemsDiG').dialog({
+                        closed: true  //更改 显示隐藏
+                    });
+                }
+            })
+        }else{
+            $.messager.alert("提示","请正确填写申请数量！","info")
+        }
+    }
+    //物品查询函数
+    function SitemQuery() {
+        var cxName = $("#ScxName").val();
+        if (cxName != "") {
+            $('#SQSYWPDg').datagrid({
+                url: '',
+                fitColumns: true,
+                toolbar: '#buttonBarCKall',
+                pagination: true,
+                singleSelect: true,
+                queryParams: {
+                    'cxName': cxName
+                },
+                columns: [[
+                    {field: 'id', title: '编号', checkbox: true},
+                    {field: 'goodsName', title: '物品名称',width:300},
+                    {field: 'goodsMoney', title: '物品价格',width:200},
+                    {field: 'goodsNumber', title: '物品数量',width:200},
+                    {field: 'goodsDate', title: '入库日期',width:200}
+                ]]
+            });
+        } else {
+            $.messager.alert("提示", "请输入所要查询的关键字！", "info")
+        }
+    }
+</script>
+</body>
+</html>
