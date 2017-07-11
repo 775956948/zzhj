@@ -116,7 +116,7 @@
 	</select>
 	
 	<select id="querySubclass" parameterType="string" resultType="string">
-		SELECT u.NAME FROM users u INNER JOIN department d ON u.departmentId=d.id INNER JOIN roles r ON r.id=u.role_id WHERE d.name=#{value} AND r.name='员工'
+		SELECT u.NAME FROM users u INNER JOIN department d ON u.departmentId=d.id INNER JOIN roles r ON r.id=u.role_id WHERE d.name=#{value} AND r.name='主管' 
 	</select>
 	
 	<select id="querySubCount" parameterType="int" resultType="int">
