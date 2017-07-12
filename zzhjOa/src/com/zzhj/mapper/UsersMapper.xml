@@ -134,4 +134,7 @@
 	<select id="queryDepartmentAndRole" parameterType="string" resultType="string">
 		SELECT u.name FROM users u INNER JOIN department d ON d.`id`=u.`departmentId` INNER JOIN roles r ON r.`id`=u.`role_id` WHERE d.name=#{departmentName} AND r.name=#{roleName} 
 	</select>
+	<select id="queryRoleUser" resultType="users" parameterType="string">
+		SELECT u.name,u.id  FROM users u INNER JOIN roles r ON r.id=u.role_id WHERE r.name=#{value}
+	</select>
 </mapper>

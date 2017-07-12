@@ -12,6 +12,7 @@ public class RequestGoods implements Serializable{
 	private int id;
 	private Users userId;			//申请人
 	private OfficeSupplies goodId;	//物品
+	private int goodsNumber;
 	private String approver;		//审批人
 	private String state;			//状态
 	private String requestDate;		//申请日期
@@ -58,5 +59,12 @@ public class RequestGoods implements Serializable{
 	public void setApproverDate(String approverDate) {
 		this.approverDate = approverDate;
 	}
+	public int getGoodsNumber() {
+		return goodsNumber;
+	}
+	public void setGoodsNumber(int goodsNumber) {
+		this.goodsNumber = goodsNumber;
+	}
+	
 	
 }

@@ -7,17 +7,19 @@
 		<result column="state" property="state"/>
 		<result column="request_date" property="requestDate"/>
 		<result column="approver_date" property="approverDate"/>
+		<result column="goods_number" property="goodsNumber"/>
 		<association property="userId" javaType="users">
 			<result column="name" property="name"/>
 		</association>
 		<association property="goodId" javaType="officeSupplies">
+			<result column="g_id" property="id"/>
 			<result column="goods_name" property="goodsName"/>
 		</association>
 	</resultMap>
 
   	<insert id="saveRequestGoods" parameterType="requestGoods">
   		insert into request_goods(user_id,goods_id,goods_number,approver,state,request_date)
-  		values(#{userId.id},#{goodsId.id},#{goodsNumber},#{approver},#{state},#{requestDate})
+  		values(#{userId.id},#{goodId.id},#{goodId.goodsNumber},#{approver},#{state},#{requestDate})
   	</insert>
   	<select id="queryAll" parameterType="int" resultMap="rg">
   		select r.*,u.name,o.goods_name from request_goods r inner join users u on r.user_id = u.id
@@ -28,9 +30,19 @@
   		inner join office_supplies o on r.goods_id = o.id where u.id=#{userId} limit #{startPage},#{rows}
   	</select>
   	<update id="approver" parameterType="object" >
-  		update request_goods set state='已审批',approver_date=#{date} where id=#{id}
+  		update request_goods set state='已审批',approver_date=#{date},approver=#{approverName} where id=#{id}
   	</update>
   	<delete id="delete" parameterType="int">
   		delete from request_goods where id=#{value}
   	</delete>
+  	<select id="totalCount" resultType="int">
+  		select count(id) from request_goods
+  	</select>
+  	<select id="likeUserQueryAll" parameterType="string" resultMap="rg">
+  		select r.*,u.name,o.goods_name from request_goods r inner join users u on r.user_id = u.id
+  		inner join office_supplies o on r.goods_id = o.id where u.name like '%${value}%'
+  	</select>
+  	<select id="queryId" parameterType="int" resultMap="rg">
+  		select o.id as g_id from request_goods r inner join office_supplies o on o.id=r.goods_id where r.id=#{value}
+  	</select>
 </mapper>

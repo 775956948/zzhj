@@ -54,7 +54,7 @@ public interface RequestGoodsMapper {
 	 * @author 小白
 	 * @date 2017年7月10日
 	 */
-	int approver(@Param("id")int id,@Param("date")String date);
+	int approver(@Param("id")int id,@Param("date")String date,@Param("approverName")String approverName);
 	
 	/**
 	 * 
@@ -87,4 +87,17 @@ public interface RequestGoodsMapper {
 	 * @date 2017年7月10日
 	 */
 	int totalOwnCont();
+	/**
+	 * 
+	 * @Description: 根据申请人模糊查询
+	 * @param @param userName
+	 * @param @return   
+	 * @return List<RequestGoods>  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年7月11日
+	 */
+	List<RequestGoods> likeUserQueryAll(String userName);
+	
+	RequestGoods queryId(int id);
 }

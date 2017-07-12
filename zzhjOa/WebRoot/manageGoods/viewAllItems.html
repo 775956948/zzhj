@@ -65,7 +65,7 @@
 <script type="text/javascript">
     //初始化所有物品表格
     $('#SYWPDg').datagrid({
-        url: '',
+        url: 'officeSupplies/queryAll.action',
         pagination: true,
         singleSelect: true,  //仅可以选中一行
         fitColumns: true, //自动展开 铺满横向
@@ -91,7 +91,7 @@
    //    确认物品添加
     function confirmAdd(){
         if($("input[name=wpName]").val()!=""&&$("input[name=wpMoney]").val()!=""&&$("input[name=wpMath]").val()!=""){
-            $.post('  ',{'goodsName':$("input[name=wpName]").val(),'goodsMoney':$("input[name=wpMoney]").val(),'goodsNumber':$("input[name=wpMath]").val()},function(data){
+            $.post('officeSupplies/saveOfficeSupplies.action',{'goodsName':$("input[name=wpName]").val(),'goodsMoney':$("input[name=wpMoney]").val(),'goodsNumber':$("input[name=wpMath]").val()},function(data){
                 if(data>0){
                     $.messager.alert("提示", "添加成功", "info");
                     $('#SYWPDg').datagrid('reload');
@@ -127,7 +127,7 @@
     //确认修改数量
     function changeWp(){
         if($("input[name=CwpName]").val()!=""&&$("input[name=CwpMath]").val()!=""&&$("input[name=CwpMoney]").val()!=""){
-            $.post('  ',{'id':$("input[name=CwpId]").val(),'goodsName':$("input[name=CwpName]").val(),'goodsNumber':$("input[name=CwpMath]").val(),'goodsMoney':$("input[name=CwpMoney]").val()},function(data){
+            $.post('officeSupplies/updateOfficeSupplies.action',{'id':$("input[name=CwpId]").val(),'goodsName':$("input[name=CwpName]").val(),'goodsNumber':$("input[name=CwpMath]").val(),'goodsMoney':$("input[name=CwpMoney]").val()},function(data){
                 if(data>0){
                     $.messager.alert("提示", "修改成功", "info");
                     $('#SYWPDg').datagrid('reload');
@@ -169,7 +169,7 @@
         var cxName = $("#cxName").val();
         if (cxName != "") {
             $('#SYWPDg').datagrid({
-                url: '',
+                url: 'officeSupplies/likeQuey.action',
                 fitColumns: true,
                 toolbar: '#buttonBarCKall',
                 pagination: true,

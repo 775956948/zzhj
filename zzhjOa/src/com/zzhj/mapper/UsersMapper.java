@@ -177,4 +177,15 @@ public interface UsersMapper {
 	 * @date 2017年7月5日
 	 */
 	List<String> queryDepartmentAndRole(@Param("departmentName")String departmentName,@Param("roleName")String roleName);
+	/**
+	 * 
+	 * @Description: 返回拥有该参数角色的用户
+	 * @param @param roleName
+	 * @param @return   
+	 * @return List<String>  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年7月11日
+	 */
+	List<Users> queryRoleUser(String roleName);
 }

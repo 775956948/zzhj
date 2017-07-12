@@ -8,8 +8,11 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.zzhj.mapper.OfficeSuppliesMapper;
 import com.zzhj.mapper.RequestGoodsMapper;
+import com.zzhj.mapper.UsersMapper;
 import com.zzhj.po.RequestGoods;
+import com.zzhj.po.Users;
 
 import utils.DateFormater;
 
@@ -18,6 +21,10 @@ public class RequestGoodsService {
 	
 	@Autowired
 	private RequestGoodsMapper rgm;
+	@Autowired
+	private OfficeSuppliesService os;
+	@Autowired
+	private UsersMapper um;
 	
 	
 	/**
@@ -31,6 +38,8 @@ public class RequestGoodsService {
 	 * @date 2017年7月10日
 	 */
 	public int saveRequestGoods(RequestGoods g){
+		List<Users> list = um.queryRoleUser("行政");
+		g.setApprover(list.get(0).getName());
 		g.setState("待审批");
 		g.setRequestDate(DateFormater.format(new Date()));
 		return rgm.saveRequestGoods(g);
@@ -84,9 +93,15 @@ public class RequestGoodsService {
 	 * @author 小白
 	 * @date 2017年7月10日
 	 */
-	public int approver(int id){
+	public int approver(int id,String approverName,int number){
 		String date =DateFormater.format(new Date());
-		return rgm.approver(id, date);
+		int resoult=rgm.approver(id, date,approverName);
+		RequestGoods rg =rgm.queryId(id);
+		int update=0;
+		if(resoult>0){
+			update=os.reduce(number, rg.getGoodId().getId());
+		}
+		return update;
 	}
 	
 	/**
@@ -101,6 +116,19 @@ public class RequestGoodsService {
 	 */
 	public int delete(int id){
 		return rgm.delete(id);
+	}
+	/**
+	 * 
+	 * @Description: 根据申请人模糊查询
+	 * @param @param userName
+	 * @param @return   
+	 * @return List<RequestGoods>  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年7月11日
+	 */
+	public List<RequestGoods> likeUserQueryAll(String userName){
+		return rgm.likeUserQueryAll(userName);
 	}
 
 

@@ -36,7 +36,7 @@
 <script type="text/javascript">
     //初始化所有物品表格
     $('#SQSYWPDg').datagrid({
-        url: '',
+        url: 'officeSupplies/queryAll.action',
         pagination: true,
         singleSelect: true,  //仅可以选中一行
         fitColumns: true, //自动展开 铺满横向
@@ -72,7 +72,7 @@
         var SQmath=$("input[name=SQwpMath]").val();
         var YwpMath=row.goodsNumber;
         if( SQmath!=""&&SQmath<=YwpMath&&SQmath>0){
-            $.post('  ',{'id':$("input[name=SQwpId]").val(),'goodsNumber':SQmath},function(data){
+            $.post('requestGoods/saveRequestGoods.action',{'goodId.id':$("input[name=SQwpId]").val(),'goodId.goodsNumber':SQmath},function(data){
                 if(data>0){
                     $.messager.alert("提示", "申请成功！", "info");
                     $('#SQSYWPDg').datagrid('reload');
@@ -90,13 +90,13 @@
         var cxName = $("#ScxName").val();
         if (cxName != "") {
             $('#SQSYWPDg').datagrid({
-                url: '',
+                url: 'officeSupplies/likeQuey.action',
                 fitColumns: true,
                 toolbar: '#buttonBarCKall',
                 pagination: true,
                 singleSelect: true,
                 queryParams: {
-                    'cxName': cxName
+                    'goodsName': cxName
                 },
                 columns: [[
                     {field: 'id', title: '编号', checkbox: true},

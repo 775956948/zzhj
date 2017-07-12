@@ -82,7 +82,7 @@ public class RequestGoodsAction {
 	}
 	/**
 	 * 
-	 * @Description: 审批报销单
+	 * @Description: 审批申请单
 	 * @param @param id
 	 * @param @return   
 	 * @return int  
@@ -92,8 +92,9 @@ public class RequestGoodsAction {
 	 */
 	@RequestMapping("/approver.action")
 	@ResponseBody
-	public int approver(int id){
-		return rgs.approver(id);
+	public int approver(int id,HttpSession session,int number){
+		Users user = (Users) session.getAttribute("users");
+		return rgs.approver(id,user.getName(),number);
 	}
 	
 	/**
@@ -110,6 +111,22 @@ public class RequestGoodsAction {
 	@ResponseBody
 	public int delete(int id){
 		return rgs.delete(id);
+	}
+	
+	/**
+	 * 
+	 * @Description: 根据申请人模糊查询
+	 * @param @param userName
+	 * @param @return   
+	 * @return List<RequestGoods>  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年7月11日
+	 */
+	@RequestMapping("/likeUserQueryAll.action")
+	@ResponseBody
+	public List<RequestGoods> likeUserQueryAll(String userName){
+		return rgs.likeUserQueryAll(userName);
 	}
 	
 }

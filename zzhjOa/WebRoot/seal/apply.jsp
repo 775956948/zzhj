@@ -28,11 +28,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</tr>
   			   		<tr>
   			   			<td align="center">编号</td>
-  			   			<td><input type="text" name="number"  value=""  onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();" /></td>
+  			   			<td><input type="text" name="number"    onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();" /></td>
   			   		</tr>
   			   		<tr>
   			   			<td align="center">项目名称</td>
-  			   			<td><input type="text" name="projectName"  value="" /></td>
+  			   			<td><input type="text" name="projectName"  /></td>
   			   		</tr>
   			   		
   			   		<tr>
@@ -50,11 +50,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   			   		 
   			   		<tr>
   			   			<td align="center">页数</td>
-  			   			<td><input type="text" name="pageNumber"  value="" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();"/></td>
+  			   			<td><input type="text" name="pageNumber"  onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();"/></td>
   			   		</tr>
   			   		<tr>
   			   			<td align="center">份数</td>
-  			   			<td><input type="numberbox" name="copiesNumber"  value="" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();"/></td>
+  			   			<td><input type="numberbox" name="copiesNumber"   onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();"/></td>
   			   		</tr>
   			   		<tr align="center">
   			   			<td colspan="2"><input type="button" value="申请" onclick="applySubmit()"/></td>

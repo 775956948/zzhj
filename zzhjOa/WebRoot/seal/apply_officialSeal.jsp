@@ -23,10 +23,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<ul class="cmn_list">
 					<li>
 						<span>编号</span>
-						<input type="text" name="number"  value=""   onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();"/></li>
+						<input type="text" name="number"   onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();"/></li>
 					<li>
 						<span style="vertical-align: top;"> 项目名称</span>
-						<textarea name="projectName" rows="" cols="" c></textarea>
+						<textarea name="projectName" rows="" cols="" ></textarea>
 					</li>
 					<li>
 						<span style="vertical-align: top;">收文主题</span>
@@ -43,10 +43,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</li> 	
 					<li>
 						<span>页数</span>
-						<input type="text" name="pageNumber"  value=""  onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();"/></li>
+						<input type="text" name="pageNumber"   onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();"/></li>
 					<li>
 						<span>份数</span>
-						<input type="text" name="copiesNumber"  value=""  onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();"/></li>
+						<input type="text" name="copiesNumber"  onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();"/></li>
 					<li>
 						<input  type="button" value="提交" onclick="apply_official_Submit()"/>
 					</li>
