@@ -95,3 +95,16 @@
     font-weight: 800;
     font-size: 20px;
 }
+
+@media print {
+    .qz{
+        display: inline-block !important;
+    }
+    #viewTask,#viewTaskAll,#viewTaskOWN{
+        overflow:visible;
+        height: auto;
+    }
+    .button-task{
+        opacity: 0;
+    }
+}

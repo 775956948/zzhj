@@ -23,14 +23,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<ul class="cmn_list">
 					<li>
 						<span>编号</span>
-						<input type="text" name="number"   onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();"/></li>
+						<input type="text" name="number" id="GZnumber"  onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();"/></li>
 					<li>
 						<span style="vertical-align: top;"> 项目名称</span>
-						<textarea name="projectName" rows="" cols="" ></textarea>
+						<textarea name="projectName" rows="" cols="" id="GZprojectName" ></textarea>
 					</li>
 					<li>
 						<span style="vertical-align: top;">收文主题</span>
-						<textarea name="text" rows="" cols="" ></textarea>
+						<textarea name="text" rows="" cols="" id="GZtext" ></textarea>
 					</li>
  					<li>
 						<span>章类型</span>
@@ -43,10 +43,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</li> 	
 					<li>
 						<span>页数</span>
-						<input type="text" name="pageNumber"   onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();"/></li>
+						<input type="text" name="pageNumber" id="GZpageNumber"  onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();"/></li>
 					<li>
 						<span>份数</span>
-						<input type="text" name="copiesNumber"  onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();"/></li>
+						<input type="text" name="copiesNumber" id="GZcopiesNumber"  onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();"/></li>
 					<li>
 						<input  type="button" value="提交" onclick="apply_official_Submit()"/>
 					</li>
@@ -105,7 +105,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			 }
 				 
 			function apply_official_Submit(){
-	        if($("input[name=number]").val()!=""&&$("input[name=projectName]").val()!=""&&$("input[name=pageNumber]").val()!=""&&$("input[name=copiesNumber]").val()!=""&&$("textarea[name=text]").val()!=""){
+	        if($("#GZnumber").val()!=""&&$("#GZprojectName").val()!=""&&$("#GZpageNumber").val()!=""&&$("#GZcopiesNumber").val()!=""&&$("#GZtext").val()!=""){
 		         $.ajax({
 		             url:"requestSeal/save.action",
 		             type:"post",

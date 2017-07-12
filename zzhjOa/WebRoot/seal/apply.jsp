@@ -28,33 +28,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</tr>
   			   		<tr>
   			   			<td align="center">编号</td>
-  			   			<td><input type="text" name="number"    onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();" /></td>
+  			   			<td><input type="text" name="number"  id="ZZnumber"  onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();" /></td>
   			   		</tr>
   			   		<tr>
   			   			<td align="center">项目名称</td>
-  			   			<td><input type="text" name="projectName"  /></td>
+  			   			<td><input type="text" name="projectName" id="ZZprojectName" /></td>
   			   		</tr>
   			   		
   			   		<tr>
   			   			<td align="center">盖章内容</td>
   			   			<td>
-  			   				<textarea name="text" rows="" cols="" ></textarea>
+  			   				<textarea name="text" rows="" cols="" id="ZZtext" ></textarea>
   			   			</td>
   			   		</tr>
   			   		<tr>
   			   			<td align="center">盖章事由</td>
   			   			<td>
-  			   				<textarea name="why" rows="" cols="" ></textarea>
+  			   				<textarea name="why" rows="" cols="" id="ZZwhy"></textarea>
   			   			</td>
   			   		</tr>
   			   		 
   			   		<tr>
   			   			<td align="center">页数</td>
-  			   			<td><input type="text" name="pageNumber"  onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();"/></td>
+  			   			<td><input type="text" name="pageNumber" id="ZZpageNumber" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();"/></td>
   			   		</tr>
   			   		<tr>
   			   			<td align="center">份数</td>
-  			   			<td><input type="numberbox" name="copiesNumber"   onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();"/></td>
+  			   			<td><input type="numberbox" name="copiesNumber" id="ZZcopiesNumber"   onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();"/></td>
   			   		</tr>
   			   		<tr align="center">
   			   			<td colspan="2"><input type="button" value="申请" onclick="applySubmit()"/></td>
@@ -69,7 +69,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		 <script type="text/javascript">
 
   		 	function applySubmit(){
-	         if($("input[name=number]").val()!=""&&$("input[name=projectName]").val()!=""&&$("input[name=pageNumber]").val()!=""&&$("input[name=copiesNumber]").val()!=""&&$("textarea[name=text]").val()!=""&&$("textarea[name=why]").val()!=""){
+	         if($("#ZZnumber").val()!=""&&$("#ZZprojectName").val()!=""&&$("#ZZpageNumber").val()!=""&&$("#ZZcopiesNumber").val()!=""&&$("#ZZtext").val()!=""&&$("#ZZwhy").val()!=""){
 	              $.ajax({
 	                url:"ziZhiSeal/save.action",
                    	type:"post",

@@ -111,6 +111,12 @@
             <li style="margin: 20px auto">
                 <input type="button" class="button-task" value="确 认 接 收" onclick="acceptTask()" />
             </li>
+            <li style="margin: 20px auto">
+                <input type="button" class="button-task" value="任 务 打 印" onclick="ownTaskPrint()">
+            </li>
+            <li style="margin: 0 auto;display:none;" class="qz">
+                <p style="width: 300px;text-align: left;float: right">签字：</p>
+            </li>
         </ul>
     </div>
 
@@ -299,7 +305,9 @@
         })
 
     }
-
+    function ownTaskPrint(){
+        $("#viewTask").jqprint();
+    }
 </script>
 </body>
 </html>

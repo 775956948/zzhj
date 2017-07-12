@@ -152,6 +152,12 @@
                 <span style="position: absolute;top: 29%;">任 务 内 容：</span>
                 <textarea name="CtaskText" rows="7" cols="30" style="width: 70%;margin-left: 118px" readonly></textarea>
             </li>
+            <li style="margin: 20px auto">
+                <input type="button" class="button-task" value="任 务 打 印" onclick="queryAllTaskPrint()">
+            </li>
+            <li style="margin: 0 auto;display:none;" class="qz">
+                <p style="width: 300px;text-align: left;float: right">签字：</p>
+            </li>
         </ul>
     </div>
 <script type="text/javascript">
@@ -320,6 +326,9 @@
 			 $.messager.alert("提示", "请选择一条数据", "info");
 		}
 	}
+    function queryAllTaskPrint(){
+        $("#viewTaskAll").jqprint();
+    }
 </script>
 </body>
 </html>
