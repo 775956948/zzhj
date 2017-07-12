@@ -92,19 +92,4 @@ public class OfficeSuppliesAction {
 	public  Map<String,Object> likeQuey(String goodsName){
 		return oss.likeQuey(goodsName);
 	}
-	/**
-	 * 
-	 * @Description: 删除一个物品，级联删除所有子数据
-	 * @param @param id
-	 * @param @return   
-	 * @return int  
-	 * @throws
-	 * @author 小白
-	 * @date 2017年7月12日
-	 */
-	@RequestMapping("/deleteCascade.action")
-	@ResponseBody
-	public int deleteCascade(int id){
-		return oss.deleteCascade(id);
-	}
 }

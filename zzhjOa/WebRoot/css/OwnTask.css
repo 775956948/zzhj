@@ -6,7 +6,6 @@
 }
 #addNewDiG ul,#changeItemsDiG ul,#applyItemsDiG ul,#SPxq ul,#viewDetailsDiG ul{
     width: 500px;
-    margin:0;
 }
 #changeSpeed ul{
     width: 100%;
@@ -92,7 +91,6 @@
     text-align: center;
     line-height: 100%;
     margin: 0 auto;
-    margin-bottom:10px;
     color: white;
     font-weight: 800;
     font-size: 20px;

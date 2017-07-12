@@ -33,7 +33,7 @@
             <input type="text" name="wpMath" placeholder="请输入整数"  onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}">
         </li>
         <li>
-            <input type="button" class="button-task" value="确 定 添 加" onclick="confirmAdd()">
+            <input type="button" class="button-tesk" value="确 定 添 加" onclick="confirmAdd()">
         </li>
     </ul>
 </div>
@@ -56,7 +56,7 @@
             <input type="text" name="CwpMath" placeholder="请输入整数"  onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}">
         </li>
         <li>
-            <input type="button" class="button-task" value="确 定 修 改" onclick="changeWp()">
+            <input type="text" class="button-task" value="确 定 修 改" onclick="changeWp()">
         </li>
     </ul>
 </div>
@@ -110,6 +110,7 @@
         var row=$('#SYWPDg').datagrid('getSelected');
         if(row){
             $('#changeItemsDiG').dialog({
+                height:270,
                 closed: false, //更改 显示隐藏
                 cache: false,//是否缓存
                 onOpen: function () {
@@ -144,9 +145,9 @@
         var row=$('#SYWPDg').datagrid('getSelected');
         if(row){
             if(row.goodsNumber == "0"){
-                $.messager.confirm('提示', '确定删除该物品信息？删除该物品将删除所有关于该物品的申请单', function(r){
+                $.messager.confirm('提示', '确定删除该物品信息？', function(r){
                     if (r){
-                        $.post('officeSupplies/deleteCascade.action',{'id':row.id},function(data){
+                        $.post('  ',{'id':row.id},function(data){
                             if(data>0){
                                 $.messager.alert("提示", "删除成功", "info");
                                 $('#SYWPDg').datagrid('reload');
