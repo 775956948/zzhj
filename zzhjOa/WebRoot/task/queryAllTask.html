@@ -63,7 +63,7 @@
             <li style="height: 40px;margin-top: 20px">
                 <div class="splitLi">
                     <span>任 务 主 题：</span>
-                    <input type="text" name="CtaskTheme" readonly="readonly" >
+                    <input type="text" name="CtaskTheme" value="" readonly="readonly" >
                 </div>
                 <div class="splitLi">
                     <span>发 &nbsp 布 &nbsp 人：</span>
@@ -260,7 +260,7 @@
                     $('#CspeedTask').progressbar({
                         value: viewTaskAll.speed
                     });
-                }
+                },
             });
         } else {
             $.messager.alert("提示","请选择一条数据","info");

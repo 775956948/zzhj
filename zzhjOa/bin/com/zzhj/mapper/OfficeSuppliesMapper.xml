@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "http://mybatis.org/dtd/mybatis-3-mapper.dtd" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzhj.mapper.OfficeSuppliesMapper">
+	<resultMap type="officeSupplies" id="os">
+		<id property="id" column="id" />
+		<result column="goods_name" property="goodsName"/>
+		<result column="goods_number" property="goodsNumber"/>
+		<result column="goods_money" property="goodsMoney"/>
+		<result column="goods_date" property="goodsDate"/>
+	</resultMap>
+	<insert id="saveOfficeSupplies" parameterType="officeSupplies">
+		insert into office_supplies(goods_name,goods_number,goods_money,goods_date)
+		value(#{goodsName},#{goodsNumber},#{goodsMoney},#{goodsDate})
+	</insert>
+	<update id="updateOfficeSupplies" parameterType="officeSupplies">
+		update office_supplies set goods_name=#{goodsName},goods_number=#{goodsNumber},goods_money=#{goodsMoney}
+		where id=#{id}
+	</update>
+	<select id="queryAll" parameterType="int" resultMap="os">
+		select * from office_supplies limit #{startPage},#{rows}
+	</select>
+	<update id="reduce" parameterType="int">
+		update office_supplies set goods_number=#{number} where id=#{id}
+	</update>
+	<select id="balance" parameterType="int" resultType="int">
+		select goods_number from office_supplies where id=#{value}
+	</select>
+	<select id="totalCount" resultType="int">
+		select count(id) from office_supplies
+	</select>
+	<select id="likeQuey" parameterType="string" resultMap="os">
+		select * from office_supplies where goods_name like '%${value}%'
+	</select>
+	<delete id="deleteCascade" parameterType="int">
+		delete from office_supplies where id=#{value}
+	</delete>
+</mapper>

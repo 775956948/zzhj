@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.aop.support.AopUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -94,12 +95,15 @@ public class RequestGoodsService {
 	 * @date 2017Äê7ÔÂ10ÈÕ
 	 */
 	public int approver(int id,String approverName,int number){
+		System.out.println("+++++++++++++"+AopUtils.isAopProxy(this));
+		System.out.println("+++++++++++++"+AopUtils.isCglibProxy(this));
+		System.out.println("+++++++++++++"+AopUtils.isJdkDynamicProxy(this));
 		String date =DateFormater.format(new Date());
 		int resoult=rgm.approver(id, date,approverName);
 		RequestGoods rg =rgm.queryId(id);
 		int update=0;
 		if(resoult>0){
-			update=os.reduce(number, rg.getGoodId().getId());
+			update=os.reduce(number, 22);
 		}
 		return update;
 	}

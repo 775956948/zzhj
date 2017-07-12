@@ -98,6 +98,15 @@ public interface RequestGoodsMapper {
 	 * @date 2017年7月11日
 	 */
 	List<RequestGoods> likeUserQueryAll(String userName);
-	
+	/**
+	 * 
+	 * @Description: 根据申请单id拿到物品id
+	 * @param @param id
+	 * @param @return   
+	 * @return RequestGoods  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年7月12日
+	 */
 	RequestGoods queryId(int id);
 }

@@ -28,6 +28,7 @@ import com.zzhj.service.NoticeService;
 import com.zzhj.service.RequestSealService;
 import com.zzhj.service.SecurityQuestionService;
 import com.zzhj.service.TaskService;
+import com.zzhj.service.TestImpl;
 
 public class Test {
 	
@@ -35,24 +36,9 @@ public class Test {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		 /*ApplicationContext ap =new ClassPathXmlApplicationContext(new String[]{"application_context.xml","application_dao.xml","application_mvc.xml"});
-		 NoticeService s = (NoticeService) ap.getBean("noticeService");
-		 System.out.println(s.queryAllList(1, 10));*/
-		 int[] a ={1,3,5,7,8};
-		 int max=a[4];
-		 int min=a[3];
-		 int sum=0;
-		 for (int i = 0; i < a.length; i++) {
-			if(max<a[i])
-				max=a[i];
-			
-			if(min>a[i])
-				min=a[i];
-			
-			sum=sum+a[i];
-		}
+		 ApplicationContext ap =new ClassPathXmlApplicationContext(new String[]{"application_dao.xml","application_mvc.xml"});
+		 com.zzhj.service.Test s = (com.zzhj.service.Test) ap.getBean("testImpl");
 		 
-		 System.out.println(max+"----"+min+"-----"+sum);
 		
 		
 

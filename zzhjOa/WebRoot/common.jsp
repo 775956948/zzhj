@@ -5,4 +5,6 @@
 	<script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
 	<script type="text/javascript" src="easyui/locale/easyui-lang-zh_CN.js"></script>
 	<script type="text/javascript" src="js/echarts.js"></script>
+	<script type="text/javascript" src="easyui/jquery-migrate-1.2.1.min.js"></script>
+	<script type="text/javascript" src="easyui/jquery.jqprint-0.3.js"></script>
 	

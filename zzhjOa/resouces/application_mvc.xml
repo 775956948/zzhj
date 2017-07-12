@@ -13,7 +13,9 @@
 		http://www.springframework.org/schema/tx 
 		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd " >
 		
-		<context:component-scan base-package="com.zzhj.controller,com.zzhj.service"/>
+		<context:component-scan base-package="com.zzhj.controller">
+			     <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>  
+		</context:component-scan>
 	
 		
 		<mvc:annotation-driven>
