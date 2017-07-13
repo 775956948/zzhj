@@ -137,4 +137,7 @@
     .PrintK ul li .button-task{
         opacity: 0;
     }
+    .PrintK .Noprint{
+       display:none;
+    }
 }
