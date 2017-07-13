@@ -1,8 +1,24 @@
-#viewTask ul,#seeMessage ul,#transmitForm ul,#addRest ul,#viewTaskAll ul,#viewTaskOWN ul,#viewTaskQua ul,.TGK ul{
+#viewTask ul,#seeMessage ul,#transmitForm ul,#addRest ul,#viewTaskAll ul,#viewTaskOWN ul,#viewTaskQua ul,.TGK ul,.PrintK ul{
     width: 700px;
     margin: 0 auto;
     height: auto;
     overflow: hidden;
+}
+.PrintK{
+    position: absolute;
+    left: 0;
+    top: 0;
+    /*height: 1754px;*/
+    background-color: white;
+    z-index: 10000;
+}
+.PrintK ul{
+    width: 960px;
+    padding: 0;
+    margin:0 auto;
+}
+.PrintK ul li{
+    height: 47px;
 }
 #addNewDiG ul,#changeItemsDiG ul,#applyItemsDiG ul,#SPxq ul,#viewDetailsDiG ul{
     width: 500px;
@@ -14,7 +30,7 @@
     overflow: hidden;
     padding: 0;
 }
-#viewTask li,#changeSpeed li,#seeMessage li,#transmitForm li,#addRest li,#viewTaskAll li,#viewTaskOWN li,#viewTaskQua li,.TGK li{
+#viewTask li,#changeSpeed li,#seeMessage li,#transmitForm li,#addRest li,#viewTaskAll li,#viewTaskOWN li,#viewTaskQua li,.TGK li,.PrintK li{
     width: 100%;
     min-height: 40px;
     font-size: 16px;
@@ -33,16 +49,16 @@
     height: 35px;
     text-align: center
 }
-#viewTask .splitLi ,#seeMessage .splitLi ,#transmitForm .splitLi,#viewTaskAll .splitLi,#viewTaskOWN .splitLi,#viewTaskQua .splitLi{
+#viewTask .splitLi ,#seeMessage .splitLi ,#transmitForm .splitLi,#viewTaskAll .splitLi,#viewTaskOWN .splitLi,#viewTaskQua .splitLi,.PrintK .splitLi{
     width: 50%;
     float: left;
     overflow: hidden;
 }
-#viewTask  span,#changeSpeed span ,#seeMessage span,#transmitForm span,#addRest span,#viewTaskAll span,#viewTaskOWN span,#viewTaskQua span,.TGK span{
+#viewTask  span,#changeSpeed span ,#seeMessage span,#transmitForm span,#addRest span,#viewTaskAll span,#viewTaskOWN span,#viewTaskQua span,.TGK span,.PrintK span{
     float: left;
     box-sizing: border-box;
 }
-#viewTask li>span,.TGK li>span,#viewTaskAll li>span,#viewTaskOWN li>span,#viewTaskQua li>span,#transmitForm li>span,.splitLi>span{
+#viewTask li>span,.TGK li>span,#viewTaskAll li>span,.PrintK li>span,#viewTaskOWN li>span,#viewTaskQua li>span,#transmitForm li>span,.splitLi>span{
     width: 118px;
 }
 #transmitForm span{
@@ -60,17 +76,17 @@
     border: 1px solid #d2d2d2;
     border-radius: 0;
 }
-#changeSpeed input,#seeMessage input,#transmitForm input ,#addRest input,.TGK input{
+#changeSpeed input,#seeMessage input,#transmitForm input ,#addRest input,.TGK input,.PrintK input{
     float: left;
     height: 40px;
     line-height: 40px;
     font-size: 20px;
     text-align: center;
 }
-#addRest input,#addNewDiG li input,#changeItemsDiG li input,#applyItemsDiG  li input,#SPxq li input,#viewDetailsDiG li input{
+#addRest input,#addNewDiG li input,#changeItemsDiG li input,#applyItemsDiG  li input,#SPxq li input,#viewDetailsDiG li input,.PrintK li input{
     width: 350px;
 }
-#viewTask .splitLi input ,#seeMessage .splitLi input,#transmitForm .splitLi input,#viewTaskAll .splitLi input,#viewTaskOWN .splitLi input,#viewTaskQua .splitLi input{
+#viewTask .splitLi input ,#seeMessage .splitLi input,#transmitForm .splitLi input,#viewTaskAll .splitLi input,#viewTaskOWN .splitLi input,#viewTaskQua .splitLi input,.PrintK .splitLi input{
     text-align: center;
     font-size: 16px;
     font-family: 宋体;
@@ -81,7 +97,7 @@
     margin-top: 3px;
     float: left;
 }
-#viewTask li .button-task,#changeSpeed li .button-task ,#seeMessage li .button-task,#transmitForm li .button-task,#addRest li .button-task,#viewTaskAll li .button-task ,#viewTaskOWN li .button-task,#viewTaskQua li .button-task,#changeTime li .button-task,.TGK li .button-task{
+#viewTask li .button-task,#changeSpeed li .button-task ,#seeMessage li .button-task,#transmitForm li .button-task,#addRest li .button-task,#viewTaskAll li .button-task ,#viewTaskOWN li .button-task,#viewTaskQua li .button-task,#changeTime li .button-task,.TGK li .button-task,.PrintK li .button-task{
     float: none;
     display: block;
     height: 40px;
@@ -96,15 +112,29 @@
     font-size: 20px;
 }
 
-@media print {
-    .qz{
+@media print{
+    .PrintK  ul li{
+        list-style: none;
+    }
+    .PrintK  li{
+        width: 100%;
+        /*margin: 20px auto;*/
+        margin-bottom: 20px;
+        position: relative;
+    }
+    .PrintK .qz{
         display: inline-block !important;
     }
-    #viewTask,#viewTaskAll,#viewTaskOWN{
-        overflow:visible;
-        height: auto;
+    .PrintK ul{
+        width: 960px;
+        padding: 0;
+        margin: 20px auto;
+        margin-left: 120px;
     }
-    .button-task{
+    .PrintK ul li{
+        height: 47px;
+    }
+    .PrintK ul li .button-task{
         opacity: 0;
     }
 }

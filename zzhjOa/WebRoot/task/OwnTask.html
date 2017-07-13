@@ -8,13 +8,11 @@
 <body>
 <div class="PagingBody">
     <h3>个 人 任 务</h3>
-    
-	
     <div class="buttonBar" id="buttonBarOwn">
         <a class="easyui-linkbutton" iconCls="icon-bg" plain="true" onclick="viewTask()">查看任务</a>
         <a class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="changeSpeedDig()">修改任务进度</a>
     </div>
-    </div>
+</div>
     <!--表格-->
 	<table id="viewTeskDg"></table>
     <div id="viewTask" class="easyui-dialog" title="查看个人任务" closed=true>
@@ -119,6 +117,105 @@
             </li>
         </ul>
     </div>
+<div id="viewTask2"  class="PrintK" title="打印框" style="display: none;height: auto">
+    <ul>
+        <li style="margin-top:60px">
+            <div class="splitLi">
+                <span>任 务 主 题：</span>
+                <input type="text" name="taskTheme" readonly="readonly">
+            </div>
+            <div class="splitLi">
+                <span>发 &nbsp 布 &nbsp 人：</span>
+                <input type="text" name="userName" readonly>
+            </div>
+        </li>
+        <li>
+            <div class="splitLi">
+                <span>发 布 日 期：</span>
+                <input type="text" name="taskDate" readonly>
+            </div>
+        </li>
+        <li>
+            <div class="splitLi" style="width: 102%">
+                <span>项 目 地 址：</span>
+                <input type="text" name="taskAddress" readonly style="width: 70%">
+            </div>
+        </li>
+        <li  >
+            <div class="splitLi" style="width: 102%">
+                <span>委 托 单 位：</span>
+                <input type="text" name="entrustedUnit" readonly style="width: 70%">
+            </div>
+        </li>
+        <li>
+            <div class="splitLi">
+                <span>委 &nbsp 托 &nbsp 人：</span>
+                <input type="text" name="client" readonly>
+            </div>
+            <div class="splitLi">
+                <span>委托人电话：</span>
+                <input type="text" name="clientPhone" readonly>
+            </div>
+        </li>
+        <li>
+            <div class="splitLi">
+                <span>任务接收人：</span>
+                <input type="text" name="recipient" readonly>
+            </div>
+            <div class="splitLi">
+                <span>任务执行人：</span>
+                <input type="text" name="implement" readonly>
+            </div>
+        </li>
+        <li>
+            <div class="splitLi">
+                <span>任务开始时间：</span>
+                <input type="text" name="implementDate" readonly>
+            </div>
+            <div class="splitLi">
+                <span>任务结束时间：</span>
+                <input type="text" name="successDate" readonly>
+            </div>
+        </li>
+        <li>
+            <span style="float: left">任 务 进 度：</span>
+            <div id="speedTask2" class="easyui-progressbar" style="width:87%; height: 38px"></div>
+        </li>
+        <li>
+            <div class="splitLi">
+                <span>任 务 状 态：</span>
+                <input type="text" name="state" readonly >
+            </div>
+            <div class="splitLi">
+                <span>质 &nbsp 检 &nbsp 人：</span>
+                <input type="text" name="inspectionUser" readonly >
+            </div>
+        </li>
+        <li>
+            <div class="splitLi">
+                <span>任 务 阶 段：</span>
+                <input type="text" name="taskPhase" readonly>
+            </div>
+            <div class="splitLi">
+                <span>质 量 检 测：</span>
+                <input type="text" name="inspection" readonly>
+            </div>
+        </li>
+        <li>
+            <span style="position: absolute;top: 29%;">任 务 内 容：</span>
+            <textarea name="taskText" rows="7" cols="30" style="width: 87%;margin-left: 118px" readonly></textarea>
+        </li>
+        <li style="margin: 20px auto">
+            <input type="button" class="button-task" value="确 认 打 印" onclick="Qprint()" />
+        </li>
+        <li style="margin: 20px auto">
+            <input type="button" class="button-task" value="取 消 打 印" onclick="Uprint()">
+        </li>
+        <li style="margin: 0 auto;display:none;" class="qz">
+            <p style="width: 300px;text-align: left;float: right">签字：</p>
+        </li>
+    </ul>
+</div>
 
 <div id="changeSpeed" class="easyui-dialog" title="修改进度" closed=true >
     <ul style="width:370px">
@@ -173,6 +270,9 @@
                     $("input[name = state]").val(viewTask.state);
                     $("textarea[name = taskText]").val(viewTask.taskText);
                     $('#speedTask').progressbar({
+                        value: viewTask.speed
+                    });
+                    $('#speedTask2').progressbar({
                         value: viewTask.speed
                     });
                 }
@@ -306,7 +406,23 @@
 
     }
     function ownTaskPrint(){
-        $("#viewTask").jqprint();
+        $('.PrintK').css({"display":"block"});
+        $('.PrintK').width($(window).width());
+        $('.PrintK').height("1400px");
+        var maxWidth=$(window).width();
+        if(maxWidth>1280){
+
+        }else if(maxWidth<1280){
+            $('.PrintK ul').css({"margin-left":"140px"});
+        }else if(maxWidth<1024){
+            $('.PrintK ul').css({"margin-left":"30px"});
+        }
+    }
+    function Qprint(){
+        window.print()
+    }
+    function Uprint(){
+        $('.PrintK').css({"display":"none"});
     }
 </script>
 </body>
