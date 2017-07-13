@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-
+import com.zzhj.service.Actions;
 import com.zzhj.service.TaskService;
 
 public class Test {
@@ -19,8 +19,9 @@ public class Test {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		 ApplicationContext ap =new ClassPathXmlApplicationContext(new String[]{"application_dao.xml","application_mvc.xml"});
-
+		 ApplicationContext ap =new ClassPathXmlApplicationContext(new String[]{"application_context.xml"});
+		 Actions a =(Actions) ap.getBean("actionImpl");
+		 a.action();
 		
 		
 
