@@ -95,16 +95,12 @@ public class RequestGoodsService {
 	 * @date 2017Äê7ÔÂ10ÈÕ
 	 */
 	public int approver(int id,String approverName,int number){
-		System.out.println("+++++++++++++"+AopUtils.isAopProxy(this));
-		System.out.println("+++++++++++++"+AopUtils.isCglibProxy(this));
-		System.out.println("+++++++++++++"+AopUtils.isJdkDynamicProxy(this));
-		System.out.println(this);
 		String date =DateFormater.format(new Date());
 		int resoult=rgm.approver(id, date,approverName);
 		RequestGoods rg =rgm.queryId(id);
 		int update=0;
 		if(resoult>0){
-			update=os.reduce(number,/* rg.getGoodId().getId()*/22);
+			update=os.reduce(number,rg.getGoodId().getId());
 		}
 		return update;
 	}

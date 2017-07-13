@@ -6,11 +6,12 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.Executors;
 
+import org.springframework.aop.support.AopUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.zzhj.service.Actions;
+import com.zzhj.service.RequestGoodsService;
 import com.zzhj.service.TaskService;
 
 public class Test {
@@ -20,10 +21,11 @@ public class Test {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		 ApplicationContext ap =new ClassPathXmlApplicationContext(new String[]{"application_context.xml"});
-		 Actions a =(Actions) ap.getBean("actionImpl");
-		 a.action();
-		
-		
+		 RequestGoodsService a =(RequestGoodsService) ap.getBean("requestGoodsService");
+/*		 	a.approver(11111, "dd", 11111);*/
+			System.out.println("+++++++++++++"+AopUtils.isAopProxy(a));
+			System.out.println("+++++++++++++"+AopUtils.isCglibProxy(a));
+			System.out.println("+++++++++++++"+AopUtils.isJdkDynamicProxy(a));
 
 	}
 

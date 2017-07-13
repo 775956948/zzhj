@@ -13,11 +13,12 @@
     http://www.springframework.org/schema/tx 
 	http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 		
-		<context:component-scan base-package="com.zzhj.service">
-			  <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>  
-		</context:component-scan>
-		<context:property-placeholder location="classpath:db.properties" />
+		<context:component-scan base-package="com.zzhj.service">     
+   			 <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>     
+		</context:component-scan>  
 		
+		<context:property-placeholder location="classpath:db.properties" />
+
 		<!-- 配置数据源 ，dbcp -->
 		<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">		   
@@ -36,17 +37,16 @@
 		<property name="configLocation" value="classpath:mybatis-config.xml" />
 	</bean>	
 	
-<!-- 	mapper扫描器 -->
+	<!--mapper扫描器 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-<!-- 		扫描包路径，如果需要扫描多个包，中间使用半角逗号隔开 -->
+	<!--扫描包路径，如果需要扫描多个包，中间使用半角逗号隔开 -->
 		<property name="basePackage" value="com.zzhj.mapper"></property>
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>
 	
-<!-- 	事务管理器 -->
-	<bean id="transactionManager"
-		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-<!-- 		数据源 -->
+	<!--事务管理器 -->
+	<bean id="transactionManager"  class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<!--数据源 -->
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 	<!-- 通知advice -->
@@ -59,7 +59,6 @@
 	<aop:config>
 		<aop:pointcut expression="execution(* com.zzhj.service.*.*(..))" id="cut"/>
 		<aop:advisor advice-ref="txAdvice"  pointcut-ref="cut"/>
-<!--  		<aop:advisor advice-ref="pointCat" pointcut-ref="cut"/>  -->
 	</aop:config>
 		
 </beans> 
