@@ -413,10 +413,13 @@
     $('.PrintK').width($(window).width());
     $('.PrintK').height("1400px");
     var maxWidth=$(window).width();
-    if(maxWidth>1280){
-
+    if(maxWidth<1920){
+    	
+    }else if(maxWidth<1600){
+    	
+    
     }else if(maxWidth<1280){
-        $('.PrintK ul').css({"margin-left":"140px"});
+        $('.PrintK ul').css({"margin-left":"125px"});
     }else if(maxWidth<1024){
         $('.PrintK ul').css({"margin-left":"30px"});
     }
