@@ -140,4 +140,7 @@
     .PrintK .Noprint{
        display:none;
     }
+    .PrintK  .height-TEXT{
+        height: 130px;
+    }
 }

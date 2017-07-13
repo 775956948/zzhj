@@ -106,10 +106,10 @@
                 <span style="position: absolute;top: 29%;">任 务 内 容：</span>
                 <textarea name="taskText" rows="7" cols="30" style="width: 70%;margin-left: 118px" readonly></textarea>
             </li>
-            <li  class="Noprint" style="margin: 20px auto">
+            <li  style="margin: 20px auto">
                 <input type="button" class="button-task" value="确 认 接 收" onclick="acceptTask()" />
             </li>
-            <li  class="Noprint" style="margin: 20px auto">
+            <li  style="margin: 20px auto">
                 <input type="button" class="button-task" value="任 务 打 印" onclick="ownTaskPrint()">
             </li>
             <li style="margin: 0 auto;display:none;" class="qz">
@@ -120,10 +120,10 @@
 <div  id="viewTask2" class=" easyui-dialog " title="打印框" closed=true>
 <div   class="PrintK"  style="height: auto">
     <ul>
-       <li style="margin: 20px auto">
+       <li   class="Noprint" style="margin: 20px auto">
             <input type="button" class="button-task" value="确 认 打 印" onclick="Qprint()" />
         </li>
-        <li style="margin: 20px auto">
+        <li   class="Noprint" style="margin: 20px auto">
             <input type="button" class="button-task" value="取 消 打 印" onclick="Uprint()">
         </li>
         <li style="margin-top:60px">
@@ -208,7 +208,7 @@
                 <input type="text" name="inspection" readonly>
             </div>
         </li>
-        <li>
+        <li class="height-TEXT">
             <span style="position: absolute;top: 29%;">任 务 内 容：</span>
             <textarea name="taskText" rows="7" cols="30" style="width: 87%;margin-left: 118px" readonly></textarea>
         </li>
@@ -408,6 +408,7 @@
         })
 
     }
+//    设置打印预览页面的弹窗
     $('.PrintK').css({"display":"block"});
     $('.PrintK').width($(window).width());
     $('.PrintK').height("1400px");
@@ -419,6 +420,7 @@
     }else if(maxWidth<1024){
         $('.PrintK ul').css({"margin-left":"30px"});
     }
+//    确定打印弹窗
     function ownTaskPrint(){
         $("#viewTask2").dialog({
             closed: false,
@@ -427,12 +429,15 @@
             resizable:true,
             left:0,
             top:0,
-            border:false
+            border:false,
+            shadow:false
         })
     }
+//    确定打印
     function Qprint(){
         window.print()
     }
+//    取消打印
     function Uprint(){
         $("#viewTask2").dialog({
             closed: true
