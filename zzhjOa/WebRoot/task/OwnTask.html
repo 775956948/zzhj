@@ -117,7 +117,8 @@
             </li>
         </ul>
     </div>
-<div id="viewTask2"  class="PrintK" title="打印框" style="display: none;height: auto">
+<div  id="viewTask2" class=" easyui-dialog " title="打印框" closed=true>
+<div   class="PrintK"  style="height: auto">
     <ul>
         <li style="margin-top:60px">
             <div class="splitLi">
@@ -215,6 +216,7 @@
             <p style="width: 300px;text-align: left;float: right">签字：</p>
         </li>
     </ul>
+</div>
 </div>
 
 <div id="changeSpeed" class="easyui-dialog" title="修改进度" closed=true >
@@ -405,24 +407,35 @@
         })
 
     }
-    function ownTaskPrint(){
-        $('.PrintK').css({"display":"block"});
-        $('.PrintK').width($(window).width());
-        $('.PrintK').height("1400px");
-        var maxWidth=$(window).width();
-        if(maxWidth>1280){
+    $('.PrintK').css({"display":"block"});
+    $('.PrintK').width($(window).width());
+    $('.PrintK').height("1400px");
+    var maxWidth=$(window).width();
+    if(maxWidth>1280){
 
-        }else if(maxWidth<1280){
-            $('.PrintK ul').css({"margin-left":"140px"});
-        }else if(maxWidth<1024){
-            $('.PrintK ul').css({"margin-left":"30px"});
-        }
+    }else if(maxWidth<1280){
+        $('.PrintK ul').css({"margin-left":"140px"});
+    }else if(maxWidth<1024){
+        $('.PrintK ul').css({"margin-left":"30px"});
+    }
+    function ownTaskPrint(){
+        $("#viewTask2").dialog({
+            closed: false,
+            width:$(window).width(),
+            height:1400,
+            resizable:true,
+            left:0,
+            top:0,
+            border:false
+        })
     }
     function Qprint(){
         window.print()
     }
     function Uprint(){
-        $('.PrintK').css({"display":"none"});
+        $("#viewTask2").dialog({
+            closed: true
+        })
     }
 </script>
 </body>
