@@ -54,7 +54,6 @@
         var row=$('#SQSYWPDg').datagrid('getSelected');
         if(row){
             $('#applyItemsDiG').dialog({
-                height:240,
                 closed: false, //更改 显示隐藏
                 cache: false,//是否缓存
                 onOpen: function () {
@@ -92,7 +91,7 @@
             $('#SQSYWPDg').datagrid({
                 url: 'officeSupplies/likeQuey.action',
                 fitColumns: true,
-                toolbar: '#buttonBarCKall',
+                toolbar: '#buttonBarSQall',
                 pagination: true,
                 singleSelect: true,
                 queryParams: {
