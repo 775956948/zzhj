@@ -30,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</c:if>
 		</div>
 		<div id="restDd"  class="easyui-dialog" closed=true  style="width: 750px">
-  		<form action="" method="post">
+  		<form action="" method="post" >
   				<h2 style="margin: auto; width:150px; margin-top: 20px;">请 假/休 假 信 息 表</h2>
 				<ul id="addRest" style="margin-top:10px;" >
 					<li>
@@ -143,7 +143,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                }else if( StartTime>OverTime){
 	                   day=day+1;
 	                }
-	              $("#restDate").val(day); //所用天数 */
+	             $("input[name=restDate]").val(day); //所用天数 */
 	             }
 	          }
 	    }
@@ -160,9 +160,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	        var QJfile=$("#QJfile").val();
 		 	if(restDate!=""&&currentDate!=""&&restTypeId!=""&&restText!=""&&currentOverDate!=""&&starTime!=""&&overTime!=""){
 	                $.ajax({
-	                    url:"",
-						dataType:'multipart/form-data',
+	                    url:"rest/save.action",
+				        contentType: false,  
+				        processData: false,  
 		                type:"POST",
+		               
 						data:{
 		                  "restTypeId.id":restTypeId,
 		                  "restDate":restDate,
@@ -174,9 +176,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		                  "file":QJfile
 		                },
 					    success:function(data){
-	                      if(data){
+	                      if(data>0){
 		                    $.messager.alert("提示", "申请成功！", "info");
 	                     	$('#restDg').datagrid("reload");
+	                     	$("#restDd").dialog({closed:true})
+	                     	
 		                }else{
 		                    $.messager.alert("提示", "申请失败，请稍候重试！", "info");
 		                   }
