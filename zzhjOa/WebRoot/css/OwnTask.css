@@ -4,6 +4,9 @@
     height: auto;
     overflow: hidden;
 }
+#LeaverDIG ul{
+    width: 600px;
+}
 .PrintK{
     position: absolute;
     left: 0;
