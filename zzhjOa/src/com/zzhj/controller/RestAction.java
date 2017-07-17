@@ -47,9 +47,9 @@ public class RestAction {
 		rest.setState("´ıÉóÅú");
 		return rs.save(rest);
 	}
-	@RequestMapping("queryAll.action")
+	@RequestMapping("queryOwn.action")
 	@ResponseBody
-	public Map<String,Object> queryAll(int page,int rows,HttpSession session){
+	public Map<String,Object> queryOwn(int page,int rows,HttpSession session){
 		Users user = (Users) session.getAttribute("users");
 		return rs.queryOwn(page, rows,user.getName());
 	}

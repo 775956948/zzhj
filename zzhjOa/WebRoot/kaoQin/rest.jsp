@@ -88,7 +88,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	       });
 	       //初始化信息表格
    		 	$('#restDg').datagrid({    
-   			 url:'rest/queryAll.action',
+   			 url:'rest/queryOwn.action',
    			 fitColumns:true,
    			 toolbar: '#restTb', 
    			 pagination:true,
