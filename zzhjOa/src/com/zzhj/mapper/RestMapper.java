@@ -15,7 +15,18 @@ import com.zzhj.po.Rest;
  */
 public interface RestMapper {
 	int save(Rest rest);
-	List<Rest> queryAll(@Param("startPage") int startPage,@Param("rows") int rows);
+	/**
+	 * 
+	 * @Description: 查看自己的请假信息
+	 * @param @param startPage
+	 * @param @param rows
+	 * @param @return   
+	 * @return List<Rest>  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年7月17日
+	 */
+	List<Rest> queryOwn(@Param("startPage") int startPage,@Param("rows") int rows,@Param("userName")String userName);
 	int totalCount();
 	int deleteRest(int id);
 }

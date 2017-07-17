@@ -37,10 +37,10 @@ public class RestService {
 		return rm.save(rest);
 	}
 	
-	public Map<String,Object> queryAll(int page,int rows){
+	public Map<String,Object> queryOwn(int page,int rows,String userName){
 		int total =rm.totalCount();
 		int startPage =(page-1)*rows;
-		List<Rest> list =rm.queryAll(startPage, rows);
+		List<Rest> list =rm.queryOwn(startPage, rows,userName);
 		Map map = new HashMap<String,Object>();
 		map.put("total", total);
 		map.put("rows", list);
