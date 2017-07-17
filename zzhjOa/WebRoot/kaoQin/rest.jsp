@@ -159,23 +159,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			var restText=$("textarea[name=restText]").val();
 	        var QJfile=$("#QJfile").val();
 		 	if(restDate!=""&&currentDate!=""&&restTypeId!=""&&restText!=""&&currentOverDate!=""&&starTime!=""&&overTime!=""){
+		        var formdata = new FormData();
+		           formdata.append("restTypeId.id", restTypeId);
+		           formdata.append("restDate", restDate);
+		           formdata.append("requestDate", currentDate);
+		           formdata.append("requestStage", starTime);
+		           formdata.append("overStage", overTime);
+		           formdata.append("overDate", currentOverDate);
+		           formdata.append("restText", restText);
+		           formdata.append("file", $("#QJfile")[0].files[0]);
 	                $.ajax({
 	                    url:"rest/save.action",
-				        contentType: false,  
-				        processData: false,  
 		                type:"POST",
-		               
-						data:{
-		                  "restTypeId.id":restTypeId,
-		                  "restDate":restDate,
-		                  "requestDate":currentDate,
-		                  "requestStage":starTime,
-		                  "overDate":currentOverDate,
-		                  "overStage":overTime,
-		                  "restText":restText,
-		                  "file":QJfile
-		                },
-					    success:function(data){
+						data:formdata,
+		                contentType: false,
+		                processData: false,
+		                success:function(data){
 	                      if(data>0){
 		                    $.messager.alert("提示", "申请成功！", "info");
 	                     	$('#restDg').datagrid("reload");
