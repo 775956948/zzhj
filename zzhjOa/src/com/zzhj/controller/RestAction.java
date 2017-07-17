@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -27,10 +28,11 @@ public class RestAction {
 	
 	@RequestMapping("/save.action")
 	@ResponseBody
-	public int save(MultipartFile file,Rest rest,HttpSession session){
+	public int save(MultipartFile file,Rest rest,HttpSession session,HttpServletRequest request){
 		if(file!=null&&!file.isEmpty()){
 			String path =session.getServletContext().getRealPath("/fileUpload");
-			rest.setAppendix(path+file.getOriginalFilename());
+			String uplaodPath=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+"/zzhjOa/fileUpload/"+file.getOriginalFilename();
+			rest.setAppendix(uplaodPath);
 			try {
 				file.transferTo(new File(path,file.getOriginalFilename()));
 
