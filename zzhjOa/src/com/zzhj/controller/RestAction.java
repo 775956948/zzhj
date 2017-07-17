@@ -28,25 +28,22 @@ public class RestAction {
 	@RequestMapping("/save.action")
 	@ResponseBody
 	public int save(MultipartFile file,Rest rest,HttpSession session){
-		int resoult=0;
-		if(!file.isEmpty()){
+		if(file!=null&&!file.isEmpty()){
 			String path =session.getServletContext().getRealPath("/fileUpload");
 			rest.setAppendix(path+file.getOriginalFilename());
-			System.out.println(rest.getAppendix());
 			try {
 				file.transferTo(new File(path,file.getOriginalFilename()));
-				Users user = (Users) session.getAttribute("users");
-				rest.setUserId(user);
-				rest.setState("´ýÉóÅú");
-				resoult=rs.save(rest);
+
 			} catch (IllegalStateException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
-
-		return resoult;
+		Users user = (Users) session.getAttribute("users");
+		rest.setUserId(user);
+		rest.setState("´ýÉóÅú");
+		return rs.save(rest);
 	}
 	@RequestMapping("queryAll.action")
 	@ResponseBody
