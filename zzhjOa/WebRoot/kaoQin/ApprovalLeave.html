@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>审 批 请 假 信 息</title>
+</head>
+<body>
+<div id="buttonBarLeave">
+    <a  class="easyui-linkbutton" iconCls="icon-grxx" plain="true" onclick="approvalLeaveDIG()">审批请假</a>
+</div>
+<table id="approvalLeaveDG"></table>
+<div id="LeaverDIG" class=" easyui-dialog TGK" closed=false title="查看请假/休假详情">
+    <ul>
+        <li>
+            <input type="text" hidden id="approvalID">
+        </li>
+        <li>
+            <span>请假人</span>
+            <input type="text" name="LeuserId" readonly />
+        </li>
+        <li>
+            <span>请假类型</span>
+            <input type="text" name="LerestTypeId" readonly />
+        </li>
+
+        <li>
+            <span>请假起始时间</span>
+            <input type="text" name="LecurrentDate" style="width: 250px" readonly/>
+            <input type="text" name="LestarTime" style="width: 70px;height: 40px;margin-left: 20px;" readonly/>
+        </li>
+        <li>
+            <span>请假结束时间</span>
+            <input type="text" name="LecurrentOverDate" style="width: 250px" readonly />
+            <input type="text" name="LeoverTime"   style="width: 70px;height: 40px;margin-left: 20px;"  readonly />
+
+        </li>
+        <li>
+            <span>请假天数</span>
+            <input type="text" name="LerestDate"     readonly   />
+        </li>
+        <li>
+            <span style="float: left;">请假原由</span>
+            <textarea name="LerestText" rows="3" cols="30" style="width: 348px" readonly></textarea>
+        </li>
+        <li id="FileLi" style="height: 0;overflow: hidden;min-height: 0">
+            <span style="float: left;">附件</span>
+            <a id="LeFile" href="WarningPage.html" download=""  target="_blank">下载附件</a>
+            <a href="修改委托书.docx"  download="" target="_blank">下载附件word</a>
+            <a href="../image/ipt.png"  download="" target="_blank">下载附件jpg</a>
+        </li>
+        <li style="margin-bottom: 30px">
+            <input  type="button" value="审 批" onclick="approvalLeave()"  class="button-tesk"/>
+        </li>
+    </ul>
+</div>
+<script type="text/javascript">
+    $('#approvalLeaveDG').datagrid({
+        url:'',
+        fitColumns:true,
+        toolbar: '#buttonBarLeave',
+        pagination:true,
+        singleSelect:true,
+        columns:[[
+            {field:'id',title:'编号',checkbox:true,width:200},
+            {field:'userId',title:'请假人',width:200,formatter:function(value){return value.name}},
+            {field:'restTypeId',title:'请假类型',formatter: function(value){return value.name;},width:100},
+            {field:'restText',title:'请假原由',width:400},
+            {field:'requestDate',title:'请假起始时间'},
+            {field:'requestStage',title:'开始阶段'},
+            {field:'overDate',title:'请假结束时间'},
+            {field:'overStage',title:'结束阶段'},
+            {field:'restDate',title:'请假天数'},
+            {field:'approver',title:'审批人'},
+            {field:'state',title:'状态'},
+            {field:'appendix',title:'附件',hidden:true}
+        ]]
+    });
+
+//    申请详情弹窗
+    function approvalLeaveDIG(){
+        var row=$('#approvalLeaveDG').datagrid('getSelected');
+        if(row){
+            $("#LeaverDIG").dialog({
+                title : '请假信息',
+//				width : 400,
+//            height : 550,
+                top:50,
+                closed : false,
+                cache : false,
+                modal : true,
+                onOpen:function(){
+                    $("#approvalID").val(row.id);
+                    $("input[name = LeuserId]").val(row.userId.name);
+                    $("input[name = LerestTypeId]").val(row.restTypeId.name);
+                    $("input[name = LecurrentDate]").val(row.requestDate);
+                    $("input[name = LestarTime]").val(row.requestStage);
+                    $("input[name = LecurrentOverDate]").val(row.overDate);
+                    $("input[name = LeoverTime]").val(row.overStage);
+                    $("input[name = LerestDate]").val(row.restDate);
+                    $("input[name = LerestText]").val(row.restText);
+                    if(row.appendix!=""){
+                        $("#FileLi").css({"height":"40px"});
+                        $("#LeFile").attr("href",row.appendix);
+                    }
+                }
+            });
+        }else{
+            $.messager.alert("提示","请先选中一条申请信息！","info")
+        }
+    }
+//    给予通过
+    function approvalLeave(){
+            $.post('',{'id': $("#approvalID").val()},function(data){
+                if(data!=null&&data>0){
+                    $("#approvalLeaveDG").datagrid('reload');
+                    $.messager.alert("提示", "审批成功", "info");
+                }
+            })
+    }
+
+
+</script>
+</body>
+</html>

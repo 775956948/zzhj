@@ -99,7 +99,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	        	{field:'restTypeId',title:'请假类型',formatter: function(value){return value.name;},width:100},
         		{field:'restText',title:'请假原由',width:400},
 		        {field:'requestDate',title:'请假起始时间'},
-	        	{field:'requestDate',title:'开始阶段'},
+	        	{field:'requestStage',title:'开始阶段'},
 		        {field:'overDate',title:'请假结束时间'},
 		        {field:'overStage',title:'结束阶段'},
         		{field:'restDate',title:'请假天数'},
