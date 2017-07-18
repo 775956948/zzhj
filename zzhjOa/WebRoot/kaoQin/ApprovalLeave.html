@@ -1,52 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>审 批 请 假 信 息</title>
+    <title>瀹� 鎵� 璇� 鍋� 淇� 鎭�</title>
 </head>
 <body>
 <div id="buttonBarLeave">
-    <a  class="easyui-linkbutton" iconCls="icon-grxx" plain="true" onclick="approvalLeaveDIG()">审批请假</a>
+    <a  class="easyui-linkbutton" iconCls="icon-grxx" plain="true" onclick="approvalLeaveDIG()">瀹℃壒璇峰亣</a>
 </div>
 <table id="approvalLeaveDG"></table>
-<div id="LeaverDIG" class=" easyui-dialog TGK" closed=true title="查看请假/休假详情">
+<div id="LeaverDIG" class=" easyui-dialog TGK" closed=true title="鏌ョ湅璇峰亣/浼戝亣璇︽儏">
     <ul>
         <li>
             <input type="text" hidden id="approvalID">
         </li>
         <li>
-            <span>请假人</span>
+            <span>璇峰亣浜�</span>
             <input type="text" name="LeuserId" readonly />
         </li>
         <li>
-            <span>请假类型</span>
+            <span>璇峰亣绫诲瀷</span>
             <input type="text" name="LerestTypeId" readonly />
         </li>
 
         <li>
-            <span>请假起始时间</span>
+            <span>璇峰亣璧峰鏃堕棿</span>
             <input type="text" name="LecurrentDate" style="width: 250px" readonly/>
             <input type="text" name="LestarTime" style="width: 70px;height: 40px;margin-left: 20px;" readonly/>
         </li>
         <li>
-            <span>请假结束时间</span>
+            <span>璇峰亣缁撴潫鏃堕棿</span>
             <input type="text" name="LecurrentOverDate" style="width: 250px" readonly />
             <input type="text" name="LeoverTime"   style="width: 70px;height: 40px;margin-left: 20px;"  readonly />
 
         </li>
         <li>
-            <span>请假天数</span>
+            <span>璇峰亣澶╂暟</span>
             <input type="text" name="LerestDate"     readonly   />
         </li>
         <li>
-            <span style="float: left;">请假原由</span>
+            <span style="float: left;">璇峰亣鍘熺敱</span>
             <textarea name="LerestText" rows="3" cols="30" style="width: 348px" readonly></textarea>
         </li>
         <li id="FileLi" style="height: 0;overflow: hidden;min-height: 0">
-            <span style="float: left;">附件</span>
-            <a id="LeFile" href="" download=""  target="_blank">下载附件</a>
+            <span style="float: left;">闄勪欢</span>
+            <a id="LeFile" href="" download=""  target="_blank">涓嬭浇闄勪欢</a>
         </li>
         <li style="margin-bottom: 30px">
-            <input  type="button" value="审 批" onclick="approvalLeave()"  class="button-task"/>
+            <input  type="button" value="瀹� 鎵�" onclick="approvalLeave()"  class="button-task"/>
         </li>
     </ul>
 </div>
@@ -58,27 +58,27 @@
         pagination:true,
         singleSelect:true,
         columns:[[
-            {field:'id',title:'编号',checkbox:true,width:200},
-            {field:'userId',title:'请假人',width:200,formatter:function(value){return value.name}},
-            {field:'restTypeId',title:'请假类型',formatter: function(value){return value.name;},width:100},
-            {field:'restText',title:'请假原由',width:400},
-            {field:'requestDate',title:'请假起始时间'},
-            {field:'requestStage',title:'开始阶段'},
-            {field:'overDate',title:'请假结束时间'},
-            {field:'overStage',title:'结束阶段'},
-            {field:'restDate',title:'请假天数'},
-            {field:'approver',title:'审批人'},
-            {field:'state',title:'状态'},
-            {field:'appendix',title:'附件',hidden:true}
+            {field:'id',title:'缂栧彿',checkbox:true,width:200},
+            {field:'userId',title:'璇峰亣浜�',width:200,formatter:function(value){return value.name}},
+            {field:'restTypeId',title:'璇峰亣绫诲瀷',formatter: function(value){return value.name;},width:100},
+            {field:'restText',title:'璇峰亣鍘熺敱',width:400},
+            {field:'requestDate',title:'璇峰亣璧峰鏃堕棿'},
+            {field:'requestStage',title:'寮�濮嬮樁娈�'},
+            {field:'overDate',title:'璇峰亣缁撴潫鏃堕棿'},
+            {field:'overStage',title:'缁撴潫闃舵'},
+            {field:'restDate',title:'璇峰亣澶╂暟'},
+            {field:'approver',title:'瀹℃壒浜�'},
+            {field:'state',title:'鐘舵��'},
+            {field:'appendix',title:'闄勪欢',hidden:true}
         ]]
     });
 
-//    申请详情弹窗
+//    鐢宠璇︽儏寮圭獥
     function approvalLeaveDIG(){
         var row=$('#approvalLeaveDG').datagrid('getSelected');
         if(row){
             $("#LeaverDIG").dialog({
-                title : '请假信息',
+                title : '璇峰亣淇℃伅',
 //				width : 400,
 //            height : 550,
                 top:50,
@@ -102,17 +102,17 @@
                 }
             });
         }else{
-            $.messager.alert("提示","请先选中一条申请信息！","info")
+            $.messager.alert("鎻愮ず","璇峰厛閫変腑涓�鏉＄敵璇蜂俊鎭紒","info")
         }
     }
-//    给予通过
+//    缁欎簣閫氳繃
     function approvalLeave(){
             $.post('',{'id': $("#approvalID").val()},function(data){
                 if(data!=null&&data>0){
                     $("#approvalLeaveDG").datagrid('reload');
-                    $.messager.alert("提示", "审批成功！", "info");
+                    $.messager.alert("鎻愮ず", "瀹℃壒鎴愬姛锛�", "info");
                 }else{
-                    $.messager.alert("提示", "审批失败，请稍候重试！", "info");
+                    $.messager.alert("鎻愮ず", "瀹℃壒澶辫触锛岃绋嶅�欓噸璇曪紒", "info");
                 }
             })
     }

@@ -61,10 +61,6 @@ public class RestAction {
 	}
 	
 	
-	@RequestMapping("/test.action")
-	@ResponseBody
-	public int[] test(){
-		return new int[]{1,2,3,4,5,6,7,8,9};
-	}
+
 	
 }
