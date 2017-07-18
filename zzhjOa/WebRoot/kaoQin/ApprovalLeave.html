@@ -8,7 +8,7 @@
     <a  class="easyui-linkbutton" iconCls="icon-grxx" plain="true" onclick="approvalLeaveDIG()">审批请假</a>
 </div>
 <table id="approvalLeaveDG"></table>
-<div id="LeaverDIG" class=" easyui-dialog TGK" closed=false title="查看请假/休假详情">
+<div id="LeaverDIG" class=" easyui-dialog TGK" closed=true title="查看请假/休假详情">
     <ul>
         <li>
             <input type="text" hidden id="approvalID">
@@ -43,12 +43,10 @@
         </li>
         <li id="FileLi" style="height: 0;overflow: hidden;min-height: 0">
             <span style="float: left;">附件</span>
-            <a id="LeFile" href="WarningPage.html" download=""  target="_blank">下载附件</a>
-            <a href="修改委托书.docx"  download="" target="_blank">下载附件word</a>
-            <a href="../image/ipt.png"  download="" target="_blank">下载附件jpg</a>
+            <a id="LeFile" href="" download=""  target="_blank">下载附件</a>
         </li>
         <li style="margin-bottom: 30px">
-            <input  type="button" value="审 批" onclick="approvalLeave()"  class="button-tesk"/>
+            <input  type="button" value="审 批" onclick="approvalLeave()"  class="button-task"/>
         </li>
     </ul>
 </div>
@@ -112,7 +110,9 @@
             $.post('',{'id': $("#approvalID").val()},function(data){
                 if(data!=null&&data>0){
                     $("#approvalLeaveDG").datagrid('reload');
-                    $.messager.alert("提示", "审批成功", "info");
+                    $.messager.alert("提示", "审批成功！", "info");
+                }else{
+                    $.messager.alert("提示", "审批失败，请稍候重试！", "info");
                 }
             })
     }
