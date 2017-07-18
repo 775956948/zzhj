@@ -25,13 +25,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
   		<div id="restTb">
 			<a  class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="addRest()">申请请假/休假</a>
-			<c:if test="${users.roleId.name=='副总' || users.roleId.name=='总经理' || users.roleId.name=='管理员'}">
-				<a  class="easyui-linkbutton" iconCls="icon-Remove" plain="true" onclick="deleteRest()">删除</a>
-			</c:if>
 		</div>
 		<div id="restDd"  class="easyui-dialog" closed=true  style="width: 750px">
   		<form action="" method="post" >
-  				<h2 style="margin: auto; width:150px; margin-top: 20px;">请 假/休 假 信 息 表</h2>
+  				<h2 style="margin: auto; width:150px; margin-top: 20px;">请假/休假 信息表</h2>
 				<ul id="addRest" style="margin-top:10px;" >
 					<li>
 						<span>请假人</span>
@@ -187,21 +184,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                })
 			}else{
 				 $.messager.alert("提示", "请填写完整信息", "info");  
-			}
-		}
-
-		//删除申请
-		function deleteRest(){	
-			var row = $("#restDg").datagrid('getSelected');
-			if(row){
-				$.post('rest/deleteRest.action',{'id':row.id},function(data){
-					if(data!=null&&data>0){
-						$("#restDg").datagrid('reload');
-						 $.messager.alert("提示", "删除成功", "info"); 
-					}
-				})
-			}else{
-				 $.messager.alert("提示", "请选中一行信息", "info");  
 			}
 		}
   	</script>

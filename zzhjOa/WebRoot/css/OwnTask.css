@@ -7,6 +7,9 @@
 #LeaverDIG ul{
     width: 600px;
 }
+#buttonBarManageLeave .textbox{
+    border-radius: 0;
+}
 .PrintK{
     position: absolute;
     left: 0;

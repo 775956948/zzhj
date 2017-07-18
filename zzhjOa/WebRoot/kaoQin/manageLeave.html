@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>休假管理</title>
+</head>
+<body>
+<div id="buttonBarManageLeave">
+    <span>关键字查询</span> <span style="position: relative;top: 2px">&nbsp 日期: </span><input type="text" id="SSdate">   <span style="position: relative;top: 2px"> &nbsp 名字: </span><input type="text" id="SSname" placeholder="请输入准确名字" style="height: 16px;position: relative;top: 1px">
+    <a  class="easyui-linkbutton" iconCls="icon-cz" plain="true" onclick="searchUserIdName()">搜索</a>
+    <a  class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="delectLeaveNews()">删除</a>
+</div>
+<table id="manageLeaveDG"></table>
+
+<script type="text/javascript">
+    $("#SSdate").datebox({
+        required: true,
+        editable:false
+    });
+    $('#manageLeaveDG').datagrid({
+        url:'',
+        fitColumns:true,
+        toolbar: '#buttonBarManageLeave',
+        pagination:true,
+        singleSelect:true,
+        columns:[[
+            {field:'id',title:'编号',checkbox:true,width:200},
+            {field:'userId',title:'请假人',width:200,formatter:function(value){return value.name}},
+            {field:'restTypeId',title:'请假类型',formatter: function(value){return value.name;},width:100},
+            {field:'restText',title:'请假原由',width:400},
+            {field:'currentDate',title:'请假起始时间'},
+            {field:'requestDate',title:'开始阶段'},
+            {field:'overDate',title:'请假结束时间'},
+            {field:'overStage',title:'结束阶段'},
+            {field:'restDate',title:'请假天数'},
+            {field:'approver',title:'审批人'},
+            {field:'state',title:'状态'},
+            {field:'appendix',title:'附件',hidden:true}
+        ]]
+    });
+
+    //搜索按钮
+    function searchUserIdName(){
+        var searchDate=$("#SSdate").val();
+        var searchName=$("#SSname").val();
+        if(searchDate!=""||searchName!=""&&searchName!=0){
+            $('#manageLeaveDG').datagrid({
+                url: '',
+                fitColumns: true,
+                toolbar: '#buttonBarManageLeave',
+                pagination: true,
+                singleSelect: true,
+                queryParams: {
+                    'searchDate':searchDate,
+                    'searchName':searchName
+                },
+                columns: [[
+                    {field:'id',title:'编号',checkbox:true,width:200},
+                    {field:'userId',title:'请假人',width:200,formatter:function(value){return value.name}},
+                    {field:'restTypeId',title:'请假类型',formatter: function(value){return value.name;},width:100},
+                    {field:'restText',title:'请假原由',width:400},
+                    {field:'currentDate',title:'请假起始时间'},
+                    {field:'requestDate',title:'开始阶段'},
+                    {field:'overDate',title:'请假结束时间'},
+                    {field:'overStage',title:'结束阶段'},
+                    {field:'restDate',title:'请假天数'},
+                    {field:'approver',title:'审批人'},
+                    {field:'state',title:'状态'},
+                    {field:'appendix',title:'附件',hidden:true}
+                ]]
+            });
+        }else{
+            $.messager.alert("提示","请输入所要查询关键字","info")
+        }
+    }
+    //删除一条
+    function delectLeaveNews(){
+        var row = $("#manageLeaveDG").datagrid('getSelected');
+        if(row){
+            $.post('',{'id':row.id},function(data){
+                if(data!=null&&data>0){
+                    $("#manageLeaveDG").datagrid('reload');
+                    $.messager.alert("提示", "删除成功!", "info");
+                }
+            })
+        }else{
+            $.messager.alert("提示", "请选中一行信息!", "info");
+        }
+    }
+</script>
+</body>
+</html>

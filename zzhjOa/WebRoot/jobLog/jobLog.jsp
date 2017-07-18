@@ -35,8 +35,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<option>工作周报</option>
 				</select>
 			</div>
-			<button style="margin-left:50px;" onclick="deleteJobLog()">删除</button>
-			<button style="margin-left:50px;" onclick="searchJobLog()">搜索</button>
+			<button style="margin-left:20px;" onclick="deleteJobLog()">删除</button>
+			<button style="margin-left:4px;" onclick="searchJobLog()">搜索</button>
 		</div>
 		<table id="jobLogDg"></table>  
 	</div>
