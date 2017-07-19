@@ -77,12 +77,16 @@
     function delectLeaveNews(){
         var row = $("#manageLeaveDG").datagrid('getSelected');
         if(row){
-            $.post('',{'id':row.id},function(data){
-                if(data!=null&&data>0){
-                    $("#manageLeaveDG").datagrid('reload');
-                    $.messager.alert("提示", "删除成功!", "info");
+            $.messager.confirm('提示', '确定删除该条申请信息？', function(r){
+                if (r){
+                    $.post('',{'id':row.id},function(data){
+                        if(data!=null&&data>0){
+                            $("#manageLeaveDG").datagrid('reload');
+                            $.messager.alert("提示", "删除成功!", "info");
+                        }
+                    })
                 }
-            })
+            });
         }else{
             $.messager.alert("提示", "请选中一行信息!", "info");
         }

@@ -108,6 +108,8 @@
     }
 //   给予通过
     function approvalLeave(){
+        var row=$('#approvalLeaveDG').datagrid('getSelected');
+        if(row.state=="待审批"){
             $.post('',{'id': $("#approvalID").val()},function(data){
                 if(data!=null&&data>0){
                     $("#approvalLeaveDG").datagrid('reload');
@@ -116,6 +118,9 @@
                     $.messager.alert("提示", "审批失败，请稍候重试！", "info");
                 }
             })
+        }else{
+            $.messager.alert("警告","请选择状态为 待审批 的申请！不可二次审批！","info")
+        }
     }
 </script>
 </body>
