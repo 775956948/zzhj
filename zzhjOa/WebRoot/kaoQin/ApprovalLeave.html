@@ -53,7 +53,7 @@
 </div>
 <script type="text/javascript">
     $('#approvalLeaveDG').datagrid({
-        url:'',
+        url:'rest/approverOwn.action',
         fitColumns:true,
         toolbar: '#buttonBarLeave',
         pagination:true,
@@ -80,9 +80,7 @@
         if(row){
             $("#LeaverDIG").dialog({
                 title : '请假信息',
-//				width : 400,
-//            height : 550,
-                top:50,
+                top:20,
                 closed : false,
                 cache : false,
                 modal : true,
@@ -95,8 +93,8 @@
                     $("input[name = LecurrentOverDate]").val(row.overDate);
                     $("input[name = LeoverTime]").val(row.overStage);
                     $("input[name = LerestDate]").val(row.restDate);
-                    $("input[name = LerestText]").val(row.restText);
-                    if(row.appendix!=""){
+                    $("textarea[name = LerestText]").val(row.restText);
+                    if(row.appendix!=""&&row.appendix!=null){
                         $("#FileLi").css({"height":"40px"});
                         $("#LeFile").attr("href",row.appendix);
                     }
@@ -110,10 +108,11 @@
     function approvalLeave(){
         var row=$('#approvalLeaveDG').datagrid('getSelected');
         if(row.state=="待审批"){
-            $.post('',{'id': $("#approvalID").val()},function(data){
+            $.post('rest/approver.action',{'restId': $("#approvalID").val(),'day':$("input[name='LerestDate']").val()},function(data){
                 if(data!=null&&data>0){
                     $("#approvalLeaveDG").datagrid('reload');
                     $.messager.alert("提示", "审批成功！", "info");
+                    $("#LeaverDIG").dialog({closed :true})
                 }else{
                     $.messager.alert("提示", "审批失败，请稍候重试！", "info");
                 }

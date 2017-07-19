@@ -63,4 +63,30 @@ public interface RestMapper {
 	 * @date 2017年7月18日
 	 */
 	List<Rest> approverOwn(@Param("startPage") int startPage,@Param("rows") int rows,@Param("userName")String userName);
+	/**
+	 * 
+	 * @Description: 审批方法
+	 * @param @param restId
+	 * @param @param approverName
+	 * @param @param state
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年7月19日
+	 */
+	int approver(@Param("restId")int restId,@Param("approverName")String approverName,@Param("state")String state);
+	/**
+	 * 
+	 * @Description: 组合查询
+	 * @param @param date
+	 * @param @param userName
+	 * @param @return   
+	 * @return List<Rest>  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年7月19日
+	 */
+	List<Rest> combinationQuery(@Param("date")String date,@Param("userName")String userName);
+	
 }
