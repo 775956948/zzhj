@@ -28,5 +28,39 @@ public interface RestMapper {
 	 */
 	List<Rest> queryOwn(@Param("startPage") int startPage,@Param("rows") int rows,@Param("userName")String userName);
 	int totalCount();
+	/**
+	 * 
+	 * @Description: 根据id删除一条信息
+	 * @param @param id
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年7月18日
+	 */
 	int deleteRest(int id);
+	/**
+	 * 
+	 * @Description: 查询审批人是当前登陆用户的总条数
+	 * @param @param userName
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年7月18日
+	 */
+	int totalCountApproverOnw(@Param("userName")String userName);
+	/**
+	 * 
+	 * @Description: 查询审批人是当前登陆用户的信息
+	 * @param @param startPage
+	 * @param @param rows
+	 * @param @param userName
+	 * @param @return   
+	 * @return List<Rest>  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年7月18日
+	 */
+	List<Rest> approverOwn(@Param("startPage") int startPage,@Param("rows") int rows,@Param("userName")String userName);
 }

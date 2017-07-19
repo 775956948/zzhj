@@ -29,6 +29,12 @@
   <select id="queryOwn" parameterType="object" resultMap="ru">
   	select r.*,u.name as u_name,rt.name as rt_name from rest r inner join users u on u.id=r.user_id inner join rest_type rt on rt.id=r.rest_type_id where u.name=#{userName} limit #{startPage},${rows}
   </select>
+  <select id="approverOwn" parameterType="object" resultMap="ru">
+  	select r.*,u.name as u_name,rt.name as rt_name from rest r inner join users u on u.id=r.user_id inner join rest_type rt on rt.id=r.rest_type_id where r.approver=#{userName} limit #{startPage},${rows}
+  </select>
+  <select id="totalCountApproverOnw" parameterMap="string" resultType="int">
+  	select count(id) from rest where approver=#{userName}
+  </select>
   
   <delete id="deleteRest" parameterType="int">
   	delete from rest where id=#{value}

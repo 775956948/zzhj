@@ -6,10 +6,13 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.zzhj.mapper.RestMapper;
+import com.zzhj.mapper.UsersMapper;
 import com.zzhj.po.Rest;
+import com.zzhj.po.Users;
 
 
 /**
@@ -23,6 +26,9 @@ import com.zzhj.po.Rest;
 public class RestService {
 	@Resource(name="restMapper")
 	private RestMapper rm;
+	
+	@Autowired
+	private UsersMapper um;
 	/**
 	 * 
 	 * @Description: 添加一条rest数据
@@ -34,6 +40,9 @@ public class RestService {
 	 * @date 2017年4月27日
 	 */
 	public int save(Rest rest){
+		Users parentId = um.parentId(rest.getUserId().getId());
+		Users userName = um.queryUserInfoOne(parentId.getParentId());
+		rest.setApprover(userName.getName());
 		return rm.save(rest);
 	}
 	
