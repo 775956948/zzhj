@@ -49,10 +49,10 @@ public class RestService {
 	}
 	
 	public Map<String,Object> queryOwn(int page,int rows,String userName){
-		int total =rm.totalCount();
+		int total =rm.totalCountApproverOnw(userName);
 		int startPage =(page-1)*rows;
 		List<Rest> list =rm.queryOwn(startPage, rows,userName);
-		Map map = new HashMap<String,Object>();
+		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("total", total);
 		map.put("rows", list);
 		return map;
@@ -146,6 +146,27 @@ public class RestService {
 	public Map<String,Object> combinationQuery(String date,String userName){
 		Map<String,Object> map = new HashMap<String,Object>();
 		List<Rest> list =rm.combinationQuery(date, userName);
+		map.put("rows", list);
+		return map;
+	}
+	
+	/**
+	 * 
+	 * @Description: 查询所有信息
+	 * @param @param page
+	 * @param @param rows
+	 * @param @return   
+	 * @return Map<String,Object>  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年7月19日
+	 */
+	public Map<String,Object> queryAll(int page,int rows){
+		int total =rm.totalCount();
+		int startPage =(page-1)*rows;
+		List<Rest> list =rm.queryAll(startPage, rows);
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("total", total);
 		map.put("rows", list);
 		return map;
 	}

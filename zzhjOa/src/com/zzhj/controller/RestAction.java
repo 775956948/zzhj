@@ -114,6 +114,12 @@ public class RestAction {
 	}
 	
 	
+	@RequestMapping("/queryAll.action")
+	@ResponseBody
+	public Map<String,Object> queryAll(int page,int rows){
+		return rs.queryAll(page, rows);
+	}
+	
 
 	
 }

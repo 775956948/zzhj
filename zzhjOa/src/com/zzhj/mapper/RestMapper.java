@@ -89,4 +89,6 @@ public interface RestMapper {
 	 */
 	List<Rest> combinationQuery(@Param("date")String date,@Param("userName")String userName);
 	
+	List<Rest> queryAll(@Param("startPage")int startPage,@Param("rows")int rows);
+	
 }
