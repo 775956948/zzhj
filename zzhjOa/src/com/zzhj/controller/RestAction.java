@@ -59,6 +59,59 @@ public class RestAction {
 	public int deleteRest(int id){
 		return rs.deleteRest(id);
 	}
+	/**
+	 * 
+	 * @Description: 查询审批人是当前登陆用户的申请请假信息
+	 * @param @param page
+	 * @param @param rows
+	 * @param @param session
+	 * @param @return   
+	 * @return Map<String,Object>  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年7月19日
+	 */
+	@RequestMapping("/approverOwn.action")
+	@ResponseBody
+	public Map<String,Object> approverOwn(int page,int rows,HttpSession session){
+		Users user = (Users) session.getAttribute("users");
+		return rs.approverOwn(page, rows, user.getName());
+	}
+	/**
+	 * 
+	 * @Description: 审批方法
+	 * @param @param session
+	 * @param @param restId
+	 * @param @param day
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年7月19日
+	 */
+	@RequestMapping("/approver.action")
+	@ResponseBody
+	public int approver(HttpSession session,int restId,double day){
+		Users user = (Users) session.getAttribute("users");
+		return rs.approver(restId,user,day);
+	}
+	
+	/**
+	 * 
+	 * @Description: 组合查询
+	 * @param @param date
+	 * @param @param userName
+	 * @param @return   
+	 * @return Map<String,Object>  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年7月19日
+	 */
+	@RequestMapping("/combinationQuery.action")
+	@ResponseBody
+	public Map<String,Object> combinationQuery(String date,String userName){
+		return rs.combinationQuery(date, userName);
+	}
 	
 	
 

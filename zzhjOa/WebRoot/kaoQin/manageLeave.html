@@ -45,14 +45,14 @@
         var searchName=$("#SSname").val();
         if(searchDate!=""||searchName!=""&&searchName!=0){
             $('#manageLeaveDG').datagrid({
-                url: '',
+                url: 'rest/combinationQuery.action',
                 fitColumns: true,
                 toolbar: '#buttonBarManageLeave',
                 pagination: true,
                 singleSelect: true,
                 queryParams: {
-                    'searchDate':searchDate,
-                    'searchName':searchName
+                    'date':searchDate,
+                    'userName':searchName
                 },
                 columns: [[
                     {field:'id',title:'编号',checkbox:true,width:200},
@@ -77,7 +77,7 @@
     function delectLeaveNews(){
         var row = $("#manageLeaveDG").datagrid('getSelected');
         if(row){
-            $.post('',{'id':row.id},function(data){
+            $.post('rest/deleteRest.action',{'id':row.id},function(data){
                 if(data!=null&&data>0){
                     $("#manageLeaveDG").datagrid('reload');
                     $.messager.alert("提示", "删除成功!", "info");
