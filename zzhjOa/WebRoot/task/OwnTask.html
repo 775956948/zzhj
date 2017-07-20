@@ -315,7 +315,6 @@
                         '</div>' +
                         '</div>';
                 return htmlstr;
-
             	}, width:330
             },
             {field: 'taskPhase', title: '任务阶段',width:100},
@@ -337,7 +336,7 @@
 	            },
 	            success: function (data) {
 	                if (data > 0) {
-	                    $.messager.alert("提示", "接收任务成功", "info");
+	                    $.messager.alert("提示", "接收任务成功!", "info");
 	                    $('#viewTask').dialog({
 	                        closed: true //更改 显示隐藏
 	                    });
@@ -353,15 +352,14 @@
 					   		 }
 					   	})
 	                } else {
-	                    $.messager.alert("提示", "接收任务失败", "info")
+	                    $.messager.alert("提示", "接收任务失败!", "info")
 	                }
 	            }
 	        })
     	}else{
-    		 $.messager.alert("提示", "只能接收已下达任务", "info");
+    		 $.messager.alert("提示", "只能接收已下达任务!", "info");
     	}
     }
-
 
     //进度修改弹窗
     function changeSpeedDig() {
@@ -373,10 +371,10 @@
                     width:500
                 })
             } else {
-                $.messager.alert("提示", "请先接收任务", "info");
+                $.messager.alert("提示", "请先接收任务!", "info");
             }
         }else{
-            $.messager.alert("提示", "请先选择任务", "info");
+            $.messager.alert("提示", "请先选择任务!", "info");
         }
     }
 

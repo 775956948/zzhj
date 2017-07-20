@@ -29,10 +29,7 @@
             <button id="submitTask">确  认  发  布</button>
         </div>
     </div>
-   
 </div>
-
-
 <script type="text/javascript">
     $('#JsDate').datebox({
         required:true,
@@ -49,19 +46,17 @@
             }
         }
     });
-
     $(function(){
-    	
         var submitTask=$("#submitTask");
         submitTask.click(function(){
-            var taskTheme=$("input[name='taskTheme']").val();
+            var taskTheme=$("#taskTheme1").val();
             var taskContent=$("#taskContent").val();
-            var taskReceive=$("select[name='taskReceive']").find("option:selected").text();
-            var taskAddress=$("input[name='taskAddress']").val();
-            var entrustedUnit=$("input[name='entrustedUnit']").val();
-            var client=$("input[name='client']").val();
-            var clientPhone=$("input[name='clientPhone']").val();
-            var overDate=$("input[name='overDate']").val();
+            var taskReceive=$("#taskReceive1").find("option:selected").text();
+            var taskAddress=$("#taskAddress1").val();
+            var entrustedUnit=$("#taskCompany1").val();
+            var client=$("#taskContacts1").val();
+            var clientPhone=$("#AddressNumber1").val();
+            var overDate=$("#JsDate").val();
             if(taskContent!=""&&taskTheme!=""&&taskAddress!=""&&taskReceive!=""&&entrustedUnit!=""&&client!=""&&clientPhone!=""&&overDate!=""){
                 $.ajax({
                     url:'task/addTask.action',
@@ -92,9 +87,7 @@
                 $.messager.alert("提示","请填写完整信息", "info");
             } 
         })
-
     })
-
 </script>
 </body>
 </html>

@@ -17,31 +17,31 @@
 <div id="viewApplication"  class="easyui-dialog" title="查看申请" closed=true>
     <ul>
         <li>
-            <input type="hidden" name="userid">
+            <input type="hidden" name="FEuserid">
         </li>
         <li style="height: 40px">
             <div class="splitLi">
                 <span>任 务 主 题：</span>
-                <input type="text" name="taskName" readonly="readonly">
+                <input type="text" name="FEtaskName" readonly="readonly">
             </div>
             <div class="splitLi">
                 <span>申 &nbsp 请 &nbsp 人：</span>
-                <input type="text" name="requestName" readonly>
+                <input type="text" name="FErequestName" readonly>
             </div>
         </li>
         <li style="height: 40px">
             <div class="splitLi">
                 <span>申 请 时 间：</span>
-                <input type="text" name="requestDate" readonly>
+                <input type="text" name="FErequestDate" readonly>
             </div>
         </li>
         <li>
             <span style="position: absolute;top: 29%;">反 馈 信 息：</span>
-            <textarea name="info" rows="7" cols="30" style="width: 70%;margin-left: 95px;font-size: 16px" readonly></textarea>
+            <textarea name="FEinfo" rows="7" cols="30" style="width: 70%;margin-left: 95px;font-size: 16px" readonly></textarea>
         </li>
         <li>
             <span style="position: absolute;top: 29%;">打 回 信 息：</span>
-            <textarea name="refuseInfo" rows="7" cols="30" style="width: 70%;margin-left: 95px;font-size: 16px" placeholder="请填写打回信息"></textarea>
+            <textarea name="FErefuseInfo" rows="7" cols="30" style="width: 70%;margin-left: 95px;font-size: 16px" placeholder="请填写打回信息"></textarea>
         </li>
         <li style="margin: 20px auto">
             <div class="splitLi">
@@ -87,11 +87,11 @@
                 closed: false, //更改 显示隐藏
                 cache: false,//是否缓存
                 onOpen: function () {
-                    $("input[name = userid]").val(Data.id);
-                    $("input[name = requestName]").val(Data.requestName);
-                    $("input[name = requestDate]").val(Data.requestDate);
-                    $("input[name = taskName]").val(Data.taskId.taskTheme);
-                    $("textarea[name = info]").val(Data.info);
+                    $("input[name = FEuserid]").val(Data.id);
+                    $("input[name = FErequestName]").val(Data.requestName);
+                    $("input[name = FErequestDate]").val(Data.requestDate);
+                    $("input[name = FEtaskName]").val(Data.taskId.taskTheme);
+                    $("textarea[name = FEinfo]").val(Data.info);
                 }
             });
         } else {
@@ -100,14 +100,14 @@
     }
 //    打回
     function refuseApplication(){
-		var fId = $("input[name = userid]").val();
-        if($("textarea[name = refuseInfo]").val()!=''&&$("textarea[name = refuseInfo]").val()!=null){
+		var fId = $("input[name = FEuserid]").val();
+        if($("textarea[name = FErefuseInfo]").val()!=''&&$("textarea[name = FErefuseInfo]").val()!=null){
             $.ajax({
                 url: "feedback/refuse.action",
                 method: "POST",
                 data: {
-                    refuseInfo:$("textarea[name = refuseInfo]").val(),
-                    feedbackId: $("input[name = userid]").val()
+                    refuseInfo:$("textarea[name = FErefuseInfo]").val(),
+                    feedbackId: $("input[name = FEuserid]").val()
                 },
                 success: function (data) {
                     if (data > 0) {
@@ -137,7 +137,7 @@
     }
 //    同意
     function agreeApply(){
-			var feedbackId= $("input[name = userid]").val();
+			var feedbackId= $("input[name = FEuserid]").val();
             $.ajax({
                 url: "feedback/approver.action",
                 method: "POST",
