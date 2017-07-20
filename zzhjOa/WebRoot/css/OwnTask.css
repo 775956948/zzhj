@@ -26,6 +26,9 @@
 .PrintK ul li{
     height: 47px;
 }
+.PrintK  .height-TEXT{
+    height: 140px;
+}
 #addNewDiG ul,#changeItemsDiG ul,#applyItemsDiG ul,#SPxq ul,#viewDetailsDiG ul{
     width: 500px;
 }
@@ -144,9 +147,9 @@
         opacity: 0;
     }
     .PrintK .Noprint{
-       display:none;
+        opacity: 0;
     }
     .PrintK  .height-TEXT{
-        height: 130px;
+        height: 140px;
     }
 }
