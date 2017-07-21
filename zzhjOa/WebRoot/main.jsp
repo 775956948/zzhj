@@ -199,7 +199,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			 $.post("notice/queryAll.action",function(data){
 				 $("#north").empty();
 			 for (var i = 0; i < data.length; i++) {
-				 $("#north").append("<p style='overflow: hidden; '><a href='notice/queryOne.action?id="+data[i].id+"'  target='notice/showNotice.jsp'>"+"《主题》："+data[i].theme+"&nbsp;&nbsp;《发布时间》："+data[i].releaseDate+"&nbsp;&nbsp;《发布人》:"+data[i].userId.name+"</a></p>") 
+				 $("#north").prepend("<p style='overflow: hidden; '><a href='notice/queryOne.action?id="+data[i].id+"'  target='notice/showNotice.jsp'>"+"《主题》："+data[i].theme+"&nbsp;&nbsp;《发布时间》："+data[i].releaseDate+"&nbsp;&nbsp;《发布人》:"+data[i].userId.name+"</a></p>")
 			}
 			 
 		 }) 

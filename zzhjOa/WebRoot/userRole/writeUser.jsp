@@ -39,9 +39,9 @@
 					$("#userInfoimg").hide();
 				}
 			})
-       	$('#joinTime').datebox({ required:true});
-	    $('#becomeTime').datebox({ required:true});
-	    $('#birthTime').datebox({ required:true});
+       	$('#joinTime').datebox({ required:true,editable:false});
+	    $('#becomeTime').datebox({ required:true,editable:false});
+	    $('#birthTime').datebox({ required:true,editable:false});
 
 		}) 
 		
