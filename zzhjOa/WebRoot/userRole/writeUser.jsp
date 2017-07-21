@@ -56,7 +56,7 @@
 	 		if(number>1){
 	 			$.messager.alert("提示", "信息填寫不完整", "info");
 	 		}else{
-	 			$.messager.confirm('确认','修改后需重新登陆',function(r){    
+	 			$.messager.confirm('确认','修改后需重新登陆',function(r){
 	 			    if (r){    
 	 			    	$("#userInfo").submit();
 	 			    }    
