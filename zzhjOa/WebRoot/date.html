@@ -178,15 +178,15 @@
 	
 	
 	
-	$(function(){
-		$.post('rest/test.action',function(data){
+ 	$(function(){
+	 	$.post('rest/test.action',function(data){
 			for (var i = 0; i < data.length; i++) {
 					datas[i]=data[i]	
 			}
 			$(".checkin").Checkin();
-		})
+		})  
 		
-	})
+	}) 
 	
 	function com(){
 		

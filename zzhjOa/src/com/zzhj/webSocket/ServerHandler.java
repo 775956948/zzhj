@@ -51,7 +51,7 @@ public class ServerHandler {
 	}
 	@OnError
 	public void error(Throwable t){
-		System.out.println("出现异常");
+		System.out.println("ws异常关闭");
 	}
 	/**
 	 * 
