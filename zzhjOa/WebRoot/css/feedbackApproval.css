@@ -12,6 +12,9 @@
     overflow: hidden;
     position: relative;
 }
+#seeMessage li{
+    margin-top: 10px;
+}
 #viewApplication li{
 	margin-top: 5px;
 }

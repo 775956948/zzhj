@@ -37,11 +37,11 @@
         </li>
         <li>
             <span style="position: absolute;top: 29%;">反 馈 信 息：</span>
-            <textarea name="FEinfo" rows="7" cols="30" style="width: 70%;margin-left: 95px;font-size: 16px" readonly></textarea>
+            <textarea name="FEinfo" rows="7" cols="30" style="width: 72%;margin-left: 118px;font-size: 16px" readonly></textarea>
         </li>
         <li>
             <span style="position: absolute;top: 29%;">打 回 信 息：</span>
-            <textarea name="FErefuseInfo" rows="7" cols="30" style="width: 70%;margin-left: 95px;font-size: 16px" placeholder="请填写打回信息"></textarea>
+            <textarea name="FErefuseInfo" rows="7" cols="30" style="width: 72%;margin-left:118px;font-size: 16px" placeholder="请填写打回信息"></textarea>
         </li>
         <li style="margin: 20px auto">
             <div class="splitLi">
@@ -68,12 +68,12 @@
         columns: [[
             {field: 'id', title: '编号', checkbox: true},
             {field: 'requestName', title: '申请人'},
-            {field: 'requestDate', title: '申请时间', width: 60},
+            {field: 'requestDate', title: '申请时间'},
             {field: 'taskId', title: '任务主题',formatter:function(value){return value.taskTheme}},
             {field: 'info', title: '反馈信息'},
             {field: 'refuseInfo', title: '打回信息'},
             {field: 'approver', title: '审批人'},
-            {field: 'overDate', title: '结束时间', width: 60},
+            {field: 'overDate', title: '结束时间'},
             {field: 'state', title: '任务状态'}
         ]]
     });

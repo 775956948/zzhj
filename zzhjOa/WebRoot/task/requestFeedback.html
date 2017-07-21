@@ -27,7 +27,7 @@
         </li>
         <li>
             <span style="position: absolute;top: 28%">反馈信息：</span>
-            <textarea name="info" rows="7" cols="30" style="width: 70%;margin-left: 80px;font-size: 16px"
+            <textarea name="REinfo" rows="7" cols="30" style="width: 70%;margin-left: 80px;font-size: 16px"
                       id="feedTaskTest"></textarea>
         </li>
         <li>
@@ -39,45 +39,45 @@
 <div id="seeMessage" class="easyui-dialog" title="查看信息" closed=true>
     <ul>
         <li>
-            <input type="hidden" name="userid">
+            <input type="hidden" name="REuserid">
         </li>
         <li style="height: 40px">
             <div class="splitLi">
                 <span>任 务 主 题：</span>
-                <input type="text" name="taskName" readonly="readonly">
+                <input type="text" name="REtaskName" readonly="readonly">
             </div>
             <div class="splitLi">
                 <span>申 &nbsp 请 &nbsp 人：</span>
-                <input type="text" name="requestName" readonly>
+                <input type="text" name="RErequestName" readonly>
             </div>
         </li>
         <li style="height: 40px">
             <div class="splitLi">
                 <span>申 请 时 间：</span>
-                <input type="text" name="requestDate" readonly>
+                <input type="text" name="RErequestDate" readonly>
             </div>
             <div class="splitLi">
                 <span>结 束 时 间：</span>
-                <input type="text" name="overDate" readonly>
+                <input type="text" name="REoverDate" readonly>
             </div>
         </li>
         <li style="height: 40px">
             <div class="splitLi">
                 <span>审 &nbsp 批 &nbsp 人：</span>
-                <input type="text" name="approver" readonly>
+                <input type="text" name="REapprover" readonly>
             </div>
             <div class="splitLi">
                 <span>申 请 状 态：</span>
-                <input type="text" name="state" readonly>
+                <input type="text" name="REstate" readonly>
             </div>
         </li>
         <li>
             <span style="position: absolute;top: 29%;">反 馈 信 息：</span>
-            <textarea name="info" rows="7" cols="30" style="width: 70%;margin-left: 95px" readonly></textarea>
+            <textarea name="REinfo" rows="7" cols="30" style="width: 72%;margin-left: 118px" readonly></textarea>
         </li>
         <li>
             <span style="position: absolute;top: 29%;">打 回 信 息：</span>
-            <textarea name="refuseInfo" rows="7" cols="30" style="width: 70%;margin-left: 95px" readonly></textarea>
+            <textarea name="RErefuseInfo" rows="7" cols="30" style="width: 72%;margin-left: 118px" readonly></textarea>
         </li>
         <li style="margin: 20px auto">
             <input type="button" class="button-task" onclick="closeMessage()" value="确 认 关 闭">
@@ -115,12 +115,12 @@
         columns: [[
             {field: 'id', title: '编号', checkbox: true},
             {field: 'requestName', title: '申请人'},
-            {field: 'requestDate', title: '申请时间', width: 60},
+            {field: 'requestDate', title: '申请时间'},
             {field: 'taskId', title: '任务主题',formatter:function(value){return value.taskTheme}},
             {field: 'info', title: '反馈信息'},
             {field: 'refuseInfo', title: '打回信息'},
             {field: 'approver', title: '审批人'},
-            {field: 'overDate', title: '结束时间', width: 60},
+            {field: 'overDate', title: '结束时间'},
             {field: 'state', title: '任务状态'}
         ]]
     });
@@ -147,18 +147,18 @@
                 },
                 success: function (data) {
                     if (data > 0) {
-                        $.messager.alert("提示", "提交申请成功", "info");
+                        $.messager.alert("提示", "提交申请成功!", "info");
                         $('#appFeedback').dialog({
                             closed: true //更改 显示隐藏
                         });
                         $('#refuseInfoDg').datagrid("reload");
                     } else {
-                        $.messager.alert("提示", "提交申请失败", "info")
+                        $.messager.alert("提示", "提交申请失败!", "info")
                     }
                 }
             })
         } else {
-            $.messager.alert("提示", "请完整填写", "info");
+            $.messager.alert("提示", "请完整填写!", "info");
         }
     }
     //    查看信息
@@ -167,18 +167,19 @@
         if (refuseData) {
             $('#seeMessage').dialog({
                 width: 800,
+                top:18,
                 closed: false, //更改 显示隐藏
                 cache: false,//是否缓存
                 onOpen: function () {
-                    $("input[name = userid]").val(refuseData.id);
-                    $("input[name = requestName]").val(refuseData.requestName);
-                    $("input[name = requestDate]").val(refuseData.requestDate);
-                    $("input[name = taskName]").val(refuseData.taskId.taskTheme);
-                    $("input[name = approver]").val(refuseData.approver);
-                    $("input[name = overDate]").val(refuseData.overDate);
-                    $("input[name = state]").val(refuseData.state);
-                    $("textarea[name = info]").val(refuseData.info);
-                    $("textarea[name = refuseInfo]").val(refuseData.refuseInfo);
+                    $("input[name = REuserid]").val(refuseData.id);
+                    $("input[name = RErequestName]").val(refuseData.requestName);
+                    $("input[name = RErequestDate]").val(refuseData.requestDate);
+                    $("input[name = REtaskName]").val(refuseData.taskId.taskTheme);
+                    $("input[name = REapprover]").val(refuseData.approver);
+                    $("input[name = REoverDate]").val(refuseData.overDate);
+                    $("input[name = REstate]").val(refuseData.state);
+                    $("textarea[name = REinfo]").val(refuseData.info);
+                    $("textarea[name = RErefuseInfo]").val(refuseData.refuseInfo);
                 }
             });
         } else {
@@ -190,8 +191,6 @@
             closed: true //更改 显示隐藏
         })
     }
-
-
 </script>
 </body>
 </html>

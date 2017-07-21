@@ -101,12 +101,6 @@
                 <span style="position: absolute;top: 29%;">任 务 内 容：</span>
                 <textarea name="CotaskText" rows="7" cols="30" style="width: 70%;margin-left: 118px" readonly></textarea>
             </li>
-            <li style="margin: 20px auto">
-                <input type="button" class="button-task" value="任 务 打 印" onclick="queryOwnPrint()">
-            </li>
-            <li style="margin: 0 auto;display:none;" class="qz">
-                <p style="width: 300px;text-align: left;float: right">签字：</p>
-            </li>
         </ul>
     </div>
 </div>
@@ -142,45 +136,45 @@
     <form id="transmitForm">
         <ul>
             <li>
-                <input type="hidden" name="taskId">
+                <input type="hidden" name="QotaskId">
             </li>
             <li style="">
                 <div class="splitLi">
                     <span>任 &nbsp 务  主 &nbsp 题：</span>
-                    <input type="text" name="taskTheme" readonly="readonly">
+                    <input type="text" name="QotaskTheme" readonly="readonly">
                 </div>
             <li>
             <span style="position: absolute;top: 29%;">任  &nbsp务 内 &nbsp 容：</span>
-            <textarea name="taskText" rows="7" cols="30" style="width: 70%;margin-left: 118px" readonly></textarea>
+            <textarea name="QotaskText" rows="7" cols="30" style="width: 70%;margin-left: 118px" readonly></textarea>
             </li>
             <li>
                 <div class="splitLi">
                     <span>  &nbsp 发 &nbsp 布 &nbsp  人 &nbsp：</span>
-                    <input type="text" name="userName" readonly>
+                    <input type="text" name="QouserName" readonly>
                 </div>
             </li>
             <li style="">
                 <div class="splitLi">
                     <span>任务开始时间：</span>
-                    <input type="text" name="implementDate" class="easyui-datebox" id="implementDate" >
+                    <input type="text" name="QoimplementDate" class="easyui-datebox" id="implementDate" >
                 </div>
             </li>
             <li style="">
                 <div class="splitLi">
                     <span>任务结束时间：</span>
-                    <input type="text" name="successDate" class="easyui-datebox" id="successDate">
+                    <input type="text" name="QosuccessDate" class="easyui-datebox" id="successDate">
                 </div>
             </li>
             <li style="">
                 <div class="splitLi">
                     <span>指定结束时间：</span>
-                    <input type="text" name="overDate" readonly  id="overDate">
+                    <input type="text" name="QooverDate" readonly  id="overDate">
                 </div>
             </li>
             <li style="height: 40px">
                 <div class="splitLi">
                     <span>任 务 执 行 人：</span>
-                    <select name="implement" style="font-size: 18px"></select>
+                    <select name="Qoimplement" style="font-size: 18px"></select>
                 </div>
             </li>
             <li style="margin: 20px auto">
@@ -291,23 +285,23 @@
         	if(row.state=="已发布"){
 	            $("#taskDd").dialog({
 	                title: '任务信息',
-	                height: 500,
-                    top:50,
+//	                height: 500,
+                    top:18,
 	                closed: false,
 	                onOpen: function () {
 	                    $.post('users/querySubclass.action', function (data) {
-	                        $("#transmitForm select[name='implement']").empty();
+	                        $("#transmitForm select[name='Qoimplement']").empty();
 	                        for (var i = 0; i < data.length; i++) {
-	                            $("#transmitForm select[name='implement']").append("<option>" + data[i] + "</option>")
+	                            $("#transmitForm select[name='Qoimplement']").append("<option>" + data[i] + "</option>")
 	                        }
-	                    })
-                        $("input[name='taskId']").val(row.id);
-                        $("input[name='taskTheme']").val(row.taskTheme);
-                        $("input[name='userName']").val(row.userName);
+	                    });
+                        $("input[name='QotaskId']").val(row.id);
+                        $("input[name='QotaskTheme']").val(row.taskTheme);
+                        $("input[name='QouserName']").val(row.userName);
                         $("#successDate").datebox('setValue',row.successDate);
                         $("#implementDate").datebox('setValue',row.implementDate);
                         $("#overDate").val(row.overDate);
-                        $("textarea[name='taskText']").val(row.taskText);
+                        $("textarea[name='QotaskText']").val(row.taskText);
 	                }
 	            })
         	}else{
@@ -358,7 +352,7 @@
 
     function transmitTask() {
         var number = 0;
-        if($("#implementDate").val()==""||$("#successDate").val()==""||$("select[name=implement]").find("option:selected").text()==""){
+        if($("#implementDate").val()==""||$("#successDate").val()==""||$("select[name=Qoimplement]").find("option:selected").text()==""){
             number=number+1;
         }
         var row = $('#teskDg').datagrid('getSelected');
@@ -371,8 +365,8 @@
             if (number == 0) {
             	var  implementDate= $("#implementDate").val();
             	var successDate = $("#successDate").val();
-                var id = $("input[name=taskId]").val();
-                var implement = $("select[name=implement]").find("option:selected").text();
+                var id = $("input[name=QotaskId]").val();
+                var implement = $("select[name=Qoimplement]").find("option:selected").text();
                 $.post('task/transmitTask.action', {'taskId': id, 'implement': implement,'implementDate':implementDate,'successDate':successDate}, function (data) {
                     if (data > 0) {
                         $.messager.alert("提示", "下达成功", "info");
@@ -399,11 +393,6 @@
             }
         }
     }
-
-    function queryOwnPrint(){
-        $("#viewTaskOWN").jqprint();
-    }
 </script>
-
 </body>
 </html>
