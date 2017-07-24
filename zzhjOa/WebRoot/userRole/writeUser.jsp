@@ -58,7 +58,7 @@
 	 		}else{
 	 			$.messager.confirm('确认','修改后需重新登陆',function(r){
 	 			    if (r){    
-	 			    	$("#userInfo").submit();
+	 			    	$("#userInfoForm").submit();
 	 			    }    
 	 			});  	
 	 		}
@@ -71,7 +71,7 @@
 	</script>	
 	
 												 
-	<form action="users/updateUserInfo.action" method="post" enctype="multipart/form-data" id="userInfo">
+	<form action="users/updateUserInfo.action" method="post" enctype="multipart/form-data" id="userInfoForm">
 		
 	<input type="hidden" value="${users.id }" name="id"/>
 	<table id="userInfo">
