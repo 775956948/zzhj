@@ -13,7 +13,7 @@
 	 		$("input[type='file']").hide();
 			$("#userIamge").hide();
 			$("#userInfoimg").hide();
-			var id =$("input[name='id']").val()
+			var id =$("#updateUserInfo").val();
 			$.post("users/queryUserInfoOne.action",{'id':id},function(data){
 				$("input[name='name']").val(data.name);
 				$("input[name='password']").val(data.password);
@@ -73,7 +73,7 @@
 												 
 	<form action="users/updateUserInfo.action" method="post" enctype="multipart/form-data" id="userInfoForm">
 		
-	<input type="hidden" value="${users.id }" name="id"/>
+	<input type="hidden" value="${users.id }" name="id" id="updateUserInfo"/>
 	<table id="userInfo">
 		<tr>
 			<td>用户名</td>

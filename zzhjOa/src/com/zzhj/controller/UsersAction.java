@@ -155,64 +155,20 @@ public class UsersAction {
 	
 	//上传文件
 	@RequestMapping(value="/updateUserInfo.action")
-	public String updateUserInfo(HttpServletRequest request,HttpSession session){
-		String path=request.getServletContext().getRealPath("/image");
-		Users user = new Users();
-		DiskFileItemFactory factory = new DiskFileItemFactory();  
-        // 内存存储的最大值  
-        factory.setSizeThreshold(4096);  
-  
-        ServletFileUpload upload = new ServletFileUpload(factory);  
-        //设置文件上传大小  
-        upload.setSizeMax(1000000 * 20);  
-        try {  
-            List fileItems = upload.parseRequest(request);  
-            String itemNo = "";  
-            for (Iterator iter = fileItems.iterator(); iter.hasNext();) {  
-                FileItem item = (FileItem) iter.next();  
-                  
-                //是普通的表单输入域  
-                if(item.isFormField()) {  
-                    switch (item.getFieldName()) {
-                    case "id":
-                    	user.setId(Integer.parseInt(item.getString()));
-					case "password":
-						user.setPassword(item.getString());
-						break;
-					case "phone":
-						user.setPhone(item.getString());
-						break;
-					case "inductionDate":
-						user.setInductionDate(item.getString());
-						break;
-					case "positiveDate":
-						user.setPositiveDate(item.getString());
-						break;
-					case "birthday":
-						user.setBirthday(item.getString());
-						break;
-					case "sex":
-						user.setSex(item.getString("utf-8"));
-						break;
-					}
-                }  
-                //是否为input="type"输入域  
-                if (!item.isFormField()) {  
-                    String fileName = item.getName();  
-                    long size = item.getSize();  
-                    if ((fileName == null || fileName.equals("")) && size == 0) {  
-                        continue;  
-                    }  
-                    //截取字符串 如：C:\WINDOWS\Debug\PASSWD.LOG  
-                    fileName = fileName.substring(fileName.lastIndexOf("\\") + 1, fileName.length());  
-                    item.write(new File(path, fileName));  
-                    user.setImageName(fileName);
-                }  
-            }
-            
-        } catch (Exception e) {  
-            e.printStackTrace();  
-        }
+	public String updateUserInfo(@RequestParam("files")MultipartFile file,Users user,HttpServletRequest request,HttpSession session){
+		if(file !=null&&!file.isEmpty()){
+			String path=request.getServletContext().getRealPath("/image");
+			try {
+				file.transferTo(new File(path,file.getOriginalFilename()));
+			} catch (IllegalStateException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		user.setImageName(file.getOriginalFilename());
         int result=us.updateUserInfo(user);
         String view="";
         if(result>0){
