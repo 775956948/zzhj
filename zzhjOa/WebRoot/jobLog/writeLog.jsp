@@ -30,12 +30,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</tr>
 					<tr>
 						<td>主题:</td>
-						<td><input type="text" name="theme" style="width: 300px;"/></td>
+						<td><input type="text" name="theme"  id="RZtheme" style="width: 300px;margin-left:8px"/></td>
 					</tr>
 					<tr>
 						<td>类型</td>
 						<td>
-							<select id="type">
+							<select id="type" style="margin-left:8px">
 								<option>工作日报</option>
 								<option>工作周报</option>
 							</select>
@@ -50,12 +50,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</table>
 			</form>
 		</div>
-
-
-				
 		<script type="text/javascript">	
 			function saveJobLog(txt){
-				var theme =$("input[name='theme']").val();
+				var theme =$("#RZtheme").val();
 				var type=$("#type").find("option:selected").text();
  				if(theme!=""&&txt!=""){
 					$.post('jobLog/saveJobLog.action',{'text':txt,'theme':theme,'type':type},function(data){

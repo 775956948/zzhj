@@ -14,7 +14,7 @@
 					</tr>
 					<tr>
 						<td>主题:</td>
-						<td><input type="text" name="theme" style="width: 300px;"/></td>
+						<td><input type="text" name="theme" style="width: 300px;margin-left:8px" /></td>
 					</tr>
 					<tr>
 						<td>内容:</td>
@@ -25,9 +25,6 @@
 				</table>
 			</form>
 		</div>
-
-
-				
 		<script type="text/javascript">	
 			function saveNotice(text){
 				 var theme =$("input[name='theme']").val();

@@ -44,7 +44,7 @@ table[name='form']{
 	display: block;
 }
 .cmn_list li input[type=text]{
-	height: 21px;
+	height: 36px;
 	line-height: 100%;
 	text-align: center;
 }

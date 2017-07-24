@@ -20,14 +20,17 @@
 }
 .PrintK ul{
     width: 960px;
+    height: auto;
     padding: 0;
+    padding-bottom: 9px;
     margin:0 auto;
+    overflow: hidden;
 }
 .PrintK ul li{
     height: 47px;
 }
 .PrintK  .height-TEXT{
-    height: 140px;
+    height: 160px;
 }
 #addNewDiG ul,#changeItemsDiG ul,#applyItemsDiG ul,#SPxq ul,#viewDetailsDiG ul{
     width: 500px;
@@ -45,10 +48,11 @@
     font-size: 16px;
     line-height: 40px;
     overflow: hidden;
+    /*margin-top: 9px;*/
     position: relative;
 }
 .TGK li{
-    margin-top: 10px;
+    margin-top: 9px;
 }
 #addRest li{
     margin: 10px auto;
@@ -71,7 +75,7 @@
     width: 118px;
 }
 #transmitForm span{
-    border-radius: 0;
+    /*border-radius: 0;*/
 }
 #addRest li span{
     width: 210px;
@@ -119,8 +123,8 @@
     color: white;
     font-weight: 800;
     font-size: 20px;
+    cursor: pointer;
 }
-
 @media print{
     .PrintK  ul li{
         list-style: none;
@@ -150,6 +154,6 @@
         opacity: 0;
     }
     .PrintK  .height-TEXT{
-        height: 140px;
+        height: 170px;
     }
 }

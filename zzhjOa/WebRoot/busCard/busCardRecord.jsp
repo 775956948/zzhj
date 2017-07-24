@@ -159,16 +159,9 @@
 		//
 		function submitBusCardRecord(){
 			var i=0;
-
-			$("#busCardRecordForm input").each(function(){
-				if($(this).val()==""){
-					i=i+1;
-				}
-			})
 	       if($("input[name = start]").val()==''&&$("input[name = startDate]").val()==''&&$("input[name = overDate]").val()==''&&$("input[name = over]").val()==''&&$("input[name = startMoney]").val()==''&&$("input[name = overMoney]").val()==''){
 	           i=i+1;
 	        }
-
 			if(i>0){
 				 $.messager.alert("提示", "请填写完整信息", "info");  
 			}else{
@@ -186,7 +179,7 @@
 								closed:true
 							})
 							$('#busCardRecordDg').datagrid('reload');
-							 $.messager.alert("提示", "添加成功", "info");  
+							 $.messager.alert("提示", "添加成功！", "info");
 						}
 					}
 				}) 
@@ -276,21 +269,25 @@
 		function addBusCard(){
 			$("#card").dialog({
 				title:'添加一卡通',
-				width : 200,
-				closed:false,
+				width : 400,
+				closed:false
 			})
 		}
 		//添加一卡通
 		function AddCard(){
 		 	var cardNumber = $("input[name='cardNumber']").val();
-			 $.post('busCard/save.action',{'cardNumber':cardNumber},function(data){
-				if(data>0){
-					 $.messager.alert("提示", "添加成功", "info");  
-					 $("#card").dialog({
-							closed:true,
-						})
-				}
-			})  
+	        if(cardNumber!=""&&cardNumber>0){
+	           $.post('busCard/save.action',{'cardNumber':cardNumber},function(data){
+	            if(data>0){
+	               $.messager.alert("提示", "添加成功！", "info");
+	                 $("#card").dialog({
+	                  closed:true
+	                 })
+	            }
+	        })
+	         }else{
+         	$.messager.alert("提示", "请填写卡号！", "info");
+	      }
 		}
 	</script>
 </body>

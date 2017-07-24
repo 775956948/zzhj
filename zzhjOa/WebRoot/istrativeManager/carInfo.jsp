@@ -204,10 +204,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							closed : true
 						}); 
 				 	});
-						
-					
-				} 
-				
+				}
 			}else{
 				if(carNo==''||requestName==''||requestText==''||departmentName==''||startDate==''||startNumber==''||driver==''){
 					 $.messager.alert("提示", "请填写完整信息", "info");  
@@ -272,17 +269,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		function addCar(){
 			$('#carDd').dialog({
 				title : '添加车辆信息',
-				height : 300,
+				height : 280,
 				closed : false,
 				cache : false,
-				modal : true, 
+				modal : true
 			}); 
 		}
 		function submitAddCar(){
 			var carNo=$("#carNo").val();
 			var carName=$("#carDd input[name='carName']").val();
- 			if(carNo!=''&& carName!=''){	
-				
+ 			if(carNo!=''&& carName!=''){
 				$.post('car/addCar.action',{'carNo':carNo,'carName':carName},function(data){
 					if(data>0){
 						$.messager.alert("提示", "添加成功", "info"); 

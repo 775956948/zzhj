@@ -10,7 +10,7 @@
 <body>
 	<script type="text/javascript">
 	 	$(function(){
-	 		$("input[type='file']").hide();
+	 		$("#userInfo input[type='file']").hide();
 			$("#userIamge").hide();
 			$("#userInfoimg").hide();
 			var id =$("input[name='id']").val()
@@ -30,11 +30,11 @@
 					}
 				}
 				if(data.imageName!=""&&data.imageName!=null){
-					$("input[type='file']").hide();
+					$("#userInfo input[type='file']").hide();
 					$("#userImage").show();
 					$("#userInfoimg").show();
 				}else{
-					$("input[type='file']").show();
+					$("#userInfo input[type='file']").show();
 					$("#userImage").hide();
 					$("#userInfoimg").hide();
 				}
@@ -64,7 +64,7 @@
 	 		}
 	 	}
 	 	function userInfoImg(){
-	 		$("input[type='file']").show();
+	 		$("#userInfo input[type='file']").show();
 			$("#userImage").hide();
 			$("#userInfoimg").hide(); 
 	 	}
@@ -83,7 +83,7 @@
 		</tr>
 		<tr>
 			<td>头像</td>
-			<td><input type="file" name="files" /><img id="userImage" src="image/${users.imageName }" width="50px;" style="border-radius:25px;"><input id="userInfoimg" type="button" value="更换头像" onclick="userInfoImg()"/></td>
+			<td><input type="file" name="files"   /><img id="userImage" src="image/${users.imageName }" width="50px;" style="border-radius:25px;"><input id="userInfoimg" type="button" value="更换头像" onclick="userInfoImg()"/></td>
 			<td>手机号</td>
 			<td><input type="number" name="phone" onkeyup="if(isNaN($(this).val())){$(this).val('')}" /></td>
 		</tr>

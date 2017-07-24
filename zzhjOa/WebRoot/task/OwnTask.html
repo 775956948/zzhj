@@ -221,20 +221,20 @@
 
 <div id="changeSpeed" class="easyui-dialog" title="修改进度" closed=true >
     <ul style="width:370px">
-        <li>
-            <span>修 改 进 度：</span>
+        <li style="margin-top: 9px">
+            <span style="margin-left: 49px;">修 改 进 度：</span>
             <input type="text" name="changeSpeed" title="请输入1-100数字" min="1" max="100" value="1"
                    onkeyup="if(isNaN($(this).val())){$(this).val('')} if($(this).val()>100||$(this).val()<0){$(this).val('')}">
         </li>
         <li>
-            <span>任 务 阶 段：</span>
+            <span style="margin-left: 49px;">任 务 阶 段：</span>
             <select name="" id="taskStage" style="font-size: 18px">
                 <option value="外业进行">外业进行</option>
                 <option value="内业进行">内业进行</option>
                 <option value="质量检测">质量检测</option>
             </select>
         </li>
-        <li style="margin: 20px auto">
+        <li>
             <input type="button" class="button-task" value="确 认 提 交" onclick="changeSpeed()" />
         </li>
     </ul>
@@ -303,7 +303,6 @@
             {field: 'taskDate',title: '任务发布日期',width:100},
             {field: 'recipient',title: '接收人',width:100},
             {field: 'implement', title: '执行人',width:100},
-            {field: 'inspectionUser', title: '质检人',width:100},
             {field: 'implementDate', title: '任务开始时间',width:100},
             {field: 'successDate', title: '任务结束时间',width:100},
             {
@@ -318,6 +317,7 @@
             	}, width:330
             },
             {field: 'taskPhase', title: '任务阶段',width:100},
+            {field: 'inspectionUser', title: '质检人',width:100},
             {field: 'inspection', title: '质检检测',width:100},
             {field: 'state', title: '任务状态',width:100}
         ]]
@@ -332,7 +332,7 @@
 	            url: "task/acceptTask.action",
 	            method: "POST",
 	            data: {
-	                taskId: $("input[name = userid]").val()
+	                taskId: taskId
 	            },
 	            success: function (data) {
 	                if (data > 0) {
@@ -425,7 +425,7 @@
         $("#viewTask2").dialog({
             closed: false,
             width:$(window).width(),
-            height:1400,
+            height:1500,
             resizable:true,
             left:0,
             top:0,
