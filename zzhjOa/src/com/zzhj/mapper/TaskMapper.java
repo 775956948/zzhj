@@ -48,7 +48,7 @@ public interface TaskMapper {
 	  * @author 小白
 	  * @date 2017年6月12日
 	  */
-	int acceptTask(@Param("taskId")int taskId,@Param("startDate")String startDate);
+	int acceptTask(@Param("taskId")int taskId);
 	
 	/**
 	 * 

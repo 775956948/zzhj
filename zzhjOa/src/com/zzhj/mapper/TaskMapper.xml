@@ -30,7 +30,7 @@
   	update tasks set implement=#{userName},state="已下达",success_date=#{successDate},implement_date=#{implementDate} where id=#{taskId}
   </update>
   <update id="acceptTask" parameterType="object">
-  	update tasks set implement_date=#{startDate},state="已接收" where id=#{taskId}
+  	update tasks set state="已接收" where id=#{taskId}
   </update>
   <update id="successTask" parameterType="object">
   	update tasks set success_date=#{successDate},state="已完成" where id=#{taskId}

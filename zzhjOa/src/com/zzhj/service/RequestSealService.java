@@ -49,7 +49,7 @@ public class RequestSealService {
 		int number =rsm.save(r);
 		RequestSeal rs=rsm.requestName(r.getId());
 		//调用推送方法
-		send(user.getName(),r.getUserId().getName(),rs.getSealId().getTypeName(),r.getId(),"seal/approve_officialSeal.jsp","盖章审批");
+		send(user.getName(),r.getUserId().getName(),rs.getSealId().getTypeName(),r.getId(),"seal/approve_officialSeal.jsp","公章审批");
 		return number;
 	}
 	/**
