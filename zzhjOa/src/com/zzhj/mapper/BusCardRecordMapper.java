@@ -12,4 +12,18 @@ public interface BusCardRecordMapper {
 	public int delete(int id);
 	public int update(BusCardRecord b);
 	public int totalCount();
+	
+	/**
+	 * 
+	 * @Description: 根据id返回一卡通id
+	 * @param @param id
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年7月25日
+	 */
+	public int selectId(@Param("rId")Integer id);
+	
+	
 }

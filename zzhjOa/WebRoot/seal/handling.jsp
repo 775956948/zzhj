@@ -53,13 +53,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		<table id="handling_Dg"></table>
 			
-
-
+			
 		<script type="text/javascript">	
 			
 		$("#dis_none").hide();
 		$('#handling_Dg').datagrid({
-			 url:'ziZhiSeal/approverZiZhiSeal.action',
+			url:'ziZhiSeal/approverZiZhiSeal.action',
 		    fitColumns:false,
 			pagination:true,
 	 		singleSelect:true,
@@ -127,9 +126,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					   		$('#handling_tanc').dialog({
 								closed : true
 							});
+					   	$('#handling_Dg').datagrid('reload');
 					   	$.messager.alert("提示","经办完成","info");
 					   	spprove_tanc.dialog('close');
-					   	$('#handling_Dg').datagrid('reload');
 					   }else{
 					   	$.messager.alert("提示","提交失败","info");
 					   }

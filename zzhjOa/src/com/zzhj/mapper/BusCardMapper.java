@@ -8,6 +8,17 @@ import com.zzhj.po.BusCard;
 
 public interface BusCardMapper {
 	List<BusCard> queryAll();
+	/**
+	 * 
+	 * @Description: 修改状态
+	 * @param @param busCardId
+	 * @param @param state
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年7月25日
+	 */
 	int updateState(@Param("busCardId")int busCardId,@Param("state")String state);
 	/**
 	 * 
@@ -31,4 +42,5 @@ public interface BusCardMapper {
 	 * @date 2017年6月23日
 	 */
 	int delete(int cardId);
+
 }

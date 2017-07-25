@@ -76,7 +76,7 @@ public class RequestSealService {
 			targetName="盖章审批";
 		}else{
 			view="seal\\handling_officialSeal.jsp";
-			targetName="盖章经办";
+			targetName="公章经办";
 			parentUser.setName("");
 		}
 		send(parentUser.getName(),rs.getUserId().getName(),rs.getSealId().getTypeName(),sealId,view,targetName);

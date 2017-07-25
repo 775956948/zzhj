@@ -159,7 +159,7 @@
 		//
 		function submitBusCardRecord(){
 			var i=0;
-	       if($("input[name = start]").val()==''&&$("input[name = startDate]").val()==''&&$("input[name = overDate]").val()==''&&$("input[name = over]").val()==''&&$("input[name = startMoney]").val()==''&&$("input[name = overMoney]").val()==''){
+	       if(  $("input[name = start]").val()==''||$("input[name = startDate]").val()==''||$("input[name = over]").val()==''){
 	           i=i+1;
 	        }
 			if(i>0){
@@ -189,7 +189,7 @@
 		///
 		function updateBusCardRecordSubmit(){
 			var i=0;
-	        if($("input[name = start]").val()==''&&$("input[name = startDate]").val()==''&&$("input[name = over]").val()==''){
+	        if($("input[name = start]").val()==''||$("input[name = startDate]").val()==''||$("input[name = overDate]").val()==''||$("input[name = over]").val()==''||$("input[name = startMoney]").val()==''||$("input[name = overMoney]").val()==''){
 	        i=i+1;
 	        }
 			if(i>0){

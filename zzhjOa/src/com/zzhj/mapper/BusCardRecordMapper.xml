@@ -35,4 +35,8 @@
   	<delete id="delete" parameterType="int">
   		DELETE FROM bus_card_record WHERE id =#{value}
   	</delete>
+  	
+ 	<select id="selectId" resultType="int" parameterType="integer">
+ 		select bus_card_id from bus_card_record where id=#{rId}
+ 	</select>
 </mapper>

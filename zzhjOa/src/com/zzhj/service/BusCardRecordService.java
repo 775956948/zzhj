@@ -38,7 +38,14 @@ public class BusCardRecordService {
 	}
 	
 	public int delete(int id){
-		return brm.delete(id);
+		int resoult =0;
+		int bId =brm.selectId(id);
+		int rlt = brm.delete(id);
+		if(rlt>0){
+			resoult=bcm.updateState(bId,"ø…”√");
+		}
+		
+		 return resoult;
 	}
 
 }

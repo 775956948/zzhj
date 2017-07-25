@@ -15,4 +15,5 @@
   	<delete id="delete" parameterType="int">
   		delete from bus_card where id=#{value}
   	</delete>
+
 </mapper>

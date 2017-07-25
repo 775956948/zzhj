@@ -61,6 +61,7 @@ public class ZiZhiSealService {
 		map.put("total",totalCount);
 		return map;
 	}
+	
 	public ZiZhiSeal queryOneOneself(int id){
 		return zs.queryOneOneself(id);
 	}
@@ -79,7 +80,7 @@ public class ZiZhiSealService {
 		}else{
 			 parentUser.setName("");
 			 view="seal\\handling.jsp";
-			 targetName="资质章办理";
+			 targetName="资质章经办";
 		}
 		send(parentUser.getName(),requestName,sealId,view,targetName);
 		return zs.approver(sealId,parentUser.getName());

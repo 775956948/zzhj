@@ -170,7 +170,7 @@
    	function deleteFeedback(){
    		var row =$('#feedbackApprovalDg').datagrid('getSelected');
    		if(row){
-   			$.post('feedback/deleteFeedback.action',{'id':row.id},function(data){
+   			$.post('feedback/deleteFeedback.action',{'feedbackId':row.id},function(data){
    				if(data>0){
    				 $('#feedbackApprovalDg').datagrid("reload");
    				 $.messager.alert("提示", "删除成功", "info");
