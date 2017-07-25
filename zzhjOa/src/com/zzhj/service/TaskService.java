@@ -95,9 +95,7 @@ public class TaskService {
 	  * @date 2017Äê6ÔÂ12ÈÕ
 	  */
 	public int acceptTask(int taskId){
-		Date d = new Date();
-		String startDate=DateFormater.format(d);
-		return tm.acceptTask(taskId, startDate);
+		return tm.acceptTask(taskId);
 	}
 	
 	/**
