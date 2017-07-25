@@ -100,7 +100,7 @@ public interface RequestGoodsMapper {
 	List<RequestGoods> likeUserQueryAll(String userName);
 	/**
 	 * 
-	 * @Description: 根据申请单id拿到物品id
+	 * @Description: 根据申请单id拿到物品id跟库存量
 	 * @param @param id
 	 * @param @return   
 	 * @return RequestGoods  

@@ -14,6 +14,7 @@
 		<association property="goodId" javaType="officeSupplies">
 			<result column="g_id" property="id"/>
 			<result column="goods_name" property="goodsName"/>
+			<result column="s_goods_number" property="goodsNumber"/>
 		</association>
 	</resultMap>
 
@@ -43,6 +44,6 @@
   		inner join office_supplies o on r.goods_id = o.id where u.name like '%${value}%'
   	</select>
   	<select id="queryId" parameterType="int" resultMap="rg">
-  		select o.id as g_id from request_goods r inner join office_supplies o on o.id=r.goods_id where r.id=#{value}
+  		select o.id as g_id,o.goods_number as s_goods_number from request_goods r inner join office_supplies o on o.id=r.goods_id where r.id=#{value}
   	</select>
 </mapper>

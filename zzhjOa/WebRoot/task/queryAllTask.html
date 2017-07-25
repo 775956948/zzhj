@@ -179,9 +179,13 @@
                         $("input[name = CHclient]").val(checkTask.client);
                         $("input[name = CHclientPhone]").val(checkTask.clientPhone);
                         $("input[name = CHtaskReceive]").val(checkTask.recipient);
-                        if (checkTask.state == "已发布") {
+                        if (checkTask.state != "已发布") {
                             $("#JsDateAll").datebox({
                                 disabled:true
+                            });
+                        }else{
+                        	$("#JsDateAll").datebox({
+                                disabled:false
                             });
                         }
                         $("#JsDateAll").datebox('setValue', checkTask.overDate);
@@ -311,7 +315,7 @@
 	function deleteTask(){
 		var row = $('#allTeskDg').datagrid('getSelected');
 		if(row){
-			if(row.state =='已完成'){
+			if(row.state =="按时完成" || row.state =="提前完成" || row.state =="延期完成" || row.state =="已发布"){
 				$.post('task/deleteTask.action',{'taskId':row.id},function(data){
 					if(data>0){
 						 $('#allTeskDg').datagrid("reload");
@@ -319,7 +323,7 @@
 					}
 				})
 			}else{
-				 $.messager.alert("提示", "不可删除未完成任务!", "info");
+				 $.messager.alert("提示", "当前状态不可删除", "info");
 			}
 		}else{
 			 $.messager.alert("提示", "请选择一条数据!", "info");

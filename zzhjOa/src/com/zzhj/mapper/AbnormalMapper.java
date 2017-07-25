@@ -11,5 +11,5 @@ public interface AbnormalMapper {
 	int save(Abnormal abnormal);
 	List<Rest> queryAll(@Param("startPage") int startPage,@Param("rows") int rows);
 	int totalCount();
-	int deleteAbnormal(int id);
+	int deleteAbnormal(int id); 
 }

@@ -30,7 +30,7 @@ public class RequestGoodsService {
 	
 	/**
 	 * 
-	 * @Description: 添加一天申请
+	 * @Description: 添加申请
 	 * @param @param g
 	 * @param @return   
 	 * @return int  
@@ -86,7 +86,7 @@ public class RequestGoodsService {
 	}
 	/**
 	 * 
-	 * @Description: 审批报销单
+	 * @Description: 审批
 	 * @param @param id
 	 * @param @return   
 	 * @return int  
@@ -99,7 +99,7 @@ public class RequestGoodsService {
 		int resoult=rgm.approver(id, date,approverName);
 		RequestGoods rg =rgm.queryId(id);
 		int update=0;
-		if(resoult>0){
+		if(resoult>0 && rg.getGoodId().getGoodsNumber()>=number){
 			update=os.reduce(number,rg.getGoodId().getId());
 		}
 		return update;
