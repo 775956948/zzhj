@@ -148,7 +148,6 @@ public class TaskAction {
 	@RequestMapping("updateTask.action")
 	@ResponseBody
 	public int updateTask(Task t){
-		System.out.println(t.getId());
 		return ts.updateTask(t);
 	}
 	
