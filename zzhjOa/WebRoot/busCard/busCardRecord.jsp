@@ -269,7 +269,7 @@
 		function addBusCard(){
 			$("#card").dialog({
 				title:'添加一卡通',
-				width : 400,
+				width : 230,
 				closed:false
 			})
 		}

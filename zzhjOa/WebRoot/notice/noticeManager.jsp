@@ -30,9 +30,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         columns: [[
             {field: 'id', title: '编号', checkbox: true},
             {field: 'theme', title: '公告主题'},
-            {field: 'text', title: '公告内容'},
+            {field: 'text', title: '公告内容',width:400},
             {
-                field: 'userId', title: '用户',width:60, formatter: function (value) {
+                field: 'userId', title: '用户', formatter: function (value) {
                 return value.name;
             }
             },

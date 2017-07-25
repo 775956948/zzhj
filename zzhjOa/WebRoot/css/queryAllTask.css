@@ -26,6 +26,7 @@
 #changeTask  li span{
 	float:left;
     line-height: 260%;
+    width: 118px;
 }
 #changeTask  li .datebox{
     width: 70% !important;
@@ -57,7 +58,8 @@
     margin: 30px auto;
     text-align: center;
     line-height: 100%;
-     border-radius: 5px;
+    font-size: 18px;
+    border-radius: 5px;
     position: relative;
     behavior: url(pie.htc);
 }
