@@ -192,7 +192,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			var driver =$("input[name='driver']").val();
 			var startNumber=$("input[name='startNumber']").val();
 			var row = $('#carInfoDg').datagrid('getSelected');
-			if(overNumber!=''&&overNumber!=null){
+			if(overNumber!=null&&overNumber!=0){
 				var overDate=$("input[name='overDate']").val();
 				if(carNo==''||requestName==''||requestText==''||departmentName==''||startDate==''||startNumber==''||overDate==''||overNumber==''||driver==''){
 				 	$.messager.alert("提示", "请填写完整信息", "info");  
