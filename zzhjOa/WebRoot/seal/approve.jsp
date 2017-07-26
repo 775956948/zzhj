@@ -80,7 +80,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			if(ziZhiSealRow == null){
 			   $.messager.alert("提示","请选择一条数据","info");
 			}else{
-				console.log(ziZhiSealRow.projectName);
 				$("input[name = sealId]").val(ziZhiSealRow.id);
 				$("input[name = id2]").val(ziZhiSealRow.number);
 				$("input[name = projectName2]").val(ziZhiSealRow.projectName);

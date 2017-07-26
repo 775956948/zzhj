@@ -31,16 +31,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</li>
 					<li>
 						<span>章类型</span>
-						<select id="type" name="sealId" class="approve_official_val">
-						</select>
+						<input type="text" id="type"  readonly="readonly" class="approve_official_val" />
 					<li>
 					<li style="position: relative;">
 						<!--遮罩层-->
 						<div style="width: 100%; height: 40px; position: absolute;z-index: 10;"></div>
 						<span>是否骑缝</span>
-						
-						<span >是<input style="width: 50px;" type="radio" name="why" id="" value="是"/></span>
-						<span>否<input style="width: 50px;" type="radio" name="why" id="" value="否"/></span>
+						<span >是<input style="width: 50px;" type="radio" id="radioYes"  /></span>
+						<span>否<input style="width: 50px;" type="radio" id="radioNo"  /></span>
 					<li>
 					<li>
 						<span>页数</span>
@@ -103,28 +101,41 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		//查看
 			
 		function approve_official_Tb(){		
-			var row = $('#approve_official_Dg').datagrid('getSelected');
-			if(row == null){
-			   $.messager.alert("提示","请选择一条数据","info");
-			}else{
-				var  aa = row.why;
-				if(aa == "是"){
-					$(".cmn_list li input[type = radio]").eq(0).click()
-				}else if(aa == "否"){
-					$(".cmn_list li input[type = radio]").eq(1).click()
+			$('#approve_official_tanc').dialog({
+				title : '审批',
+				height : 400,
+				closed : false,
+				cache : false,
+				modal : true,
+				onOpen:function(){
+					var row = $('#approve_official_Dg').datagrid('getSelected');
+					if(row == null){
+					   $.messager.alert("提示","请选择一条数据","info");
+					}else{
+						var  aa = row.why;
+						
+						if(aa=="是"){
+							alert(aa)
+							$("#radioYes").prop("checked", true)
+							$("#radioNo").prop("checked", false)
+						}else{
+							alert(aa)
+							$("#radioYes").prop("checked", false)
+							$("#radioNo").prop("checked", true)
+						}
+						$("input[name = requestSealId]").val(row.id);			
+						$("input[name = number]").val(row.number);
+						$("#type").val(row.sealId.typeName)	
+						alert($("#type").val())
+						$("input[name = number]").val(row.number);
+						$("textarea[name = projectName]").val(row.projectName);
+						$("input[name = pageNumber]").val(row.pageNumber);
+						$("input[name = copiesNumber]").val(row.copiesNumber);
+						$("textarea[name = text]").val(row.text);
+						
+					}
 				}
-				$("input[name = requestSealId]").val(row.id);			
-				$("input[name = number]").val(row.number);	
-				$("#type option").val(row.sealId).text(row.sealId);
-				$("#type").empty();
-				$("#type").append("<option value='"+row.sealId.id+"'>"+row.sealId.typeName+"</option>"); 			
-				$("input[name = number]").val(row.number);
-				$("textarea[name = projectName]").val(row.projectName);
-				$("input[name = pageNumber]").val(row.pageNumber);
-				$("input[name = copiesNumber]").val(row.copiesNumber);
-				$("textarea[name = text]").val(row.text);
-				spprove_tanc2.dialog('open')
-			}
+			});	
 		}
 
 		 function approve_official_Submit(){	
