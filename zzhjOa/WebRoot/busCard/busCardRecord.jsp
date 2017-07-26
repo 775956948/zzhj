@@ -14,7 +14,7 @@
 			<a  class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="addBusCard()">添加公交卡</a>
 	 		<a  class="easyui-linkbutton" iconCls="icon-save" plain="true" onclick="deleteBusCard()">刪除</a>
  		</c:if>
-		<a  class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="updateBusCardRecord()">还卡</a>
+		<a  class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="updateBusCardRecord('${users.name}')">还卡</a>
 	</div>
 	
 		<div id="card"  class="easyui-dialog" closed=true >
@@ -214,7 +214,7 @@
 		}
 		
 		//
-		function updateBusCardRecord(){
+		function updateBusCardRecord(userName){
 			$("tr[name='saveCard']").hide();
 			$("tr[name='updateCard']").show();
 			$("tr[name='overDate']").show();
@@ -222,31 +222,35 @@
 			$("tr[name='overMoney']").show();
 			var row =$("#busCardRecordDg").datagrid("getSelected");
 			if(row){
-				$("#busCardDd").dialog({
-					title:'公交一卡通还车信息',
-					width : 400,
-					closed : false,
-					onOpen:function(){
-						$("input[name='id']").val(row.id);
-						$("select[name='busCardId.id']").empty();
-						$("select[name='busCardId.id']").append("<option value='"+row.busCardId.id+"'>"+row.busCardId.cardNumber+"</option>");
-						$("input[name='start']").val(row.start);
-						$("input[name='over']").val(row.over);
-	                    $("select[name='busCardId.id']").val(row.busCardId.id);
-						<%--$("input[name='startDate']").val(row.startDate);--%>
-	                    $("#startDate").datetimebox({
-	                    value: row.startDate,
-	                    required: true,
-	                    showSeconds: false
-	                    });
-	                    $("#overDate").datetimebox({
-	                    value: row.overDate,
-	                    required: true,
-	                    showSeconds: false
-	                    });
-					}
-				});	
-				$("select[name='busCardId.id'] option:first").prop("selected", 'selected'); 
+				if(row.userId.name==userName){
+					$("#busCardDd").dialog({
+						title:'公交一卡通还车信息',
+						width : 400,
+						closed : false,
+						onOpen:function(){
+							$("input[name='id']").val(row.id);
+							$("select[name='busCardId.id']").empty();
+							$("select[name='busCardId.id']").append("<option value='"+row.busCardId.id+"'>"+row.busCardId.cardNumber+"</option>");
+							$("input[name='start']").val(row.start);
+							$("input[name='over']").val(row.over);
+		                    $("select[name='busCardId.id']").val(row.busCardId.id);
+							<%--$("input[name='startDate']").val(row.startDate);--%>
+		                    $("#startDate").datetimebox({
+		                    value: row.startDate,
+		                    required: true,
+		                    showSeconds: false
+		                    });
+		                    $("#overDate").datetimebox({
+		                    value: row.overDate,
+		                    required: true,
+		                    showSeconds: false
+		                    });
+						}
+					});	
+					$("select[name='busCardId.id'] option:first").prop("selected", 'selected'); 
+				}else{
+					$.messager.alert("提示", "无权操作他人信息", "info");  
+				}
 			}else{
 				 $.messager.alert("提示", "请选中一行信息", "info");  
 			}
