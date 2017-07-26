@@ -42,8 +42,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<!--遮罩层-->
 						<div style="width: 100%; height: 40px; position: absolute;z-index: 10;"></div>
 						<span>是否骑缝</span>
-						<span>是<input style="width: 50px;" type="radio" name="why" id="" value="是"/></span>
-						<span>否<input style="width: 50px;" type="radio" name="why" id="" value="否"/></span>
+						<span>是<input style="width: 50px;" type="radio" name="why"  value="是" id="bRadioYes"/></span>
+						<span>否<input style="width: 50px;" type="radio" name="why"  value="否" id="bRadioNo"/></span>
 					<li>
 					<li>
 						<span>页数</span>
@@ -103,27 +103,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			});	
 			
 		//查看
-		function hanhling_official_Tb(){		
+		function hanhling_official_Tb(){
 			var row = $('#hanhling_official_Dg').datagrid('getSelected');
 			if(row == null){
 			   $.messager.alert("提示","请先选择一条数据","info");
 			}else{
-				var  aa = row.why;
-				if(aa == "是"){
-					$(".cmn_list li input[type = radio]").eq(0).click()
-				}else if(aa == "否"){
-					$(".cmn_list li input[type = radio]").eq(1).click()
-				}
+				$('#hanhling_official_tanc').dialog({
+					title : '经办',
+					height : 400,
+					closed : false,
+					cache : false,
+					modal : true,
+					onOpen:function(){
+						var  aa = row.why;
+						if(aa=="是"){
+							$("#bRadioYes").prop("checked", true)
+							$("#bRadioNo").prop("checked", false)
+						}else{
+							$("#bRadioYes").prop("checked", false)
+							$("#bRadioNo").prop("checked", true)
+						}
+						$("input[name = id]").val(row.id);				
+						$("#type option").val(row.sealId.id).text(row.sealId.typeName);
+						$("input[name = sealId]").val(row.sealId); 
+						$("input[name = number]").val(row.number);
+						$("textarea[name = projectName]").val(row.projectName);
+						$("input[name = pageNumber]").val(row.pageNumber);
+						$("input[name = copiesNumber]").val(row.copiesNumber);
+						$("textarea[name = text]").val(row.text);
+					}
+				});	
 				
-				$("input[name = id]").val(row.id);				
-				$("#type option").val(row.sealId.id).text(row.sealId.typeName);
-				$("input[name = sealId]").val(row.sealId); 
-				$("input[name = number]").val(row.number);
-				$("textarea[name = projectName]").val(row.projectName);
-				$("input[name = pageNumber]").val(row.pageNumber);
-				$("input[name = copiesNumber]").val(row.copiesNumber);
-				$("textarea[name = text]").val(row.text);
-				handling_official_tanc.dialog('open')
 			}
 		}
 

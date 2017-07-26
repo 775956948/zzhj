@@ -101,41 +101,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		//查看
 			
 		function approve_official_Tb(){		
-			$('#approve_official_tanc').dialog({
-				title : '审批',
-				height : 400,
-				closed : false,
-				cache : false,
-				modal : true,
-				onOpen:function(){
-					var row = $('#approve_official_Dg').datagrid('getSelected');
-					if(row == null){
-					   $.messager.alert("提示","请选择一条数据","info");
-					}else{
+			var row = $('#approve_official_Dg').datagrid('getSelected');
+			if(row == null){
+			   $.messager.alert("提示","请选择一条数据","info");
+			}else{
+				$('#approve_official_tanc').dialog({
+					title : '审批',
+					height : 400,
+					closed : false,
+					cache : false,
+					modal : true,
+					onOpen:function(){
 						var  aa = row.why;
-						
 						if(aa=="是"){
-							alert(aa)
 							$("#radioYes").prop("checked", true)
 							$("#radioNo").prop("checked", false)
 						}else{
-							alert(aa)
 							$("#radioYes").prop("checked", false)
 							$("#radioNo").prop("checked", true)
 						}
 						$("input[name = requestSealId]").val(row.id);			
 						$("input[name = number]").val(row.number);
 						$("#type").val(row.sealId.typeName)	
-						alert($("#type").val())
 						$("input[name = number]").val(row.number);
 						$("textarea[name = projectName]").val(row.projectName);
 						$("input[name = pageNumber]").val(row.pageNumber);
 						$("input[name = copiesNumber]").val(row.copiesNumber);
 						$("textarea[name = text]").val(row.text);
-						
 					}
-				}
-			});	
+				});		
+			}
+
 		}
 
 		 function approve_official_Submit(){	
