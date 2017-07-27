@@ -15,6 +15,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="renderer" content="webkit">      <!--优先使用谷歌浏览器内核-->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"><!--默认使用IE最高版本 渲染页面 激活Chrome Frame-->
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="expires" content="0">
@@ -23,10 +25,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link rel="stylesheet" href="css/basic.css">
     <link rel="stylesheet" href="easyui/themes/icon.css">
     <link rel="stylesheet" href="easyui/themes/default/easyui.css">
-
     <script type="text/javascript" src="easyui/jquery.min.js"></script>
     <script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
-
     <style type="text/css">
         #ZT {
             margin: 30px auto;
@@ -41,7 +41,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             margin: 8px auto;
             text-align: center;
         }
-
         .QH {
             margin: 30px auto;
             width: 610px;
@@ -90,16 +89,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         }
     </style>
 </head>
-
 <body>
-
-
     <div class="ZT" id="ZT">
         <a href="login.jsp">
             <div class="QH"></div>
         </a>
         <h3>用户密码修改</h3>
-
         <ul>
             <li id="inputNameLi" style="height: 159px;">
                 <p>请输入用户名:</p>
@@ -121,9 +116,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </li>
         </ul>
     </div>
-
-
-
 <script type="text/javascript">
     $(function(){
         var LiOne= $("#inputNameLi");
@@ -183,13 +175,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     }
                 })
             }else{
-                $.messager.alert("提示","请完整填写","info")
+                $.messager.alert("提示","请完整填写！","info")
             }
         });
-
     })
-    
 </script>
-
 </body>
 </html>

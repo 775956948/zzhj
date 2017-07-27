@@ -11,6 +11,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     <title>中兆恒基Oa注册</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="renderer" content="webkit">    <!--优先使用谷歌浏览器内核-->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">  <!--默认使用IE最高版本 渲染页面 激活Chrome Frame-->
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="expires" content="0">
@@ -26,7 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script type="text/javascript" src="easyui/locale/easyui-lang-zh_CN.js"></script>
     <style type="text/css">
        	::-webkit-inner-spin-button{
-	       visibility: hidden;
+	       visibility: hidden; /*取消input=‘number’上的 上下选择按钮*/
      	}
         * {
             margin: 0;
@@ -37,18 +39,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             list-style: none;
             outline: none;
         }
-
         a {
             text-decoration: none;
         }
-
         #ZT {
             margin: 30px auto;
             width: 762px;
             height: 810px;
             border: 1px solid #bfcfdc;
         }
-
         .QH {
             margin: 30px auto;
             width: 610px;
@@ -57,7 +56,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             background: rgba(156, 193, 228, 0.8) url("image/logo_02.png") no-repeat left;
             background-size: 100% 100%;
         }
-
         #Zc {
             margin: 0 auto;
             width: 604px;
@@ -70,21 +68,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             margin-top: 50px;
             color: #616161;
         }
-
         #Xhx {
             width: 605px;
             height: 1px;
             margin: 5px auto;
             background-color: #dddddd;
         }
-
         .SX {
             width: 605px;
             margin: 11px auto;
             height: 36px;
-
         }
-
         .wz {
             width: 125px;
             height: 36px;
@@ -95,7 +89,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             font-size: 14px;
             color: #333;
         }
-
         .Sr {
             float: left;
             width: 302px;
@@ -105,7 +98,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             display: inline-block;
             line-height: 32px;
         }
-
         .Sr2 {
             margin-left: 5px;
             width: 280px;
@@ -113,11 +105,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             background-color: rgba(0, 0, 0, 0);
             line-height: 100%;
         }
-
         .cc {
             background-image: none;
         }
-
         select {
             border-color: #0c8ed9
         }
@@ -132,9 +122,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         height:33px !important;
         margin-top: 1px;
         }
-
     </style>
-
 </head>
 
 <body>
@@ -173,9 +161,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="nc SX">
             <div class="wz"><span style="margin-right: 10px">部门</span></div>
             <div class="Sr">
-                <select name="departmentId.id"
-                        style="width: 100%;height: 100%;border: none;background-color: transparent">
-
+                <select name="departmentId.id" style="width: 100%;height: 100%;border: none;background-color: transparent">
                 </select>
             </div>
         </div>
