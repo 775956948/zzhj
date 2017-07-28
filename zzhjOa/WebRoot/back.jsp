@@ -9,14 +9,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-    <base href="<%=basePath%>">
-
-    <title>用户密码找回</title>
-
-    
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="renderer" content="webkit">      <!--优先使用谷歌浏览器内核-->
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"><!--默认使用IE最高版本 渲染页面 激活Chrome Frame-->
+    <base href="<%=basePath%>">
+    <title>用户密码找回</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="expires" content="0">

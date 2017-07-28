@@ -5,12 +5,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 <%@ include file="common.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE HTML">
+<!DOCTYPE HTML>
 <html>
   <head>
-    <base href="<%=basePath%>">
-    
-    <title>中兆恒基Oa办公系统</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	<base href="<%=basePath%>">
+	<title>中兆恒基Oa办公系统</title>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -33,7 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             title : data[i].text,
                             selected:false,
                             iconCls:data[i].icon,
-                            content :"<div style='padding-left:50px;'><ul name="+data[i].text+" param="+data[i].id+"></ul></div>",  
+                            content :"<div style='padding-left:50px;'><ul name="+data[i].text+" param="+data[i].id+"></ul></div>"
                         });  
 		  			}
 			});
@@ -60,7 +61,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           //手风琴结束
           
 		//--------webSocket----------
-        if ("WebSocket" in window){
+        if (window.WebSocket){
            // 打开一个 web socket
             ws = new WebSocket("ws:/"+window.location.host+"/zzhjOa/serverHandler");
 			
@@ -96,7 +97,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         else
         {
            // 浏览器不支持 WebSocket
-           alert("您的浏览器不支持 WebSocket!");
+           $.messager.alert("警告","您的浏览器不支持 WebSocket!请更换更高版本浏览器！","warning");
         }
 		
 		
@@ -235,7 +236,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="css/apply.css">
   </head>
 	<body>   
-    	<div id="cc" class="easyui-layout" fit=true "style="height:70px;"> 
+    	<div id="cc" class="easyui-layout" fit=true  style="height:70px">
     	<audio src="mp3/4331.mp3" id="audio"></audio>
     	<!-- 上侧 -->
     	<div data-options="region:'north'" style="height:80px;/* background-color: E0ECFF; */background-color: gray; " id="title" >
