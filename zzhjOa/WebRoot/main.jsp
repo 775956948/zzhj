@@ -63,7 +63,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		//--------webSocket----------
         if (window.WebSocket){
            // 打开一个 web socket
-            ws = new WebSocket("ws:/"+window.location.host+"/zzhjOa/serverHandler");
+            ws = new WebSocket("ws://"+window.location.host+"/zzhjOa/serverHandler");
 			
            ws.onopen = function() 
            {
