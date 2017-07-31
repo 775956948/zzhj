@@ -47,7 +47,8 @@
             <a id="LeFile" href="" download=""  target="_blank">下载附件</a>
         </li>
         <li style="margin-bottom: 30px">
-            <input  type="button" value="审 批" onclick="approvalLeave()"  class="button-task"/>
+            <input  type="button" value="审 批" onclick="approvalLeave()"  class="button-task" style="float: left;width: 30%"/>
+            <input  type="button" value="打 回" onclick="UNapprovalLeave()"  class="button-task" style="float: right;width: 30%;margin-right: 7%"/>
         </li>
     </ul>
 </div>
@@ -122,6 +123,18 @@
         }else{
             $.messager.alert("警告","请选择状态为 待审批 的申请！不可二次审批！","info")
         }
+    }
+    // 打回申请
+    function UNapprovalLeave(){
+        $.post('rest/restRepulse.action',{'restId': $("#approvalID").val()},function(data){
+            if(data!=null&&data>0){
+                $("#approvalLeaveDG").datagrid('reload');
+                $.messager.alert("提示", "打回成功！", "info");
+                $("#LeaverDIG").dialog({closed :true})
+            }else{
+                $.messager.alert("提示", "服务器繁忙！请稍候。", "info");
+            }
+        })
     }
 </script>
 </body>

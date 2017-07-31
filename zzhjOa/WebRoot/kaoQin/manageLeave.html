@@ -7,6 +7,7 @@
 <body>
 <div id="buttonBarManageLeave">
     <span style="position: relative;top: 2px;">关键字查询</span> <span style="position: relative;top: 2px">&nbsp 日期: </span><input type="text" id="SSdate">   <span style="position: relative;top: 2px"> &nbsp 名字: </span><input type="text" id="SSname" placeholder="请输入准确名字" style="height: 25px;position: relative;top: 3px;border-radius: 0">
+    <a  class="easyui-linkbutton" iconCls="icon-clear" plain="true" onclick="clearInput()">清空</a>
     <a  class="easyui-linkbutton" iconCls="icon-cz" plain="true" onclick="searchUserIdName()">搜索</a>
     <a  class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="delectLeaveNews()">删除</a>
 </div>
@@ -90,6 +91,11 @@
         }else{
             $.messager.alert("提示", "请选中一行信息!", "info");
         }
+    }
+    //清空
+    function clearInput(){
+        $("#SSdate").datebox("reset");
+        $("#SSname").val("");
     }
 </script>
 </body>
