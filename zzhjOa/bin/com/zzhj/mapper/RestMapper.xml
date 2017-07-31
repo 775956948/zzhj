@@ -55,4 +55,8 @@
   <select id="queryAll" parameterType="int" resultMap="ru">
   	select r.*,u.name as u_name,rt.name as rt_name from rest r inner join users u on u.id=r.user_id inner join rest_type rt on rt.id=r.rest_type_id  limit #{startPage},${rows}
   </select>
+  
+  <update id="restRepulse" parameterType="int">
+  	update rest set state='已打回' where id=#{value}
+  </update>
 </mapper>

@@ -91,4 +91,16 @@ public interface RestMapper {
 	
 	List<Rest> queryAll(@Param("startPage")int startPage,@Param("rows")int rows);
 	
+	/**
+	 * 
+	 * @Description: 打回一条信息
+	 * @param @param restId
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年7月31日
+	 */
+	int restRepulse(int restId);
+	
 }

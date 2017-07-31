@@ -171,6 +171,21 @@ public class RestService {
 		return map;
 	}
 	
+	
+	/**
+	 * 
+	 * @Description: 打回一条信息
+	 * @param @param restId
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年7月31日
+	 */
+	public int restRepulse(int restId){
+		return rm.restRepulse(restId);
+	}
+	
 
 	
 }

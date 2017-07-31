@@ -116,6 +116,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				 $.messager.alert("提示", "请选中一行记录", "info");  
 			}
 		}
+		
 		function submitUser(){
 			var name=$("input[name='name']").val();
 			var id=$("select[name='roleId.id']").val();

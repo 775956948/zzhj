@@ -72,7 +72,7 @@ public class UsersService {
 	public int updateRole(Users user){
 		if(user.getParentId()==0){
 			String id=um.queryId("×Ü¾­Àí");
-			if(id!=null&&id.equals("")){
+			if(id!=null&&!id.equals("")){
 				user.setParentId(Integer.parseInt(id));
 			}else{
 				user.setParentId(0);

@@ -125,6 +125,21 @@ public class RestAction {
 	public int[] test(){
 		return new int[]{1,2,3,4,5,6,7,8,9};
 	}
+	/**
+	 * 
+	 * @Description: 打回一条信息
+	 * @param @param restId
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年7月31日
+	 */
+	@RequestMapping("/restRepulse.action")
+	@ResponseBody
+	public int restRepulse(int restId){
+		return rs.restRepulse(restId);
+	}
 
 	
 }
