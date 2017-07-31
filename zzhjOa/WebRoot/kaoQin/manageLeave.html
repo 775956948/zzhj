@@ -79,7 +79,7 @@
         if(row){
             $.messager.confirm('提示', '确定删除该条申请信息？', function(r){
                 if (r){
-                    $.post('',{'id':row.id},function(data){
+                    $.post('rest/deleteRest.action',{'id':row.id},function(data){
                         if(data!=null&&data>0){
                             $("#manageLeaveDG").datagrid('reload');
                             $.messager.alert("提示", "删除成功!", "info");

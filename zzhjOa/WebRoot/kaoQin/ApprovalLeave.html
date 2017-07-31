@@ -97,6 +97,8 @@
                     if(row.appendix!=""&&row.appendix!=null){
                         $("#FileLi").css({"height":"40px"});
                         $("#LeFile").attr("href",row.appendix);
+                    }else{
+                        $("#FileLi").css({"height":"0px","overflow":"hidden"});
                     }
                 }
             });
