@@ -24,7 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			width: 90%;
 			margin:auto;
 			overflow:hidden;
-			background-color: F8F8F8;
+			background-color: #F8F8F8;
 			box-shadow: 10px 10px 10px  #888888;
 			padding: 20px;
 		}
@@ -46,7 +46,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			padding-top: 40px;
 		}
 		body{
-			background-color: E6EFFF;
+			background-color: #E6EFFF;
 		}
 	</style>
   </head>

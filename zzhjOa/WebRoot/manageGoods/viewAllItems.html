@@ -53,7 +53,7 @@
         </li>
         <li>
             <span>物品数量：</span>
-            <input type="text" name="CwpMath" placeholder="请输入整数"  onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}">
+            <input type="text" name="CwpMath" placeholder="请输入整数"  onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^0-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}">
         </li>
         <li>
             <input type="text" class="button-task" value="确 定 修 改" onclick="changeWp()">

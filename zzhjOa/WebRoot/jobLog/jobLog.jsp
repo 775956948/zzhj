@@ -30,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	 	<input name="jobLogDate" type="date" />
     	 	<div style="margin-left:80px; display: inline;">
     	 		选择类型：  
-				<select id="type">
+				<select id="type2">
 					<option>工作日报</option>
 					<option>工作周报</option>
 				</select>
@@ -93,12 +93,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		//
 			function searchJobLog(){
 				 var date=$("input[name='jobLogDate']").val();
-				var type=$("#type").find("option:selected").text();
+				var type2=$("#type2").find("option:selected").text();
 				$('#jobLogDg').datagrid({    
    			 				url:'jobLog/searchJobLog.action',
    			 				queryParams: {
 								date:date,
-								type:type,
+								type:type2,
 								'user.id':userId
 							},
    							fitColumns:true,
