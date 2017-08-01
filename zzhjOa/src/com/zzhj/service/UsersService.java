@@ -85,6 +85,11 @@ public class UsersService {
 		}else{
 			user.setState("open");
 		}
+		if(roleName.equals("人事助理")){
+			user.setParentId(Integer.parseInt(um.queryId("人事")));
+		}else if(roleName.equals("行政助理")){
+			user.setParentId(Integer.parseInt(um.queryId("行政")));
+		}
 		return um.updateRole(user);
 	}
 	

@@ -85,6 +85,17 @@ public interface OfficeSuppliesMapper {
 	 * @date 2017年7月10日
 	 */
 	public List<OfficeSupplies> likeQuey(String goodsName);
+	/**
+	 * 
+	 * @Description: 删除一天信息同时级联删除所有关联的信息
+	 * @param @param id
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年8月1日
+	 */
+	public int deleteGoods(int id);
 	
 	
 }
