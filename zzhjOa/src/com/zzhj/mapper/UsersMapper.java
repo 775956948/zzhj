@@ -27,7 +27,16 @@ public interface UsersMapper {
 	 * @date 2017年6月15日
 	 */
 	Users query(int id);
-	
+	/**
+	 * 
+	 * @Description: 根据角色名称返回用户id
+	 * @param @param roleName
+	 * @param @return   
+	 * @return String  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年8月1日
+	 */
 	String queryId(String roleName);
 	
 	int exist(String name);

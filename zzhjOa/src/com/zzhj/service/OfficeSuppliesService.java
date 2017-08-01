@@ -96,4 +96,17 @@ public class OfficeSuppliesService {
 		map.put("rows",list);
 		return map;
 	}
+	/**
+	 * 
+	 * @Description: 删除一天信息同时级联删除所有关联信息
+	 * @param @param id
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年8月1日
+	 */
+	public int deleteGoods(int id){
+		return osm.deleteGoods(id);
+	}
 }

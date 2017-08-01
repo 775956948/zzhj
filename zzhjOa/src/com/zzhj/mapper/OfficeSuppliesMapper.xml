@@ -31,4 +31,7 @@
 	<select id="likeQuey" parameterType="string" resultMap="os">
 		select * from office_supplies where goods_name like '%${value}%'
 	</select>
+	<update id="deleteGoods" parameterType="int">
+		delete from office_supplies where id=#{value}
+	</update>
 </mapper>

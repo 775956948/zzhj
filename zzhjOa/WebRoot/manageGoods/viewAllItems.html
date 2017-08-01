@@ -143,9 +143,9 @@
         var row=$('#SYWPDg').datagrid('getSelected');
         if(row){
             if(row.goodsNumber == "0"){
-                $.messager.confirm('提示', '确定删除该物品信息？', function(r){
+                $.messager.confirm('提示', '确定删除该物品信息？删除物品会级联删除物品的所有记录', function(r){
                     if (r){
-                        $.post('  ',{'id':row.id},function(data){
+                        $.post('officeSupplies/deleteGoods.action',{'id':row.id},function(data){
                             if(data>0){
                                 $.messager.alert("提示", "删除成功", "info");
                                 $('#SYWPDg').datagrid('reload');

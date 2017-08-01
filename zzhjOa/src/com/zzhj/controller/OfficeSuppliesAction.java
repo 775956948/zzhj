@@ -92,4 +92,19 @@ public class OfficeSuppliesAction {
 	public  Map<String,Object> likeQuey(String goodsName){
 		return oss.likeQuey(goodsName);
 	}
+	/**
+	 * 
+	 * @Description: 删除一天信息同时级联删除所有关联的信息
+	 * @param @param id
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年8月1日
+	 */
+	@RequestMapping("/deleteGoods.action")
+	@ResponseBody
+	public int deleteGoods(int id){
+		return oss.deleteGoods(id);
+	}
 }
