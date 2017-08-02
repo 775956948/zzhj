@@ -41,6 +41,9 @@
         singleSelect: true,  //仅可以选中一行
         fitColumns: true, //自动展开 铺满横向
         toolbar: "#buttonBarSQall",  //使上方控制器和表格融为一体
+        onDblClickRow:function() {  //双击打开当前行详情函数
+            applyItems();
+        },
         columns: [[
             {field: 'id', title: '编号', checkbox: true,order:'desc'},
             {field: 'goodsName', title: '物品名称',width:300},
@@ -56,6 +59,7 @@
             $('#applyItemsDiG').dialog({
                 closed: false, //更改 显示隐藏
                 cache: false,//是否缓存
+                modal:true,
                 onOpen: function () {
                     $("input[name=SQwpId]").val(row.id);
                     $("input[name=SQwpName]").val(row.goodsName);

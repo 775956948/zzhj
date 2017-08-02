@@ -69,9 +69,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    singleSelect:true, 
 			pagination:true,
 	 		fitColumns:false,
-		    toolbar:'#approve_official_Tb', 
-		   	columns:[[    
-		  	
+		    toolbar:'#approve_official_Tb',
+	        onDblClickRow:function() {  //双击打开当前行详情函数
+	           approve_official_Tb();
+	        },
+		   	columns:[[
 		        {field:'id',title:'id',checkbox:true},
 				{field:'number',title:'编号',width:50},
 				{field:'projectName',title:'项目名称',width:140},
@@ -114,16 +116,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					onOpen:function(){
 						var  aa = row.why;
 						if(aa=="是"){
-							$("#radioYes").prop("checked", true)
-							$("#radioNo").prop("checked", false)
+							$("#radioYes").prop("checked", true);
+							$("#radioNo").prop("checked", false);
 						}else{
-							$("#radioYes").prop("checked", false)
-							$("#radioNo").prop("checked", true)
+							$("#radioYes").prop("checked", false);
+							$("#radioNo").prop("checked", true);
 						}
 						$("input[name = requestSealId]").val(row.id);			
 						$("input[name = number]").val(row.number);
-						$("#type").val(row.sealId.typeName)	
-						$("input[name = number]").val(row.number);
+						$("#type").val(row.sealId.typeName);
 						$("textarea[name = projectName]").val(row.projectName);
 						$("input[name = pageNumber]").val(row.pageNumber);
 						$("input[name = copiesNumber]").val(row.copiesNumber);

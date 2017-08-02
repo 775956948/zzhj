@@ -247,6 +247,9 @@
         toolbar: '#taskTb',
         pagination: true,
         singleSelect: true,
+        onDblClickRow:function() {  //双击打开当前行详情函数
+            viewTaskXOWN();
+        },
         columns: [[
             {field: 'id', title: '编号', checkbox: true},
             {field: 'taskTheme',title: '任务主题'},
@@ -289,6 +292,7 @@
 //	                height: 500,
                     top:18,
 	                closed: false,
+                    modal:true,
 	                onOpen: function () {
 	                    $.post('users/querySubclass.action', function (data) {
 	                        $("#transmitForm select[name='Qoimplement']").empty();

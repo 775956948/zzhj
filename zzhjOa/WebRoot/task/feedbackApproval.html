@@ -65,6 +65,9 @@
         singleSelect: true,  //仅可以选中一行
         fitColumns: true, //自动展开 铺满横向
         toolbar: "#buttonBarfeedBack",  //使上方控制器和表格融为一体
+        onDblClickRow:function() {  //双击打开当前行详情函数
+            subJectFeed();
+        },
         columns: [[
             {field: 'id', title: '编号', checkbox: true},
             {field: 'requestName', title: '申请人'},

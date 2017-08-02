@@ -74,7 +74,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			pagination:true,
 	 		singleSelect:true,
 	 		fitColumns:false,
-		    toolbar:'#hanhling_official_Tb', 
+		    toolbar:'#hanhling_official_Tb',
+	        onDblClickRow:function() {  //双击打开当前行详情函数
+	          hanhling_official_Tb();
+	        },
 		   	columns:[[    
 	       	    {field:'id',title:'id',checkbox:true},
 				{field:'number',title:'编号',width:50},
