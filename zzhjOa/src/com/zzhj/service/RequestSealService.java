@@ -72,10 +72,10 @@ public class RequestSealService {
 		if(user!=null&&user.getParentId()!=null&&user.getParentId()!=0){
 			Users u=um.query(user.getParentId());
 			parentUser.setName(u.getName());
-			view="seal\\approve_officialSeal.jsp";
+			view="seal/approve_officialSeal.jsp";
 			targetName="盖章审批";
 		}else{
-			view="seal\\handling_officialSeal.jsp";
+			view="seal/handling_officialSeal.jsp";
 			targetName="公章经办";
 			parentUser.setName("");
 		}

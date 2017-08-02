@@ -74,12 +74,12 @@ public class ZiZhiSealService {
 		Users parentUser=new Users();
 		if(user!=null&&user.getParentId()!=null&&user.getParentId()!=0){
 			Users u=um.query(user.getParentId());
-			view="seal\\approve.jsp";
+			view="seal/approve.jsp";
 			targetName="资质章审批";
 			parentUser.setName(u.getName());
 		}else{
 			 parentUser.setName("");
-			 view="seal\\handling.jsp";
+			 view="seal/handling.jsp";
 			 targetName="资质章经办";
 		}
 		send(parentUser.getName(),requestName,sealId,view,targetName);
