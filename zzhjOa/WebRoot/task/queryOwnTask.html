@@ -10,16 +10,16 @@
     <div id="viewTaskOWN" class="easyui-dialog" title="查看任务" closed=true>
         <ul>
             <li style="height: 40px;margin-top: 20px">
-                <div class="splitLi">
+                <div class="splitLi" style="width: 102%">
                     <span>任 务 主 题：</span>
-                    <input type="text" name="CotaskTheme" readonly="readonly" >
+                    <input type="text" name="CotaskTheme" readonly="readonly" style="width: 70%" >
                 </div>
+            </li>
+            <li style="height: 40px">
                 <div class="splitLi">
                     <span>发 &nbsp 布 &nbsp 人：</span>
                     <input type="text" name="CouserName" readonly>
                 </div>
-            </li>
-            <li style="height: 40px">
                 <div class="splitLi">
                     <span>发 布 日 期：</span>
                     <input type="text" name="CotaskDate" readonly>
@@ -196,6 +196,7 @@
                 top:50,
                 closed: false, //更改 显示隐藏
                 cache: false,//是否缓存
+                modal:true,
                 onOpen: function () {
                     $("input[name = CouserName]").val(viewTaskOwn.userName);
                     $("input[name = Corecipient]").val(viewTaskOwn.recipient);

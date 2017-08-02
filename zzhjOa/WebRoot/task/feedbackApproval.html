@@ -18,12 +18,12 @@
     <ul>
         <li>
             <input type="hidden" name="FEuserid">
+            <div class="splitLi" style="width: 102%">
+                <span>任 务 主 题：</span>
+                <input type="text" name="FEtaskName" readonly="readonly" style="width: 70%">
+            </div>
         </li>
         <li style="height: 40px">
-            <div class="splitLi">
-                <span>任 务 主 题：</span>
-                <input type="text" name="FEtaskName" readonly="readonly">
-            </div>
             <div class="splitLi">
                 <span>申 &nbsp 请 &nbsp 人：</span>
                 <input type="text" name="FErequestName" readonly>
@@ -86,6 +86,7 @@
                 width: 800,
                 closed: false, //更改 显示隐藏
                 cache: false,//是否缓存
+                modal:true,
                 onOpen: function () {
                     $("input[name = FEuserid]").val(Data.id);
                     $("input[name = FErequestName]").val(Data.requestName);

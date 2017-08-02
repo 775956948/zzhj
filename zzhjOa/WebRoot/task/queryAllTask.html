@@ -61,16 +61,16 @@
     <div id="viewTaskAll" class="easyui-dialog" title="查看任务" closed=true>
         <ul>
             <li style="height: 40px;margin-top: 20px">
-                <div class="splitLi">
+                <div class="splitLi" style="width: 102%">
                     <span>任 务 主 题：</span>
-                    <input type="text" name="CtaskTheme" value="" readonly="readonly" >
+                    <input type="text" name="CtaskTheme"  readonly="readonly" style="width: 70%">
                 </div>
+            </li>
+            <li style="height: 40px">
                 <div class="splitLi">
                     <span>发 &nbsp 布 &nbsp 人：</span>
                     <input type="text" name="CuserName" readonly>
                 </div>
-            </li>
-            <li style="height: 40px">
                 <div class="splitLi">
                     <span>发 布 日 期：</span>
                     <input type="text" name="CtaskDate" readonly>
@@ -170,6 +170,7 @@
                     height: 550,
                     width: 680,
                     top: 50,
+                    modal:true,
                     onOpen: function () {
                         $("input[name = CHuserid]").val(checkTask.id);
                         $("input[name = CHtaskTheme]").val(checkTask.taskTheme);
@@ -202,6 +203,9 @@
         pagination: true, 
         singleSelect:true,  //仅可以选中一行
         toolbar:"#buttonBarAll",  //使上方控制器和表格融为一体
+        onDblClickRow:function() {
+            viewTaskXall();
+        },
         columns: [[
             {field: 'id', title: '编号', checkbox: true},
             {field: 'taskTheme',title: '任务主题'},
@@ -242,6 +246,7 @@
                 top:50,
                 closed: false, //更改 显示隐藏
                 cache: false,//是否缓存
+                modal:true, //显示遮罩层
                 onOpen: function () {
                     $("input[name = CuserName]").val(viewTaskAll.userName);
                     $("input[name = Crecipient]").val(viewTaskAll.recipient);
@@ -263,7 +268,7 @@
                     $('#CspeedTask').progressbar({
                         value: viewTaskAll.speed
                     });
-                },
+                }
             });
         } else {
             $.messager.alert("提示","请选择一条数据","info");

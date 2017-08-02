@@ -40,12 +40,12 @@
     <ul>
         <li>
             <input type="hidden" name="REuserid">
+            <div class="splitLi" style="width: 102%">
+                <span>任 务 主 题：</span>
+                <input type="text" name="REtaskName" readonly="readonly" style="width: 70%">
+            </div>
         </li>
         <li style="height: 40px">
-            <div class="splitLi">
-                <span>任 务 主 题：</span>
-                <input type="text" name="REtaskName" readonly="readonly">
-            </div>
             <div class="splitLi">
                 <span>申 &nbsp 请 &nbsp 人：</span>
                 <input type="text" name="RErequestName" readonly>
@@ -79,7 +79,7 @@
             <span style="position: absolute;top: 29%;">打 回 信 息：</span>
             <textarea name="RErefuseInfo" rows="7" cols="30" style="width: 72%;margin-left: 118px" readonly></textarea>
         </li>
-        <li style="margin: 20px auto">
+        <li style="margin: 8px auto">
             <input type="button" class="button-task" onclick="closeMessage()" value="确 认 关 闭">
         </li>
     </ul>
