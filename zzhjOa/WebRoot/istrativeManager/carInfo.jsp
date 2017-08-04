@@ -202,7 +202,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				 		$.messager.alert("提示","还车成功","info");
 						$('#carInfoDd').dialog({
 							closed : true
-						}); 
+						});
+	                $("input[name='overNumber']").val("");
 				 	});
 				}
 			}else{
@@ -215,7 +216,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			                  $.messager.alert("提示","添加成功","info");
 								$('#carInfoDd').dialog({
 									closed : true
-								}); 
+								});
+	                      $("input[name='overNumber']").val("");
 						 }
 					 });	
 				} 
