@@ -184,10 +184,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							}
 					});
 				}else{
-					$.message.alert("提示", "当前状态不可修改，仅可修改“待审批”的申请！", "info")
+					$.messager.alert("提示", "当前状态不可修改，仅可修改“待审批”的申请！", "info")
 				}
 		      }else{
-				$.message.alert("提示", "无权操作他人申请！", "info")
+				$.messager.alert("提示", "无权操作他人申请！", "info")
 	          }
 			}else{
 				$.messager.alert("提示", "请选中一条本人申请信息", "info");

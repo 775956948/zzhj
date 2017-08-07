@@ -42,8 +42,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</li> 
 					<li>
 						<span>是否骑缝</span>
-						<span >是<input style="width: 50px;" type="radio" name="why" id="" value="是" id="YESQF" /></span>
-						<span>否<input style="width: 50px;" type="radio" name="why" id="" value="否" id="NOQF" /></span>
+						<span >是<input style="width: 50px;" type="radio" name="why"  value="是" id="YESQF" /></span>
+						<span>否<input style="width: 50px;" type="radio" name="why"  value="否" id="NOQF" /></span>
 					</li> 	
 					<li>
 						<span>页数</span>
@@ -164,7 +164,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								$("#GZtext").val(row.text);
 								$("#GZpageNumber").val(row.pageNumber);
 								$("#GZcopiesNumber").val(row.copiesNumber);
-		                        if(row.why == "是"){
+		                        if(row.why=="是"){
 					             $("#YESQF").attr("checked", true);
 		                         $("#NOSQF").attr("checked", false);
 									}else{
