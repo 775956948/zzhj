@@ -97,7 +97,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		function deleteSpprove(){
 			var row = $("#approveDg").datagrid('getSelected');
 			if(row){
-				$.messager.confirm('确认','您确认想要删除记录吗？',function(r){
+				if(row.state=="待审批"){
+					$.messager.confirm('确认','您确认想要删除记录吗？',function(r){
 					if (r){
 						$.post('ziZhiSeal/delete.action',{'id':row.id},function(data){
 							if(data!=null&&data>0){
@@ -107,6 +108,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						})
 					}
 				});
+					}else{
+					$.messager.alert("提示", "当前状态不可删除，仅可修改“待审批”申请！","info");
+				}
+
 			}else{
 				 $.messager.alert("提示", "请选中一行信息","info");
 			}

@@ -67,11 +67,11 @@
 				</tr>
 				<tr name="startMoney">
 					<td>起始金额</td>
-					<td><input type="number" name="startMoney"    onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"/></td>
+					<td><input type="number" name="startMoney"     onkeyup= "this.value=(this.value.match(/\d+(\.\d{0,2})?/)||[''])[0]" /></td>
 				</tr>
 				<tr name="overMoney">
 					<td>结束金额</td>
-					<td><input  type="number" name="overMoney"     onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"/></td>
+					<td><input  type="number" name="overMoney"      onkeyup= "this.value=(this.value.match(/\d+(\.\d{0,2})?/)||[''])[0]" /></td>
 				</tr>
 				<tr name="saveCard">
 					<td colspan="2" align="center" ><button type="button"  onclick="submitBusCardRecord()" >提交</button></td>
@@ -123,10 +123,10 @@
 	    			}
 				   		
  			   	},},    
-			   	{field:'start',title:'启始站点',},
-			   	{field:'over',title:'结束站点',},
-			   	{field:'startDate',title:'领取时间',sortable:true},   
-			   	{field:'overDate',title:'归还时间',},
+			   	{field:'start',title:'启始站点',width:150},
+			   	{field:'over',title:'结束站点',width:150},
+			   	{field:'startDate',title:'领取时间',sortable:true,width:210},
+			   	{field:'overDate',title:'归还时间',width:210},
 			   	{field:'startMoney',title:'领取金额',},
 			   	{field:'overMoney',title:'归还金额',},
 		   			

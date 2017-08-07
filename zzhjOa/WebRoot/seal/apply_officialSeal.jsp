@@ -42,8 +42,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</li> 
 					<li>
 						<span>是否骑缝</span>
-						<span >是<input style="width: 50px;" type="radio" name="why" id="" value="是" /></span>
-						<span>否<input style="width: 50px;" type="radio" name="why" id="" value="否" /></span>
+						<span >是<input style="width: 50px;" type="radio" name="why" id="" value="是" id="YESQF" /></span>
+						<span>否<input style="width: 50px;" type="radio" name="why" id="" value="否" id="NOQF" /></span>
 					</li> 	
 					<li>
 						<span>页数</span>
@@ -87,6 +87,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			});
 		  // 申请 弹窗
 			function addapply_official_Tb(){
+		    $(".apply_official_val").val('');
 				$('#apply_official_tanc').dialog({
 					title : '公章审批提交单',
 					height : 400,
@@ -149,31 +150,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			var row=$("#apply_official_Dg").datagrid('getSelected');
 			if(row){
 				if(row.userId.name==UserName2){
-					$('#apply_official_tanc').dialog({
-						title : '公章申请修改单',
-						height : 400,
-						closed : false,
-						cache : false,
-						modal : true,
-						onOpen: function () {
-							$("#changeAddapplyID").val(row.id);
-							$("#GZnumber").val(row.number);
-							$("#GZprojectName").val(row.projectName);
-							$("#GZtext").val(row.text);
-							$("#GZpageNumber").val(row.pageNumber);
-							$("#GZcopiesNumber").val(row.copiesNumber);
-						}
-					});
-					$("#changeAddapplyID").css({"display":"inline"});
-					$("#changeAddapplyID").attr("disabled", false);
-					$("#applyOfficalButton").hide();
-					$("#changeApplyOfficalButton").show();
-					$("#apply_offcial_select").empty();
-					$.post('seal/queryAll.action',function(data){
-							for (var i = 0; i < data.length; i++) {
-								$("#apply_offcial_select").append("<option value='"+data[i].id+"'>"+data[i].typeName+"</option>")
+					if(row.state=="待审批"){
+						$('#apply_official_tanc').dialog({
+							title : '公章申请修改单',
+							height : 400,
+							closed : false,
+							cache : false,
+							modal : true,
+							onOpen: function () {
+								$("#changeAddapplyID").val(row.id);
+								$("#GZnumber").val(row.number);
+								$("#GZprojectName").val(row.projectName);
+								$("#GZtext").val(row.text);
+								$("#GZpageNumber").val(row.pageNumber);
+								$("#GZcopiesNumber").val(row.copiesNumber);
+		                        if(row.why == "是"){
+					             $("#YESQF").attr("checked", true);
+		                         $("#NOSQF").attr("checked", false);
+									}else{
+								$("#YESQF").attr("checked", false);
+								$("#NOSQF").attr("checked", true);
+								}
 							}
-					})
+						});
+						$("#changeAddapplyID").css({"display":"inline"});
+						$("#changeAddapplyID").attr("disabled", false);
+						$("#applyOfficalButton").hide();
+						$("#changeApplyOfficalButton").show();
+						$("#apply_offcial_select").empty();
+							$.post('seal/queryAll.action',function(data){
+									for (var i = 0; i < data.length; i++) {
+										$("#apply_offcial_select").append("<option value='"+data[i].id+"'>"+data[i].typeName+"</option>")
+									}
+							})
+					}else{
+						$.messager.alert("提示","当前状态不可修改，仅可修改“待审批”申请。","info")
+					}
 				}else{
 					$.messager.alert("提示","无权操作他人申请信息。","info")
 				}
