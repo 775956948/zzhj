@@ -197,4 +197,15 @@ public interface UsersMapper {
 	 * @date 2017年7月11日
 	 */
 	List<Users> queryRoleUser(String roleName);
+	/**
+	 * 
+	 * @Description: 销权，去除某个用户权限
+	 * @param @param id
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年8月7日
+	 */
+	int removeRole(int id);
 }

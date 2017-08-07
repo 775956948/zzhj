@@ -138,4 +138,15 @@ public interface RequestSealMapper {
 	  * @date 2017年5月31日
 	  */
 	 RequestSeal requestName(int sealId);
+	 /**
+	  * 
+	  * @Description: 修改章的申请时内容
+	  * @param @param r
+	  * @param @return   
+	  * @return int  
+	  * @throws
+	  * @author 小白
+	  * @date 2017年8月7日
+	  */
+	 int updateRequestSeal(RequestSeal r);
 }

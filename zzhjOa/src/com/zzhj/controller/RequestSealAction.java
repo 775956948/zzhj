@@ -60,4 +60,19 @@ public class RequestSealAction {
 		r.setAgent(user.getName());
 		return rss.handLing(r);
 	}
+	/**
+	 * 
+	 * @Description: 修改章的申请时内容
+	 * @param @param r
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年8月7日
+	 */
+	@RequestMapping("/updateRequestSeal.action")
+	@ResponseBody
+	public int updateRequestSeal(RequestSeal r){
+		return rss.updateRequestSeal(r);
+	}
 }

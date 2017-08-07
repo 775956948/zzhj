@@ -49,6 +49,16 @@ public class ZiZhiSealService {
 		send(user.getName(),z.getUserId().getName(),z.getId(),"seal/approve.jsp","资质章审批");
 		return number;
 	}
+	/**
+	 * 
+	 * @Description: 删除一条资质章信息
+	 * @param @param id
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年8月7日
+	 */
 	public int delete(int id){
 		return zs.delete(id);
 	}
@@ -103,6 +113,20 @@ public class ZiZhiSealService {
 		z.setOverDate(time);
 		return zs.handling(z);
 	}
+	/**
+	 * 
+	 * @Description: 修改章内容
+	 * @param @param z
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年8月7日
+	 */
+	public int updateZiZhiSeal(ZiZhiSeal z){
+		return zs.updateZiZhiSeal(z);
+	}
+	
 	/**
 	 * 
 	 * @Description: 推送消息

@@ -67,4 +67,9 @@
   <select id="requestName" resultType="string" parameterType="int">
   		SELECT u.name FROM zi_zhi_seal z INNER JOIN users u ON u.id=z.user_id where z.id=#{value}
   </select>
+  
+  <update id="updateZiZhiSeal" parameterType="ziZhiSeal">
+  		update zi_zhi_seal set number=#{number},projectName=#{projectName},pageNumber=#{pageNumber},copiesNumber=#{copiesNumber},
+  		text=#{text},why=#{why},requestDate=#{requestDate} where id=#{id}
+  </update>
 </mapper>

@@ -107,7 +107,16 @@ INSERT INTO FUNCTION (TEXT,url,parentId,state) VALUES('审批反馈信息','task
 INSERT INTO FUNCTION (TEXT,url,parentId,state) VALUES('申请任务反馈信息','task\\requestFeedback.html',3,'open')
 INSERT INTO FUNCTION (TEXT,url,parentId,state) VALUES('公告管理','notice\\noticeManager.jsp',7,'open')
 INSERT INTO FUNCTION (TEXT,url,parentId,state) VALUES('工作质量检测','task\\qualityTask.html',3,'open')
+INSERT INTO FUNCTION (TEXT,url,parentId,state) VALUES('办公用品申请','manageGoods\\applyItems.html',4,'open')
+INSERT INTO FUNCTION (TEXT,url,parentId,state) VALUES('查看申请单','manageGoods\\approvalResultItems.html',4,'open')
+INSERT INTO FUNCTION (TEXT,url,parentId,state) VALUES('办公用品审批','manageGoods\\subjectItems.html',4,'open')
+INSERT INTO FUNCTION (TEXT,url,parentId,state) VALUES('办公用品管理','manageGoods\\viewAllItems.html',4,'open')
+INSERT INTO FUNCTION (TEXT,url,parentId,state) VALUES('请假审批','kaoQin\\ApprovalLeave.html',1,'open')
+INSERT INTO FUNCTION (TEXT,url,parentId,state) VALUES('请假管理','kaoQin\\manageLeave.html',1,'open')
 
+
+
+SELECT * FROM FUNCTION
 
 INSERT INTO function_roles(role_id,function_id) VALUES(1,35)
 INSERT INTO function_roles(role_id,function_id) VALUES(1,36)
@@ -125,6 +134,14 @@ INSERT INTO function_roles(role_id,function_id) VALUES(1,48)
 INSERT INTO function_roles(role_id,function_id) VALUES(1,49)
 INSERT INTO function_roles(role_id,function_id) VALUES(1,50)
 INSERT INTO function_roles(role_id,function_id) VALUES(1,51)
+INSERT INTO function_roles(role_id,function_id) VALUES(1,52)
+INSERT INTO function_roles(role_id,function_id) VALUES(1,53)
+INSERT INTO function_roles(role_id,function_id) VALUES(1,54)
+INSERT INTO function_roles(role_id,function_id) VALUES(1,55)
+INSERT INTO function_roles(role_id,function_id) VALUES(1,56)
+INSERT INTO function_roles(role_id,function_id) VALUES(1,57)
+
+
 
 SELECT * FROM FUNCTION
 

@@ -59,17 +59,21 @@ FOREIGN KEY(departmentId) REFERENCES department(id),
 FOREIGN KEY(role_id) REFERENCES roles(id)
 )	
 
+DELETE FROM rest
 /*请假/休假信息表*/
 CREATE TABLE rest(
 id INT PRIMARY KEY AUTO_INCREMENT,
 user_id INT,		        /*申请人*/
-rest_text NVARCHAR(250),	/*请假原由*/
-rest_date INT ,			/*请假时间*/
-DATE DATE,			/*申请时间*/
-approver NVARCHAR(20),		/*审批人*/
-advice NVARCHAR(200),		/*意见*/
-state NVARCHAR(20),		/*任务状态*/
 rest_type_id INT,		/*请假类型*/
+rest_text NVARCHAR(250),	/*请假原由*/
+request_date DATE,		/*申请时间*/
+over_date DATE,			/*结束时间*/
+rest_date FLOAT,		/*请假天数*/
+request_stage NVARCHAR(10),	/*申请阶段*/
+over_stage NVARCHAR(10),	/*结束阶段*/
+approver NVARCHAR(20),		/*审批人*/
+state NVARCHAR(20),		/*任务状态*/
+appendix VARCHAR(200),		/*附件*/
 FOREIGN KEY(user_id) REFERENCES users(id),
 FOREIGN KEY(rest_type_id)REFERENCES rest_type(id)
 )
@@ -204,18 +208,35 @@ FOREIGN KEY(seal_id) REFERENCES seal(id),
 FOREIGN KEY(user_id) REFERENCES users(id)
 )
 
+SELECT * FROM request_goods
+SELECT * FROM office_supplies
+
+
+
 /*办公用品申请表*/
-CREATE TABLE Office_Supplies(
+CREATE TABLE request_goods(
 id INT PRIMARY KEY AUTO_INCREMENT,
-requestName NVARCHAR(20),/*申请人*/
-departmentId INT ,/*所属部门*/
-NAME NVARCHAR(20), 	/*物品名称*/
-money FLOAT,		/*金额*/
+user_id INT,		/*申请人*/	
+goods_id INT, 		/*物品id*/
+goods_number INT,	/*数量*/
 approver NVARCHAR(20),	/*审批人*/
 state NVARCHAR(20),	/*审批状态*/
-DATE DATE ,		/*申请日期*/
-FOREIGN KEY(departmentId) REFERENCES department(id)
+request_date DATE ,	/*申请日期*/
+approver_date DATE,	/*审批日期*/
+FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE ,
+FOREIGN KEY(goods_id)REFERENCES office_supplies(id) ON DELETE CASCADE 
 )
+
+
+/*办公用品表*/
+CREATE TABLE office_supplies(
+id INT PRIMARY KEY AUTO_INCREMENT,
+goods_name NVARCHAR(50),	/*名称*/
+goods_number INT,		/*数量*/
+goods_money FLOAT,		/*价格*/
+goods_date DATE 		/*入库时间*/
+)
+
 /*公告信息表*/
 CREATE TABLE notice(
 id INT PRIMARY KEY AUTO_INCREMENT, 

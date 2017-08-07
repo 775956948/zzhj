@@ -73,5 +73,20 @@ public class ZiZhiSealAction {
 		z.setAgent(user.getName());
 		return zs.handLing(z);
 	}
+	/**
+	 * 
+	 * @Description: 修改章内容
+	 * @param @param z
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年8月7日
+	 */
+	@RequestMapping("/updateZiZhiSeal.action")
+	@ResponseBody
+	public int updateZiZhiSeal(ZiZhiSeal z){
+		return zs.updateZiZhiSeal(z);
+	}
 	
 }

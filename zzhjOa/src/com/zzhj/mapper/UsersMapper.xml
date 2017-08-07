@@ -137,4 +137,7 @@
 	<select id="queryRoleUser" resultType="users" parameterType="string">
 		SELECT u.name,u.id  FROM users u INNER JOIN roles r ON r.id=u.role_id WHERE r.name=#{value}
 	</select>
+	<update id="removeRole" parameterType="int">
+		update users set role_id = null where id=#{value}
+	</update>
 </mapper>

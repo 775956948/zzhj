@@ -202,4 +202,19 @@ public class UsersAction {
 	public String userExist(String userName){
 		return us.userExist(userName);
 	}
+	/**
+	 * 
+	 * @Description: 销权，去除某个用户权限
+	 * @param @param id
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年8月7日
+	 */
+	@RequestMapping("/removeRole.action")
+	@ResponseBody
+	public int removeRole(int id){
+		return us.removeRole(id);
+	}
 }

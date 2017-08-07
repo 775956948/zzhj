@@ -110,6 +110,19 @@ public class RequestSealService {
 		r.setOverDate(time);
 		return rsm.handling(r);
 	}
+	/**
+	 * 
+	 * @Description: 修改章的申请时内容
+	 * @param @param r
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年8月7日
+	 */
+	public int updateRequestSeal(RequestSeal r){
+		return rsm.updateRequestSeal(r);
+	}
 	
 	/**
 	 * 

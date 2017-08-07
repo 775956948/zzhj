@@ -12,6 +12,16 @@ public interface ZiZhiSealMapper {
 	int save(ZiZhiSeal s);
 	int totalCount();
 	int totalCountOneself(String userName);
+	/**
+	 * 
+	 * @Description: 删除一条申请信息
+	 * @param @param id
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年8月7日
+	 */
 	int delete(int id);
 	/**
 	 * 
@@ -71,4 +81,15 @@ public interface ZiZhiSealMapper {
 	 * @date 2017年5月31日
 	 */
 	String requestName(int id);
+	/**
+	 * 
+	 * @Description:修改资质章
+	 * @param @param z
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年8月7日
+	 */
+	int updateZiZhiSeal(ZiZhiSeal z);
 }	
