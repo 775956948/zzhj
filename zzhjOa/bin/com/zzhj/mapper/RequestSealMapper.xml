@@ -73,7 +73,7 @@
   </select>
   <update id="updateRequestSeal" parameterType="requestSeal">
   	update request_seal set number=#{number},project_name=#{projectName},pageNumber=#{pageNumber},copiesNumber=#{copiesNumber},text=#{text},
-  	why=#{why},request_date=#{requestDate} where id=#{id}
+  	why=#{why} where id=#{id}
   </update>
   <delete id="delete" parameterType="int">
   	delete from request_seal where id=#{value}

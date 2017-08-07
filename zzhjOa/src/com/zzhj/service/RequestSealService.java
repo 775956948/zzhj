@@ -126,6 +126,20 @@ public class RequestSealService {
 	
 	/**
 	 * 
+	 * @Description: 删除一条公章信息
+	 * @param @param id
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年8月7日
+	 */
+	public int delete(int id){
+		return rsm.delete(id);
+	}
+	
+	/**
+	 * 
 	 * @Description: 消息推送方法
 	 * @param @param userName
 	 * @param @param requestName

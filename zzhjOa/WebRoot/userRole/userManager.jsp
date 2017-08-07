@@ -184,7 +184,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			if(row){
 				$.messager.confirm('确认','您确认想要消除该角色OA使用权限吗？',function(r){
 					if (r){
-						$.post('',{'id':row.id},function(data){
+						$.post('users/removeRole.action',{'id':row.id},function(data){
 							if(data!=null&&data>0){
 								$.messager.alert("提示", "消除角色权限成功！","info");
 								$("#userDg").datagrid('reload');

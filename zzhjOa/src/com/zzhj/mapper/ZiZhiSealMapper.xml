@@ -70,6 +70,6 @@
   
   <update id="updateZiZhiSeal" parameterType="ziZhiSeal">
   		update zi_zhi_seal set number=#{number},projectName=#{projectName},pageNumber=#{pageNumber},copiesNumber=#{copiesNumber},
-  		text=#{text},why=#{why},requestDate=#{requestDate} where id=#{id}
+  		text=#{text},why=#{why} where id=#{id}
   </update>
 </mapper>

@@ -75,4 +75,9 @@ public class RequestSealAction {
 	public int updateRequestSeal(RequestSeal r){
 		return rss.updateRequestSeal(r);
 	}
+	@RequestMapping("/delete.action")
+	@ResponseBody
+	public int delete(int id){
+		return rss.delete(id);
+	}
 }

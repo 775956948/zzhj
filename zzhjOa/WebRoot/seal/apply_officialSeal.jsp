@@ -186,7 +186,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		function changeApply_official_Submit(){
 			if($("#GZnumber").val()!=""&&$("#GZprojectName").val()!=""&&$("#GZpageNumber").val()!=""&&$("#GZcopiesNumber").val()!=""&&$("#GZtext").val()!=""){
 				$.ajax({
-					url:"",
+					url:"requestSeal/updateRequestSeal.action",
 					type:"post",
 					data:$("#apply_official_form").serialize(),
 					success:function(data){

@@ -171,7 +171,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				if(row){
 					$.messager.confirm('确认','您确认想要删除记录吗？',function(r){
 						if (r){
-							$.post('',{'id':row.id},function(data){
+							$.post('requestSeal/delete.action',{'id':row.id},function(data){
 								if(data!=null&&data>0){
 									$.messager.alert("提示", "删除成功","info");
 									$("#approve_official_Dg").datagrid('reload');

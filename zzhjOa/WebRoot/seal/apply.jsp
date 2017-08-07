@@ -192,7 +192,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	function changeApplySubmit(){
 	if($("#ZZnumber").val()!=""&&$("#ZZprojectName").val()!=""&&$("#ZZpageNumber").val()!=""&&$("#ZZcopiesNumber").val()!=""&&$("#ZZtext").val()!=""&&$("#ZZwhy").val()!=""){
 			$.ajax({
-			url:"",
+			url:"ziZhiSeal/updateZiZhiSeal.action",
 			type:"post",
 			data:$("#apply-form").serialize(),
 				success:function(data){
