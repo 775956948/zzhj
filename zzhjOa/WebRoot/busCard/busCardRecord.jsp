@@ -67,11 +67,11 @@
 				</tr>
 				<tr name="startMoney">
 					<td>起始金额</td>
-					<td><input type="number" name="startMoney"     onkeyup= "this.value=(this.value.match(/\d+(\.\d{0,2})?/)||[''])[0]" /></td>
+					<td><input type="text" name="startMoney"     onkeyup= "this.value=(this.value.match(/\d+(\.\d{0,2})?/)||[''])[0]" /></td>
 				</tr>
 				<tr name="overMoney">
 					<td>结束金额</td>
-					<td><input  type="number" name="overMoney"      onkeyup= "this.value=(this.value.match(/\d+(\.\d{0,2})?/)||[''])[0]" /></td>
+					<td><input  type="text" name="overMoney"      onkeyup= "this.value=(this.value.match(/\d+(\.\d{0,2})?/)||[''])[0]" /></td>
 				</tr>
 				<tr name="saveCard">
 					<td colspan="2" align="center" ><button type="button"  onclick="submitBusCardRecord()" >提交</button></td>
