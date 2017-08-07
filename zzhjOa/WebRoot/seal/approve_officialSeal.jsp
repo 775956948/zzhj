@@ -14,8 +14,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<body>
 		<!--审批表格-->
 		 <div id="approve_official_Tb">
-			<a  class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="approve_official_Tb()" >查看</a>			
-		</div>
+			<a  class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="approve_official_Tb()" >查看</a>
+			<a  class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="DeleteApprove_official_Tb()" >删除</a>
+	</div>
 		<div id="approve_official_tanc" class="easyui-dialog"  style="width: 650px">
 			<form action="" method="post" id="approve_official_form" class="approve_official_form">
 				<input name="requestSealId" id="dis_none" style="opacity:0;" value=""/> 
@@ -142,7 +143,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				   type:"post",
 				   data:{"requestSealId":id},	   
 				   success:function(data){
-				   	
 					   if(data == 1){
 					   		$('#approve_official_tanc').dialog({
 								closed : true
@@ -165,6 +165,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				   }
 			}) 
 		}
+	    // 公章申请删除
+			function DeleteApprove_official_Tb(){
+				var row = $("#approve_official_Dg").datagrid('getSelected');
+				if(row){
+					$.messager.confirm('确认','您确认想要删除记录吗？',function(r){
+						if (r){
+							$.post('',{'id':row.id},function(data){
+								if(data!=null&&data>0){
+									$.messager.alert("提示", "删除成功","info");
+									$("#approve_official_Dg").datagrid('reload');
+								}
+							})
+						}
+					});
+
+				}else{
+					$.messager.alert("提示", "请选中一行信息","info");
+				}
+			}
+
   	</script>
 		
 	</body>

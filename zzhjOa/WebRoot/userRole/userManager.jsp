@@ -23,8 +23,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
   	  	<div id="userTb">
-			<a  class="easyui-linkbutton" iconCls="icon-Remove" plain="true" onclick="deleteUser()">刪除</a>
+			<a  class="easyui-linkbutton" iconCls="icon-Remove" plain="true" onclick="deleteUser()">刪除角色</a>
 			<a  class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="updateUser()">分配角色</a>
+        	<a  class="easyui-linkbutton" iconCls="icon-no" plain="true" onclick="clearUser()">角色消权</a>
 		</div>
 		<div id="userDd"  class="easyui-dialog" closed=true >
 			<form>
@@ -65,7 +66,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         				return values.name;
         			}
         			
-        		},width:400},
+        		},width:400}
     		]]    
 		}); 
 		
@@ -73,7 +74,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		function deleteUser(){
 			var row = $('#userDg').datagrid('getSelected');
 			 if (row){
-				$.post('users/deleteUser.action',{'id':row.id,},function(data){
+				$.post('users/deleteUser.action',{'id':row.id},function(data){
 					if(data!=null&&data!=""){
 						$.messager.alert("提示", data, "info");  
 					}else{
@@ -176,7 +177,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				$("#zhuGuan").hide();
 				$("#manager").hide();		
 			}
-		} 
+		}
+	// 消除角色
+	function clearUser(){
+		var row = $("#userDg").datagrid('getSelected');
+			if(row){
+				$.messager.confirm('确认','您确认想要消除该角色OA使用权限吗？',function(r){
+					if (r){
+						$.post('',{'id':row.id},function(data){
+							if(data!=null&&data>0){
+								$.messager.alert("提示", "消除角色权限成功！","info");
+								$("#userDg").datagrid('reload');
+							}
+						})
+					}
+				});
+			}else{
+				$.messager.alert("提示", "请选中一行信息","info");
+			}
+	}
     </script>
   </body>
 </html>

@@ -13,7 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<!--审批表格-->
 		 <div id="spproveTb">
 			<a  class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="addSpproveTb()" >查看</a>
-			<!--  <a  class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="deleteSpprove()">删除</a>-->				
+		<a  class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="deleteSpprove()">删除</a>
 		</div>
 		<div id="spprove-tanc" class="easyui-dialog" style="width: 650px">
  			<form action="" method="post" id="approve-form" class="approve-form">
@@ -93,16 +93,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				spprove_tanc.dialog('open'); // 打开dialog
 			}
 		}
-
+        //申请删除
 		function deleteSpprove(){
 			var row = $("#approveDg").datagrid('getSelected');
 			if(row){
-				$.post('ziZhiSeal/delete.action',{'id':row.id},function(data){
-					if(data!=null&&data>0){						
-						 $.messager.alert("提示", "删除成功","info");
-						 $("#approveDg").datagrid('reload');
+				$.messager.confirm('确认','您确认想要删除记录吗？',function(r){
+					if (r){
+						$.post('ziZhiSeal/delete.action',{'id':row.id},function(data){
+							if(data!=null&&data>0){
+								$.messager.alert("提示", "删除成功","info");
+								$("#approveDg").datagrid('reload');
+							}
+						})
 					}
-				})
+				});
 			}else{
 				 $.messager.alert("提示", "请选中一行信息","info");
 			}
