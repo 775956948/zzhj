@@ -169,22 +169,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			function DeleteApprove_official_Tb(){
 				var row = $("#approve_official_Dg").datagrid('getSelected');
 				if(row){
-					$.messager.confirm('确认','您确认想要删除记录吗？',function(r){
-						if (r){
-							$.post('',{'id':row.id},function(data){
-								if(data!=null&&data>0){
-									$.messager.alert("提示", "删除成功","info");
-									$("#approve_official_Dg").datagrid('reload');
-								}
-							})
-						}
-					});
-
+					if(row.state=="待审批"){
+						$.messager.confirm('确认','您确认想要删除记录吗？',function(r){
+							if (r){
+								$.post('',{'id':row.id},function(data){
+									if(data!=null&&data>0){
+										$.messager.alert("提示", "删除成功！","info");
+										$("#approve_official_Dg").datagrid('reload');
+									}
+								})
+							}
+						});
+					}else{
+						$.messager.alert("提示", "当前状态不可删除，仅可删除“待审批”的申请信息。","info");
+					}
 				}else{
 					$.messager.alert("提示", "请选中一行信息","info");
 				}
 			}
-
   	</script>
 		
 	</body>

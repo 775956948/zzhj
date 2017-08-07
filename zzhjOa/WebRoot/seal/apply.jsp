@@ -126,6 +126,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		}); 
 		//申请框弹出
 		function addApply(){
+	        $(".apply-val").val("");
 			$('#apply-tanc').dialog({
 				title : '资质盖章申请单',
 				height : 480,
@@ -161,31 +162,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			var row = $("#applyDg").datagrid('getSelected');
 			if(row){
 	          if(row.userId.name==UserName){
-				$("#changeID").css({"display":"inline"});
-				$("#changeID").attr("disabled", false);
-				$("#ApplyButton").hide();
-				$("#changeApplyButton").show();
-	             	$('#apply-tanc').dialog({
-						title : '资质盖章申请单修改',
-						height : 480,
-						closed : false,
-						cache : false,
-						modal : true,
-	                    onOpen: function () {
-	                        $("#changeID").val(row.id);
-							$("#ZZnumber").val(row.number);
-	                        $("#ZZprojectName").val(row.projectName);
-	                        $("#ZZtext").val(row.text);
-	                        $("#ZZwhy").val(row.why);
-	                        $("#ZZpageNumber").val(row.pageNumber);
-	                        $("#ZZcopiesNumber").val(row.copiesNumber);
-						}
+	   			if(row.state=="待审批"){
+					$("#changeID").css({"display":"inline"});
+					$("#changeID").attr("disabled", false);
+					$("#ApplyButton").hide();
+					$("#changeApplyButton").show();
+					$('#apply-tanc').dialog({
+							title : '资质盖章申请单修改',
+							height : 480,
+							closed : false,
+							cache : false,
+							modal : true,
+							onOpen: function () {
+								$("#changeID").val(row.id);
+								$("#ZZnumber").val(row.number);
+								$("#ZZprojectName").val(row.projectName);
+								$("#ZZtext").val(row.text);
+								$("#ZZwhy").val(row.why);
+								$("#ZZpageNumber").val(row.pageNumber);
+								$("#ZZcopiesNumber").val(row.copiesNumber);
+							}
 					});
+				}else{
+					$.message.alert("提示", "当前状态不可修改，仅可修改“待审批”的申请！", "info")
+				}
 		      }else{
-				$.message.alert("提示", "不可操作他人申请！", "info")
+				$.message.alert("提示", "无权操作他人申请！", "info")
 	          }
 			}else{
-				$.messager.alert("提示", "请选中一行信息", "info");
+				$.messager.alert("提示", "请选中一条本人申请信息", "info");
 			}
 		}
 	// 确定修改
