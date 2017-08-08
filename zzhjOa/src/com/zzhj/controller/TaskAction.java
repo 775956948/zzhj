@@ -102,7 +102,7 @@ public class TaskAction {
 	}
 	/**
 	 * 
-	 * @Description: 查询所有任务信息
+	 * @Description: 查看发布人是当前用户的工作任务信息
 	 * @param @param page
 	 * @param @param rows
 	 * @param @return   
@@ -222,11 +222,38 @@ public class TaskAction {
 		Users user = (Users) session.getAttribute("users");
 		return ts.qualifiedTask(id, user.getName());
 	}
-	
+	/**
+	 * 
+	 * @Description: 质检不合格
+	 * @param @param id
+	 * @param @param session
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年8月8日
+	 */
 	@RequestMapping("/UnqualifiedTask.action")
 	@ResponseBody
 	public int UnqualifiedTask(int id,HttpSession session){
 		Users user = (Users) session.getAttribute("users");
 		return ts.UnqualifiedTask(user.getName(),id);
+	}
+	/**
+	 * 
+	 * @Description: 返回所有部门的任务信息
+	 * @param @param rows
+	 * @param @param page
+	 * @param @param departmentId
+	 * @param @return   
+	 * @return Map<String,Object>  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年8月8日
+	 */
+	@RequestMapping("/departmentQueryAll.action")
+	@ResponseBody
+	public Map<String,Object> departmentQueryAll(int rows, int page,int departmentId){
+		return ts.departmentQueryAll(rows, page, departmentId);
 	}
 }

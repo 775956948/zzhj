@@ -88,4 +88,18 @@
   <select id="queryOverDate" resultType="string">
   	select over_date from tasks where id=#{value}
   </select>
+  
+  <select id="departmentQueryAll" parameterType="int" resultMap="tk">
+  	select t.* from tasks t inner join users u on u.name=t.user_name 
+  	<if test="departmentId !=null and departmentId!=0">
+  		where u.departmentId=#{departmentId}
+  	</if>
+  	limit #{startPage},#{rows}
+  </select>
+  <select id="totalCountDepartment" parameterType="int" resultType="int">
+  	select count(t.id) from tasks t inner join users u on u.name=t.user_name 
+  	<if test="value !=null and value!=0">
+  		where u.departmentId=#{value}
+  	</if>
+  </select>
 </mapper>

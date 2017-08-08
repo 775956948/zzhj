@@ -145,7 +145,7 @@ public class TaskService {
 	}
 	/**
 	 * 
-	 * @Description: 查看所有工作任务信息
+	 * @Description: 查看发布人是当前用户的工作任务信息
 	 * @param @param startPage
 	 * @param @param rows
 	 * @param @return   
@@ -289,6 +289,28 @@ public class TaskService {
 	 */
 	private void send(Message mes,String userName){
 		ServerHandler.send(userName, mes);
+	}
+	
+	/**
+	 * 
+	 * @Description: 返回所有部门的任务信息
+	 * @param @param rows
+	 * @param @param page
+	 * @param @param departmentId
+	 * @param @return   
+	 * @return Map<String,Object>  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年8月8日
+	 */
+	public Map<String,Object> departmentQueryAll(int rows,int page,int departmentId){
+		int startPage=(page-1)*rows;
+		List<Task> list= tm.departmentQueryAll(rows, startPage, departmentId);
+		int total =tm.totalCountDepartment(departmentId);
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("total", total);
+		map.put("rows", list);
+		return map;
 	}
 	
 	

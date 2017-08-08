@@ -75,7 +75,7 @@ public interface TaskMapper {
 	int updateTaskSpeed(@Param("taskId")int taskId,@Param("speed")int speed,@Param("taskPhase")String taskPhase);
 	/**
 	 * 
-	 * @Description: 查看所有工作任务信息
+	 * @Description: 查看发布人是当前用户的工作任务信息
 	 * @param @param startPage
 	 * @param @param rows
 	 * @param @return   
@@ -229,4 +229,28 @@ public interface TaskMapper {
 	 * @date 2017年7月5日
 	 */
 	String queryOverDate(int id);
+	/**
+	 * 
+	 * @Description: 查询所有部门的任务信息
+	 * @param @param rows
+	 * @param @param startPage
+	 * @param @param departmentId
+	 * @param @return   
+	 * @return List<Task>  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年8月8日
+	 */
+	List<Task> departmentQueryAll(@Param("rows")int rows,@Param("startPage")int startPage,@Param("departmentId")int departmentId);
+	/**
+	 * 
+	 * @Description: 查询某个部门的任务总条数
+	 * @param @param departmentId
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年8月8日
+	 */
+	int totalCountDepartment(int departmentId);
 }
