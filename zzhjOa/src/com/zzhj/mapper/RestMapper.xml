@@ -27,10 +27,14 @@
   	select count(id) from rest
   </select>
   <select id="queryOwn" parameterType="object" resultMap="ru">
-  	select r.*,u.name as u_name,rt.name as rt_name from rest r inner join users u on u.id=r.user_id inner join rest_type rt on rt.id=r.rest_type_id where u.name=#{userName} limit #{startPage},${rows}
+  	select r.*,u.name as u_name,rt.name as rt_name from rest r inner join users u on u.id=r.user_id inner join rest_type rt on rt.id=r.rest_type_id where u.name=#{userName}  
+  	ORDER BY request_date DESC
+  	limit #{startPage},${rows}
   </select>
   <select id="approverOwn" parameterType="object" resultMap="ru">
-  	select r.*,u.name as u_name,rt.name as rt_name from rest r inner join users u on u.id=r.user_id inner join rest_type rt on rt.id=r.rest_type_id where r.approver=#{userName} limit #{startPage},${rows}
+  	select r.*,u.name as u_name,rt.name as rt_name from rest r inner join users u on u.id=r.user_id inner join rest_type rt on rt.id=r.rest_type_id where r.approver=#{userName}
+  	ORDER BY request_date DESC
+  	limit #{startPage},${rows}
   </select>
   <select id="totalCountApproverOnw" parameterType="string" resultType="int">
   	select count(id) from rest where approver=#{userName}
@@ -53,7 +57,9 @@
   	</where>
   </select>
   <select id="queryAll" parameterType="int" resultMap="ru">
-  	select r.*,u.name as u_name,rt.name as rt_name from rest r inner join users u on u.id=r.user_id inner join rest_type rt on rt.id=r.rest_type_id  limit #{startPage},${rows}
+  	select r.*,u.name as u_name,rt.name as rt_name from rest r inner join users u on u.id=r.user_id inner join rest_type rt on rt.id=r.rest_type_id  
+  	ORDER BY request_date DESC
+  	limit #{startPage},${rows}
   </select>
   
   <update id="restRepulse" parameterType="int">

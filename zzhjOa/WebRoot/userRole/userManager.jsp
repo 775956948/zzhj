@@ -26,7 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<a  class="easyui-linkbutton" iconCls="icon-Remove" plain="true" onclick="deleteUser()">刪除角色</a>
 			<a  class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="updateUser()">分配角色</a>
 			<a class="easyui-linkbutton" iconCls="icon-xd" plain="true" onclick="allotDepartment()">分配部门</a>
-        	<a  class="easyui-linkbutton" iconCls="icon-no" plain="true" style="float: right" onclick="clearUser()">角色消权</a>
+        	<a  class="easyui-linkbutton" iconCls="icon-no" plain="true"  onclick="clearUser()">角色消权</a>
 		</div>
 		<div id="userDd"  class="easyui-dialog" closed=true >
 			<form>
@@ -233,7 +233,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			var row = $("#userDg").datagrid('getSelected');
 			$.post('users/updateDepartment.action', {'userId': row.id,'departmentId':$("#DepartmentName1").val()}, function (data) {
 				if (data != null && data > 0) {
-					$.messager.alert("提示", "修改角色部门成功！", "info");
+					$.messager.alert("提示", "修改角色部门成功！请从新分配角色，定义工作流", "info");
 					$("#userDg").datagrid('reload');
 					$('#DepartmentDIG').dialog({
 						closed: true

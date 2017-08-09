@@ -20,7 +20,7 @@ public class Test {
 	
 	private static TaskService ts = new TaskService();
 	
-/*	public static void main(String[] args) {
+	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		 ApplicationContext ap =new ClassPathXmlApplicationContext(new String[]{"application_context.xml"});
 		 TaskService t = (TaskService) ap.getBean("taskService");
@@ -29,7 +29,8 @@ public class Test {
 		 for (int i = 0; i < list.size(); i++) {
 			System.out.println(list.get(i).getTaskTheme());
 		}
+		
 
-	}*/
+	}
 
 }

@@ -40,10 +40,12 @@
   </update>
   
   <select id="queryAll" parameterType="object" resultMap="tk">
-  	select * from tasks where user_name=#{userName} limit #{startPage},#{rows}
+  	select * from tasks where user_name=#{userName} ORDER BY task_date DESC limit #{startPage},#{rows}
   </select>
   <select id="queryOwn" parameterType="object" resultMap="tk">
-  	select * from tasks t where t.implement=#{userName} or t.recipient=#{userName} LIMIT #{startPage},#{rows}
+  	select * from tasks t where t.implement=#{userName} or t.recipient=#{userName}
+  	ORDER BY task_date DESC
+  	LIMIT #{startPage},#{rows}
   </select>
   <select id="totalCount" resultType="int">
   	select count(id) from tasks
@@ -71,7 +73,9 @@
   	update tasks set success_date=#{successDate},implement_date=#{implementDate} where id=#{id}
   </update>
   <select id="querySuccessTask" parameterType="int" resultMap="tk">
-  	select * from tasks where speed=100 limit #{startPage},#{rows}
+  	select * from tasks where speed=100 
+  	ORDER BY task_date DESC
+  	limit #{startPage},#{rows}
   </select>
   
   <select id="totalCountSuccess" resultType="int">
@@ -94,6 +98,7 @@
   	<if test="departmentId !=null and departmentId!=0">
   		where u.departmentId=#{departmentId}
   	</if>
+  	ORDER BY task_date DESC
   	limit #{startPage},#{rows}
   </select>
   <select id="totalCountDepartment" parameterType="int" resultType="int">

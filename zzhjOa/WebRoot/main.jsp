@@ -225,15 +225,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	}
 		
 	</script>
- 	<link rel="stylesheet" type="text/css" href="css/basic.css"> 
-    <link rel="stylesheet" type="text/css" href="css/addtask.css">
-    <link rel="stylesheet" type="text/css" href="css/queryAllTask.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<link rel="stylesheet" type="text/css" href="css/parent.css">
-	<link rel="stylesheet" type="text/css" href="css/OwnTask.css">
-	<link rel="stylesheet" type="text/css" href="css/requestFeedback.css">
-	<link rel="stylesheet" type="text/css" href="css/feedbackApproval.css">
-	<link rel="stylesheet" type="text/css" href="css/apply.css">
   </head>
 	<body>   
     	<div id="cc" class="easyui-layout" fit=true  style="height:70px">

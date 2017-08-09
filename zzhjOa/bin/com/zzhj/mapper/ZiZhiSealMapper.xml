@@ -20,7 +20,9 @@
 	</resultMap>
 
   <select id="queryAll" resultMap="zs" parameterType="int">
-  	SELECT z.id,z.number,z.projectName,z.requestDate,z.approver,z.overDate,z.state,z.copiesNumber,z.text,z.why,z.pageNumber,z.agent,u.name FROM zi_zhi_seal z INNER JOIN users u ON u.id=z.user_id limit #{startPage},#{rows}
+  	SELECT z.id,z.number,z.projectName,z.requestDate,z.approver,z.overDate,z.state,z.copiesNumber,z.text,z.why,z.pageNumber,z.agent,u.name FROM zi_zhi_seal z INNER JOIN users u ON u.id=z.user_id 
+  	ORDER BY requestDate DESC
+  	limit #{startPage},#{rows}
   </select>
   <insert id="save" parameterType="ziZhiSeal" useGeneratedKeys="true" keyProperty="id">			 
   	insert into zi_zhi_seal(number,projectName,pageNumber,copiesNumber,text,why,user_id,requestDate,approver,state)
@@ -34,7 +36,9 @@
   	delete from zi_zhi_seal where id=#{value}
   </delete>
   <select id="queryOneself" parameterType="object" resultMap="zs">
-  	SELECT z.id,z.number,z.projectName,z.requestDate,z.approver,z.overDate,z.state,z.copiesNumber,z.text,z.why,z.pageNumber,z.agent,u.name FROM zi_zhi_seal z INNER JOIN users u ON u.id=z.user_id where approver=#{userName} limit #{startPage},#{rows}
+  	SELECT z.id,z.number,z.projectName,z.requestDate,z.approver,z.overDate,z.state,z.copiesNumber,z.text,z.why,z.pageNumber,z.agent,u.name FROM zi_zhi_seal z INNER JOIN users u ON u.id=z.user_id where approver=#{userName} 
+  	ORDER BY requestDate DESC
+  	limit #{startPage},#{rows}
   </select>
   <select id="totalCountOneself" parameterType="string" resultType="int">
   	SELECT COUNT(id) FROM zi_zhi_seal where approver=#{value}
@@ -53,7 +57,9 @@
   	 where id=#{sealId}
   </update>
   <select id="approverZiZhiSeal" resultMap="zs" parameterType="int">
-  		SELECT z.id,z.number,z.projectName,z.requestDate,z.approver,z.overDate,z.state,z.copiesNumber,z.text,z.why,z.pageNumber,z.agent,u.name FROM zi_zhi_seal z INNER JOIN users u ON u.id=z.user_id where z.state='已审批' limit #{startPage},#{rows}
+  		SELECT z.id,z.number,z.projectName,z.requestDate,z.approver,z.overDate,z.state,z.copiesNumber,z.text,z.why,z.pageNumber,z.agent,u.name FROM zi_zhi_seal z INNER JOIN users u ON u.id=z.user_id where z.state='已审批' 
+  		ORDER BY requestDate DESC
+  		limit #{startPage},#{rows}
   </select>
   
   <select id="approverTotal" resultType="int">

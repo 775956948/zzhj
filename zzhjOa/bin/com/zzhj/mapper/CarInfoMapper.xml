@@ -18,7 +18,9 @@
 		</association>
 	</resultMap>
 	<select id="getCarInfo" resultMap="ci">
-		select ci.id as ci_id ,ci.requestName,ci.driver,ci.departmentName,ci.requestText,ci.startDate,ci.startNumber,ci.overDate,ci.overNumber,c.id as c_id,c.carNo,c.carName from car_Info ci inner join car c on c.id=ci.carId limit #{start},#{rows}
+		select ci.id as ci_id ,ci.requestName,ci.driver,ci.departmentName,ci.requestText,ci.startDate,ci.startNumber,ci.overDate,ci.overNumber,c.id as c_id,c.carNo,c.carName from car_Info ci inner join car c on c.id=ci.carId 
+		ORDER BY startDate DESC
+		limit #{start},#{rows}
 	</select>
 	<select id="totalCount" resultType="int">
 		select count(id) from car_info
