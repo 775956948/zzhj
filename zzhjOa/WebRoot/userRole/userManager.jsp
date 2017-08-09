@@ -25,7 +25,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	  	<div id="userTb">
 			<a  class="easyui-linkbutton" iconCls="icon-Remove" plain="true" onclick="deleteUser()">刪除角色</a>
 			<a  class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="updateUser()">分配角色</a>
-        	<a  class="easyui-linkbutton" iconCls="icon-no" plain="true" onclick="clearUser()">角色消权</a>
+			<a class="easyui-linkbutton" iconCls="icon-xd" plain="true" onclick="allotDepartment()">分配部门</a>
+        	<a  class="easyui-linkbutton" iconCls="icon-no" plain="true" style="float: right" onclick="clearUser()">角色消权</a>
 		</div>
 		<div id="userDd"  class="easyui-dialog" closed=true >
 			<form>
@@ -45,8 +46,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</table>
 			</form>
 		</div>
-    <table id="userDg"></table>  
-    
+    <table id="userDg"></table>
+	<!--修改框-->
+	<div class="easyui-dialog" title="分配部门" id="DepartmentDIG" closed=true>
+		<ul>
+			<li><input type="text" readonly id="changeUserName"></li>
+			<li><select name="" id="DepartmentName1"></select></li>
+			<li><input type="button" value="确 定 修 改" onclick="changeDepartmentId()"></li>
+		</ul>
+	</div>
+
     <script type="text/javascript">
     	$('#userDg').datagrid({    
    			 url:'users/queryAll.action',
@@ -195,6 +204,44 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			}else{
 				$.messager.alert("提示", "请选中一行信息","info");
 			}
+	}
+	//分配部门
+	function allotDepartment() {
+		var row = $("#userDg").datagrid('getSelected');
+			if (row) {
+				$('#DepartmentDIG').dialog({
+				closed: false,
+				cache: false,
+				modal: true,
+				onOpen: function () {
+				// 初始化部门选择
+					$.post('department/queryAll.action', function (data) {
+						$("#DepartmentName1").empty();
+						for (var i = 0; i < data.length; i++) {
+							$("#DepartmentName1").append("<option value=" + data[i].id + ">" + data[i].name + "</option>")
+						}
+					});
+					$("#changeUserName").val(row.name);
+				}
+				})
+			}else{
+				$.messager.alert("提示", "请先选中一行信息！", "info");
+			}
+	}
+	// 确定修改部门
+	function changeDepartmentId(){
+			var row = $("#userDg").datagrid('getSelected');
+			$.post('users/updateDepartment.action', {'userId': row.id,'departmentId':$("#DepartmentName1").val()}, function (data) {
+				if (data != null && data > 0) {
+					$.messager.alert("提示", "修改角色部门成功！", "info");
+					$("#userDg").datagrid('reload');
+					$('#DepartmentDIG').dialog({
+						closed: true
+					})
+				}else{
+					$.messager.alert("提示", "修改失败，请稍候重试！", "info");
+				}
+			})
 	}
     </script>
   </body>

@@ -1,0 +1,36 @@
+#DepartmentDIG *{
+    margin: 0;
+    padding: 0;
+}
+#DepartmentDIG ul{
+    margin: 10px;
+}
+#DepartmentDIG ul li{
+    margin: 16px 0;
+}
+#DepartmentDIG ul li input{
+    height: 30px;
+    font-size: 18px;
+    text-align: center;
+    width: 200px;
+}
+#DepartmentDIG ul li select{
+    width: 204px;
+    height: 30px;
+    text-align: center;
+}
+#DepartmentDIG ul li input[type=button]{
+    float: none;
+    display: block;
+    height: 40px;
+    width: 65%;
+    background-color: #ff9900;
+    border: none;
+    text-align: center;
+    line-height: 100%;
+    margin: 0 auto;
+    color: white;
+    font-weight: 800;
+    font-size: 20px;
+    cursor: pointer;
+}
