@@ -253,7 +253,7 @@ public class TaskAction {
 	 */
 	@RequestMapping("/departmentQueryAll.action")
 	@ResponseBody
-	public Map<String,Object> departmentQueryAll(int rows, int page,int departmentId){
+	public Map<String,Object> departmentQueryAll(int rows, int page,Integer departmentId){
 		return ts.departmentQueryAll(rows, page, departmentId);
 	}
 }

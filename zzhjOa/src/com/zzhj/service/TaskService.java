@@ -303,7 +303,7 @@ public class TaskService {
 	 * @author 小白
 	 * @date 2017年8月8日
 	 */
-	public Map<String,Object> departmentQueryAll(int rows,int page,int departmentId){
+	public Map<String,Object> departmentQueryAll(int rows,int page,Integer departmentId){
 		int startPage=(page-1)*rows;
 		List<Task> list= tm.departmentQueryAll(rows, startPage, departmentId);
 		int total =tm.totalCountDepartment(departmentId);

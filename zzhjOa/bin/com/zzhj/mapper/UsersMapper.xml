@@ -140,4 +140,7 @@
 	<update id="removeRole" parameterType="int">
 		update users set role_id = null where id=#{value}
 	</update>
+	<update id="updateDepartment" parameterType="int">
+		update users set departmentId=#{departmentId} where id=#{userId} 
+	</update>
 </mapper>

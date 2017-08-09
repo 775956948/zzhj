@@ -217,4 +217,20 @@ public class UsersAction {
 	public int removeRole(int id){
 		return us.removeRole(id);
 	}
+	/**
+	 * 
+	 * @Description: 修改用户部门
+	 * @param @param userId
+	 * @param @param departmentId
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年8月9日
+	 */
+	@RequestMapping("/updateDepartment.action")
+	@ResponseBody
+	public int updateDepartment(int userId,int departmentId){
+		return us.updateDepartment(userId, departmentId);
+	}
 }

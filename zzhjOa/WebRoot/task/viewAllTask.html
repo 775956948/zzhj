@@ -115,7 +115,7 @@
 <script>
     //初始化表格  查看任务
     $('#ViewAllTaskDg').datagrid({
-        url: '',
+        url: 'task/departmentQueryAll.action',
         pagination: true,
         singleSelect:true,  //仅可以选中一行
         toolbar:"#buttonBarViewAll",  //使上方控制器和表格融为一体
@@ -206,12 +206,12 @@
     function searchTask(){
        var searchDepartment =$("#departmentName").val();
         $('#ViewAllTaskDg').datagrid({
-            url: '',
+            url: 'task/departmentQueryAll.action',
             pagination: true,
             singleSelect:true,  //仅可以选中一行
             toolbar:"#buttonBarViewAll",  //使上方控制器和表格融为一体
             queryParams: {
-                'departmentName': searchDepartment
+                'departmentId': searchDepartment
             },
             onDblClickRow:function() {
                 ViewAllTaskDIG();

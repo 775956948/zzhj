@@ -241,7 +241,7 @@ public interface TaskMapper {
 	 * @author 小白
 	 * @date 2017年8月8日
 	 */
-	List<Task> departmentQueryAll(@Param("rows")int rows,@Param("startPage")int startPage,@Param("departmentId")int departmentId);
+	List<Task> departmentQueryAll(@Param("rows")int rows,@Param("startPage")int startPage,@Param("departmentId")Integer departmentId);
 	/**
 	 * 
 	 * @Description: 查询某个部门的任务总条数
@@ -252,5 +252,5 @@ public interface TaskMapper {
 	 * @author 小白
 	 * @date 2017年8月8日
 	 */
-	int totalCountDepartment(int departmentId);
+	int totalCountDepartment(Integer departmentId);
 }

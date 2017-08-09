@@ -208,4 +208,16 @@ public interface UsersMapper {
 	 * @date 2017年8月7日
 	 */
 	int removeRole(int id);
+	/**
+	 * 
+	 * @Description: 修改用户部门
+	 * @param @param userId
+	 * @param @param departmentId
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年8月9日
+	 */
+	int updateDepartment(@Param("userId")int userId,@Param("departmentId")int departmentId);
 }

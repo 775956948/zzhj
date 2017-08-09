@@ -144,11 +144,29 @@ public class UsersService {
 		map.put("total", total);
 		return map;
 	}
-	
+	/**
+	 * 
+	 * @Description: 根据部门返回部门员工名称
+	 * @param @param departmentName
+	 * @param @return   
+	 * @return List<String>  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年8月9日
+	 */
 	public List<String> querySubclass(String departmentName){
 		return um.querySubclass(departmentName);
 	}
-	
+	/**
+	 * 
+	 * @Description: 返回当前部门主管
+	 * @param @param departmentName
+	 * @param @return   
+	 * @return List<String>  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年8月9日
+	 */
 	public List<String> querySubZhuGuan(String departmentName){
 		return um.querySubZhuGuan(departmentName);
 	}
@@ -179,5 +197,19 @@ public class UsersService {
 	 */
 	public int removeRole(int id){
 		return um.removeRole(id);
+	}
+	/**
+	 * 
+	 * @Description: 修改用户部门
+	 * @param @param userId
+	 * @param @param departmentId
+	 * @param @return   
+	 * @return int  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年8月9日
+	 */
+	public int updateDepartment(int userId,int departmentId){
+		return um.updateDepartment(userId, departmentId);
 	}
 }
