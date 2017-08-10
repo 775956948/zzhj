@@ -212,4 +212,17 @@ public class UsersService {
 	public int updateDepartment(int userId,int departmentId){
 		return um.updateDepartment(userId, departmentId);
 	}
+	/**
+	 * 
+	 * @Description: 根据用户名返回用户信息
+	 * @param @param userName
+	 * @param @return   
+	 * @return Users  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年8月10日
+	 */
+	public Users queryOneUserInfo(String userName){
+		return um.queryOneUserInfo(userName);
+	}
 }

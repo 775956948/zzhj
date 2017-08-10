@@ -233,4 +233,26 @@ public class UsersAction {
 	public int updateDepartment(int userId,int departmentId){
 		return us.updateDepartment(userId, departmentId);
 	}
+	/**
+	 * 
+	 * @Description: 切换账号
+	 * @param @param userName
+	 * @param @return   
+	 * @return Users  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年8月10日
+	 */
+	@RequestMapping("/queryOneUserInfo.action")
+	public String queryOneUserInfo(String userName){
+		Users user =us.queryOneUserInfo(userName);
+		String view="";
+		if(user!=null && !user.getName().equals("")){
+			view="redirect: main.jsp";
+		}else{
+			view="redirect: error/500.html";
+		}
+		return view;
+		
+	}
 }

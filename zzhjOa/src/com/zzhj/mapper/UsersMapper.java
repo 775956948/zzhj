@@ -220,4 +220,15 @@ public interface UsersMapper {
 	 * @date 2017年8月9日
 	 */
 	int updateDepartment(@Param("userId")int userId,@Param("departmentId")int departmentId);
+	/**
+	 * 
+	 * @Description: 根据用户名返回用户信息
+	 * @param @param userName
+	 * @param @return   
+	 * @return Users  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年8月10日
+	 */
+	Users queryOneUserInfo(String userName);
 }
