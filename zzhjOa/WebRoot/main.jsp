@@ -223,7 +223,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	         var audioEle = document.getElementById("audio");
 				  audioEle.play();
 	}
-		
+	//判断用户
+		var UserName4 = $('#user li h3').text();
+		console.log(UserName4);
+		var reg1 = /[^:]*:([^:]*)/;
+		UserName4 = UserName4.replace(reg1, "$1");
+
+		if(UserName4.indexOf("张璇")<0){
+			$("#XXUL").css({"display":"none"})
+		}
 	</script>
   </head>
 	<body>   
@@ -241,7 +249,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<c:if test="${users.imageName !=null}">
 					<p style=" position: absolute; left:-20px; top:-15px;"> <img alt="" src="image/${users.imageName}" width="50px;" style="border-radius:25px;"></p>
 				</c:if>
-					<li><h3>当前用户:${users.name }</h3></li>
+				<li id="EXITbutton"><h3 style="position: relative">当前用户:${users.name }</h3>
+					<ul id="XXUL" style=" position: absolute;left: 40px;top: 43px;">
+						<li> 切 换 帐 号 ？</li>
+						<li class="userYH"><a href="">地理信息部：张璇(地信)</a></li>
+						<li class="userYH"><a href="">测绘部：用户(测绘)</a></li>
+					</ul>
+				</li>
 					<li><h4>${message }</h4></li>
 					<li><h4 onclick="exit()" style="cursor:pointer">退出登陆</h4></li>
 				</ul>

@@ -11,7 +11,7 @@
 		&nbsp;&nbsp;
 		部门：<select id="departmentType"></select>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		姓名：<input id="search" class="easyui-searchbox" style="width:300px mar;" ></input> 
+		姓名：<input id="search" class="easyui-searchbox" style="width:300px " />
 		&nbsp;&nbsp;
 		<input type="button" value="搜索" onclick="searchUserInfoDo()">
 	</div>
@@ -19,7 +19,7 @@
 	<script type="text/javascript">
 		$.post('department/departmentInfo.action',function(data){
 			$("#departmentType").empty();
-			$("#departmentType").append("<option value=0 >全部</option>")
+			$("#departmentType").append("<option value='0'>全部</option>");
 			for (var i = 0; i < data.length; i++) {
 				$("#departmentType").append("<option value="+data[i].id+">"+data[i].name+"</option>")
 			}
@@ -46,7 +46,7 @@
 		});
 		function searchUserInfoDo(){
 			var departmentId=$("#departmentType").val();
-			var userName =$("#search").val();
+			var userSearchName =$("#search").val();
 			$('#userInfoDg').datagrid({
 				url :'users/searchUserInfo.action',
 				fitColumns : true,
@@ -55,7 +55,7 @@
 				singleSelect : true,
 	 			queryParams: {
 						'departmentId.id':departmentId,
-						'name':userName
+						'name':userSearchName
 				},
 				columns : [ [ 
 				              {field : 'id',title : '编号',hidden: true}, 

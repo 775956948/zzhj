@@ -1,153 +1,214 @@
-	.logo_btn{
-		    float: left;
-		    display: block;
-			width: 163px;
-		}
-		.logo_btn img{
-			width: 100%;
-		}
-		.main_span{
-			line-height: 62px;
-		    font-size: 18px;
-		    display: inline-block;
-		} 
-		#user{
-			position: absolute;
-			right: 50px;
-			top:10px;
-		}
-		#user li{
-			list-style: none;
-			line-height: 20px;
-			margin: 0px;
-			padding: 0px;
-		}
-		#cc{
-			overflow: hidden;
-		}
-		#user h3,h4{
-			margin: 0px;
-		}
+.logo_btn {
+    float: left;
+    display: block;
+    width: 163px;
+}
 
-		/*-------rest.jsp-----*/
-		#addRest li span {
-			display:inline-block;
-			width: 50px;
-		}
-		.marginLeft{
-			margin-left: 40px;
-		}
-		/*-------main.jsp-----*/
-		#message{
-			clear: right;
-			position: absolute;
-			top: 20px;
-			left:650px;
-			width: 200px;;
-			height: 100px;;
-		}
-		#mgeTitle{
-			cursor: pointer;
-		}
-		#mgeInfo{
-			color:white;
-			position:absolute;
-			left:800px;
-			top: 5px;
-/* 		 	background-color:; */
-			width: 200px;
-			height:70px; 
-			overflow: auto;
-		}
-		#mgeInfo p{
-			border: 1px solid white;
-			padding-top:5px;
-			padding-bottom:5px;
-			margin:0 auto;
-			width: auto;
-			text-align: center;
-		}
-		#echart{
-			width: 48.5%;
-			height: 500px;
-			background-color:white;
-			float: left;
-			margin-left: 8px;
-			margin-top: 1px;
-			margin-bottom: 10px;
-			border-right: 3px solid black;
-			boder-radius:10px;
-			
-		
-		}
-		#notice{
-			width: 48.5%;
-			height: 500px;
-			background-color:white;
-			float: left;
-			margin-left: 8px;
-			margin-top: 1px;
-			margin-bottom: 10px;
-		
-		}
-		#south{
-			width: 100%;
-			height: 70%;
-			margin-bottom: 20px;
-		}
-	
-		#north{
-			width: 100%;
-			height: 30%;
-			border:3px solid #E9E9E9;
-			margin-bottom: 20px;
-			
-		}
-		#tianQi{
-			text-align: center;
-			background-color: 5F9FDD;
-			width: 100%;
-			height: auto;
-			margin:0px;
-			/* border-radius:10px; */
-		}
-		#listMes{
-			margin: 0px;
-			padding: 0px;
-		}
-		#listMes li{
-			font-size: 14px;
-			text-align:center;
-			margin-top: 10px;
-			text-decoration: underline;	
-		}
-		#listMes li:HOVER {
-			cursor: pointer;
-		}
-		/*-------writeUser.jsp-----*/
-		#userInfo input{
-			/*margin-right: 50px;*/
-			/*margin-left: 10px;*/
-		}
-		#userInfo{
-			width: 700px;
-			margin: auto;
-			padding-top: 20px;
-		}
-		#userInfo button{
-		        border:none;
-		        background-color: #e68900;
-                color: #CCC;
-                width:83px;
-                height:35px;
-                line-height:100%;
-               font-weight: 700;
-               font-size: 13px;
-               text-align: center;
-               border-radius: 5px;
-               position: relative;
-               left:20em;
-			   cursor: pointer;
-		}
+.logo_btn img {
+    width: 100%;
+}
+
+.main_span {
+    line-height: 62px;
+    font-size: 18px;
+    display: inline-block;
+}
+
+#user {
+    position: absolute;
+    right: 50px;
+    top: 10px;
+}
+
+#user li {
+    list-style: none;
+    line-height: 20px;
+    margin: 0px;
+    padding: 0px;
+}
+
+#cc {
+    overflow: hidden;
+}
+
+#user h3, h4 {
+    margin: 0px;
+}
+
+#EXITbutton {
+    cursor: pointer;
+}
+
+#XXUL {
+    list-style: none;
+    height: 0;
+    overflow: hidden;
+    background: white;
+    border-radius: 8px;
+    border: 0 solid transparent;
+    margin: 0;
+    padding: 0;
+    color: transparent;
+    box-shadow: 2px 2px 5px #888888;
+    transition: 0.5s ease-out 0.8s;
+    font-size: 13px;
+}
+
+#EXITbutton:hover #XXUL {
+    height: 72px;
+    overflow: hidden;
+    color: #0b0b0b;
+    border: 1px solid #00a2e9;
+}
+
+.userYH {
+    text-align: center;
+    opacity: 0;
+    padding: 4px 9px 4px 9px !important;
+    transition: 0.3s ease-out 0s;
+}
+
+#XXUL:hover .userYH {
+    opacity: 1;
+}
+
+.userYH:hover {
+    background-color: #00a2e9;
+}
+
+/*-------rest.jsp-----*/
+#addRest li span {
+    display: inline-block;
+    width: 50px;
+}
+
+.marginLeft {
+    margin-left: 40px;
+}
+
+/*-------main.jsp-----*/
+#message {
+    clear: right;
+    position: absolute;
+    top: 20px;
+    left: 650px;
+    width: 200px;;
+    height: 100px;;
+}
+
+#mgeTitle {
+    cursor: pointer;
+}
+
+#mgeInfo {
+    color: white;
+    position: absolute;
+    left: 800px;
+    top: 5px;
+    /* 		 	background-color:; */
+    width: 200px;
+    height: 70px;
+    overflow: auto;
+}
+
+#mgeInfo p {
+    border: 1px solid white;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 0 auto;
+    width: auto;
+    text-align: center;
+}
+
+#echart {
+    width: 48.5%;
+    height: 500px;
+    background-color: white;
+    float: left;
+    margin-left: 8px;
+    margin-top: 1px;
+    margin-bottom: 10px;
+    border-right: 3px solid black;
+    boder-radius: 10px;
+
+}
+
+#notice {
+    width: 48.5%;
+    height: 500px;
+    background-color: white;
+    float: left;
+    margin-left: 8px;
+    margin-top: 1px;
+    margin-bottom: 10px;
+
+}
+
+#south {
+    width: 100%;
+    height: 70%;
+    margin-bottom: 20px;
+}
+
+#north {
+    width: 100%;
+    height: 30%;
+    border: 3px solid #E9E9E9;
+    margin-bottom: 20px;
+
+}
+
+#tianQi {
+    text-align: center;
+    background-color: 5 F9FDD;
+    width: 100%;
+    height: auto;
+    margin: 0px;
+    /* border-radius:10px; */
+}
+
+#listMes {
+    margin: 0px;
+    padding: 0px;
+}
+
+#listMes li {
+    font-size: 14px;
+    text-align: center;
+    margin-top: 10px;
+    text-decoration: underline;
+}
+
+#listMes li:HOVER {
+    cursor: pointer;
+}
+
+/*-------writeUser.jsp-----*/
+#userInfo input {
+    /*margin-right: 50px;*/
+    /*margin-left: 10px;*/
+}
+
+#userInfo {
+    width: 700px;
+    margin: auto;
+    padding-top: 20px;
+}
+
+#userInfo button {
+    border: none;
+    background-color: #e68900;
+    color: #CCC;
+    width: 83px;
+    height: 35px;
+    line-height: 100%;
+    font-weight: 700;
+    font-size: 13px;
+    text-align: center;
+    border-radius: 5px;
+    position: relative;
+    left: 20em;
+    cursor: pointer;
+}
 		
 		
