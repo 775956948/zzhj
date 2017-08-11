@@ -43,7 +43,7 @@
 	    $('#becomeTime').datebox({ required:true,editable:false});
 	    $('#birthTime').datebox({ required:true,editable:false});
 
-		}) 
+
 		
 		function submitInfo(){
 	 		var number=0;
@@ -66,8 +66,86 @@
 	 	function userInfoImg(){
 	 		$("#userInfo input[type='file']").show();
 			$("#userImage").hide();
-			$("#userInfoimg").hide(); 
+			$("#userInfoimg").show();
+			imgCJ();
 	 	}
+
+	var optionsT =
+		{
+			thumbBox: '.thumbBox',
+			spinner: '.spinner',
+			imgSrc: '../images/avatar.png'
+		};
+	var cropper = $('.imageBox').cropbox(optionsT);
+		$('#upload-file').on('change', function(){
+			var reader = new FileReader();
+			reader.onload = function(e) {
+			optionsT.imgSrc = e.target.result;
+			cropper = $('.imageBox').cropbox(optionsT);
+		};
+		reader.readAsDataURL(this.files[0]);
+		this.files = [];
+	});
+	var imgT;
+		$('#btnCrop').on('click', function(){
+			imgT = cropper.getDataURL();
+			$('.cropped').html('');
+			$('.cropped').append('<img src="'+imgT+'" align="absmiddle" style="width:64px;margin-top:4px;border-radius:64px;box-shadow:0px 0px 12px #7E7E7E;" ><p>64px*64px</p>');
+			$('.cropped').append('<img src="'+imgT+'" align="absmiddle" style="width:128px;margin-top:4px;border-radius:128px;box-shadow:0px 0px 12px #7E7E7E;"><p>128px*128px</p>');
+			$('.cropped').append('<img src="'+imgT+'" align="absmiddle" style="width:180px;margin-top:4px;border-radius:180px;box-shadow:0px 0px 12px #7E7E7E;"><p>180px*180px</p>');
+			$("#imgT").attr('src',imgT);
+			$("#DownloadTX").attr("href",imgT);
+
+		});
+		$('#btnZoomIn').on('click', function(){
+			cropper.zoomIn();
+		});
+		$('#btnZoomOut').on('click', function(){
+			cropper.zoomOut();
+		});
+	// 弹出裁剪框
+	function imgDIG(){
+		$("#imgDig").dialog({
+			closed:false,
+			modal:true
+		})
+	}
+	//弹出选项 修改框
+	function imgCJ(){
+		$("#CJPD").dialog({
+			closed:false,
+			modal:true
+		});
+		$("#imgDig").dialog({
+			closed:true,
+			modal:true
+		});
+	}
+	//弹出头像下载框
+	function TXdownload(){
+		$("#TXdownload").dialog({
+			closed:false,
+			modal:true
+		});
+		$("#CJPD").dialog({
+			closed:true,
+			modal:true
+		});
+		$("#imgDig").dialog({
+			closed:true,
+			modal:true
+		})
+	}
+	function UploadTX(){
+		$("#userInfo input[type='file']").click();
+		$("#CJPD").dialog({
+			closed:true,
+			modal:true
+		})
+	}
+
+	})
+
 	</script>	
 	
 												 
@@ -104,6 +182,39 @@
 		</tr>
 	</table> 
 	</form>
-	
+
+	<div class="easyui-dialog" id="CJPD" title="头像修改" closed=true>
+		<input type="button" value="裁剪头像"  onclick="imgDIG()">
+		<input type="button" value="已裁剪完毕准备上传" style="width: 200px" onclick="UploadTX()" >
+	</div>
+
+	<div class="easyui-dialog" id="TXdownload" title="头像下载" closed=true >
+		<a href="" download="${users.name}" id="DownloadTX" target="_blank">
+			<img src=""  name="" id="imgT"  style="width:180px;border-radius:180px;box-shadow:0 0 12px #7E7E7E;display: block;margin: 0 auto;margin-top:4px ">
+		</a>
+		<p>请点击该图片下载到本地或者鼠标右键另存，后上传！</p>
+	</div>
+
+	<div class="easyui-dialog" id="imgDig" closed=true title="裁剪头像">
+		<div class="container">
+			<div class="imageBox">
+				<div class="thumbBox"></div>
+				<div class="spinner" style="display: none">Loading...</div>
+			</div>
+			<div class="action">
+			<!-- <input type="file" id="file" style=" width: 200px">-->
+				<div class="new-contentarea tc">
+				<a href="javascript:void(0)" class="upload-img">
+					<label for="upload-file">上传图像</label>
+				</a>
+				<input type="file" class="" name="upload-file" id="upload-file" />
+			</div>
+				<input type="button" id="btnCrop"  class="Btnsty_peyton" value="裁切" onclick="TXdownload()">
+				<input type="button" id="btnZoomIn" class="Btnsty_peyton" value="+"  >
+				<input type="button" id="btnZoomOut" class="Btnsty_peyton" value="-" >
+			</div>
+			<div class="cropped"></div>
+		</div>
+	</div>
 </body>
 </html>

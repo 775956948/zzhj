@@ -31,8 +31,12 @@
 			pagination : true,
 			singleSelect : true,
 			columns : [ [ 
-			              {field : 'id',title : '编号',hidden: true}, 
-			              {field : 'name',title : '用户名',width:400}, 
+			              {field : 'id',title : '编号',hidden: true},
+	                      {field : 'imageName',title : '用户头像',formatter : function(value){
+                               var ImgTX= '<img src="../image/'+value+'"  style="width:50px;height: 50px">';
+								return ImgTX;
+	                             },width:54},
+	                      {field : 'name',title : '用户名',width:400},
 			              {field : 'departmentId',title : '所属部门',width:400,formatter : function(value) {return value.name;}}, 
 			              {field : 'roleId',title : '所属角色',width:400,formatter : function(values) {
 								if (typeof (values) == "undefined" || values == null) {

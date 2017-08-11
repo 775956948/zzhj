@@ -210,5 +210,7 @@
     left: 20em;
     cursor: pointer;
 }
-		
-		
+
+#userInfoTb .datagrid-row{
+    height: 54px !important;
+}

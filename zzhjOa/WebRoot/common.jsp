@@ -11,9 +11,11 @@
 	<link rel="stylesheet" type="text/css" href="css/feedbackApproval.css">
 	<link rel="stylesheet" type="text/css" href="css/apply.css">
 	<link rel="stylesheet" type="text/css" href="css/userManager.css">
+	<link rel="stylesheet" href="css/styleTX.css" type="text/css" />
 	<script type="text/javascript" src="easyui/jquery.min.js"></script>
 	<script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
 	<script type="text/javascript" src="easyui/locale/easyui-lang-zh_CN.js"></script>
 	<script type="text/javascript" src="js/echarts.js"></script>
+	<script type="text/javascript" src="js/cropbox.js"></script>
 
 	
