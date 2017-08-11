@@ -42,35 +42,33 @@
 #XXUL {
     list-style: none;
     height: 0;
-    overflow: hidden;
+    overflow: scroll;
     background: white;
-    border-radius: 8px;
     border: 0 solid transparent;
     margin: 0;
     padding: 0;
     color: transparent;
     box-shadow: 2px 2px 5px #888888;
-    transition: 0.5s ease-out 0.8s;
+    transition: 0.5s ease-out 0.5s;
     font-size: 13px;
+    overflow-x:hidden;
+    width: 150px;
+    text-align: center;
 }
 
 #EXITbutton:hover #XXUL {
     height: 72px;
-    overflow: hidden;
     color: #0b0b0b;
     border: 1px solid #00a2e9;
 }
 
 .userYH {
     text-align: center;
-    opacity: 0;
     padding: 4px 9px 4px 9px !important;
     transition: 0.3s ease-out 0s;
 }
 
-#XXUL:hover .userYH {
-    opacity: 1;
-}
+
 
 .userYH:hover {
     background-color: #00a2e9;

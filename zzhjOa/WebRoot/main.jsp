@@ -205,6 +205,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			 
 		 }) 
 	}
+	//切换用户
+	function QH(name){
+		 $.post("users/queryOneUserInfo.action",{userName:name},function(data){
+			 var url ="http://"+window.location.host+"/zzhjOa/";
+			 window.location.href=url+data;
+		 }) 
+	}
 	//工作任务通知方法
 	function toTask(json){
 	  $("#message").show();
@@ -223,22 +230,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	         var audioEle = document.getElementById("audio");
 				  audioEle.play();
 	}
-	//判断用户
-		var UserName4 = $('#user li h3').text();
-		console.log(UserName4);
-		var reg1 = /[^:]*:([^:]*)/;
-		UserName4 = UserName4.replace(reg1, "$1");
 
-		if(UserName4.indexOf("张璇")<0){
-			$("#XXUL").css({"display":"none"})
-		}
 	</script>
   </head>
 	<body>   
     	<div id="cc" class="easyui-layout" fit=true  style="height:70px">
     	<audio src="mp3/4331.mp3" id="audio"></audio>
     	<!-- 上侧 -->
-    	<div data-options="region:'north'" style="height:80px;/* background-color: E0ECFF; */background-color: gray; " id="title" >
+    	<div data-options="region:'north'" style="height:80px;/* background-color: E0ECFF; */background-color: gray;" id="title" >
     		<a  class="logo_btn"><img src="image/logo_02.png"/></a>
     		<span class="main_span">中兆恒基Oa办公系统</span>
     	 	<div id="message" > 
@@ -250,11 +249,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<p style=" position: absolute; left:-20px; top:-15px;"> <img alt="" src="image/${users.imageName}" width="50px;" style="border-radius:25px;"></p>
 				</c:if>
 				<li id="EXITbutton"><h3 style="position: relative">当前用户:${users.name }</h3>
-					<ul id="XXUL" style=" position: absolute;left: 40px;top: 43px;">
-						<li> 切 换 帐 号 ？</li>
-						<li class="userYH"><a href="">地理信息部：张璇(地信)</a></li>
-						<li class="userYH"><a href="">测绘部：用户(测绘)</a></li>
+ 				<c:if test="${users.name=='张璇(地信)'|| users.name=='张璇(测绘)'|| users.name=='张璇(经纪)'}"> 
+					<ul id="XXUL" style=" position: absolute;left: -122px;top: -19px;">
+						<li class="userYH" onclick="QH('张璇(地信)')">张璇(地信)</li>
+						<li class="userYH" onclick="QH('张璇(测绘)')">张璇(测绘)</li>
+						<li class="userYH" onclick="QH('张璇(经纪)')">张璇(经纪)</li>
 					</ul>
+				</c:if> 
 				</li>
 					<li><h4>${message }</h4></li>
 					<li><h4 onclick="exit()" style="cursor:pointer">退出登陆</h4></li>

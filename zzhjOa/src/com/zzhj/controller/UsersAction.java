@@ -244,13 +244,15 @@ public class UsersAction {
 	 * @date 2017Äê8ÔÂ10ÈÕ
 	 */
 	@RequestMapping("/queryOneUserInfo.action")
-	public String queryOneUserInfo(String userName){
+	@ResponseBody
+	public String queryOneUserInfo(String userName,HttpSession session){
 		Users user =us.queryOneUserInfo(userName);
 		String view="";
 		if(user!=null && !user.getName().equals("")){
-			view="redirect: main.jsp";
+			view="main.jsp";
+			session.setAttribute("users", user);
 		}else{
-			view="redirect: error/500.html";
+			view="error/500.html";
 		}
 		return view;
 		

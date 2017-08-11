@@ -106,7 +106,7 @@
 	</update>
 	
 	<select id="searchUserInfo" parameterType="object" resultMap="ur">
-			select u.name,u.id,u.phone,d.name as d_name,r.name as r_name  from users u inner join department d on u.departmentId=d.id inner join roles r on r.id=u.role_id
+			select u.image_name,u.name,u.id,u.phone,d.name as d_name,r.name as r_name  from users u inner join department d on u.departmentId=d.id inner join roles r on r.id=u.role_id
 			<where>
 				<if test="user.departmentId!=null and user.departmentId.id!=0">
 					and u.departmentId=#{user.departmentId.id}
