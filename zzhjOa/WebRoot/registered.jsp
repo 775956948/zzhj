@@ -20,6 +20,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <!--
     <link rel="stylesheet" type="text/css" href="styles.css">
     -->
+    <link rel="shortcut icon" type="image/x-icon" href="image/oa.ico" media="screen" />
     <link rel="stylesheet" href="easyui/themes/icon.css">
     <link rel="stylesheet" href="easyui/themes/default/easyui.css">
     <script type="text/javascript" src="easyui/jquery.min.js"></script>
