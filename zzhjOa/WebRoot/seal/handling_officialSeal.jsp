@@ -113,17 +113,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			}else{
 				$('#hanhling_official_tanc').dialog({
 					title : '经办',
-					height : 400,
+					height : 460,
 					closed : false,
 					cache : false,
 					modal : true,
 					onOpen:function(){
 						var  aa = row.why;
 						if(aa=="是"){
-							$("#bRadioYes").prop("checked", true)
+							$("#bRadioYes").prop("checked", true);
 							$("#bRadioNo").prop("checked", false)
 						}else{
-							$("#bRadioYes").prop("checked", false)
+							$("#bRadioYes").prop("checked", false);
 							$("#bRadioNo").prop("checked", true)
 						}
 						$("input[name = id]").val(row.id);				
