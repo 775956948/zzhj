@@ -102,6 +102,7 @@ INSERT INTO FUNCTION (TEXT,url,parentId,state) VALUES('员工通讯录','HRManag
 INSERT INTO FUNCTION (TEXT,url,parentId,state) VALUES('发布任务','task\\addtask.html',3,'open')
 INSERT INTO FUNCTION (TEXT,url,parentId,state) VALUES('下达任务','task\\queryOwnTask.html',3,'open')
 INSERT INTO FUNCTION (TEXT,url,parentId,state) VALUES('查看所有任务','task\\queryAllTask.html',3,'open')
+INSERT INTO FUNCTION (TEXT,url,parentId,state) VALUES('所有部门任务','task\\viewAllTask.html',3,'open')
 INSERT INTO FUNCTION (TEXT,url,parentId,state) VALUES('接收任务','task\\OwnTask.html',3,'open')
 INSERT INTO FUNCTION (TEXT,url,parentId,state) VALUES('审批反馈信息','task\\feedbackApproval.html',3,'open')
 INSERT INTO FUNCTION (TEXT,url,parentId,state) VALUES('申请任务反馈信息','task\\requestFeedback.html',3,'open')
@@ -113,6 +114,7 @@ INSERT INTO FUNCTION (TEXT,url,parentId,state) VALUES('办公用品审批','mana
 INSERT INTO FUNCTION (TEXT,url,parentId,state) VALUES('办公用品管理','manageGoods\\viewAllItems.html',4,'open')
 INSERT INTO FUNCTION (TEXT,url,parentId,state) VALUES('请假审批','kaoQin\\ApprovalLeave.html',1,'open')
 INSERT INTO FUNCTION (TEXT,url,parentId,state) VALUES('请假管理','kaoQin\\manageLeave.html',1,'open')
+
 
 
 
@@ -140,7 +142,7 @@ INSERT INTO function_roles(role_id,function_id) VALUES(1,54)
 INSERT INTO function_roles(role_id,function_id) VALUES(1,55)
 INSERT INTO function_roles(role_id,function_id) VALUES(1,56)
 INSERT INTO function_roles(role_id,function_id) VALUES(1,57)
-
+INSERT INTO function_roles(role_id,function_id) VALUES(1,58)
 
 
 SELECT * FROM FUNCTION
