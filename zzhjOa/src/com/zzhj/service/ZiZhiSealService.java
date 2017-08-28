@@ -26,6 +26,7 @@ public class ZiZhiSealService {
 	ZiZhiSealMapper  zs;
 	@Resource(name="usersMapper")
 	UsersMapper um;
+	
 	public Map<String,Object> queryAll(int page,int rows){
 		int startPage =(page-1)*rows;
 		Map<String,Object> map = new HashMap<String,Object>();
@@ -37,7 +38,16 @@ public class ZiZhiSealService {
 	}
 	
 	public int save(ZiZhiSeal z){
-		Users user =um.userId(z.getUserId().getDepartmentId().getName());
+		Users user=null;
+		String roleName = z.getUserId().getRoleId().getName();
+		if(roleName.equals("行政")||roleName.equals("人事")||roleName.equals("财务")||roleName.equals("副总")){
+			user =um.queryBoss();
+		}else if(roleName.equals("行政助理")||roleName.equals("人事助理")||roleName.equals("财务助理")){
+			Users parentUser = um.parentId(z.getUserId().getId());
+			user=um.query(parentUser.getParentId());
+		}else{
+			user =um.userId(z.getUserId().getDepartmentId().getName());
+		}
 		Date today=new Date();
 		SimpleDateFormat f=new SimpleDateFormat("yyyy-MM-dd");
 		String time=f.format(today);

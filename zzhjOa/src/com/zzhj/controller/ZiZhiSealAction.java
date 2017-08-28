@@ -22,6 +22,17 @@ public class ZiZhiSealAction {
 
 	@Resource(name="ziZhiSealService")
 	ZiZhiSealService zs;
+	/**
+	 * 
+	 * @Description: 查看所有信息
+	 * @param @param page
+	 * @param @param rows
+	 * @param @return   
+	 * @return Map<String,Object>  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年8月21日
+	 */
 	@RequestMapping("/queryAll.action")
 	@ResponseBody
 	public Map<String,Object> queryAll(int page,int rows){

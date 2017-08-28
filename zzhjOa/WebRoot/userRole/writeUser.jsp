@@ -7,148 +7,7 @@
 
 <title>完善用户信息</title>
 </head>
-<body>
-	<script type="text/javascript">
-	 	$(function(){
-	 		$("#userInfo input[type='file']").hide();
-			$("#userIamge").hide();
-			$("#userInfoimg").hide();
-			var id =$("#updateUserInfo").val();
-			$.post("users/queryUserInfoOne.action",{'id':id},function(data){
-				$("input[name='name']").val(data.name);
-				$("input[name='password']").val(data.password);
-				$("input[name='file']").val(data.imageName);
-				$("input[name='phone']").val(data.phone);
-	            $("#joinTime").datebox('setValue',data.inductionDate);
-	            $("#becomeTime").datebox('setValue',data.positiveDate);
-	            $("#birthTime").datebox('setValue',data.birthday);
-				if(data.sex!=null){
-					if(data.sex=="男"){
-						$("#male").attr("checked","checked")
-					}else{
-						$("#female").attr("checked","checked")
-					}
-				}
-				if(data.imageName!=""&&data.imageName!=null){
-					$("#userInfo input[type='file']").hide();
-					$("#userImage").show();
-					$("#userInfoimg").show();
-				}else{
-					$("#userInfo input[type='file']").show();
-					$("#userImage").hide();
-					$("#userInfoimg").hide();
-				}
-			})
-       	$('#joinTime').datebox({ required:true,editable:false});
-	    $('#becomeTime').datebox({ required:true,editable:false});
-	    $('#birthTime').datebox({ required:true,editable:false});
-
-
-		
-		function submitInfo(){
-	 		var number=0;
-	 		$("#userInfo input").each(function(){
-	 			var val =$(this).val();
-	 			if(val==""||val==undefined||val==null){
-	 				number=number+1;
-	 			}
-	 		})
-	 		if(number>1){
-	 			$.messager.alert("提示", "信息填寫不完整", "info");
-	 		}else{
-	 			$.messager.confirm('确认','修改后需重新登陆',function(r){
-	 			    if (r){    
-	 			    	$("#userInfoForm").submit();
-	 			    }    
-	 			});  	
-	 		}
-	 	}
-	 	function userInfoImg(){
-	 		$("#userInfo input[type='file']").show();
-			$("#userImage").hide();
-			$("#userInfoimg").show();
-			imgCJ();
-	 	}
-
-	var optionsT =
-		{
-			thumbBox: '.thumbBox',
-			spinner: '.spinner',
-			imgSrc: '../images/avatar.png'
-		};
-	var cropper = $('.imageBox').cropbox(optionsT);
-		$('#upload-file').on('change', function(){
-			var reader = new FileReader();
-			reader.onload = function(e) {
-			optionsT.imgSrc = e.target.result;
-			cropper = $('.imageBox').cropbox(optionsT);
-		};
-		reader.readAsDataURL(this.files[0]);
-		this.files = [];
-	});
-	var imgT;
-		$('#btnCrop').on('click', function(){
-			imgT = cropper.getDataURL();
-			$('.cropped').html('');
-			$('.cropped').append('<img src="'+imgT+'" align="absmiddle" style="width:64px;margin-top:4px;border-radius:64px;box-shadow:0px 0px 12px #7E7E7E;" ><p>64px*64px</p>');
-			$('.cropped').append('<img src="'+imgT+'" align="absmiddle" style="width:128px;margin-top:4px;border-radius:128px;box-shadow:0px 0px 12px #7E7E7E;"><p>128px*128px</p>');
-			$('.cropped').append('<img src="'+imgT+'" align="absmiddle" style="width:180px;margin-top:4px;border-radius:180px;box-shadow:0px 0px 12px #7E7E7E;"><p>180px*180px</p>');
-			$("#imgT").attr('src',imgT);
-			$("#DownloadTX").attr("href",imgT);
-
-		});
-		$('#btnZoomIn').on('click', function(){
-			cropper.zoomIn();
-		});
-		$('#btnZoomOut').on('click', function(){
-			cropper.zoomOut();
-		});
-	// 弹出裁剪框
-	function imgDIG(){
-		$("#imgDig").dialog({
-			closed:false,
-			modal:true
-		})
-	}
-	//弹出选项 修改框
-	function imgCJ(){
-		$("#CJPD").dialog({
-			closed:false,
-			modal:true
-		});
-		$("#imgDig").dialog({
-			closed:true,
-			modal:true
-		});
-	}
-	//弹出头像下载框
-	function TXdownload(){
-		$("#TXdownload").dialog({
-			closed:false,
-			modal:true
-		});
-		$("#CJPD").dialog({
-			closed:true,
-			modal:true
-		});
-		$("#imgDig").dialog({
-			closed:true,
-			modal:true
-		})
-	}
-	function UploadTX(){
-		$("#userInfo input[type='file']").click();
-		$("#CJPD").dialog({
-			closed:true,
-			modal:true
-		})
-	}
-
-	})
-
-	</script>	
-	
-												 
+<body>										 
 	<form action="users/updateUserInfo.action" method="post" enctype="multipart/form-data" id="userInfoForm">
 		
 	<input type="hidden" value="${users.id }" name="id" id="updateUserInfo"/>
@@ -216,5 +75,147 @@
 			<div class="cropped"></div>
 		</div>
 	</div>
+	<script type="text/javascript">
+	 	$(function(){
+	 		$("#userInfo input[type='file']").hide();
+			$("#userIamge").hide();
+			$("#userInfoimg").hide();
+			var id =$("#updateUserInfo").val();
+			$.post("users/queryUserInfoOne.action",{'id':id},function(data){
+				$("input[name='name']").val(data.name);
+				$("input[name='password']").val(data.password);
+				$("input[name='file']").val(data.imageName);
+				$("input[name='phone']").val(data.phone);
+	            $("#joinTime").datebox('setValue',data.inductionDate);
+	            $("#becomeTime").datebox('setValue',data.positiveDate);
+	            $("#birthTime").datebox('setValue',data.birthday);
+				if(data.sex!=null){
+					if(data.sex=="男"){
+						$("#male").attr("checked","checked")
+					}else{
+						$("#female").attr("checked","checked")
+					}
+				}
+				if(data.imageName!=""&&data.imageName!=null){
+					$("#userInfo input[type='file']").hide();
+					$("#userImage").show();
+					$("#userInfoimg").show();
+				}else{
+					$("#userInfo input[type='file']").show();
+					$("#userImage").hide();
+					$("#userInfoimg").hide();
+				}
+			})
+       	$('#joinTime').datebox({ required:true,editable:false});
+	    $('#becomeTime').datebox({ required:true,editable:false});
+	    $('#birthTime').datebox({ required:true,editable:false});
+
+		})
+		
+		function submitInfo(){
+	 		var number=0;
+	 		$("#userInfo input").each(function(){
+	 			var val =$(this).val();
+	 			if(val==""||val==undefined||val==null){
+	 				number=number+1;
+	 			}
+	 		})
+	 		if(number>1){
+	 			$.messager.alert("提示", "信息填寫不完整", "info");
+	 		}else{
+	 			$.messager.confirm('确认','修改后需重新登陆',function(r){
+	 			    if (r){    
+	 			    	$("#userInfoForm").submit();
+	 			    }    
+	 			});  	
+	 		}
+	 	}
+		
+
+
+	var optionsT =
+		{
+			thumbBox: '.thumbBox',
+			spinner: '.spinner',
+			imgSrc: 'image/avatar.png'
+		};
+	var cropper = $('.imageBox').cropbox(optionsT);
+		$('#upload-file').on('change', function(){
+			var reader = new FileReader();
+			reader.onload = function(e) {
+			optionsT.imgSrc = e.target.result;
+			cropper = $('.imageBox').cropbox(optionsT);
+		};
+		reader.readAsDataURL(this.files[0]);
+		this.files = [];
+	});
+	var imgT;
+		$('#btnCrop').on('click', function(){
+			imgT = cropper.getDataURL();
+			$('.cropped').html('');
+			$('.cropped').append('<img src="'+imgT+'" align="absmiddle" style="width:64px;margin-top:4px;border-radius:64px;box-shadow:0px 0px 12px #7E7E7E;" ><p>64px*64px</p>');
+			$('.cropped').append('<img src="'+imgT+'" align="absmiddle" style="width:128px;margin-top:4px;border-radius:128px;box-shadow:0px 0px 12px #7E7E7E;"><p>128px*128px</p>');
+			$('.cropped').append('<img src="'+imgT+'" align="absmiddle" style="width:180px;margin-top:4px;border-radius:180px;box-shadow:0px 0px 12px #7E7E7E;"><p>180px*180px</p>');
+			$("#imgT").attr('src',imgT);
+			$("#DownloadTX").attr("href",imgT);
+
+		});
+		$('#btnZoomIn').on('click', function(){
+			cropper.zoomIn();
+		});
+		$('#btnZoomOut').on('click', function(){
+			cropper.zoomOut();
+		});
+	// 弹出裁剪框
+	function imgDIG(){
+		$("#imgDig").dialog({
+			closed:false,
+			modal:true
+		})
+	}
+	//弹出选项 修改框
+	function imgCJ(){
+		$("#CJPD").dialog({
+			closed:false,
+			width:340,
+			height:70,
+			modal:true
+		});
+		$("#imgDig").dialog({
+			closed:true,
+			modal:true
+		});
+	}
+	//弹出头像下载框
+	function TXdownload(){
+		$("#TXdownload").dialog({
+			closed:false,
+			modal:true
+		});
+		$("#CJPD").dialog({
+			closed:true,
+			modal:true
+		});
+		$("#imgDig").dialog({
+			closed:true,
+			modal:true
+		})
+	}
+	function UploadTX(){
+		$("#userInfo input[type='file']").click();
+		$("#CJPD").dialog({
+			closed:true,
+			modal:true
+		})
+	}
+
+	function userInfoImg(){
+	 		$("#userInfo input[type='file']").show();
+			$("#userImage").hide();
+			$("#userInfoimg").show();
+			imgCJ();
+	 	}
+
+	</script>	
 </body>
 </html>

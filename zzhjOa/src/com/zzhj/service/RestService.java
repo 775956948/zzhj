@@ -106,6 +106,9 @@ public class RestService {
 			}else if(roleName.equals("部门经理")){
 				state="已审批";
 				resoult=rm.approver(restId, user.getName(), state);
+			}else if(roleName.equals("行政")||roleName.equals("人事")||roleName.equals("财务")){
+				state="已审批";
+				resoult=rm.approver(restId, user.getName(), state);
 			}
 		}else if(day<=1){
 			if(roleName.equals("主管")){
@@ -116,6 +119,9 @@ public class RestService {
 			}else if(roleName.equals("副总")){
 				state="已审批";
 				resoult=rm.approver(restId, user.getName(), state);
+			}else if(roleName.equals("行政")||roleName.equals("人事")||roleName.equals("财务")){
+				state="已审批";
+				resoult=rm.approver(restId, user.getName(), state);
 			}
 		}else if(day>1){
 			if(roleName.equals("主管")){
@@ -124,6 +130,8 @@ public class RestService {
 
 				resoult=rm.approver(restId, userName.getName(), state);
 			}else if(roleName.equals("副总")){
+				resoult=rm.approver(restId, userName.getName(), state);
+			}else if(roleName.equals("行政")||roleName.equals("人事")||roleName.equals("财务")){
 				resoult=rm.approver(restId, userName.getName(), state);
 			}else if(roleName.equals("总经理")){
 				state="已审批";

@@ -146,4 +146,7 @@
 	<update id="updateDepartment" parameterType="int">
 		update users set departmentId=#{departmentId} where id=#{userId} 
 	</update>
+	<select id="queryBoss" resultMap="ur">
+		SELECT u.name FROM users u INNER JOIN roles r ON u.role_id=r.id WHERE r.name ='总经理'
+	</select>
 </mapper>

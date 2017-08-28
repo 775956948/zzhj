@@ -39,7 +39,16 @@ public class RequestSealService {
 	}
 	
 	public int save(RequestSeal r){
-		Users user =um.userId(r.getUserId().getDepartmentId().getName());
+		Users user=null;
+		String roleName = r.getUserId().getRoleId().getName();
+		if(roleName.equals("行政")||roleName.equals("人事")||roleName.equals("财务")||roleName.equals("副总")){
+			user =um.queryBoss();
+		}else if(roleName.equals("行政助理")||roleName.equals("人事助理")||roleName.equals("财务助理")){
+			Users parentUser = um.parentId(r.getUserId().getId());
+			user=um.query(parentUser.getParentId());
+		}else{
+			user =um.userId(r.getUserId().getDepartmentId().getName());
+		}
 		Date today=new Date();
 		SimpleDateFormat f=new SimpleDateFormat("yyyy-MM-dd");
 		String time=f.format(today);

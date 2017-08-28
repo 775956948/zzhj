@@ -62,7 +62,7 @@ public interface UsersMapper {
 	List<Users> roleUser(Users user);
 	/**
 	 * 
-	 * @Description: 根据部门返回部门的副总
+	 * @Description: 根据部门名称返回部门的副总
 	 * @param @param departmentName
 	 * @param @return   
 	 * @return Users  
@@ -231,4 +231,14 @@ public interface UsersMapper {
 	 * @date 2017年8月10日
 	 */
 	Users queryOneUserInfo(String userName);
+	/**
+	 * 
+	 * @Description: 获取总经理的用户名。
+	 * @param @return   
+	 * @return Users  
+	 * @throws
+	 * @author 小白
+	 * @date 2017年8月21日
+	 */
+	Users queryBoss();
 }

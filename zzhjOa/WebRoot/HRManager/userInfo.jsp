@@ -33,9 +33,9 @@
 			columns : [ [ 
 			              {field : 'id',title : '编号',hidden: true},
 	                      {field : 'imageName',title : '用户头像',formatter : function(value){
-                               var ImgTX= '<img src="../image/'+value+'"  style="width:50px;height: 50px">';
+                               var ImgTX= '<img src="image/'+value+'"  style="width:50px;height: 50px; display:block; margin:auto;">';
 								return ImgTX;
-	                             },width:54},
+	                             },width:100},
 	                      {field : 'name',title : '用户名',width:400},
 			              {field : 'departmentId',title : '所属部门',width:400,formatter : function(value) {return value.name;}}, 
 			              {field : 'roleId',title : '所属角色',width:400,formatter : function(values) {
@@ -63,6 +63,10 @@
 				},
 				columns : [ [ 
 				              {field : 'id',title : '编号',hidden: true}, 
+		                      {field : 'imageName',title : '用户头像',formatter : function(value){
+	                               var ImgTX= '<img src="image/'+value+'"  style="width:50px;height: 50px; display:block; margin:auto;">';
+									return ImgTX;
+		                             },width:100},
 				              {field : 'name',title : '用户名',width:400}, 
 				              {field : 'departmentId',title : '所属部门',width:400,formatter : function(value) {return value.name;}}, 
 				              {field : 'roleId',title : '所属角色',width:400,formatter : function(values) {

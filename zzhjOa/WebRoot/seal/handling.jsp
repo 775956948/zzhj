@@ -132,6 +132,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					   	$('#handling_Dg').datagrid('reload');
 					   	$.messager.alert("提示","经办完成","info");
 					   	spprove_tanc.dialog('close');
+					   	$("#listMes li").each(function(){
+					   		 var target=$(this).attr("id");
+					   		 if(target==id){
+					   		 	 $(this).remove(); 
+					   		 	var number =$("#listMes").children('li').length;
+					   		 	if(number==0){
+					   		 	 $("#message").hide();  
+					   		 	}
+					   		 }
+					   	})
 					   }else{
 					   	$.messager.alert("提示","提交失败","info");
 					   }
